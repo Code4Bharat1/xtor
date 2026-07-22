@@ -1,0 +1,81 @@
+# XTORC
+
+XTORC is a globally trusted manufacturer and service provider of premium controlled bolting systems, high-pressure hydraulic equipment, and portable on-site machining tools. Proudly engineered and manufactured in India, XTORC delivers field-proven mechanical joint integrity solutions for heavy industries.
+
+## Compliance and Certifications
+- **ISO 9001:2015**: Certified quality management systems.
+- **CE & ATEX**: Fully certified for operation in explosive, volatile, and high-risk environments.
+
+---
+
+## Core Product Offerings
+
+### 1. Controlled Bolting Tools
+- **Square Drive Hydraulic Torque Wrenches**: Compact, high-strength alloy design compatible with standard impact sockets.
+  - [Square Drive Wrench](https://xtorcind.com/squaredrive)
+- **Low-Profile Hex Drive Torque Wrenches**: Cassette-type hydraulic wrenches engineered for tight clearances and restricted access.
+  - [Hex Drive Wrench](https://xtorcind.com/hexdrive)
+- **Pneumatic Torque Wrenches**: Air-driven, explosion-proof torque wrenches for mining, gas pipeline, and refinery zones.
+  - [Pneumatic Wrenches](https://xtorcind.com/pneumotic)
+- **Electric Torque Wrenches**: Digital high-precision electric wrenches for repeatable torque preloads.
+  - [Electric Wrenches](https://xtorcind.com/electrictorquewrenches)
+- **Manual Torque Multipliers**: Hand-operated multipliers for high torque applications without power sources.
+  - [Manual Torque Tools](https://xtorcind.com/manualtorque)
+
+### 2. Bolt Tensioning Systems
+- **Topside Bolt Tensioners**: High-pressure hydraulic tensioners ensuring uniform, leak-free flange preloading.
+  - [Topside Tensioners](https://xtorcind.com/topsidebolt)
+- **Spring Return Bolt Tensioners**: Rapid cycle tensioning featuring automatic piston retraction.
+  - [Spring Return Tensioners](https://xtorcind.com/springreturnbolt)
+- **Multi-Stage Bolt Tensioners**: Compact, high-stretch tensioners designed for wind turbine towers and steam turbines.
+  - [Multi-Stage Tensioners](https://xtorcind.com/multistagebolt)
+- **Subsea Bolt Tensioners**: Corrosion-resistant underwater tensioners built for offshore divers and ROVs.
+  - [Subsea Tensioners](https://xtorcind.com/subseabolt)
+
+### 3. On-Site Machining & Accessories
+- **Pipe Cold Cutting & Beveling Machines**: Clamshell split-frame portable machines for safe, spark-free pipe edge prep.
+  - [Pipe Cutting Machines](https://xtorcind.com/pipeCutting)
+- **ID Pipe Bevelling Machines**: Inside-diameter mounted bevelers for pipeline weld preparation.
+  - [ID Bevelling Machines](https://xtorcind.com/bevellingmachine)
+- **Flange Facing Machines**: Portable OD/ID mounted flange facers for repairing damaged gasket surfaces.
+  - [Flange Facers](https://xtorcind.com/flangefacing)
+- **Hydraulic Nut Splitters**: Safe, spark-free cutting tools for removing seized or corroded nuts.
+  - [Nut Splitters](https://xtorcind.com/hydralicnut)
+- **High-Pressure Pumps**: 700 bar and 1500 bar electric (`XEP`) or pneumatic (`XAP`) pumps for torque wrenches and tensioners.
+  - [Pumps and Power Packs](https://xtorcind.com/handPumps)
+- **Impact Sockets & Reducers**: Industrial grade heat-treated socket attachments and adapters.
+  - [Sockets & Accessories](https://xtorcind.com/socket)
+
+---
+
+## On-Site Engineering Services
+
+XTORC provides professional, turnkey industrial services globally:
+- **Bolt Torquing & Tensioning**: Flange joint assembly and structural bolting.
+  - [Torquing Services](https://xtorcind.com/bolttorquing)
+- **Cold Cutting & Beveling**: Spark-free pipeline modification and extraction.
+  - [Cold Cutting Services](https://xtorcind.com/coldcutting)
+- **Flange Facing Service**: On-site re-machining of RTJ and raised-face connections.
+  - [Flange Facing Services](https://xtorcind.com/flangefacingservice)
+- **Hot Tapping & Line Stopping**: Pipeline modifications under active flow without shutdown.
+  - [Hot Tapping Services](https://xtorcind.com/hottapping)
+- **Equipment Calibration**: NABL-traceable testing and certification of hydraulic torque wrenches.
+  - [Calibration Services](https://xtorcind.com/retubbing)
+- **Water Jet Cutting**: Ultra-high pressure cold water jet cutting services.
+  - [Water Jet Services](https://xtorcind.com/waterjet)
+
+---
+
+## Industries We Serve
+- **Oil & Gas / Refining**: Pipeline maintenance, refinery turnarounds, and platform assembly.
+- **Power Generation**: Wind turbine installation, thermal/hydroelectric steam turbine maintenance.
+- **Petrochemical & Fertilizer**: Vessel joint sealing, heat exchanger servicing.
+- **Heavy Infrastructure**: Bridges, marine construction, structural steel bolting.
+- [Industries Overview](https://xtorcind.com/industry)
+
+## Corporate Office
+- **Address**: B-Wing 3rd Floor Office No.35, Plot No C-39A, TTC Industrial Area, MIDC Industrial Area, Pawne, Navi Mumbai, Maharashtra 400710
+- **Email**: ENQUIRY@XTORCIND.COM
+- **Phone**: +91 9619561695 / +91 8108810057
+- **Website**: [XTORC India](https://xtorcind.com)
+- **Careers**: [Join Our Team](https://xtorcind.com/Joinus)

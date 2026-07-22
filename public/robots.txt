@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /private/
+
+# If there are staging or test versions:
+# Disallow: /staging/
+
+Allow: /
+
+Sitemap: https://xtorcind.com/sitemap.xml
