@@ -106,7 +106,7 @@ const Footer = () => {
                 { name: "Home", path: "/" },
                 { name: "About us", path: "/aboutus" },
                 { name: "Products", path: "/product" },
-                { name: "Download", path: "download" },
+                { name: "Download", path: "/download" },
 
                 // { name: "Services", path: "/services" },
               ].map((item, idx) => (

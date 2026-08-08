@@ -19,42 +19,44 @@ const container = {
 
 function Services() {
   return (
-    <div className="bg-black flex items-start justify-center pt-16 px-8">
+    <div
+      className="bg-black flex items-start justify-center pt-10 sm:pt-14 px-4 sm:px-8"
+      style={{ fontFamily: "Poppins, sans-serif" }}
+    >
       <motion.div
-        className="max-w-2xl mx-auto text-center"
+        className="w-9/10 mx-auto text-center"
         variants={container}
         initial="hidden"
-        animate="visible"  // changed from whileInView
+        animate="visible"
       >
         {/* Service Heading */}
-        <motion.h1
-          variants={fadeInUp}
-          className="text-white text-6xl font-impact mb-4"
-        >
-          Service
-        </motion.h1>
+        <div className="w-fit mx-auto mb-6">
+          <motion.h1
+            variants={fadeInUp}
+            className="heading-main mb-2 text-center"
+          >
+            Our Services
+          </motion.h1>
 
-        {/* Red Border Line */}
-        <motion.div
-          variants={fadeInUp}
-          className="w-96 h-1 mx-auto mb-8 rounded-2xl"
-          style={{ backgroundColor: "#D01A1A" }}
-        ></motion.div>
+          {/* Red Border Line */}
+          <motion.div
+            variants={fadeInUp}
+            className="w-full h-1.5 rounded-full bg-red-600"
+          ></motion.div>
+        </div>
 
-        {/* Main Description Text */}
+        {/* Main Description Subheading */}
         <motion.h2
           variants={fadeInUp}
-          className="text-white text-5xl font-impact mb-8 leading-tight"
+          className="heading-sub mb-6 leading-snug"
         >
-          "Comprehensive Industrial Services
-          with The Right Tools"
+          "Comprehensive Industrial Services with The Right Tools"
         </motion.h2>
 
         {/* CTA Button */}
         <motion.button
           variants={fadeInUp}
-          className="text-white text-lg font-semibold px-8 py-3 rounded-xl hover:opacity-90 transition-opacity"
-          style={{ backgroundColor: "#FF0000" }}
+          className="bg-red-600 text-white text-sm sm:text-base font-bold px-7 py-2.5 rounded-xl hover:bg-red-700 transition-colors shadow-lg shadow-red-600/20 cursor-pointer mb-6"
         >
           Discover Our Services
         </motion.button>
@@ -62,10 +64,9 @@ function Services() {
         {/* Bottom Description Text */}
         <motion.p
           variants={fadeInUp}
-          className="text-white text-lg leading-relaxed max-w-lg mx-auto mt-6 text-justify"
+          className="text-body max-w-xl mx-auto text-center opacity-90"
         >
-          At Xtorc, we offer end-to-end solutions tailored to industrial
-          requirements.
+          At Xtorc, we offer end-to-end solutions tailored to demanding industrial requirements worldwide.
         </motion.p>
       </motion.div>
     </div>

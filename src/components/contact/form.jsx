@@ -6,9 +6,9 @@ function ContactSection() {
     <section className="w-9/10 mx-auto flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-0 py-6">
       {/* Form card with animation */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}   // halka neeche se aaye
-        whileInView={{ opacity: 1, y: 0 }} // animate hote hi apni jagah
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         viewport={{ once: true }}
         className="w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl rounded-2xl border border-gray-200 shadow-lg hover:shadow-red-600/40 hover:shadow-xl transition-all duration-300 bg-white p-4 sm:p-6 md:p-8"
       >

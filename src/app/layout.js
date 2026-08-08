@@ -1,8 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Navbar from "@/layout/Navbar";
-import FloatingLogo from "@/layout/FloatingLogo";
+import ClientNavbarWrapper from "@/layout/ClientNavbarWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +22,6 @@ export const metadata = {
   description:
     "XTORC supplies high-performance hydraulic torque wrenches, flange facing machines, and bolt tensioners for oil, gas, marine, and power industries.",
   keywords: [
-    // 🔹 Primary Keywords
     "Hydraulic Torque Wrench",
     "Flange Facing Machine",
     "Pipe Cutting Machine",
@@ -32,32 +30,6 @@ export const metadata = {
     "Controlled Bolting Equipment",
     "Hydraulic Torque Tools",
     "Flange Facing Equipment",
-
-    // 🔹 Long-Tail Keywords
-    "Best hydraulic torque wrench for industrial use",
-    "Portable flange facing machine for on-site machining",
-    "Pipe cutting machine for heavy-duty applications",
-    "Bolt tensioners for high-pressure pipelines",
-    "Industrial bolting tools supplier in India",
-    "Flange facing equipment for oil & gas industry",
-    "Hydraulic torque tools for flange assembly",
-    "Flange facing machine rental services",
-
-    // 🔹 Service-Oriented Keywords
-    "Flange facing services near me",
-    "Hydraulic torque wrench calibration services",
-    "On-site bolting services for industrial plants",
-    "Pipe cutting and beveling services",
-    "Flange facing machine rental in India",
-    "Hydraulic torque wrench repair services",
-
-    // 🔹 Industry-Specific Keywords
-    "Oil and Gas bolting tools",
-    "Petrochemical flange facing equipment",
-    "Power plant pipe cutting machines",
-    "Marine industry bolting tools",
-    "Industrial bolting tools for construction",
-    "Flange facing machines for pharmaceutical plants",
   ],
   openGraph: {
     title: "XTORC | Hydraulic Torque Wrenches & Industrial Bolting Tools",
@@ -67,7 +39,7 @@ export const metadata = {
     siteName: "XTORC",
     images: [
       {
-        url: "/og-image.jpg", // 👈 put this image in /public
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "XTORC Hydraulic Torque Tools and Industrial Bolting Equipment",
@@ -146,11 +118,9 @@ export default function RootLayout({ children }) {
           </Script>
         )}
 
-        <FloatingLogo />
-        <Navbar/>
-        <div className="max-w-[1100px] mx-auto w-full overflow-hidden">
+        <ClientNavbarWrapper>
           {children}
-        </div>
+        </ClientNavbarWrapper>
       </body>
     </html>
   );

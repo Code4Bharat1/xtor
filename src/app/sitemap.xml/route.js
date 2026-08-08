@@ -9,7 +9,7 @@ export async function GET() {
     "distributor",
     "industry",
     "contact",
-    "Joinus",
+    "joinus",
     "download",
     "services",
     "ElectricTorque",

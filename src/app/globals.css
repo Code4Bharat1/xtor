@@ -60,4 +60,18 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .scrollable-para::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scrollable-para::-webkit-scrollbar-track {
+    background: #111111;
+    border-radius: 4px;
+  }
+  .scrollable-para::-webkit-scrollbar-thumb {
+    background: #d01a1a;
+    border-radius: 4px;
+  }
+  .scrollable-para::-webkit-scrollbar-thumb:hover {
+    background: #ff1a1a;
+  }
 }

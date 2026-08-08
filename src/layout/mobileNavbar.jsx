@@ -429,6 +429,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
 
+const getSafePath = (path) => {
+  if (!path) return "#";
+  return path.startsWith("/") ? path : `/${path}`;
+};
+
+const getSafeImg = (img) => {
+  if (!img) return "";
+  return img.startsWith("/") ? img : `/${img}`;
+};
+
 const categories = {
   "Insitu-Machinning": [
     {
@@ -475,7 +485,7 @@ const categories = {
       id: "bolt-tensioner",
       name: "Bolt Tensioner",
       img: null, // Parent has no image in mobile view usually
-      path: "bolttensioner",
+      path: "hydraulicbolttensioners",
       subItems: [
         {
           id: "topside-tensioner",
@@ -574,7 +584,7 @@ const servicesList = [
   {
     id: "bolt-torquing",
     name: "Bolt Torquing & Tensioning",
-    img: "boltt.jpg",
+    img: "boltt.jpeg",
     path: "bolttorquing",
     width: 400,
     height: 390,
@@ -582,7 +592,7 @@ const servicesList = [
   {
     id: "cold-cutting",
     name: "Cold Cutting & Beveling",
-    img: "pipeCold.jpg",
+    img: "pipeCold.jpeg",
     path: "coldcutting",
     width: 400,
     height: 390,
@@ -590,7 +600,7 @@ const servicesList = [
   {
     id: "flange-facing",
     name: "Flange Facing",
-    img: "facing.jpg",
+    img: "facing.jpeg",
     path: "flangefacingservice",
     width: 400,
     height: 390,
@@ -712,13 +722,13 @@ const MobileNavbar = () => {
                             {/* Main item */}
                             <div className="flex items-center justify-between">
                               <Link
-                                href={`/${item.path}`}
+                                href={getSafePath(item.path)}
                                 onClick={closeAllMenus}
                                 className="flex items-center gap-2 py-1 flex-1"
                               >
                                 {item.img && (
                                   <img
-                                    src={`/${item.img}`}
+                                    src={getSafeImg(item.img)}
                                     alt={item.name}
                                     className="w-10 h-10 object-contain flex-shrink-0" // Added flex-shrink-0
                                   />
@@ -751,13 +761,13 @@ const MobileNavbar = () => {
                                 {item.subItems.map((subItem) => (
                                   <Link
                                     key={subItem.id}
-                                    href={`/${subItem.path}`}
+                                    href={getSafePath(subItem.path)}
                                     onClick={closeAllMenus}
                                     className="flex items-center gap-2 py-1"
                                   >
                                     {subItem.img && (
                                       <img
-                                        src={`/${subItem.img}`}
+                                        src={getSafeImg(subItem.img)}
                                         alt={subItem.name}
                                         className="w-8 h-8 object-contain flex-shrink-0"
                                       />
@@ -799,13 +809,13 @@ const MobileNavbar = () => {
                 {servicesList.map((svc) => (
                   <Link
                     key={svc.id}
-                    href={`/${svc.path}`}
+                    href={getSafePath(svc.path)}
                     onClick={closeAllMenus}
                     className="flex items-center gap-3 py-2"
                   >
                     {svc.img && (
                       <img
-                        src={`/${svc.img}`}
+                        src={getSafeImg(svc.img)}
                         alt={svc.name}
                         className="w-10 h-10 object-contain rounded flex-shrink-0" // Added flex-shrink-0
                       />
@@ -853,6 +863,15 @@ const MobileNavbar = () => {
             }`}
           >
             Join Us
+          </Link>
+          <Link
+            href="/testimonials"
+             onClick={closeAllMenus}
+            className={`block py-1 ${
+              pathname === "/testimonials" ? "text-red-500 font-bold" : ""
+            }`}
+          >
+            Testimonials
           </Link>
           <Link
             href="/download"

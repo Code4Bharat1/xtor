@@ -37,7 +37,7 @@ export async function POST(request) {
 
     // Generate response using a chat session
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-2.0-flash',
       config: {
         systemInstruction: systemPrompt,
       },

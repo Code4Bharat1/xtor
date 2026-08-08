@@ -601,9 +601,9 @@
 //               Contact us
 //             </Link>
 //             <Link
-//               href="/Joinus"
+//               href="/joinus"
 //               className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-[12px] font-bold ${
-//                 pathname === "/Joinus" ? "border-b-2 border-red-500" : ""
+//                 pathname === "/joinus" ? "border-b-2 border-red-500" : ""
 //               }`}
 //             >
 //               Join us
@@ -668,7 +668,7 @@ const Navbar = () => {
     ],
     "bolting-tools": [
       { id: "hydraulic-torque", name: "Hydraulic Torque Wrench", img: "/hydraulictorque.png", path: "/hydraulictorque" },
-      { id: "bolt-tensioner", name: "Bolt Tensioners", img: "/product5.png", path: "/bolttensioner" }, // Changed img
+      { id: "bolt-tensioner", name: "Bolt Tensioners", img: "/product5.png", path: "/hydraulicbolttensioners" },
     ],
     "hydraulic-torque": [
       { id: "square-drive", name: "Square Drive", img: "/images/BoltingTools/squaredrive.png", path: "/squaredrive", width: 420, height: 380 },
@@ -699,9 +699,9 @@ const Navbar = () => {
   };
 
   const servicesList = [
-    { id: "bolt-torquing", name: "Bolt Torquing & Tensioning", img: "/boltt.jpg", path: "/bolttorquing", width: 400, height: 390, },
-    { id: "cold-cutting", name: "Cold Cutting & Beveling", img: "/pipeCold.jpg", path: "/coldcutting", width: 400, height: 390, },
-    { id: "flange-facing", name: "Flange Facing", img: "/facing.jpg", path: "/flangefacingservice", width: 400, height: 390, },
+    { id: "bolt-torquing", name: "Bolt Torquing & Tensioning", img: "/boltt.jpeg", path: "/bolttorquing", width: 400, height: 390, },
+    { id: "cold-cutting", name: "Cold Cutting & Beveling", img: "/pipeCold.jpeg", path: "/coldcutting", width: 400, height: 390, },
+    { id: "flange-facing", name: "Flange Facing", img: "/facing.jpeg", path: "/flangefacingservice", width: 400, height: 390, },
     { id: "hot-tapping", name: "Hot-Tapping & Line Stopple", img: "/tap.jpg", path: "/hottapping", width: 400, height: 391, },
     { id: "re-tubing", name: "Calibration", img: "/callib.avif", path: "/retubbing", width: 400, height: 300, },
     { id: "water-jet", name: "Water Jet Cutting", img: "/wjet.jpg", path: "/waterjet", width: 400, height: 400, },
@@ -829,12 +829,12 @@ const Navbar = () => {
                         src={selectedProduct.img.startsWith('/') ? selectedProduct.img : `/${selectedProduct.img}`}
                         alt={selectedProduct.name}
                         className="object-contain w-full h-full max-h-[320px] rounded-md cursor-pointer group-hover:scale-105 transition-transform duration-500 ease-out"
-                        onClick={() => { closeProductDropdown(); router.push(selectedProduct.path.startsWith('/') ? selectedProduct.path : `/${selectedProduct.path}`); }}
+                        onClick={() => { closeProductDropdown(); if (selectedProduct?.path) router.push(selectedProduct.path.startsWith('/') ? selectedProduct.path : `/${selectedProduct.path}`); }}
                       />
                     ) : (
                       <div
                         className="flex items-center justify-center text-gray-500 cursor-pointer border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 w-full h-full max-h-[320px] hover:bg-gray-100 transition-colors"
-                        onClick={() => { closeProductDropdown(); router.push(selectedProduct.path.startsWith('/') ? selectedProduct.path : `/${selectedProduct.path}`); }}
+                        onClick={() => { closeProductDropdown(); if (selectedProduct?.path) router.push(selectedProduct.path.startsWith('/') ? selectedProduct.path : `/${selectedProduct.path}`); }}
                       >
                         <span className="font-medium">Image not provided</span>
                       </div>
@@ -843,8 +843,9 @@ const Navbar = () => {
                   <div className="mt-2 text-center w-full px-4 flex flex-col items-center">
                     <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-4 line-clamp-2">{selectedProduct.name}</h3>
                     <button
-                      onClick={() => { closeProductDropdown(); router.push(selectedProduct.path.startsWith('/') ? selectedProduct.path : `/${selectedProduct.path}`); }}
-                      className="px-6 py-2.5 bg-red-600 text-white text-sm font-semibold rounded-full hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/30 transition-all duration-300 w-fit"
+                      type="button"
+                      onClick={() => { closeProductDropdown(); if (selectedProduct?.path) router.push(selectedProduct.path.startsWith('/') ? selectedProduct.path : `/${selectedProduct.path}`); }}
+                      className="px-6 py-2.5 bg-red-600 text-white text-sm font-semibold rounded-full hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/30 transition-all duration-300 w-fit cursor-pointer"
                     >
                       View Details
                     </button>
@@ -858,13 +859,25 @@ const Navbar = () => {
 
         {/* Services Dropdown */}
         <div className="relative">
-          <button
-            type="button"
-            onClick={() => { setIsServicesOpen((prev) => !prev); setSelectedService(null); }}
-            className="flex items-center text-white font-medium text-base transition-colors duration-200 hover:border-b-2 hover:border-red-500"
-          >
-            Services <ChevronDown className="h-4 w-4 text-white ml-1" />
-          </button>
+          <div className="flex items-center">
+            <a
+              href="/services"
+              className={`text-white font-medium text-base transition-colors duration-200 hover:border-b-2 hover:border-red-500 ${pathname === "/services" ? "border-b-2 border-red-500" : ""}`}
+            >
+              Services
+            </a>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsServicesOpen((prev) => !prev);
+                setSelectedService(null);
+              }}
+              className="ml-1 cursor-pointer"
+            >
+              <ChevronDown className="h-4 w-4 text-white" />
+            </button>
+          </div>
 
           {isServicesOpen && (
             <div
@@ -877,8 +890,9 @@ const Navbar = () => {
                 {servicesList.map((svc, index) => (
                   <button
                     key={svc.id}
+                    type="button"
                     onClick={() => setSelectedService(svc)}
-                    className={`flex items-center w-full flex-shrink-0 px-4 py-4 text-sm lg:text-base text-gray-800 text-left transition-colors border-b border-gray-100 last:border-0 ${selectedService?.id === svc.id ? "bg-gray-50 text-red-600 font-bold" : "hover:bg-gray-100"}`}
+                    className={`flex items-center w-full flex-shrink-0 px-4 py-4 text-sm lg:text-base text-gray-800 text-left transition-colors border-b border-gray-100 last:border-0 cursor-pointer ${selectedService?.id === svc.id ? "bg-gray-50 text-red-600 font-bold" : "hover:bg-gray-100"}`}
                   >
                     <BsDash className="w-6 text-red-500 h-6 flex-shrink-0 mr-2" /> {svc.name}
                   </button>
@@ -894,12 +908,12 @@ const Navbar = () => {
                         src={selectedService.img.startsWith('/') ? selectedService.img : `/${selectedService.img}`}
                         alt={selectedService.name}
                         className="object-contain w-full h-full max-h-[280px] rounded-md cursor-pointer group-hover:scale-105 transition-transform duration-500 ease-out"
-                        onClick={() => { closeServiceDropdown(); router.push(selectedService.path.startsWith('/') ? selectedService.path : `/${selectedService.path}`); }}
+                        onClick={() => { closeServiceDropdown(); if (selectedService?.path) router.push(selectedService.path.startsWith('/') ? selectedService.path : `/${selectedService.path}`); }}
                       />
                     ) : (
                       <div
                         className="flex items-center justify-center text-gray-500 cursor-pointer border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 w-full h-full max-h-[280px] hover:bg-gray-100 transition-colors"
-                        onClick={() => { closeServiceDropdown(); router.push(selectedService.path.startsWith('/') ? selectedService.path : `/${selectedService.path}`); }}
+                        onClick={() => { closeServiceDropdown(); if (selectedService?.path) router.push(selectedService.path.startsWith('/') ? selectedService.path : `/${selectedService.path}`); }}
                       >
                         <span className="font-medium">Image not provided</span>
                       </div>
@@ -908,8 +922,9 @@ const Navbar = () => {
                   <div className="mt-4 text-center w-full px-4 flex flex-col items-center">
                     <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-4 line-clamp-2">{selectedService.name}</h3>
                     <button
-                      onClick={() => { closeServiceDropdown(); router.push(selectedService.path.startsWith('/') ? selectedService.path : `/${selectedService.path}`); }}
-                      className="px-6 py-2.5 bg-red-600 text-white text-sm font-semibold rounded-full hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/30 transition-all duration-300 w-fit"
+                      type="button"
+                      onClick={() => { closeServiceDropdown(); if (selectedService?.path) router.push(selectedService.path.startsWith('/') ? selectedService.path : `/${selectedService.path}`); }}
+                      className="px-6 py-2.5 bg-red-600 text-white text-sm font-semibold rounded-full hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/30 transition-all duration-300 w-fit cursor-pointer"
                     >
                       View Details
                     </button>
@@ -923,7 +938,8 @@ const Navbar = () => {
         <Link href="/distributor" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/distributor" ? "border-b-2 border-red-500" : ""}`}>Distributor</Link>
         <Link href="/industry" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/industry" ? "border-b-2 border-red-500" : ""}`}>Industries</Link>
         <Link href="/contact" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/contact" ? "border-b-2 border-red-500" : ""}`}>Contact us</Link>
-        <Link href="/Joinus" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/Joinus" ? "border-b-2 border-red-500" : ""}`}>Join us</Link>
+        <Link href="/joinus" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/joinus" ? "border-b-2 border-red-500" : ""}`}>Join us</Link>
+        <Link href="/testimonials" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/testimonials" ? "border-b-2 border-red-500" : ""}`}>Testimonials</Link>
         <Link href="/download" className={`hidden lg:block text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/download" ? "border-b-2 border-red-500" : ""}`}>Downloads</Link>
       </div>
     </nav>

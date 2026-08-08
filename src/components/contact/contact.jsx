@@ -25,21 +25,21 @@ export default function ContactPage() {
   };
 
   const fadeInUp = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 15 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      transition: { duration: 0.4, ease: "easeOut" },
     },
   };
 
   const container = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.3 } },
+    visible: { transition: { staggerChildren: 0.15 } },
   };
 
   return (
-    <div className="overflow-x-hidden bg-black text-white min-h-screen relative">
+    <div className="overflow-hidden bg-black text-white min-h-screen relative">
       {/* ✅ LEFT SECTION (Why to choose Xtroc) */}
       <motion.div
         className="w-9/10 mx-auto px-4 py-12 relative"

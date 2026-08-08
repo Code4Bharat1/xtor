@@ -7,9 +7,17 @@ import { useState, useRef, useEffect } from 'react';
 const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.3 });
+  const textScrollRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  
+
+  const toggleExpand = () => {
+    if (expanded && textScrollRef.current) {
+      textScrollRef.current.scrollTop = 0;
+    }
+    setExpanded(!expanded);
+  };
+
   const textVariants = {
     hidden: { 
       opacity: 0, 
@@ -74,7 +82,7 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
           : imageOnLeft 
             ? 'flex-row' 
             : 'flex-row-reverse'
-      } items-center gap-6 md:gap-12 w-9/10 mx-auto px-4`}>
+      } items-center gap-6 md:gap-12 w-10/11 mx-auto px-4`}>
         
         {/* Image Section */}
         <motion.div 
@@ -83,19 +91,19 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <div className="shadow-lg">
+          <div className="relative group overflow-hidden rounded-2xl bg-white p-2 border-t-[12px] border-r-[12px] border-red-600 shadow-[0_10px_30px_rgba(255,255,255,0.15)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.5)] transition-shadow duration-300">
             <img 
               src={imageSrc} 
               alt={title}
-              className="w-full h-48 sm:h-64 md:w-[600px] md:h-[400px] lg:h-[500px] object-cover rounded"
+              className="w-full h-56 sm:h-64 md:h-[280px] lg:h-[320px] object-cover rounded-xl group-hover:scale-105 transition-transform duration-500 ease-out"
               onError={(e) => {
                 e.target.style.display = 'none';
                 e.target.nextSibling.style.display = 'flex';
               }}
             />
             {/* Fallback placeholder */}
-            <div className="hidden w-full h-48 sm:h-64 md:h-[400px] lg:h-[500px] bg-gray-200 rounded items-center justify-center">
-              <span className="text-gray-500 text-sm">{title} Image</span>
+            <div className="hidden w-full h-56 sm:h-64 md:h-[280px] lg:h-[320px] bg-gray-200 rounded-xl items-center justify-center">
+              <span className="text-gray-500 text-sm font-medium">{title} Image</span>
             </div>
           </div>
         </motion.div>
@@ -107,38 +115,34 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <h3 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
+          <h3 className="heading-sub mb-3">
             {title}
           </h3>
           
           <motion.div 
-            className="h-1 bg-red-500 mb-4"
+            className="h-1 bg-red-600 mb-4 rounded-full"
             variants={borderVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            style={{ backgroundColor: '#FF0000' }}
           ></motion.div>
           
-          <motion.div
-            className="text-white text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed transition-all duration-500 text-justify"
+          <div 
+            ref={textScrollRef}
+            className="text-body text-justify opacity-90 pr-3 transition-all duration-300 scrollable-para"
             style={{
-              overflow: 'hidden',
-              maxHeight: expanded 
-                ? 'none' 
-                : isMobile 
-                  ? '4.6rem'   // About 3 lines on mobile
-                  : '20rem',    // About 4-5 lines on desktop
+              maxHeight: '12.5rem',
+              overflowY: expanded ? 'auto' : 'hidden',
             }}
           >
             {description}
-          </motion.div>
+          </div>
 
-          {/* Read More/Less button - Always visible */}
+          {/* Read More / Read Less Toggle Button */}
           <button
-            onClick={() => setExpanded(!expanded)}
-            className="mt-3 text-red-500 hover:text-red-400 hover:underline focus:outline-none transition-colors duration-200 text-sm md:text-base font-medium"
+            onClick={toggleExpand}
+            className="mt-3 text-red-500 hover:text-red-400 hover:underline focus:outline-none transition-colors duration-200 text-sm md:text-base font-semibold flex items-center gap-1 cursor-pointer"
           >
-            {expanded ? 'Read Less' : 'Read More'}
+            {expanded ? 'Read Less ▲' : 'Read More ▼'}
           </button>
         </motion.div>
       </div>
@@ -166,19 +170,19 @@ function OurServicessMobile() {
     {
       title: "Bolt Torquing & Tensioning",
       description: "At XTORC, we specialize in providing high-precision controlled bolting services across a wide range of industries, including Oil & Gas, Infrastructure, Wind Energy, and more. Our expert team utilizes advanced tools and technology to ensure that every bolt is tightened to the exact specifications required, maintaining the integrity and safety of your operations. In sectors like Oil and Gas, Infrastructure, and Wind Energy, controlled bolting is crucial for preventing mechanical failures and ensuring the longevity of critical assets. Our services help avoid issues such as leaks, joint misalignments, and equipment malfunctions that can lead to costly downtime, safety hazards, and operational inefficiencies. With XTORC's controlled bolting services, you can rely on accurate torque, tension, and fastening for a variety of applications, including pressure vessels, pipelines, turbines, and structural installations. Our team works on-site, providing fast, reliable, and efficient solutions, ensuring that your equipment is securely assembled and functioning at its optimal performance. Choose XTORC for precision bolting services that enhance safety, efficiency, and reliability across all sectors.",
-      imageSrc: "boltt.jpg",
+      imageSrc: "boltt.jpeg",
       imageOnLeft: false
     },
     {
       title: "Cold Cutting & Beveling", 
       description: "XTORC offers high-precision Pipe Cold Cutting services on-site, providing tailored solutions for a wide range of pipe material grades and thicknesses. Our state-of-the-art cold cutting technology allows us to safely and accurately cut pipes without generating heat, minimizing the risk of damaging sensitive materials or creating hazardous conditions. In Oil and Gas projects, especially during shutdowns, precision is paramount. Pipe Cold Cutting is an essential service for maintenance, repairs, and modifications, where traditional cutting methods may pose safety risks or lead to unwanted thermal effects. Our cold cutting services ensure that pipe integrity is maintained, avoiding warping, thermal expansion, or the potential for compromising the strength and structure of critical piping systems. Whether working with carbon steel, stainless steel, or exotic alloys, XTORC's team is equipped to handle diverse materials and pipe thicknesses. Our on-site cold cutting solutions are fast, efficient, and highly accurate, ensuring minimal disruption to operations while keeping projects on track. Trust XTORC for reliable, safe, and efficient Pipe Cold Cutting services that meet the demanding requirements of Oil and Gas projects, shutdowns, and maintenance operations. Our expertise ensures your pipes are cut to perfection, ensuring project success and long-term operational efficiency.",
-      imageSrc: "pipeCold.jpg",
+      imageSrc: "pipeCold.jpeg",
       imageOnLeft: true
     },
     {
       title: "Flange Facing",
       description: "XTORC specializes in high-precision on-site Flange Facing and Serration services, catering to a wide range of flange material grades and sizes. Our advanced equipment and experienced technicians ensure that each flange is accurately faced and serrated to meet the specific requirements of your project, ensuring optimal performance and safety in critical applications. Flange facing is a crucial process that involves machining the surface of the flange to create a smooth, flat, and even surface for a secure gasket seal. This is essential for preventing leaks, ensuring a tight seal, and maintaining pressure integrity in systems such as pipelines, pressure vessels, and reactors. Additionally, serration on the flange face creates grooves that enhance the gasket's sealing performance, especially in high-pressure or high-temperature environments, making it an essential step for industries such as Oil & Gas, Petrochemical, Power Generation, and more. No matter the material – be it carbon steel, stainless steel, or other alloys – XTORC's flange facing and serration services are designed to meet the stringent requirements of various industrial applications. Our on-site capabilities ensure minimal downtime and provide a fast, reliable, and cost-effective solution for flange preparation. The importance of proper flange facing and serration cannot be overstated. Inadequate preparation can lead to leaks, equipment failure, or safety hazards. XTORC's services guarantee that your flanges are properly machined for a perfect seal, ensuring the reliability and efficiency of your systems and extending the lifespan of your equipment. Choose XTORC for accurate and professional flange facing and serration services that enhance the performance, safety, and longevity of your industrial systems.", 
-      imageSrc: "facing.jpg",
+      imageSrc: "facing.jpeg",
       imageOnLeft: false
     },
     {
@@ -202,8 +206,11 @@ function OurServicessMobile() {
   ];
 
   return (
-    <div className="bg-black min-h-screen py-8 md:py-16 px-4 md:px-8">
-      <div className="w-9/10 mx-auto px-4">
+    <div
+      className="bg-black min-h-screen py-8 md:py-16 px-4 md:px-8"
+      style={{ fontFamily: "Poppins, sans-serif" }}
+    >
+      <div className="w-11/12 max-w-[1100px] mx-auto px-4">
         {/* Header Section */}
         <motion.div 
           ref={headerRef}
@@ -212,16 +219,17 @@ function OurServicessMobile() {
           initial="hidden"
           animate={isHeaderInView ? "visible" : "hidden"}
         >
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Our Services
-          </h1>
+          <div className="w-fit mb-6">
+            <h2 className="heading-main mb-2">
+              Service Offerings
+            </h2>
+            
+            <div 
+              className="w-full h-1.5 rounded-full bg-red-600"
+            ></div>
+          </div>
           
-          <div 
-            className="w-40 sm:w-60 md:w-90 h-1 mb-4 md:mb-6 rounded-2xl"
-            style={{ backgroundColor: '#FF0000' }}
-          ></div>
-          
-          <p className="text-white text-base sm:text-lg md:text-2xl lg:text-3xl max-w-4xl">
+          <p className="text-body max-w-4xl opacity-90">
             Are designed to maximize efficiency and ensure safety in operations:
           </p>
         </motion.div>
