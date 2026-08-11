@@ -938,7 +938,7 @@ const Navbar = () => {
         <Link href="/distributor" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/distributor" ? "border-b-2 border-red-500" : ""}`}>Distributor</Link>
         <Link href="/industry" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/industry" ? "border-b-2 border-red-500" : ""}`}>Industries</Link>
         <Link href="/contact" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/contact" ? "border-b-2 border-red-500" : ""}`}>Contact us</Link>
-        <Link href="/joinus" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/joinus" ? "border-b-2 border-red-500" : ""}`}>Join us</Link>
+        <Link href="/Joinus" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/joinus" ? "border-b-2 border-red-500" : ""}`}>Join us</Link>
         <Link href="/testimonials" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/testimonials" ? "border-b-2 border-red-500" : ""}`}>Testimonials</Link>
         <Link href="/download" className={`hidden lg:block text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/download" ? "border-b-2 border-red-500" : ""}`}>Downloads</Link>
       </div>
