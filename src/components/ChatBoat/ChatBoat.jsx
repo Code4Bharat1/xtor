@@ -56,26 +56,25 @@ const ChatBoat = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[9999]">
-      <div className="max-w-7xl mx-auto w-full h-full relative px-4 sm:px-6 lg:px-8">
-        {/* Floating Chat Icon (Kept on the left as requested originally) */}
-        <img
-          src="chatboat.png"
-          alt="chat_boat"
-          className="absolute pointer-events-auto w-20 h-48 object-cover bottom-20 left-0 cursor-pointer hover:brightness-110 transition-all duration-300 drop-shadow-[5px_0_15px_rgba(0,0,0,0.1)]"
-          onClick={() => setOpen(!open)}
-        />
+    <>
+      {/* Floating Chat Icon (Pinned to left screen edge) */}
+      <img
+        src="/chatboat.png"
+        alt="chat_boat"
+        className="fixed bottom-20 left-0 z-[9999] w-20 h-48 object-cover cursor-pointer hover:brightness-110 transition-all duration-300 drop-shadow-[5px_0_15px_rgba(0,0,0,0.1)]"
+        onClick={() => setOpen(!open)}
+      />
 
-        {/* Chat Window */}
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.2 }}
-              className="absolute pointer-events-auto md:bottom-10 md:left-24 bottom-20 left-4 md:left-6 h-[520px] max-h-[80vh] w-[380px] max-w-[calc(100vw-2rem)] bg-[#F8F9FA] rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] flex flex-col border border-gray-200 overflow-hidden"
-            >
+      {/* Chat Window */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed md:bottom-10 md:left-24 bottom-20 left-4 z-[10000] h-[520px] max-h-[80vh] w-[380px] max-w-[calc(100vw-2rem)] bg-[#F8F9FA] rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] flex flex-col border border-gray-200 overflow-hidden"
+          >
             {/* Premium Header */}
             <div className="bg-gradient-to-r from-[#D01A1A] to-red-700 h-18 px-4 flex items-center justify-between text-white shrink-0 shadow-md z-10 relative">
               <div className="flex items-center gap-3">
@@ -205,8 +204,7 @@ const ChatBoat = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      </div>
-    </div>
+    </>
   );
 };
 
