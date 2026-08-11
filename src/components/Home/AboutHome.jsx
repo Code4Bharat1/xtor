@@ -54,14 +54,14 @@ const AboutHome = () => {
 
             <motion.p
               variants={item}
-              className="text-body font-poppins max-w-[1100px] mx-auto w-full px-4 text-justify"
+              className="text-body font-poppins max-w-7xl mx-auto w-full px-4 text-justify"
             >
               Xtorc was founded with a vision to provide world-class industrial tools and services tailored to modern challenges. As a startup with over a decade of experience, we're redefining how industries achieve precision, efficiency, and safety. All our products are proudly manufactured in India and certified to the highest standards, including ISO 9001:15000, CE, and ATEX. At Xtorc, we believe in creating value that extends beyond products. Our WIN-WIN-WIN philosophy ensures that our customers win, our employees thrive, and our entrepreneurs succeed.
             </motion.p>
 
             <motion.p
               variants={item}
-              className="text-body font-poppins max-w-[1100px] mx-auto w-full px-4 mt-6 text-justify"
+              className="text-body font-poppins max-w-7xl mx-auto w-full px-4 mt-6 text-justify"
             >
               Our comprehensive controlled bolting range comprises square drive hydraulic torque wrenches, low-profile hex drive wrenches, topside and subsea hydraulic bolt tensioners, and pneumatic or electric torque wrench power packs. We also specialize in state-of-the-art on-site machining equipment including portable flange facing machines, clamshell split-frame pipe cold cutting and beveling machines, and casing cutters. Each product is engineered to deliver reliable, spark-free mechanical joint integrity in hazardous environments like petrochemical plants, offshore oil rigs, gas refinery pipelines, and power generating stations.
             </motion.p>

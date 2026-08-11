@@ -45,8 +45,8 @@ const Home = () => {
   return (
     <div className="bg-black text-white">
       {/* Hero Section */}
-      <div className="bg-black px-4 sm:px-6 md:px-8 py-8">
-        <div className="w-11/12 mx-auto px-4">
+      <div className="bg-black py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
 
             {/* Left side - Product Image */}

@@ -33,7 +33,7 @@ const OurProducts = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <section className="py-12 px-4">
-        <div className="w-11/12 mx-auto w-full px-4 text-center">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-center">
           <div className="w-fit mx-auto flex flex-col items-center mb-8">
             <motion.h2
               className="heading-main font-base mb-0"

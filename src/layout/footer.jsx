@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const Footer = () => {
   return (
     <footer className="bg-black text-white font-[var(--font-poppins)]">
-      <div className="w-9/10 mx-auto px-4 pt-20 sm:pt-24 pb-8 sm:pb-10 lg:pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-8 sm:pb-10 lg:pb-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo & About */}
           <div className="space-y-4">
@@ -206,7 +206,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="bg-white py-2">
-        <div className="max-w-[1100px] mx-auto w-full px-4">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           <p className="text-center text-black text-xs sm:text-sm">
             ©2025 | Developed by{" "}
             <span className="text-red-600 font-medium">Code4Bharat</span> | All

@@ -35,7 +35,7 @@ const Industries = () => {
   return (
     <div>
       <section className=" bg-black py-12 px-4">
-        <div className="w-11/12 mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title with Borders */}
           <div className="flex items-center justify-center mb-4">
             <div className="flex-1 h-1 rounded-2xl bg-red-600"></div>

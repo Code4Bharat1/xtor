@@ -649,7 +649,7 @@ const MobileNavbar = () => {
   };
 
   return (
-    <nav className="md:hidden bg-black text-white w-11/12 mx-auto p-4">
+    <nav className="md:hidden bg-black text-white w-full p-4">
       {/* Header */}
       <div className="flex justify-between items-center">
         <Link href="/" onClick={closeAllMenus}>

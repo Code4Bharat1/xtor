@@ -2,7 +2,6 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
-import FloatingLogo from "./FloatingLogo";
 
 export default function ClientNavbarWrapper({ children }) {
   const pathname = usePathname();
@@ -14,9 +13,8 @@ export default function ClientNavbarWrapper({ children }) {
 
   return (
     <>
-      <FloatingLogo />
       <Navbar />
-      <div className="max-w-[1100px] mx-auto w-full overflow-hidden">
+      <div className="w-full overflow-x-hidden">
         {children}
       </div>
     </>
