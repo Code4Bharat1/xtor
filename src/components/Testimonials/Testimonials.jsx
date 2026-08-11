@@ -220,7 +220,7 @@ export default function TestimonialsSection() {
         )}
       </AnimatePresence>
 
-      <div className="w-9/10 mx-auto max-w-6xl text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Section Header */}
         <div className="mb-10 space-y-4 max-w-3xl mx-auto">
           <div className="w-fit mx-auto flex flex-col items-center">

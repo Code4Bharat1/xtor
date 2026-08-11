@@ -67,7 +67,7 @@ const OurValues = () => {
 
   return (
     <div className="bg-black text-white min-h-screen">
-      <div className="w-9/10 mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Stats Section */}
         <motion.div
           ref={statsRef} // attach ref
@@ -77,50 +77,24 @@ const OurValues = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="mb-16"
         >
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
             {/* 25 Products Card */}
-            <div
-              className="text-center p-6 md:p-10 w-full md:w-180 relative md:h-[15.5rem]"
-              style={{
-                backgroundColor: "#1B1B1B",
-              }}
-            >
-              <style jsx>{`
-                @media (min-width: 768px) {
-                  .clip-left {
-                    clip-path: polygon(0 0, 100% 0, 77% 100%, 0 100%);
-                  }
-                  .clip-right {
-                    clip-path: polygon(25% 0px, 100% 0px, 100% 100%, 0% 100%);
-                  }
-                }
-              `}</style>
-              <div
-                className="flex flex-col sm:flex-row items-center justify-center text-5xl md:text-7xl font-bold mb-2 md:p-10 md:px-40"
-                style={{ color: "#D01A1A" }}
-              >
+            <div className="bg-[#1B1B1B] p-8 md:p-10 rounded-2xl flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left shadow-lg">
+              <div className="text-5xl md:text-7xl font-bold text-[#D01A1A]">
                 <CountingNumber target={25} start={statsInView} />
-                <div className="text-white text-3xl md:text-6xl md:px-4 md:py-2 py-2 px-4">
-                  Products
-                </div>
+              </div>
+              <div className="text-white text-2xl md:text-4xl font-semibold">
+                Products
               </div>
             </div>
 
             {/* 15 Years Card */}
-            <div
-              className="text-center p-6 md:p-10 w-full md:w-180 relative md:h-[15.5rem] md:-ml-35 lg:-ml-25"
-              style={{
-                backgroundColor: "#1B1B1B",
-              }}
-            >
-              <div className="flex flex-col sm:flex-row items-center justify-center text-white text-xl md:text-2xl md:px-38 lg:px-30 md:py-0 lg:py-2">
-                <span className="text-center">Years of Combined Sales <br /> & Operation Expertise</span>
-                <div
-                  className="text-5xl md:text-7xl font-bold mb-2 mt-4 md:mt-10 px-2 lg:mt-3"
-                  style={{ color: "#D01A1A" }}
-                >
-                  <CountingNumber target={15} start={statsInView} />
-                </div>
+            <div className="bg-[#1B1B1B] p-8 md:p-10 rounded-2xl flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-right shadow-lg">
+              <div className="text-white text-base sm:text-lg md:text-xl font-medium">
+                Years of Combined Sales <br /> & Operation Expertise
+              </div>
+              <div className="text-5xl md:text-7xl font-bold text-[#D01A1A] flex-shrink-0">
+                <CountingNumber target={15} start={statsInView} />
               </div>
             </div>
           </div>
@@ -234,7 +208,7 @@ const OurValues = () => {
                 <h4 className="text-black group-hover:text-white text-xl font-bold mb-3">
                   Quality
                 </h4>
-                <p className="text-black max-w-90 mr-20 group-hover:text-white text-md">
+                <p className="text-black group-hover:text-white text-md">
                   Ensuring every product and service meets the highest
                   standards.
                 </p>
@@ -258,7 +232,7 @@ const OurValues = () => {
                 <h4 className="text-black group-hover:text-white text-xl font-bold mb-3">
                   Innovation
                 </h4>
-                <p className="text-black max-w-90 ml-20 group-hover:text-white text-md">
+                <p className="text-black group-hover:text-white text-md">
                   Continuously pushing the boundaries of what's possible.
                 </p>
               </div>
@@ -281,7 +255,7 @@ const OurValues = () => {
                 <h4 className="text-black group-hover:text-white text-xl font-bold mb-3">
                   Integrity
                 </h4>
-                <p className="text-black max-w-90 group-hover:text-white text-md">
+                <p className="text-black group-hover:text-white text-md">
                   Conducting business with honesty and transparency.
                 </p>
               </div>
@@ -304,7 +278,7 @@ const OurValues = () => {
                 <h4 className="text-black group-hover:text-white text-xl font-bold mb-3">
                   Customer-Centricity
                 </h4>
-                <p className="text-black max-w-90 group-hover:text-white text-md">
+                <p className="text-black group-hover:text-white text-md">
                   Tailoring solutions to meet and exceed customer expectations.
                 </p>
               </div>

@@ -26,7 +26,7 @@ const Product = () => {
   return (
     <div className="bg-black relative overflow-hidden">
       <motion.div
-        className="w-9/10 mx-auto px-4 md:px-0 pt-16 pb-12 bg-black relative"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 bg-black relative"
         variants={container}
         initial="hidden"
         animate="visible"
@@ -36,22 +36,22 @@ const Product = () => {
           {/* Left Side Content (Heading + Tagline + Paragraph) */}
           <motion.div variants={fadeInUp} className="flex-1 text-justify">
             <h2
-              className="heading-main mb-6 ml-2"
+              className="heading-main mb-6"
             >
               Products
             </h2>
 
-            <div className="h-1.5 mb-5 bg-red-600 rounded-full md:w-70 ml-2"></div>
+            <div className="h-1.5 mb-5 bg-red-600 rounded-full md:w-70"></div>
 
             <h3
-              className="heading-sub mb-6 ml-2"
+              className="heading-sub mb-6"
             >
               Precision Tools for Your <br /> Toughest Challenges
             </h3>
 
             {/* Paragraph niche aur center aligned */}
             <p
-              className="text-body mt-8 ml-2"
+              className="text-body mt-8"
             >
               At XTORC, we provide cutting-edge solutions designed to meet the
               demands of modern industries. From bolting systems to cold cutting

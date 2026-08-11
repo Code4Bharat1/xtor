@@ -25,24 +25,18 @@ const WhatsappLogo = () => {
   const phoneNumber = "919619561695"; // +91-9619561695
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[9999]">
-      <div className="max-w-[1100px] mx-auto w-full h-full relative">
-        <div className="absolute pointer-events-auto md:h-14 md:w-14 h-12 w-12 
-          bottom-[84px] right-0">
-          
-          <a
-            href={`https://wa.me/${phoneNumber}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/whatsapp.png"
-              alt="WhatsApp Logo"
-              className="w-full h-full object-cover"
-            />
-          </a>
-        </div>
-      </div>
+    <div className="fixed bottom-6 right-4 sm:right-6 lg:right-8 z-[9999] md:h-14 md:w-14 h-12 w-12 hover:scale-110 transition-transform duration-300">
+      <a
+        href={`https://wa.me/${phoneNumber}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="/whatsapp.png"
+          alt="WhatsApp Logo"
+          className="w-full h-full object-cover drop-shadow-lg"
+        />
+      </a>
     </div>
   );
 };

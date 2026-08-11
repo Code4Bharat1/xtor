@@ -183,23 +183,23 @@ const products = [
 
 const Innovations = () => {
   return (
-    <div className="bg-black min-h-screen p-8">
+    <div className="bg-black min-h-screen py-12">
       {/* Header Section */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
-        className="mb-12"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12"
       >
         <div className="flex items-center mb-4">
-          <h1 className="text-white text-4xl font-bold mr-4 ml-20">
+          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold font-poppins mr-4">
             Our Innovations
           </h1>
           <div className="h-1 bg-red-600 w-10"></div>
         </div>
         <h2
-          className="text-2xl font-semibold ml-20"
+          className="text-xl sm:text-2xl font-semibold font-poppins"
           style={{ color: '#D01A1A' }}
         >
           Industry Focused Products!
@@ -207,7 +207,7 @@ const Innovations = () => {
       </motion.div>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-11/12 mx-auto px-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {products.map((product, i) => {
           const direction = i % 2 === 0 ? "left" : "right";
           return (

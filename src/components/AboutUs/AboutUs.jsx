@@ -20,17 +20,17 @@ const container = {
 
 const AboutSection = () => {
   return (
-    <div className="bg-black text-white">
+    <div className="bg-black text-white pt-2 lg:pt-4">
       <motion.div
-        className="w-9/10 mx-auto px-4"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         variants={container}
         initial="hidden"
         animate="visible" // changed from whileInView
       >
         {/* First Section - Single Column Layout */}
-        <div className="max-w-[1000px] mx-auto mb-12 lg:mb-16">
+        <div className="max-w-7xl mx-auto mb-12 lg:mb-16">
           {/* About Us Header */}
-          <motion.div variants={fadeInUp} className="mb-6 lg:mb-8 mt-4 lg:mt-8 w-fit">
+          <motion.div variants={fadeInUp} className="mb-6 lg:mb-8 pt-2 lg:pt-4 w-fit">
             <h2 className="heading-main mb-4">
               About Us
             </h2>

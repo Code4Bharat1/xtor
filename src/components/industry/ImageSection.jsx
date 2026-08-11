@@ -48,7 +48,7 @@ const ImageSection = () => {
   return (
     <div>
       <section className="bg-black py-1 px-4">
-        <div className="w-9/10 mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Industry Grid */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"

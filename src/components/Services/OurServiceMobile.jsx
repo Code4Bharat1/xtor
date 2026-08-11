@@ -40,7 +40,7 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
       <div
         className={`flex flex-col md:${
           imageOnLeft ? "flex-row" : "flex-row-reverse"
-        } items-center gap-8 md:gap-12 w-11/12 max-w-[1100px] mx-auto px-4`}
+        } items-center gap-8 md:gap-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}
       >
        
         {/* Image Section */}
@@ -154,7 +154,7 @@ function OurServicess() {
       className="bg-black min-h-screen py-16 px-8"
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
-      <div className="w-11/12 max-w-[1100px] mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="mb-16">
           <div className="w-fit mb-6">

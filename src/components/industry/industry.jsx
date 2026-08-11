@@ -18,7 +18,7 @@ export default function IndustryPage() {
     <div className="overflow-x-hidden bg-black text-white pb-20 relative ">
       {/* ✅ LEFT SIDE CONTENT */}
       <motion.div
-        className="w-9/10 mx-auto px-4 py-12 text-left"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-left"
         variants={container}
         initial="hidden"
         animate="visible"

@@ -24,7 +24,7 @@ function Services() {
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
       <motion.div
-        className="w-9/10 mx-auto text-center"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
         variants={container}
         initial="hidden"
         animate="visible"

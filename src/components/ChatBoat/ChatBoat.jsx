@@ -57,7 +57,7 @@ const ChatBoat = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[9999]">
-      <div className="max-w-[1100px] mx-auto w-full h-full relative">
+      <div className="max-w-7xl mx-auto w-full h-full relative px-4 sm:px-6 lg:px-8">
         {/* Floating Chat Icon (Kept on the left as requested originally) */}
         <img
           src="chatboat.png"

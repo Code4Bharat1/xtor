@@ -210,7 +210,7 @@ function OurServicessMobile() {
       className="bg-black min-h-screen py-8 md:py-16 px-4 md:px-8"
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
-      <div className="w-11/12 max-w-[1100px] mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <motion.div 
           ref={headerRef}
