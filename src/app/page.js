@@ -14,6 +14,7 @@ import AboutHome from "@/components/Home/AboutHome";
 import OurProducts from "@/components/Home/OurProducts";
 import WhatsappLogo from "@/components/WhatsappLogo/WhatsappLogo";
 import ChatBoat from "@/components/ChatBoat/ChatBoat";
+import Maintaince from "@/components/Maintaince/Maintaince"
 
 const Page = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -89,15 +90,16 @@ const Page = () => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <AnimatePresence>
+      /> 
+      <Maintaince/>
+      {/* <AnimatePresence>
         {showSplash && <SplashScreen key="splash" />}
       </AnimatePresence>
       <motion.div
         key="content"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        animate={{ opacity: showSplash ? 0 : 1 }}
+        transition={{ duration: 0.8, delay: showSplash ? 0 : 0.2 }}
       >
         <div className="hidden md:block">
          
@@ -113,7 +115,7 @@ const Page = () => {
         <Industries />
         <ContactUs />
         <Footer />
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 };
