@@ -13,7 +13,7 @@ export default function ClientNavbarWrapper({ children }) {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="w-full overflow-x-hidden">
         {children}
       </div>
