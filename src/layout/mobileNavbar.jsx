@@ -456,7 +456,7 @@ const categories = {
     {
       id: "flange-facing",
       name: "Flange Facing Machine",
-      img: "facing.jpg",
+      img: "facing.jpeg",
       path: "flangefacing",
     },
   ],
