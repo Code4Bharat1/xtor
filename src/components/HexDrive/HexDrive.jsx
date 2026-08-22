@@ -249,7 +249,7 @@ import React from "react";
 import { BsDot } from "react-icons/bs";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-const HandPumps = () => {
+const HexDrive = () => {
   // Data from the FIRST image (Technical Specifications) - Kept from the last step
   const specTableData = {
     headers: ["", "Units", "XTH-2", "", "XTH-4", "", "XTH-8", "", "XTH-14", "", "XTH-32", ""],
