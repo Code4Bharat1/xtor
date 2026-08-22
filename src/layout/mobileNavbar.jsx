@@ -464,7 +464,7 @@ const categories = {
     {
       id: "hydraulic-torque",
       name: "Hydraulic Torque Wrench",
-      img: null, // Parent has no image in mobile view usually
+      img:  "/hydraulictorque.png", // Parent has no image in mobile view usually
       path: "hydraulictorque",
       subItems: [
         {
@@ -484,7 +484,7 @@ const categories = {
     {
       id: "bolt-tensioner",
       name: "Bolt Tensioner",
-      img: null, // Parent has no image in mobile view usually
+      img: "/product5.png", // Parent has no image in mobile view usually
       path: "hydraulicbolttensioners",
       subItems: [
         {
