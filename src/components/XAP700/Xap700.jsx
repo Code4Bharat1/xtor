@@ -109,7 +109,7 @@ const Xap700 = () => {
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Section */}
           <div className="space-y-6">
@@ -117,7 +117,7 @@ const Xap700 = () => {
             <div className="text-center">
               <h1
                 className="text-4xl px-10 text-white mb-2 font-bold"
-                
+
               >
                 XAP700
               </h1>
@@ -167,7 +167,7 @@ const Xap700 = () => {
                 Download Catalog
               </button>
             </div> */}
-                  <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download
@@ -180,22 +180,22 @@ const Xap700 = () => {
         </div>
 
         {/* --- Technical Specifications Table --- */}
-        <div className="mt-20">
-            <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-                <div className="bg-gray-800 py-4">
-                    <h3 className="text-3xl text-white text-center" >
-                        TECHNICAL SPECIFICATIONS
-                    </h3>
-                </div>
-                <div className="divide-y divide-gray-700">
-                    {techSpecs.map((spec, index) => (
-                        <div key={index} className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors">
-                            <div className="p-4 text-lg md:text-xl font-medium text-gray-300 border-r border-gray-700">{spec.label}</div>
-                            <div className="p-4 text-lg md:text-xl text-white text-right">{spec.value}</div>
-                        </div>
-                    ))}
-                </div>
+        <div className="mt-12">
+          <div className="border border-gray-600 rounded-lg overflow-hidden shadow-xl w-full max-w-7xl mx-auto">
+            <div className="bg-gray-800 py-2 sm:py-2.5">
+              <h3 className="text-base sm:text-lg font-bold text-white text-center">
+                TECHNICAL SPECIFICATIONS
+              </h3>
             </div>
+            <div className="divide-y divide-gray-700 text-xs sm:text-sm">
+              {techSpecs.map((spec, index) => (
+                <div key={index} className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors leading-tight">
+                  <div className="py-1.5 sm:py-2 px-3 font-medium text-gray-300 border-r border-gray-700">{spec.label}</div>
+                  <div className="py-1.5 sm:py-2 px-3 text-white text-right break-words">{spec.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
       </div>

@@ -225,17 +225,17 @@
 //           </div>
 //         </div>
 //       </div>
-      
+
 //       {/* ------------------------------------------------------------- */}
-      
+
 //       <div className="max-w-[1100px] mx-auto w-full px-4 pt-6">
 //         <h2 className="text-2xl font-bold text-red-600 mb-4">XTH SERIES DIRECT HEX TYPE
 // HYDRAULIC TORQUE WRENCHES</h2>
 //       </div>
-      
+
 //       {/* Data Sheet Table (Same UI) */}
 //       {renderTable(tableData)}
-      
+
 //       {/* ------------------------------------------------------------- */}
 //     </div>
 //   );
@@ -289,73 +289,64 @@ const HandPumps = () => {
 
   // Helper function to render the table (reused from the previous step)
   const renderTable = (data, isDimTable = false) => (
-    <div className="w-9/10 mx-auto px-4 pb-12 ">
-      <div className="inline-block min-w-full">
-        <div className="shadow-lg border border-white/50"> {/* Added main border */}
-          <table className="min-w-full border-collapse min-w-max">
-            <thead>
-              {/* Table Headers: Uses colSpan to merge cells for XTH-2, XTH-4, etc. */}
-              <tr className="bg-red-700 text-xl font-bold">
-                {/* The first two columns (Label and Unit) span two rows visually */}
-                <th rowSpan="2" className="py-3 px-2 sm:px-4 text-center border-r border-white/50 bg-gray-700">
-                  {data.headers[0]}
-                </th>
-                <th rowSpan="2" className="py-3 px-2 sm:px-4 text-center border-r border-white/50 bg-gray-700">
-                  {data.headers[1]}
-                </th>
-                {/* Product Model Headers */}
-                <th colSpan="2" className="py-3 px-2 sm:px-4 text-center border-r border-l border-white/50">
-                  XTH-2
-                </th>
-                <th colSpan="2" className="py-3 px-2 sm:px-4 text-center border-r border-white/50">
-                  XTH-4
-                </th>
-                <th colSpan="2" className="py-3 px-2 sm:px-4 text-center border-r border-white/50">
-                  XTH-8
-                </th>
-                {/* XTH-14 has only 1 column in this data structure, adjust colSpan to 1 */}
-                <th colSpan="1" className="py-3 px-2 sm:px-4 text-center border-r border-white/50">
-                  XTH-14
-                </th>
-                <th colSpan="2" className="py-3 px-2 sm:px-4 text-center">
-                  XTH-32
-                </th>
+    <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 pb-6 overflow-x-auto mt-2">
+      <div className="w-full shadow-2xl rounded-xl overflow-hidden border border-white/30">
+        <table className="w-full border-collapse min-w-[850px] text-xs sm:text-sm">
+          <thead>
+            {/* Table Headers: Uses colSpan to merge cells for XTH-2, XTH-4, etc. */}
+            <tr className="bg-red-700 text-white font-bold leading-tight">
+              {/* The first two columns (Label and Unit) */}
+              <th className="py-2.5 px-1 sm:px-2 text-left border-r border-white/30 bg-gray-700 w-[18%] sm:w-[16%]">
+                {data.headers[0]}
+              </th>
+              <th className="py-2.5 px-1 text-center border-r border-white/30 bg-gray-700 w-[7%] sm:w-[6%]">
+                {data.headers[1]}
+              </th>
+              {/* Product Model Headers */}
+              <th colSpan="2" className="py-2.5 px-1 text-center border-r border-l border-white/30 w-[17%]">
+                XTH-2
+              </th>
+              <th colSpan="2" className="py-2.5 px-1 text-center border-r border-white/30 w-[17%]">
+                XTH-4
+              </th>
+              <th colSpan="2" className="py-2.5 px-1 text-center border-r border-white/30 w-[17%]">
+                XTH-8
+              </th>
+              <th colSpan="1" className="py-2.5 px-1 text-center border-r border-white/30 w-[9%]">
+                XTH-14
+              </th>
+              <th colSpan="2" className="py-2.5 px-1 text-center w-[18%]">
+                XTH-32
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.rows.map((row, rowIndex) => (
+              <tr key={rowIndex} className="leading-normal hover:bg-zinc-900/60 transition-colors">
+                {/* Label Column */}
+                <td className="py-2 px-2 text-left border-t border-b border-l border-r border-white/30 
+                                 bg-gray-700/80 font-semibold break-words">
+                  {row.label}
+                </td>
+                {/* Unit Column */}
+                <td className="py-2 px-1 text-center border-t border-b border-l border-r border-white/30 
+                                 bg-gray-700/80 font-semibold break-words">
+                  {row.unit}
+                </td>
+                {/* Value Columns - Dynamically map values across the necessary columns */}
+                {row.values.map((value, colIndex) => (
+                  <td
+                    key={colIndex}
+                    className="py-2 px-1 text-center border-t border-b border-r border-white/30 
+                                bg-black/80 font-normal text-white break-words"
+                  >
+                    {value}
+                  </td>
+                ))}
               </tr>
-              {/* For the dimensional table, we need a second header row to align the values correctly 
-                  even though the values don't have separate labels in the image, the table structure requires it. 
-                  However, based on the image provided, there is no second header row with separate labels, 
-                  so we will rely on the `rowSpan="2"` logic above and ensure data is mapped correctly.
-                  The current structure already correctly maps the data rows to the 9 value columns.
-              */}
-            </thead>
-            <tbody>
-              {data.rows.map((row, rowIndex) => (
-                <tr key={rowIndex} className="text-xl sm:text-base">
-                  {/* Label Column */}
-                  <td className="py-2 px-2 sm:px-4 text-justify border-t border-b border-l border-r border-white/50 
-                                   bg-gray-700 font-semibold whitespace-nowrap">
-                    {row.label}
-                  </td>
-                  {/* Unit Column */}
-                  <td className="py-2 px-2 sm:px-4 text-center border-t border-b border-r border-white/50 
-                                   bg-gray-700 font-semibold whitespace-nowrap">
-                    {row.unit}
-                  </td>
-                  {/* Value Columns - Dynamically map values across the necessary columns */}
-                  {row.values.map((value, colIndex) => (
-                    <td 
-                      key={colIndex} 
-                      className={`py-2 px-2 sm:px-4 text-center border-t border-b border-r border-white/50 
-                                  bg-black/80 font-normal whitespace-nowrap`}
-                    >
-                      {value}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
@@ -372,7 +363,7 @@ const HandPumps = () => {
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           {/* Left Section */}
           <div className="space-y-6 flex flex-col items-center lg:items-start">
@@ -389,14 +380,7 @@ const HandPumps = () => {
               </div>
             </div>
 
-            {/* Download Catalog Button */}
-            {/* <div className="flex justify-center lg:justify-start lg:ml-30">
-              <button className="bg-white text-red-600 px-6 sm:px-8 py-2 sm:py-3 text-lg sm:text-2xl rounded-2xl font-bold ">
-                Download Catalog
-              </button>
-            </div> */}
-
-                  <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download
@@ -429,36 +413,36 @@ const HandPumps = () => {
           </div>
         </div>
       </div>
-      
+
       {/* ------------------------------------------------------------- */}
-      
-      <div className="w-9/10 mx-auto px-4 pt-6 ">
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         <h2 className="text-3xl font-bold text-white-600 mb-4 text-center">XTH Series Technical Specifications</h2>
-         <div className=" sm:w-40 md:w-130 h-1 bg-red-600 rounded-2xl mb-5 mx-auto "></div>
+        <div className=" sm:w-40 md:w-130 h-1 bg-red-600 rounded-2xl mb-5 mx-auto "></div>
 
       </div>
-      
+
       {/* Table 1: Technical Specifications */}
       {renderTable(specTableData)}
-      
+
       {/* ------------------------------------------------------------- */}
-       <img
-                  src="Hexdriveblueprint.png"
-                  alt="Hexdriveblueprint"
-                  className="w-[400px] h-[350px] mx-auto mb-10 object-contain"
-                />
-      <div className="w-9/10 mx-auto px-4 pt-6">
+      <img
+        src="Hexdriveblueprint.png"
+        alt="Hexdriveblueprint"
+        className="w-[400px] h-[350px] mx-auto mb-10 object-contain"
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         <h2 className="text-3xl font-bold text-white-600 mb-4 text-center">XTH Series Dimensional Data</h2>
-          <div className=" sm:w-40 md:w-110 h-1 bg-red-600 rounded-2xl mb-5 mx-auto "></div>
+        <div className=" sm:w-40 md:w-110 h-1 bg-red-600 rounded-2xl mb-5 mx-auto "></div>
 
       </div>
 
       {/* Table 2: Dimensional Data (NEWLY ADDED) */}
       {renderTable(dimTableData, true)}
-      
+
       {/* ------------------------------------------------------------- */}
     </div>
   );
 };
 
-export default HandPumps;
+export default HexDrive;

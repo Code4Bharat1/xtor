@@ -10,14 +10,14 @@ const NutSplitter = () => {
       {/* Header with white background */}
       <div className="bg-white py-6">
         <div className="flex items-center justify-center gap-2 text-black">
-          <span className="font-medium px-2">Bolt Tensioning Solutions</span>
+          <span className="font-medium px-2">Hydraulic Accessories & Tools</span>
           <FaArrowRightLong className="w-4 h-4 ml-8 mr-8" />
           <span className="font-medium">Nut Splitter</span>
         </div>
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Section */}
           <div className="space-y-6">
@@ -30,23 +30,17 @@ const NutSplitter = () => {
             </div>
 
             {/* Description */}
-            <div className="space-y-4 text-gray-200 text-2xl leading-relaxed text-justify">
-             <p>
-              XTORC’s Light Weight Hydraulic Nut
- Splitters are used in applications that
- involve corrosion; it can be used to remove
- corroded or seized nuts fast and safely.
- The light weight option helps the user to
- apply the product to lower sized bolts. 
-             </p>
-            <p>
-              XTORC’s offers Weight Hydraulic Nut
- Splitters for a range of Hex size 0.37" to
- 2.95". Our product is designed for
- operator comfort that fits tight spaces
- and it cuts through the hardest of nuts. 
-            </p>
-                        </div> 
+            <div className="space-y-4 text-gray-200 text-xl leading-relaxed text-justify">
+              <p>
+                <strong>XTORC Light Weight Hydraulic Nut Splitters</strong> are specially engineered for rapid, spark-free removal of seized, corroded, or damaged nuts without damaging bolt threads.
+              </p>
+              <p>
+                Suitable for hexagonal nut sizes ranging from 0.37&quot; to 2.95&quot; (M6 to M75), our compact cutter head geometry allows easy access into tight, confined flanges and piping assemblies.
+              </p>
+              <p>
+                Fitted with high-strength specially hardened tool-steel cutting chisels, XTORC nut splitters deliver fast, clean cuts through the toughest high-grade industrial nuts in seconds.
+              </p>
+            </div>
           </div>
 
           {/* Right Section */}
@@ -56,21 +50,22 @@ const NutSplitter = () => {
               <div
                 className="bg-white rounded-2xl p-6 border-t-12 border-r-12 border-red-600 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.6)] transition-shadow duration-300 rounded-3xl sm:h-[400px] h-[200px] flex items-center justify-center text-black">
                 <img
-                  src="nut_spilitter.png"
-                  alt=" image Not provided"
+                  src="/nut_spilitter.png"
+                  alt="XTORC Hydraulic Nut Splitter"
                   className="w-full h-full object-contain"
                 />
               </div>
             </div>
 
             {/* Download Catalog Button */}
-            <div className="flex justify-center">
-              <button
-                className="text-red-600 px-8 py-3 rounded-2xl text-2xl font-bold hover:bg-red-700 hover:text-white transition-colors"
-                style={{ backgroundColor: "#ffffff" }}
+            <div className="flex justify-center w-full">
+              <a
+                href="/XTORC BROCHURE.pdf"
+                download
+                className="bg-white text-red-600 px-8 py-3 rounded-2xl text-2xl font-bold border-2 border-red-600 hover:bg-red-700 hover:text-white transition-all duration-300 inline-block text-center shadow-lg"
               >
                 Download Catalog
-              </button>
+              </a>
             </div>
           </div>
         </div>

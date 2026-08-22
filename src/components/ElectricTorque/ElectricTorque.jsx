@@ -11,12 +11,12 @@ const ElectricTorque = () => {
           <span className="font-medium">Specialized Tools</span>
           <FaArrowRightLong className="w-4 h-4 mx-4" />
           <span className="font-medium">Electric & Pneumatic Torque Wrenches
-</span>
+          </span>
         </div>
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           {/* Left Section */}
           <div className="space-y-6 flex flex-col items-center lg:items-start">

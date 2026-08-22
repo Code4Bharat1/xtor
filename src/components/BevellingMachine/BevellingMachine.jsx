@@ -11,12 +11,12 @@ const BevellingMachine = () => {
           <span className="font-medium">Specialized Tools</span>
           <FaArrowRightLong className="w-4 h-4 mx-4" />
           <span className="font-medium">ID Bevelling Machine
-</span>
+          </span>
         </div>
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           {/* Left Section */}
           <div className="space-y-6 flex flex-col items-center lg:items-start">
@@ -40,7 +40,7 @@ const BevellingMachine = () => {
               </button>
             </div> */}
 
-              <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC IN-SITU MACHINES BROCHURE.pdf"
                 download
@@ -62,16 +62,16 @@ const BevellingMachine = () => {
             </div>
 
             {/* Description */}
-           <div className="text-body text-justify">
+            <div className="text-body text-justify">
               <p>
-                 The Split Frame Machine is ideal for all types of pipe cutting, beveling and end preparation
- operations.The split frame design allows the machine to split in half at the frame and mount around the
- OD of the in-line pipe or fittings for strong, stable clamping.<br/>
- The equipment performs precision in-line cut or simultaneous cut/bevel, single cut/bevel, counterbore
- and flange facing operations, as well as weld end preparation on open ended pipe, ranging from 2 to 56
- inches. O.D. (DN20-1400),on most wall thickness and material.
+                The Split Frame Machine is ideal for all types of pipe cutting, beveling and end preparation
+                operations.The split frame design allows the machine to split in half at the frame and mount around the
+                OD of the in-line pipe or fittings for strong, stable clamping.<br />
+                The equipment performs precision in-line cut or simultaneous cut/bevel, single cut/bevel, counterbore
+                and flange facing operations, as well as weld end preparation on open ended pipe, ranging from 2 to 56
+                inches. O.D. (DN20-1400),on most wall thickness and material.
               </p>
-            </div> 
+            </div>
           </div>
         </div>
       </div>

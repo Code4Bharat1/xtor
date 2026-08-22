@@ -38,25 +38,29 @@ const Industries = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title with Borders */}
           <div className="flex items-center justify-center mb-4">
-            <div className="flex-1 h-1 rounded-2xl bg-red-600"></div>
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex-1 h-1 rounded-2xl bg-red-600 origin-right"
+            ></motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.3 }}
-              className="heading-main  mx-8 text-white"
+              className="heading-main mx-8 text-white"
             >
               Our Contributions
             </motion.h2>
-            {/* <div className="flex-1 h-0.5 bg-red-600"></div> */}
             <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            viewport={{ once: true }}
-            className="flex-1 h-1 rounded-2xl bg-red-600"
-          ></motion.div>
-            
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex-1 h-1 rounded-2xl bg-red-600 origin-left"
+            ></motion.div>
           </div>
 
           {/* Subtitle */}
@@ -82,12 +86,11 @@ const Industries = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 className="text-center text-white"
               >
-                <div 
-                  className={`relative group overflow-hidden rounded-2xl transition-all duration-300 ${
-                    index % 2 === 0 
-                      ? "hover:shadow-[-15px_15px_25px_-5px_rgba(220,38,38,0.4)]" 
+                <div
+                  className={`relative group overflow-hidden rounded-2xl transition-all duration-300 ${index % 2 === 0
+                      ? "hover:shadow-[-15px_15px_25px_-5px_rgba(220,38,38,0.4)]"
                       : "hover:shadow-[15px_15px_25px_-5px_rgba(220,38,38,0.4)]"
-                  }`}
+                    }`}
                 >
                   <motion.img
                     src={industry.image}

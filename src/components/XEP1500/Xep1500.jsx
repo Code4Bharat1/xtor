@@ -91,7 +91,7 @@ const Xep1500 = () => {
       </div>
 
       {/* Main Hero Content (Top 2-Column Grid) */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Section: Title & Features List */}
           <div className="space-y-6">
@@ -159,7 +159,7 @@ const Xep1500 = () => {
       </div>
 
       {/* Bottom Section: Full-Width Specifications Section */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
           <h2 className="text-2xl sm:text-4xl text-center text-white mb-2 font-bold uppercase tracking-wide">
             XEP 1500 Series Specifications
@@ -167,46 +167,46 @@ const Xep1500 = () => {
           <div className="w-full max-w-[400px] rounded-2xl h-1 bg-red-600 mx-auto mt-2"></div>
         </div>
 
-        <div className="border border-gray-600 rounded-lg overflow-hidden shadow-xl">
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
           <div className="overflow-x-auto">
-            <table className="min-w-full min-w-max border-collapse">
-              <thead className="bg-gray-800 text-sm sm:text-base">
-                <tr className="text-red-500">
-                  <th className="p-4 text-center border-r border-gray-700">Model</th>
-                  <th className="p-4 text-center border-r border-gray-700">Reservoir (L)</th>
-                  <th className="p-4 text-center border-r border-gray-700">Motor (KW)</th>
-                  <th className="p-4 text-center border-r border-gray-700">Supply *</th>
-                  <th className="p-4 text-center border-r border-gray-700">Max. Working Pressure</th>
-                  <th className="p-4 text-center border-r border-gray-700">Size (mm)</th>
-                  <th className="p-4 text-center border-r border-gray-700">Control Line (m)</th>
-                  <th className="p-4 text-center border-r border-gray-700">Output Flow (L/min)</th>
-                  <th className="p-4 text-center border-r border-gray-700">Weight (kg)</th>
-                  <th className="p-4 text-center">Mode of Action</th>
+            <table className="w-full border-collapse min-w-[850px] text-xs sm:text-sm">
+              <thead className="bg-gray-800">
+                <tr className="text-red-500 font-bold leading-tight">
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Model</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Reservoir (L)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[8%]">Motor (KW)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]">Supply *</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[12%]">Max. Working Pressure</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Size (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Control Line (m)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[13%]">Output Flow (L/min)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[7%]">Weight (kg)</th>
+                  <th className="py-3 px-2 text-center w-[8%]">Mode of Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="bg-black text-center text-sm sm:text-base border-t border-gray-700">
-                  <td className="p-4 font-medium text-gray-300 border-r border-gray-700">XEP 1500</td>
-                  <td rowSpan={2} className="p-4 text-white border-r border-gray-700 align-middle">7.6</td>
-                  <td rowSpan={2} className="p-4 text-white border-r border-gray-700 align-middle">1.1</td>
-                  <td rowSpan={2} className="p-4 text-white border-r border-gray-700 align-middle">220V/50Hz/single phase</td>
-                  <td rowSpan={2} className="p-4 text-white border-r border-gray-700 align-middle">2000 bar/ <br />29000 psi</td>
-                  <td rowSpan={2} className="p-4 text-white border-r border-gray-700 align-middle">375x300x410</td>
-                  <td rowSpan={2} className="p-4 text-white border-r border-gray-700 align-middle">6</td>
-                  <td rowSpan={2} className="p-4 text-white border-r border-gray-700 align-middle">
-                    2@ <br /> 50 bar/725 psi <br /> 0.3@ <br /> 2000 bar/29000 psi
+                <tr className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                  <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">XEP 1500</td>
+                  <td rowSpan={2} className="py-2.5 px-2 text-white border-r border-gray-700 align-middle">7.6</td>
+                  <td rowSpan={2} className="py-2.5 px-2 text-white border-r border-gray-700 align-middle">1.1</td>
+                  <td rowSpan={2} className="py-2.5 px-2 text-white border-r border-gray-700 align-middle break-words">220V/50Hz/single phase</td>
+                  <td rowSpan={2} className="py-2.5 px-2 text-white border-r border-gray-700 align-middle break-words">2000 bar / 29000 psi</td>
+                  <td rowSpan={2} className="py-2.5 px-2 text-white border-r border-gray-700 align-middle break-words">375x300x410</td>
+                  <td rowSpan={2} className="py-2.5 px-2 text-white border-r border-gray-700 align-middle">6</td>
+                  <td rowSpan={2} className="py-2.5 px-2 text-white border-r border-gray-700 align-middle break-words">
+                    2 @ 50 bar <br /> 0.3 @ 2000 bar
                   </td>
-                  <td rowSpan={2} className="p-4 text-white border-r border-gray-700 align-middle">20</td>
-                  <td className="p-4 text-white">Single Acting</td>
+                  <td rowSpan={2} className="py-2.5 px-2 text-white border-r border-gray-700 align-middle">20</td>
+                  <td className="py-2.5 px-2 text-white break-words">Single Acting</td>
                 </tr>
-                <tr className="bg-black text-center text-sm sm:text-base border-t border-gray-700">
-                  <td className="p-4 font-medium text-gray-300 border-r border-gray-700">XEP 1500D</td>
-                  <td className="p-4 text-white">Double Acting</td>
+                <tr className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                  <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">XEP 1500D</td>
+                  <td className="py-2.5 px-2 text-white break-words">Double Acting</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div className="bg-gray-800 p-3 text-left text-xs sm:text-sm text-gray-400">
+          <div className="bg-gray-800 p-2.5 text-left text-xs text-gray-400">
             *Supply: Voltage and frequency can be demanded by customer
           </div>
         </div>

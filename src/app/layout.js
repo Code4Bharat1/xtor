@@ -78,10 +78,56 @@ export default function RootLayout({ children }) {
   const fbPixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
 
   return (
-    <html lang="en" className="overflow-x-clip">
+    <html lang="en" className="overflow-x-clip" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (sessionStorage.getItem('hasSeenSplash')) {
+                  document.documentElement.classList.add('splash-hidden');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              .splash-hidden #initial-splash-overlay {
+                display: none !important;
+              }
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-clip`}
       >
+        {/* Instant 0ms SSR Splash Overlay (Zero Navbar Flash) */}
+        <div
+          id="initial-splash-overlay"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "#000000",
+            zIndex: 999999,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "opacity 0.6s ease, visibility 0.6s ease",
+          }}
+        >
+          <img
+            src="/XTORC_LOGO.png"
+            alt="Splash Logo"
+            style={{ width: "min(640px, 90vw)", height: "auto", objectFit: "contain" }}
+          />
+        </div>
+
         {/* Google Analytics (GA4) */}
         {gaId && (
           <>

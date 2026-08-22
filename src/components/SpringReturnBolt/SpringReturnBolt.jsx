@@ -51,7 +51,7 @@ const SpringReturnBolt = () => {
         { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '133 (5.23)', dimC: '112 (4.40)', clearance: '112 (4.40)' },
       ],
     },
-     {
+    {
       model: "XST 5",
       maxLoad: "1000 (101.97)",
       hydArea: "66.68 (10.33)",
@@ -65,17 +65,17 @@ const SpringReturnBolt = () => {
         { impSize: '2"', impModel: 'XST6-1', metSize: 'M52', metModel: 'XST6-5', dimB: '145 (5.70)', dimC: '120 (4.72)', clearance: '120 (4.72)' },
       ],
     },
-     {
+    {
       model: "XST 6",
       maxLoad: "1500 (152.95)",
       hydArea: "100.03 (15.50)",
       dimA: "175.5 (6.90)",
       weight: "13.8 (30.42)",
       bolts: [
-          { impSize: '', impModel: '', metSize: 'M60', metModel: 'XST6-7', dimB: '148 (5.82)', dimC: '138 (5.43)', clearance: '259 (10.19)' },
-          { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '154 (6.06)', dimC: '138 (5.43)', clearance: '259 (10.19)' },
-          { impSize: '2-3/4"', impModel: 'XST6-4', metSize: 'M68', metModel: 'XST6-9', dimB: '161 (6.33)', dimC: '153 (6.02)', clearance: '272 (10.70)' },
-          { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '167 (6.57)', dimC: '156 (6.14)', clearance: '284 (11.18)' },
+        { impSize: '', impModel: '', metSize: 'M60', metModel: 'XST6-7', dimB: '148 (5.82)', dimC: '138 (5.43)', clearance: '259 (10.19)' },
+        { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '154 (6.06)', dimC: '138 (5.43)', clearance: '259 (10.19)' },
+        { impSize: '2-3/4"', impModel: 'XST6-4', metSize: 'M68', metModel: 'XST6-9', dimB: '161 (6.33)', dimC: '153 (6.02)', clearance: '272 (10.70)' },
+        { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '167 (6.57)', dimC: '156 (6.14)', clearance: '284 (11.18)' },
       ],
     },
     {
@@ -85,11 +85,11 @@ const SpringReturnBolt = () => {
       dimA: "219 (8.62)",
       weight: "23 (50.70)",
       bolts: [
-          { impSize: '3"', impModel: 'XST6-1', metSize: 'M76', metModel: 'XST7-6', dimB: '167 (6.57)', dimC: '157 (6.18)', clearance: '294 (11.57)' },
-          { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '171 (6.73)', dimC: '158 (6.22)', clearance: '307 (12.08)' },
-          { impSize: '3-1/4"', impModel: 'XST67-3', metSize: 'M85', metModel: 'XST7-8', dimB: '180 (7.08)', dimC: '190 (7.48)', clearance: '310 (12.20)' },
-          { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '186 (7.32)', dimC: '190 (7.48)', clearance: '320 (12.59)' }, // Image seems to show 186/190/320 for this line
-          { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '180 (7.08)', dimC: '205 (8.07)', clearance: '332 (13.07)' }, // Image seems to show 180/205/332 for this line
+        { impSize: '3"', impModel: 'XST6-1', metSize: 'M76', metModel: 'XST7-6', dimB: '167 (6.57)', dimC: '157 (6.18)', clearance: '294 (11.57)' },
+        { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '171 (6.73)', dimC: '158 (6.22)', clearance: '307 (12.08)' },
+        { impSize: '3-1/4"', impModel: 'XST67-3', metSize: 'M85', metModel: 'XST7-8', dimB: '180 (7.08)', dimC: '190 (7.48)', clearance: '310 (12.20)' },
+        { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '186 (7.32)', dimC: '190 (7.48)', clearance: '320 (12.59)' }, // Image seems to show 186/190/320 for this line
+        { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '180 (7.08)', dimC: '205 (8.07)', clearance: '332 (13.07)' }, // Image seems to show 180/205/332 for this line
       ],
     },
     {
@@ -99,10 +99,10 @@ const SpringReturnBolt = () => {
       dimA: "252 (9.92)",
       weight: "32 (70.54)",
       bolts: [
-          { impSize: '3-1/4"', impModel: 'XST 8-1', metSize: 'M90', metModel: 'XST 8-4', dimB: '186 (7.32)', dimC: '200 (7.87)', clearance: '339 (13.34)' },
-          { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '186 (7.32)', dimC: '200 (7.87)', clearance: '346 (13.62)' },
-          { impSize: '3-3/4"', impModel: 'XST 8-2', metSize: 'M100', metModel: 'XST8-6', dimB: '192 (7.55)', dimC: '200 (7.87)', clearance: '352 (13.85)' },
-          { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '199 (7.83)', dimC: '210 (8.26)', clearance: '364 (14.33)' },
+        { impSize: '3-1/4"', impModel: 'XST 8-1', metSize: 'M90', metModel: 'XST 8-4', dimB: '186 (7.32)', dimC: '200 (7.87)', clearance: '339 (13.34)' },
+        { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '186 (7.32)', dimC: '200 (7.87)', clearance: '346 (13.62)' },
+        { impSize: '3-3/4"', impModel: 'XST 8-2', metSize: 'M100', metModel: 'XST8-6', dimB: '192 (7.55)', dimC: '200 (7.87)', clearance: '352 (13.85)' },
+        { impSize: '', impModel: '', metSize: '', metModel: '', dimB: '199 (7.83)', dimC: '210 (8.26)', clearance: '364 (14.33)' },
       ],
     },
   ];
@@ -119,7 +119,7 @@ const SpringReturnBolt = () => {
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           {/* Left Section */}
           <div className="space-y-6 flex flex-col items-center lg:items-start">
@@ -129,21 +129,15 @@ const SpringReturnBolt = () => {
                 className="bg-white rounded-2xl p-6 border-t-[12px] border-r-[12px] border-red-600 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.6)] transition-shadow duration-300 rounded-3xl h-[250px] sm:h-[300px] md:h-[400px] w-full max-w-[500px] flex items-center justify-center text-gray-500"
               >
                 {/* Replace with your image */}
-                 <img
-    src="Springreturnbolt.png"
-    alt="Springreturnbolt"
-    className="w-[400px] h-[350px] object-contain"
-  />
+                <img
+                  src="Springreturnbolt.png"
+                  alt="Springreturnbolt"
+                  className="w-[400px] h-[350px] object-contain"
+                />
               </div>
             </div>
 
-            {/* Download Catalog Button */}
-            {/* <div className="flex justify-center lg:justify-start lg:ml-30">
-              <button className="bg-white text-red-600 px-6 sm:px-8 py-2 sm:py-3 text-lg sm:text-2xl rounded-2xl font-bold ">
-                Download Catalog
-              </button>
-            </div> */}
-                  <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download
@@ -173,77 +167,76 @@ const SpringReturnBolt = () => {
           </div>
         </div>
       </div>
-            
 
-  <img
-    src="Springreturnhydraulicboltblueprint.png"
-    alt="Springreturnhydraulicboltblueprint"
-    className="w-[400px] h-[350px] mx-auto object-contain"
-  />
 
+      <img
+        src="Springreturnhydraulicboltblueprint.png"
+        alt="Springreturnhydraulicboltblueprint"
+        className="w-[400px] h-[350px] mx-auto object-contain"
+      />
 
       {/* --- Technical Specifications Section --- */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              Spring Return Hydraulic Bolt Tensioner
-            </h2>
-            <p className="text-4xl text-white-500 " >XST SERIES</p>
-            <div className="w-160 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: '600px' }}></div>
+          <h2 className="text-4xl text-white mb-2 font-bold" >
+            Spring Return Hydraulic Bolt Tensioner
+          </h2>
+          <p className="text-2xl sm:text-3xl text-gray-300 font-semibold" >XST SERIES</p>
+          <div className="w-160 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: '600px' }}></div>
         </div>
 
         {/* Data Sheet Table */}
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-          <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="min-w-full min-w-max">
-              <thead className="bg-gray-800 text-sm">
-                <tr>
-                  <th rowSpan="2" className="p-2 text-center border-r border-gray-700">Model</th>
-                  <th colSpan="4" className="p-2 text-center border-r border-gray-700 text-red-500">BOLT SIZE</th>
-                  <th rowSpan="2" className="p-2 text-center border-r border-gray-700">Max. Load <br/> KN (Ton)</th>
-                  <th rowSpan="2" className="p-2 text-center border-r border-gray-700">Hyd. Area <br/> cm² (in²)</th>
-                  <th rowSpan="2" className="p-2 text-center border-r border-gray-700">A <br/> mm (in)</th>
-                  <th rowSpan="2" className="p-2 text-center border-r border-gray-700">B <br/> mm (in)</th>
-                  <th rowSpan="2" className="p-2 text-center border-r border-gray-700">C <br/> mm (in)</th>
-                  <th rowSpan="2" className="p-2 text-center border-r border-gray-700">Clearance <br/> Dmm (in)</th>
-                  <th rowSpan="2" className="p-2 text-center">Weight <br/> Kg (lbs)</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-6xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[8%]">Model</th>
+                  <th colSpan="4" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[36%]">BOLT SIZE</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Max. Load <br /> KN (Ton)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Hyd. Area <br /> cm² (in²)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[7%]">A <br /> mm (in)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[7%]">B <br /> mm (in)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[7%]">C <br /> mm (in)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Clearance <br /> Dmm (in)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center w-[8%]">Weight <br /> Kg (lbs)</th>
                 </tr>
-                <tr className="font-medium text-gray-300">
-                  <th className="p-1 font-medium text-center border-t border-r border-gray-700">Imperial</th>
-                  <th className="p-1 font-medium text-center border-t border-r border-gray-700">Model</th>
-                  <th className="p-1 font-medium text-center border-t border-r border-gray-700">Metric</th>
-                  <th className="p-1 font-medium text-center border-t border-r border-gray-700">Model</th>
+                <tr className="font-medium text-gray-300 leading-tight text-[11px] sm:text-xs">
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">Imperial</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">Model</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">Metric</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">Model</th>
                 </tr>
               </thead>
-              <tbody className="text-sm">
+              <tbody>
                 {tableData.map((row, rowIndex) => (
                   <React.Fragment key={rowIndex}>
                     {row.bolts.map((bolt, boltIndex) => (
-                      <tr key={`${rowIndex}-${boltIndex}`} className="bg-black text-center border-t border-gray-700">
+                      <tr key={`${rowIndex}-${boltIndex}`} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
                         {boltIndex === 0 && (
-                          <td rowSpan={row.bolts.length} className="p-2 font-medium text-gray-300 border-r border-gray-700 align-middle">
+                          <td rowSpan={row.bolts.length} className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 align-middle break-words">
                             {row.model}
                           </td>
                         )}
-                        <td className="p-2 text-white border-r border-gray-700">{bolt.impSize}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{bolt.impModel}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{bolt.metSize}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{bolt.metModel}</td>
+                        <td className="py-2 px-1.5 text-white border-r border-gray-700 break-words">{bolt.impSize || '-'}</td>
+                        <td className="py-2 px-1.5 text-white border-r border-gray-700 break-words">{bolt.impModel || '-'}</td>
+                        <td className="py-2 px-1.5 text-white border-r border-gray-700 break-words">{bolt.metSize || '-'}</td>
+                        <td className="py-2 px-1.5 text-white border-r border-gray-700 break-words">{bolt.metModel || '-'}</td>
 
                         {boltIndex === 0 && (
                           <>
-                            <td rowSpan={row.bolts.length} className="p-2 text-white border-r border-gray-700 align-middle">{row.maxLoad}</td>
-                            <td rowSpan={row.bolts.length} className="p-2 text-white border-r border-gray-700 align-middle">{row.hydArea}</td>
-                            <td rowSpan={row.bolts.length} className="p-2 text-white border-r border-gray-700 align-middle">{row.dimA}</td>
+                            <td rowSpan={row.bolts.length} className="py-2.5 px-2 text-white border-r border-gray-700 align-middle break-words">{row.maxLoad}</td>
+                            <td rowSpan={row.bolts.length} className="py-2.5 px-2 text-white border-r border-gray-700 align-middle break-words">{row.hydArea}</td>
+                            <td rowSpan={row.bolts.length} className="py-2.5 px-2 text-white border-r border-gray-700 align-middle break-words">{row.dimA}</td>
                           </>
                         )}
-                        <td className="p-2 text-white border-r border-gray-700">{bolt.dimB}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{bolt.dimC}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{bolt.clearance}</td>
+                        <td className="py-2 px-1.5 text-white border-r border-gray-700 break-words">{bolt.dimB}</td>
+                        <td className="py-2 px-1.5 text-white border-r border-gray-700 break-words">{bolt.dimC}</td>
+                        <td className="py-2 px-1.5 text-white border-r border-gray-700 break-words">{bolt.clearance}</td>
                         {boltIndex === 0 && (
-                            <td rowSpan={row.bolts.length} className="p-2 font-medium text-gray-300 align-middle">
-                              {row.weight}
-                            </td>
+                          <td rowSpan={row.bolts.length} className="py-2.5 px-2 font-medium text-gray-300 align-middle break-words">
+                            {row.weight}
+                          </td>
                         )}
                       </tr>
                     ))}

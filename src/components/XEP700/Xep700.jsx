@@ -191,14 +191,14 @@
 //           </div>
 //         </div>
 //       </div>
-      
+
 //       {/* ------------------------------------------------------------- */}
 
 //       {/* NEW SECTION: Safety Features & Technical Specs */}
 //       <div className="max-w-[1100px] mx-auto w-full px-4 py-12">
 //         <h2 className="text-xl font-bold text-red-600 mb-6">EQUIPPED WITH SAFETY FEATURES</h2>
 //         <p className="text-sm text-white mb-6">NOTE: Also available as Conventional Electric Power pack. Pump will be supplied with Remote Control Pendant</p>
-        
+
 //         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 //           {/* With Auto Cycle Section */}
 //           <div className="flex flex-col items-center text-center">
@@ -222,7 +222,7 @@
 //               <img src="images/without-auto-cycle.png" alt="Without Auto Cycle" className="w-full max-w-xs" />
 //             </div>
 //           </div>
-          
+
 //           {/* Technical Specification Table Section */}
 //           <div className="col-span-1">
 //             <h3 className="font-bold text-white mb-4">TECHNICAL SPECIFICATION:</h3>
@@ -290,7 +290,7 @@ const Xep700 = () => {
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Section */}
           <div className="space-y-6">
@@ -385,7 +385,7 @@ const Xep700 = () => {
                 Download Catalog
               </button>
             </div> */}
-                  <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download
@@ -399,12 +399,12 @@ const Xep700 = () => {
       </div>
 
       {/* --- NEW SECTION: Safety Features & Technical Specs (RESTYLED) --- */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div>
-           <h2 className="text-4xl text-center text-white mb-2" >
-              EQUIPPED WITH SAFETY FEATURES
-            </h2>
-            <div className="w-120 rounded-2xl h-1 bg-red-600 mx-auto" style={{ maxWidth: '500px' }}></div>
+          <h2 className="text-4xl text-center text-white mb-2" >
+            EQUIPPED WITH SAFETY FEATURES
+          </h2>
+          <div className="w-120 rounded-2xl h-1 bg-red-600 mx-auto" style={{ maxWidth: '500px' }}></div>
         </div>
         <p className="mt-8 text-body text-center">
           NOTE: Also available as Conventional Electric Power pack. Pump will be supplied with Remote Control Pendant
@@ -414,25 +414,25 @@ const Xep700 = () => {
           {/* Left Column: Features */}
           <div className="space-y-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-center">
-               <div>
-                
-                
+              <div>
+
+
               </div>
               <div>
-                
-        
+
+
               </div>
             </div>
 
             <div className="space-y-6 text-xl text-gray-300">
-               <div>
+              <div>
                 <h4 className="text-2xl font-bold text-red-600 mb-2">Fully Automatic Power Pack</h4>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Faster and reliable in operations.</li>
                   <li>High repeatability of the bolting process without pressing the button again and again.</li>
                 </ul>
               </div>
-               <div>
+              <div>
                 <h4 className="text-2xl font-bold text-red-600 mb-2">Temperature Management</h4>
                 <p>In-built heat exchanger to cool the system.</p>
                 <ul className="list-disc list-inside space-y-1">
@@ -440,14 +440,14 @@ const Xep700 = () => {
                   <li>Power pack switches off automatically if temperature rises above 80°C.</li>
                 </ul>
               </div>
-               <div>
+              <div>
                 <h4 className="text-2xl font-bold text-red-600 mb-2">Oil immersed Motor</h4>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Noiseless and vibration free operations Effective temperature equalisation by cooling.</li>
                   <li>motor, pump & oil at the same time.</li>
                 </ul>
               </div>
-               <div>
+              <div>
                 <h4 className="text-2xl font-bold text-red-600 mb-2">PLC Controlled System</h4>
                 <p>Effectively controlled operations of power packs. If the power pack remains idle continuously more than 3 minutes, it gets switched off automatically.</p>
               </div>
@@ -456,18 +456,18 @@ const Xep700 = () => {
 
           {/* Right Column: Technical Specification Table (Restyled) */}
           <div>
-            <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-                <div className="bg-gray-800 py-4">
-                    <h3 className="text-3xl text-white text-center mb-2" >TECHNICAL SPECIFICATION</h3>
-                </div>
-                <div className="divide-y divide-gray-700">
-                    {techSpecs.map((spec, index) => (
-                        <div key={index} className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors">
-                            <div className="p-4 text-xl font-medium text-gray-300 border-r border-gray-700">{spec.label}</div>
-                            <div className="p-4 text-xl text-white text-right">{spec.value}</div>
-                        </div>
-                    ))}
-                </div>
+            <div className="border border-gray-600 rounded-lg overflow-hidden shadow-xl">
+              <div className="bg-gray-800 py-2">
+                <h3 className="text-lg sm:text-xl font-bold text-white text-center" >TECHNICAL SPECIFICATION</h3>
+              </div>
+              <div className="divide-y divide-gray-700 text-xs sm:text-sm">
+                {techSpecs.map((spec, index) => (
+                  <div key={index} className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors leading-tight">
+                    <div className="py-1.5 sm:py-2 px-3 font-medium text-gray-300 border-r border-gray-700">{spec.label}</div>
+                    <div className="py-1.5 sm:py-2 px-3 text-white text-right">{spec.value}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

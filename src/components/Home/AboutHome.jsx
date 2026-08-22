@@ -16,6 +16,11 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
 
+const lineItem = {
+  hidden: { opacity: 0, scaleX: 0 },
+  show: { opacity: 1, scaleX: 1, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
 const AboutHome = () => {
   const router = useRouter();
   return (
@@ -43,7 +48,10 @@ const AboutHome = () => {
                 >
                   About Us
                 </motion.h2>
-                <div className="w-full h-1 bg-red-600 mt-2 rounded-full"></div>
+                <motion.div
+                  variants={lineItem}
+                  className="w-full h-1 bg-red-600 mt-2 rounded-full origin-center"
+                ></motion.div>
               </div>
 
               <motion.h3
@@ -95,13 +103,19 @@ const AboutHome = () => {
           >
             Why To Choose
           </motion.h2>
-          <div className="w-full h-1 bg-red-600 mt-2 rounded-full"></div>
+          <motion.div
+            variants={lineItem}
+            className="w-full h-1 bg-red-600 mt-2 rounded-full origin-center"
+          ></motion.div>
         </div>
 
         {/* Tagline */}
-        <p className="heading-sub font-poppins text-center text-white">
+        <motion.p
+          variants={item}
+          className="heading-sub font-poppins text-center text-white"
+        >
           The X Factor in Your Industrial Needs
-        </p>
+        </motion.p>
       </motion.div>
     </>
   );

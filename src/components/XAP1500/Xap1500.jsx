@@ -103,7 +103,7 @@ const Xap1500 = () => {
       </div>
 
       {/* --- XAP 1500 Air-Operated Pump Section --- */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Section */}
           <div className="space-y-6">
@@ -120,12 +120,12 @@ const Xap1500 = () => {
               <p>The Air Operated Pumps are designed considering the safety, reliability and maximum operator comfort. All the pressure connections are facing away from operator.</p>
               <p className="text-red-500 font-semibold">Model No.: XAP 1500</p>
               <ul className="list-disc list-inside">
-                  <li>Consumption of Free Air: 800 Litres per minute (28 Standard cubic feet per minute)</li>
-                  <li>Air Pressure Required: 4 - 7 Bar (60 - 100 psi)</li>
-                  <li>Finish Pressure Gauge: Dual Scale 0 - 2000 Bar (0-29000 psi)</li>
-                  <li>Working Pressure: 1500 Bar</li>
+                <li>Consumption of Free Air: 800 Litres per minute (28 Standard cubic feet per minute)</li>
+                <li>Air Pressure Required: 4 - 7 Bar (60 - 100 psi)</li>
+                <li>Finish Pressure Gauge: Dual Scale 0 - 2000 Bar (0-29000 psi)</li>
+                <li>Working Pressure: 1500 Bar</li>
               </ul>
-            </div> 
+            </div>
           </div>
 
           {/* Right Section */}
@@ -150,7 +150,7 @@ const Xap1500 = () => {
                 Download Catalog
               </button>
             </div> */}
-                  <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download

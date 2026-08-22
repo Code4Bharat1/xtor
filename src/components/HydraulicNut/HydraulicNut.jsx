@@ -143,7 +143,7 @@ const HydraulicNut = () => {
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Section */}
           <div className="space-y-6">
@@ -161,12 +161,7 @@ const HydraulicNut = () => {
             </div>
 
             {/* Download Catalog Button */}
-            {/* <div className="flex justify-center">
-              <button className="bg-white text-red-600 px-8 py-3 text-2xl rounded-2xl font-bold transition-colors">
-                Download Catalog
-              </button>
-            </div> */}
-                  <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download
@@ -188,63 +183,29 @@ const HydraulicNut = () => {
             </div>
 
             {/* Description */}
-            <div className="space-y-4 text-gray-200 text-lg leading-relaxed text-justify">
+            <div className="space-y-4 text-body text-justify">
               <p>
-                XTORC's Light Weight Hydraulic Nut Splitters are used in applications that involve corrosion; it can be used to remove corroded or seized nuts fast and safely. The light weight option helps the user to apply the product to lower sized bolts.
-              </p>
-              <p>
-                XTORC's offers Weight Hydraulic Nut Splitters for a range of Hex size 0.37" to 2.95". Our product is designed for operator comfort that fits tight spaces and it cuts through the hardest of nuts.
+                A <strong>Hydraulic Nut Splitter</strong> is a specialized tool designed for the safe and efficient removal of seized, rusted, or damaged nuts without damaging the bolt or stud threads. By using hydraulic force, it cuts through the nut cleanly and effortlessly, eliminating the need for unsafe methods like torch cutting, hammering, or grinding.
               </p>
             </div>
 
-            {/* Application Section */}
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold text-red-600">Application:</h2>
-              <ul className="space-y-2 text-gray-200 text-lg">
+            {/* Features list with Red bullets */}
+            <div className="space-y-3 text-gray-200">
+              <h3 className="text-xl font-bold text-white mb-2">Complete Set Includes:</h3>
+              <ul className="space-y-2">
                 <li className="flex items-start gap-2">
                   <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
-                  <span>The fast, sure and safe method to cut and remove seized nuts</span>
+                  <span>Hydraulic Cylinder with Cutting Frame</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
-                  <span>Compact and ergonomic angled head design</span>
+                  <span>High-Grade Chisel</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
-                  <span>Heavy duty cutting tool, can be re-ground</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
-                  <span>Designed for Operator comfort, fits tight spaces, removes corroded or frozen nuts faster and safely, and cuts through the hardest of nuts.</span>
+                  <span>Set of Allen Keys Spacer Set</span>
                 </li>
               </ul>
-            </div>
-
-            {/* Supplied With Section */}
-            <div className="space-y-4 pt-4">
-                <h2 className="text-3xl font-bold text-red-600">Nut Splitter is supplied complete with:</h2>
-                <ul className="space-y-2 text-gray-200 text-lg">
-                    <li className="flex items-start gap-2">
-                        <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
-                        <span>Hydraulic Cylinder</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                        <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
-                        <span>Housing</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                        <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
-                        <span>Chisel</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                        <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
-                        <span>Set of Allen Keys Spacer Set</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                        <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
-                        <span>Packed in a Rugged Steel Tool Box</span>
-                    </li>
-                </ul>
             </div>
           </div>
         </div>
@@ -252,123 +213,123 @@ const HydraulicNut = () => {
 
       {/* --- XNSL SERIES TABLE --- */}
 
-             <img
-                  src="NutsplittersTable1blueprint.png"
-                  alt="Hydraulic Nut Splitter"
-                  className="w-[400px] h-[350px] mx-auto mb-10 object-contain"
-                />
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <img
+        src="NutsplittersTable1blueprint.png"
+        alt="Hydraulic Nut Splitter"
+        className="w-[400px] h-[350px] mx-auto mb-10 object-contain"
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              Technical Specifications - XNSL Series
-            </h2>
-            <div className="w-150 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "600px" }}></div>
+          <h2 className="text-4xl text-white mb-2" >
+            Technical Specifications - XNSL Series
+          </h2>
+          <div className="w-150 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "600px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="min-w-full min-w-max">
-                <thead className="bg-gray-800 text-base">
-                <tr>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">Model</th>
-                    <th colSpan="2" className="p-3 text-center border-r border-gray-700 text-red-500">Hex Size</th>
-                    <th colSpan="2" className="p-3 text-center border-r border-gray-700 text-red-500">Thread Size</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">A <br/> in(mm)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">B <br/> in(mm)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">C <br/> in(mm)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">D <br/> in(mm)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">E <br/> in(mm)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">F <br/> in(mm)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">Weight <br/> lbs(kg)</th>
-                    <th rowSpan="2" className="p-3 text-center align-middle">Replacement Chisel Model Nos.</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[850px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 align-middle w-[9%]">Model</th>
+                  <th colSpan="2" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[14%]">Hex Size</th>
+                  <th colSpan="2" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[14%]">Thread Size</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[6%]">A <br /> in(mm)</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[6%]">B <br /> in(mm)</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[6%]">C <br /> in(mm)</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[6%]">D <br /> in(mm)</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[6%]">E <br /> in(mm)</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[6%]">F <br /> in(mm)</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[8%]">Weight <br /> lbs(kg)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center align-middle w-[19%]">Replacement Chisel Model</th>
                 </tr>
-                <tr className="font-medium text-gray-300">
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700">in</th>
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700">mm</th>
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700"></th>
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700"></th>
+                <tr className="font-medium text-gray-300 leading-tight text-[11px] sm:text-xs">
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">in</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">mm</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700"></th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700"></th>
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {xnslTableData.map((row, index) => (
-                    <tr key={index} className="bg-black text-center text-base border-t border-gray-700">
-                        <td className="p-5 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                        <td colSpan="2" className="p-2 text-white border-r border-gray-700">{row.hex}</td>
-                        <td colSpan="2" className="p-2 text-white border-r border-gray-700">{row.thread}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.a}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.b}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.c}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.d}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.e}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.f}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.weight}</td>
-                        <td className="p-2 text-white">{row.chisel}</td>
-                    </tr>
+                  <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                    <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                    <td colSpan="2" className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.hex}</td>
+                    <td colSpan="2" className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.thread}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.a}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.b}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.c}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.d}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.e}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.f}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.weight}</td>
+                    <td className="py-2.5 px-2 text-white break-words">{row.chisel}</td>
+                  </tr>
                 ))}
-                </tbody>
+              </tbody>
             </table>
-            </div>
-             <div className="bg-gray-800 p-3 text-center text-gray-400">
-                Higher capacity and customized solutions on request. Specifications are subject to change due to continual improvement.
-            </div>
+          </div>
+          <div className="bg-gray-800 p-2 text-center text-[10px] sm:text-xs text-gray-400">
+            Higher capacity and customized solutions on request. Specifications are subject to change due to continual improvement.
+          </div>
         </div>
       </div>
 
       {/* --- XNSH SERIES TABLE --- */}
-                   <img
-                  src="NutsplittersTable2blueprint.png"
-                  alt="Hydraulic Nut Splitter"
-                  className="w-[400px] h-[350px] mx-auto mb-10 object-contain"
-                />
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <img
+        src="NutsplittersTable2blueprint.png"
+        alt="Hydraulic Nut Splitter"
+        className="w-[400px] h-[350px] mx-auto mb-10 object-contain"
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              Technical Specifications - XNSH Series
-            </h2>
-            <div className="w-150 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "600px" }}></div>
+          <h2 className="text-4xl text-white mb-2" >
+            Technical Specifications - XNSH Series
+          </h2>
+          <div className="w-150 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "600px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="min-w-full min-w-max">
-                <thead className="bg-gray-800 text-base">
-                <tr>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">Model</th>
-                    <th colSpan="2" className="p-3 text-center border-r border-gray-700 text-red-500">Stud Diameter</th>
-                    <th colSpan="2" className="p-3 text-center border-r border-gray-700 text-red-500">Nut A/F</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">A <br/> in(mm)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">B <br/> in(mm)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">C <br/> in(mm)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">D <br/> in(mm)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">E <br/> in(mm)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">F <br/> in(mm)</th>
-                    <th rowSpan="2" className="p-3 text-center align-middle">Weight <br/> lbs(kg)</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[850px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 align-middle w-[10%]">Model</th>
+                  <th colSpan="2" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[16%]">Stud Diameter</th>
+                  <th colSpan="2" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[16%]">Nut A/F</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[8%]">A <br /> in(mm)</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[8%]">B <br /> in(mm)</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[8%]">C <br /> in(mm)</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[8%]">D <br /> in(mm)</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[8%]">E <br /> in(mm)</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center border-r border-gray-700 align-middle w-[8%]">F <br /> in(mm)</th>
+                  <th rowSpan="2" className="py-3 px-1.5 text-center align-middle w-[10%]">Weight <br /> lbs(kg)</th>
                 </tr>
-                <tr className="font-medium text-gray-300">
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700">in</th>
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700">mm</th>
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700">in</th>
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700">mm</th>
+                <tr className="font-medium text-gray-300 leading-tight text-[11px] sm:text-xs">
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">in</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">mm</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">in</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">mm</th>
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {xnshTableData.map((row, index) => (
-                    <tr key={index} className="bg-black text-center text-base border-t border-gray-700">
-                    <td className="p-5 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                    <td className="p-2 text-white border-r border-gray-700">{row.studIn}</td>
-                    <td className="p-2 text-white border-r border-gray-700">{row.studMm}</td>
-                    <td className="p-2 text-white border-r border-gray-700">{row.nutIn}</td>
-                    <td className="p-2 text-white border-r border-gray-700">{row.nutMm}</td>
-                    <td className="p-2 text-white border-r border-gray-700">{row.a}</td>
-                    <td className="p-2 text-white border-r border-gray-700">{row.b}</td>
-                    <td className="p-2 text-white border-r border-gray-700">{row.c}</td>
-                    <td className="p-2 text-white border-r border-gray-700">{row.d}</td>
-                    <td className="p-2 text-white border-r border-gray-700">{row.e}</td>
-                    <td className="p-2 text-white border-r border-gray-700">{row.f}</td>
-                    <td className="p-2 text-white">{row.weight}</td>
-                    </tr>
+                  <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                    <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.studIn}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.studMm}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.nutIn}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.nutMm}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.a}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.b}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.c}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.d}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.e}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.f}</td>
+                    <td className="py-2.5 px-1.5 text-white break-words">{row.weight}</td>
+                  </tr>
                 ))}
-                </tbody>
+              </tbody>
             </table>
-            </div>
+          </div>
         </div>
       </div>
     </div>

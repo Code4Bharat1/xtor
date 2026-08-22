@@ -205,7 +205,7 @@ const Socket = () => {
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Section */}
           <div className="space-y-6">
@@ -241,15 +241,7 @@ const Socket = () => {
               </div>
             </div>
 
-            {/* Download Catalog Button */}
-            {/* <div className="flex justify-center">
-              <button
-                className="bg-white text-red-600 px-8 py-3 rounded-2xl text-2xl font-bold hover:bg-red-700 hover:text-white transition-colors"
-              >
-                Download Catalog
-              </button>
-            </div> */}
-                  <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download
@@ -263,94 +255,97 @@ const Socket = () => {
       </div>
 
       {/* --- Technical Specifications Table --- */}
-<div className="flex justify-center">
- <img
-                  src="Impactsocketimage1.png"
-                  alt="Hydraulic Nut Splitter"
-                  className="w-[400px] h-[350px] mx-auto mb-10 object-contain"
-                />
-
-                       <img
-                  src="Impactsocketimage2.png"
-                  alt="Hydraulic Nut Splitter"
-                  className="w-[400px] h-[350px] mx-auto mb-10 object-contain"
-                />
-</div>
+      <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <img
+          src="Impactsocketimage1.png"
+          alt="Impact Socket Blueprint 1"
+          className="w-[400px] h-[350px] object-contain"
+        />
+        <img
+          src="Impactsocketimage2.png"
+          alt="Impact Socket Blueprint 2"
+          className="w-[400px] h-[350px] object-contain"
+        />
+      </div>
             
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
           <h2 className="text-4xl text-white mb-2" >
             Technical Specifications
           </h2>
           <div className="w-100 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "600px" }}></div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-7xl mx-auto">
           {/* First Half of the Table */}
-          <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <table className="w-full text-small min-w-max">
-              <thead className="bg-gray-800">
-                <tr>
-                  <th className="p-8 text-center border-r border-gray-700">Model</th>
-                  <th className="p-2 text-center border-r border-gray-700">Square Drive</th>
-                  <th className="p-2 text-center border-r border-gray-700">Nut A/F Inch</th>
-                  <th className="p-2 text-center border-r border-gray-700">Nut A/F mm</th>
-                  <th className="p-2 text-center border-r border-gray-700">D1</th>
-                  <th className="p-2 text-center border-r border-gray-700">D2</th>
-                  <th className="p-2 text-center border-r border-gray-700">S</th>
-                  <th className="p-2 text-center border-r border-gray-700">T</th>
-                  <th className="p-2 text-center">L</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tableData.slice(0, Math.ceil(tableData.length / 2)).map((row, index) => (
-                  <tr key={index} className="bg-black border-t border-gray-700">
-                    <td className="p-2 text-center border-r border-gray-700 font-medium text-gray-300">{row.model}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.drive}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.nutAfInch || '-'}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.nutAfMm || '-'}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.d1}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.d2}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.s}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.t}</td>
-                    <td className="p-2 text-center">{row.l}</td>
+          <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl">
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse text-[11px] sm:text-xs">
+                <thead className="bg-gray-800 text-white">
+                  <tr className="leading-tight font-bold text-[11px] sm:text-xs">
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[18%]">Model</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[14%]">Drive</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[12%]">A/F In</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[12%]">A/F mm</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[9%]">D1</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[9%]">D2</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[8%]">S</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[8%]">T</th>
+                    <th className="py-2.5 px-1 text-center w-[10%]">L</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {tableData.slice(0, Math.ceil(tableData.length / 2)).map((row, index) => (
+                    <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors border-t border-gray-700 leading-normal">
+                      <td className="py-2 px-1 text-center border-r border-gray-700 font-medium text-red-400 break-words">{row.model}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.drive}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.nutAfInch || '-'}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.nutAfMm || '-'}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.d1}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.d2}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.s}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.t}</td>
+                      <td className="py-2 px-1 text-center text-white break-words">{row.l}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
 
           {/* Second Half of the Table */}
-          <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <table className="w-full text-small min-w-max">
-              <thead className="bg-gray-800">
-                <tr>
-                  <th className="p-2 text-center border-r border-gray-700">Model</th>
-                  <th className="p-2 text-center border-r border-gray-700">Square Drive</th>
-                  <th className="p-2 text-center border-r border-gray-700">Nut A/F Inch</th>
-                  <th className="p-2 text-center border-r border-gray-700">Nut A/F mm</th>
-                  <th className="p-2 text-center border-r border-gray-700">D1</th>
-                  <th className="p-2 text-center border-r border-gray-700">D2</th>
-                  <th className="p-2 text-center border-r border-gray-700">S</th>
-                  <th className="p-2 text-center border-r border-gray-700">T</th>
-                  <th className="p-2 text-center">L</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tableData.slice(Math.ceil(tableData.length / 2)).map((row, index) => (
-                  <tr key={index} className="bg-black border-t border-gray-700">
-                    <td className="p-2 text-center border-r border-gray-700 font-medium text-gray-300">{row.model}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.drive}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.nutAfInch || '-'}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.nutAfMm || '-'}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.d1}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.d2}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.s}</td>
-                    <td className="p-2 text-center border-r border-gray-700">{row.t}</td>
-                    <td className="p-2 text-center">{row.l}</td>
+          <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl">
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse text-[11px] sm:text-xs">
+                <thead className="bg-gray-800 text-white">
+                  <tr className="leading-tight font-bold text-[11px] sm:text-xs">
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[18%]">Model</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[14%]">Drive</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[12%]">A/F In</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[12%]">A/F mm</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[9%]">D1</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[9%]">D2</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[8%]">S</th>
+                    <th className="py-2.5 px-1 text-center border-r border-gray-700 w-[8%]">T</th>
+                    <th className="py-2.5 px-1 text-center w-[10%]">L</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {tableData.slice(Math.ceil(tableData.length / 2)).map((row, index) => (
+                    <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors border-t border-gray-700 leading-normal">
+                      <td className="py-2 px-1 text-center border-r border-gray-700 font-medium text-red-400 break-words">{row.model}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.drive}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.nutAfInch || '-'}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.nutAfMm || '-'}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.d1}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.d2}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.s}</td>
+                      <td className="py-2 px-1 text-center border-r border-gray-700 text-white break-words">{row.t}</td>
+                      <td className="py-2 px-1 text-center text-white break-words">{row.l}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, Mail, Eye, EyeOff, ShieldCheck, ArrowRight, X, CheckCircle } from "lucide-react";
+import { Lock, Mail, Eye, EyeOff, ShieldCheck, ArrowRight, X, CheckCircle, AlertCircle } from "lucide-react";
 import { api } from "@/services/apiClient";
 
 export default function AdminLogin() {
@@ -93,21 +93,45 @@ export default function AdminLogin() {
       <AnimatePresence>
         {errorMessage && (
           <motion.div
-            initial={{ opacity: 0, x: 40, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 40, scale: 0.95 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed top-6 right-6 z-50 px-4 py-3 rounded-2xl bg-zinc-950/90 border border-red-600/50 text-red-200 shadow-2xl backdrop-blur-xl flex items-center gap-3 text-xs max-w-xs sm:max-w-sm"
+            initial={{ opacity: 0, y: -15, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -15, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 450, damping: 30 }}
+            className="fixed top-6 right-4 sm:right-6 z-[200] max-w-[340px] w-[calc(100vw-2rem)] rounded-xl bg-zinc-950/95 backdrop-blur-xl border border-red-500/30 text-white shadow-[0_10px_30px_-5px_rgba(220,38,38,0.25),0_6px_15px_rgba(0,0,0,0.5)] overflow-hidden"
           >
-            <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse flex-shrink-0" />
-            <span className="font-medium text-white flex-1 leading-snug">{errorMessage}</span>
-            <button
-              type="button"
-              onClick={() => setErrorMessage("")}
-              className="text-zinc-400 hover:text-white transition p-1 cursor-pointer rounded-lg hover:bg-zinc-900 flex-shrink-0"
-            >
-              <X className="w-3.5 h-3.5" />
-            </button>
+            <div className="px-3.5 py-2.5 flex items-center gap-2.5">
+              {/* Compact Glowing Icon Badge */}
+              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center flex-shrink-0 shadow-sm border border-red-400/40">
+                <AlertCircle className="w-4 h-4 text-white" />
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 text-left min-w-0 pr-1">
+                <p className="text-xs text-zinc-200 font-medium leading-snug">
+                  {errorMessage}
+                </p>
+              </div>
+
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={() => setErrorMessage("")}
+                className="text-zinc-400 hover:text-white p-1 rounded-md hover:bg-zinc-800/60 transition-colors cursor-pointer flex-shrink-0"
+                aria-label="Close notification"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            {/* Sleek 2px Progress Bar */}
+            <div className="w-full h-[2px] bg-zinc-900 overflow-hidden">
+              <motion.div
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{ duration: 5, ease: "linear" }}
+                className="h-full bg-gradient-to-r from-red-600 via-red-500 to-red-600 shadow-[0_0_6px_rgba(239,68,68,0.8)]"
+              />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

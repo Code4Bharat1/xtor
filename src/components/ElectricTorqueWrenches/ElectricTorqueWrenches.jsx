@@ -9,16 +9,16 @@ const ElectricTorqueWrenches = () => {
       <div className="bg-white py-3">
         <div className="flex flex-wrap items-center justify-center gap-4 text-black text-center">
           <span className="font-medium">Torque Wrenches
-</span>
+          </span>
           <FaArrowRightLong className="w-4 h-4 mx-4" />
           <span className="font-medium">Electric Torque Wrenches
 
-</span>
+          </span>
         </div>
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           {/* Left Section */}
           <div className="space-y-6 flex flex-col items-center lg:items-start">
@@ -36,7 +36,7 @@ const ElectricTorqueWrenches = () => {
             </div>
 
             {/* Download Catalog Button */}
-            
+
           </div>
 
           {/* Right Section */}
@@ -50,10 +50,10 @@ const ElectricTorqueWrenches = () => {
               </h1>
               <div className="w-full sm:w-40 md:w-60 lg:w-120 h-1 bg-red-600 rounded-2xl"></div>
               <div className="flex justify-center w-full py-10 md:py-15">
-              <button className="bg-white text-red-600 px-6 sm:px-8 py-2 sm:py-3 text-lg sm:text-2xl rounded-2xl font-bold ">
-                Download Catalog
-              </button>
-            </div>
+                <button className="bg-white text-red-600 px-6 sm:px-8 py-2 sm:py-3 text-lg sm:text-2xl rounded-2xl font-bold ">
+                  Download Catalog
+                </button>
+              </div>
             </div>
 
             {/* Description */}

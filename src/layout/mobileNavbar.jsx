@@ -278,7 +278,7 @@
 //                                 )}
 //                                 <span>{item.name}</span>
 //                               </Link>
-                              
+
 //                               {/* Sub-item dropdown button */}
 //                               {item.subItems && (
 //                                 <button
@@ -470,7 +470,7 @@ const categories = {
         {
           id: "square-drive",
           name: "Square Drive - XTS Series",
-          img: "images/BoltingTools/squaredrive.png",
+          img: "/square_drive.png",
           path: "squaredrive",
         },
         {
@@ -555,7 +555,7 @@ const categories = {
       img: "images/accesories/flangespreaders.png",
       path: "FlangeSpreaders",
     },
-     {
+    {
       id: "nut-splitters",
       name: "Nut Splitters",
       img: "nut_spilitter.png",
@@ -563,7 +563,7 @@ const categories = {
     },
   ],
   "Impact-Sockets": [
-     // Removed nut-splitters from here as it's in Accessories now
+    // Removed nut-splitters from here as it's in Accessories now
     {
       id: "sockets",
       name: "Sockets",
@@ -615,9 +615,9 @@ const servicesList = [
   },
   {
     id: "re-tubing",
-    name: "Calibration", // Assuming Calibration is intended, not Re-Tubing here based on image name
-    img: "callib.avif",
-    path: "retubbing", // Path might need adjustment if Calibration is the correct service
+    name: "Re-Tubing of Boilers & Heat Exchangers",
+    img: "re_tubing.png",
+    path: "retubbing",
     width: 400,
     height: 300,
   },
@@ -628,6 +628,14 @@ const servicesList = [
     path: "waterjet",
     width: 400,
     height: 400,
+  },
+  {
+    id: "calibration",
+    name: "Calibration",
+    img: "callib.avif",
+    path: "calibration",
+    width: 400,
+    height: 300,
   },
 ];
 
@@ -666,9 +674,8 @@ const MobileNavbar = () => {
           <Link
             href="/aboutus"
             onClick={closeAllMenus}
-            className={`block py-1 ${
-              pathname === "/aboutus" ? "text-red-500 font-bold" : ""
-            }`}
+            className={`block py-1 ${pathname === "/aboutus" ? "text-red-500 font-bold" : ""
+              }`}
           >
             About Us
           </Link>
@@ -702,9 +709,9 @@ const MobileNavbar = () => {
                   <div key={catKey}>
                     <button
                       onClick={() => {
-                          setActiveSub(activeSub === catKey ? null : catKey);
-                          setActiveSubItem(null); // Close sub-items when toggling sub-category
-                       }}
+                        setActiveSub(activeSub === catKey ? null : catKey);
+                        setActiveSubItem(null); // Close sub-items when toggling sub-category
+                      }}
                       className="flex justify-between w-full text-left py-2 capitalize" // Capitalize category names
                     >
                       {catKey.replace("-", " ")} {/* Replace dash with space for display */}
@@ -735,7 +742,7 @@ const MobileNavbar = () => {
                                 )}
                                 <span className="text-sm">{item.name}</span> {/* Smaller text */}
                               </Link>
-                              
+
                               {/* Sub-item dropdown button */}
                               {item.subItems && (
                                 <button
@@ -830,55 +837,49 @@ const MobileNavbar = () => {
           {/* Other Links */}
           <Link
             href="/distributor"
-             onClick={closeAllMenus}
-            className={`block py-1 ${
-              pathname === "/distributor" ? "text-red-500 font-bold" : ""
-            }`}
+            onClick={closeAllMenus}
+            className={`block py-1 ${pathname === "/distributor" ? "text-red-500 font-bold" : ""
+              }`}
           >
             Distributor
           </Link>
           <Link
             href="/industry"
-             onClick={closeAllMenus}
-            className={`block py-1 ${
-              pathname === "/industry" ? "text-red-500 font-bold" : ""
-            }`}
+            onClick={closeAllMenus}
+            className={`block py-1 ${pathname === "/industry" ? "text-red-500 font-bold" : ""
+              }`}
           >
             Industries
           </Link>
           <Link
             href="/contact"
-             onClick={closeAllMenus}
-            className={`block py-1 ${
-              pathname === "/contact" ? "text-red-500 font-bold" : ""
-            }`}
+            onClick={closeAllMenus}
+            className={`block py-1 ${pathname === "/contact" ? "text-red-500 font-bold" : ""
+              }`}
           >
             Contact Us
           </Link>
           <Link
-            href="/joinus"
-             onClick={closeAllMenus}
-            className={`block py-1 ${
-              pathname === "/joinus" ? "text-red-500 font-bold" : ""
-            }`}
+            href="/Joinus"
+            onClick={closeAllMenus}
+            className={`block py-1 ${pathname?.toLowerCase() === "/joinus" ? "text-red-500 font-bold" : ""
+              }`}
           >
             Join Us
           </Link>
           <Link
             href="/testimonials"
-             onClick={closeAllMenus}
-            className={`block py-1 ${
-              pathname === "/testimonials" ? "text-red-500 font-bold" : ""
-            }`}
+            onClick={closeAllMenus}
+            className={`block py-1 ${pathname === "/testimonials" ? "text-red-500 font-bold" : ""
+              }`}
           >
             Testimonials
           </Link>
           <Link
             href="/download"
-             onClick={closeAllMenus}
-            className={`block py-1 ${
-              pathname === "/download" ? "text-red-500 font-bold" : ""
-            }`}
+            onClick={closeAllMenus}
+            className={`block py-1 ${pathname === "/download" ? "text-red-500 font-bold" : ""
+              }`}
           >
             Downloads
           </Link>

@@ -215,7 +215,7 @@ const Reducer = () => {
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Section */}
           <div className="space-y-6">
@@ -250,14 +250,7 @@ const Reducer = () => {
             </div>
 
             {/* Download Catalog Button */}
-            {/* <div className="flex justify-center">
-              <button
-                className="bg-white text-red-600 px-8 py-3 rounded-2xl text-2xl font-bold hover:bg-red-700 hover:text-white transition-colors"
-              >
-                Download Catalog
-              </button>
-            </div> */}
-                  <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download
@@ -271,37 +264,37 @@ const Reducer = () => {
       </div>
 
       {/* --- Technical Specifications Table 1 --- */}
-      <div className="px-4 sm:px-6 lg:px-12 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
             <h2 className="text-4xl text-white mb-2" >
               Hexagon Reducer Bush Specifications (Type 1)
             </h2>
             <div className="w-250 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "600px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-          <div>
-            <table className="w-full border-collapse min-w-max">
-              <thead className="bg-gray-800 text-medium">
-                <tr>
-                  <th className="p-1 text-center border-r border-gray-700">Outside <br/> A/F size</th>
-                  <th className="p-1 text-center border-r border-gray-700">Inside <br/> A/F size</th>
-                  <th className="p-1 text-center border-r border-gray-700">XTH-2 <br/> Height-1.25" <br/> Model Number</th>
-                  <th className="p-1 text-center border-r border-gray-700">XTH-4 <br/> Height-1.625" <br/> Model Number</th>
-                  <th className="p-1 text-center border-r border-gray-700">XTH-8 <br/> Height-2.1" <br/> Model Number</th>
-                  <th className="p-1 text-center border-r border-gray-700">XTH-14 <br/> Height-2.55" <br/> Model Number</th>
-                  <th className="p-1 text-center">XTH-32 <br/> Height-3.34" <br/> Model Number</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[750px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]">Outside <br/> A/F size</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]">Inside <br/> A/F size</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]">XTH-2 <br/> H-1.25"</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]">XTH-4 <br/> H-1.625"</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[15%]">XTH-8 <br/> H-2.1"</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]">XTH-14 <br/> H-2.55"</th>
+                  <th className="py-3 px-2 text-center w-[15%]">XTH-32 <br/> H-3.34"</th>
                 </tr>
               </thead>
               <tbody>
                 {tableData1.map((row, index) => (
-                  <tr key={index} className="bg-black border-t border-gray-700 text-medium">
-                    <td className="p-1 text-center border-r border-gray-700 text-white whitespace-nowrap">{row.outsideAf}</td>
-                    <td className="p-1 text-center border-r border-gray-700 text-white whitespace-nowrap">{row.insideAf}</td>
-                    <td className="p-1 text-center border-r border-gray-700 font-medium text-gray-300">{row.model_xth2 || '-'}</td>
-                    <td className="p-1 text-center border-r border-gray-700 font-medium text-gray-300">{row.model_xth4 || '-'}</td>
-                    <td className="p-1 text-center border-r border-gray-700 font-medium text-gray-300">{row.model_xth8 || '-'}</td>
-                    <td className="p-1 text-center border-r border-gray-700 font-medium text-gray-300">{row.model_xth14 || '-'}</td>
-                    <td className="p-1 text-center font-medium text-gray-300">{row.model_xth32 || '-'}</td>
+                  <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors border-t border-gray-700 leading-normal">
+                    <td className="py-2.5 px-2 text-center border-r border-gray-700 text-white break-words">{row.outsideAf}</td>
+                    <td className="py-2.5 px-2 text-center border-r border-gray-700 text-white break-words">{row.insideAf}</td>
+                    <td className="py-2.5 px-2 text-center border-r border-gray-700 font-medium text-red-400 break-words">{row.model_xth2 || '-'}</td>
+                    <td className="py-2.5 px-2 text-center border-r border-gray-700 font-medium text-red-400 break-words">{row.model_xth4 || '-'}</td>
+                    <td className="py-2.5 px-2 text-center border-r border-gray-700 font-medium text-red-400 break-words">{row.model_xth8 || '-'}</td>
+                    <td className="py-2.5 px-2 text-center border-r border-gray-700 font-medium text-red-400 break-words">{row.model_xth14 || '-'}</td>
+                    <td className="py-2.5 px-2 text-center font-medium text-red-400 break-words">{row.model_xth32 || '-'}</td>
                   </tr>
                 ))}
               </tbody>
@@ -311,37 +304,37 @@ const Reducer = () => {
       </div>
 
        {/* --- Technical Specifications Table 2 --- */}
-      <div className="px-4 sm:px-6 lg:px-12 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
             <h2 className="text-4xl text-white mb-2" >
               Hexagon Reducer Bush Specifications (Type 2)
             </h2>
             <div className="w-220 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "600px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-          <div>
-            <table className="w-full border-collapse min-w-max">
-              <thead className="bg-gray-800 text-medium">
-                <tr>
-                    <th className="p-1 text-center border-r border-gray-700">Outside <br/> A/F size <br/> mm</th>
-                    <th className="p-1 text-center border-r border-gray-700">Inside <br/> A/F size <br/> mm</th>
-                    <th className="p-1 text-center border-r border-gray-700">XTH-2 <br/> Height-32mm <br/> Model number</th>
-                    <th className="p-1 text-center border-r border-gray-700">XTH-4 <br/> Height-42mm <br/> Model number</th>
-                    <th className="p-1 text-center border-r border-gray-700">XTH-8 <br/> Height-53mm <br/> Model number</th>
-                    <th className="p-1 text-center border-r border-gray-700">XTH-14 <br/> Height-64mm <br/> Model number</th>
-                    <th className="p-1 text-center">XTH-32 <br/> Height-85mm <br/> Model number</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[750px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                    <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]">Outside <br/> A/F (mm)</th>
+                    <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]">Inside <br/> A/F (mm)</th>
+                    <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]">XTH-2 <br/> H-32mm</th>
+                    <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]">XTH-4 <br/> H-42mm</th>
+                    <th className="py-3 px-2 text-center border-r border-gray-700 w-[15%]">XTH-8 <br/> H-53mm</th>
+                    <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]">XTH-14 <br/> H-64mm</th>
+                    <th className="py-3 px-2 text-center w-[15%]">XTH-32 <br/> H-85mm</th>
                 </tr>
               </thead>
               <tbody>
                 {tableData2.map((row, index) => (
-                  <tr key={index} className="bg-black border-t border-gray-700 text-medium">
-                    <td className="p-1 text-center border-r border-gray-700 text-white">{row.outsideAfMm || row.outsideAfInch}</td>
-                    <td className="p-1 text-center border-r border-gray-700 text-white">{row.insideAfMm || row.insideAfInch}</td>
-                    <td className="p-1 text-center border-r border-gray-700 font-medium text-gray-300">{row.model_h32 || '-'}</td>
-                    <td className="p-1 text-center border-r border-gray-700 font-medium text-gray-300">{row.model_h42 || '-'}</td>
-                    <td className="p-1 text-center border-r border-gray-700 font-medium text-gray-300">{row.model_h53 || '-'}</td>
-                    <td className="p-1 text-center border-r border-gray-700 font-medium text-gray-300">{row.model_h64 || '-'}</td>
-                    <td className="p-1 text-center font-medium text-gray-300">{row.model_h85 || '-'}</td>
+                  <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors border-t border-gray-700 leading-normal">
+                    <td className="py-2.5 px-2 text-center border-r border-gray-700 text-white break-words">{row.outsideAfMm || row.outsideAfInch}</td>
+                    <td className="py-2.5 px-2 text-center border-r border-gray-700 text-white break-words">{row.insideAfMm || row.insideAfInch}</td>
+                    <td className="py-2.5 px-2 text-center border-r border-gray-700 font-medium text-red-400 break-words">{row.model_h32 || '-'}</td>
+                    <td className="py-2.5 px-2 text-center border-r border-gray-700 font-medium text-red-400 break-words">{row.model_h42 || '-'}</td>
+                    <td className="py-2.5 px-2 text-center border-r border-gray-700 font-medium text-red-400 break-words">{row.model_h53 || '-'}</td>
+                    <td className="py-2.5 px-2 text-center border-r border-gray-700 font-medium text-red-400 break-words">{row.model_h64 || '-'}</td>
+                    <td className="py-2.5 px-2 text-center font-medium text-red-400 break-words">{row.model_h85 || '-'}</td>
                   </tr>
                 ))}
               </tbody>

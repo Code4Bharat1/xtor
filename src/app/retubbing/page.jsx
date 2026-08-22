@@ -7,23 +7,23 @@ import React from 'react'
 
 
 export const metadata = {
-  title: "Torque Wrench Calibration & Repair Services | XTORC",
-  description: "Accredited calibration and repair services for hydraulic, pneumatic, and manual torque wrenches. Maintain certified torque accuracy.",
-  keywords: ["torque calibration services","torque wrench repair","calibration lab","certified torque tools"],
+  title: "Boiler & Heat Exchanger Re-Tubing Services | XTORC",
+  description: "Specialized on-site re-tubing, tube extraction, bundle pulling, and hydro-testing services for industrial boilers and heat exchangers.",
+  keywords: ["heat exchanger retubing", "boiler retubing services", "tube bundle extraction", "condenser retubing"],
   alternates: {
     canonical: "https://xtorcind.com/retubbing",
   },
   openGraph: {
     url: "https://xtorcind.com/retubbing",
-    title: "Torque Wrench Calibration & Repair Services | XTORC",
-    description: "Accredited calibration and repair services for hydraulic, pneumatic, and manual torque wrenches. Maintain certified torque accuracy.",
+    title: "Boiler & Heat Exchanger Re-Tubing Services | XTORC",
+    description: "Specialized on-site re-tubing, tube extraction, bundle pulling, and hydro-testing services for industrial boilers and heat exchangers.",
     siteName: "XTORC",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Torque Wrench Calibration & Repair Services | XTORC",
-    description: "Accredited calibration and repair services for hydraulic, pneumatic, and manual torque wrenches. Maintain certified torque accuracy.",
+    title: "Boiler & Heat Exchanger Re-Tubing Services | XTORC",
+    description: "Specialized on-site re-tubing, tube extraction, bundle pulling, and hydro-testing services for industrial boilers and heat exchangers.",
   },
 };
 

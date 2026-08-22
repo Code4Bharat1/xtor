@@ -1,24 +1,25 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const OurProducts = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const products = [
-    { id: 0, src: "/SquareDrive.png", alt: "Product 1", title: "Hydraulic Torque Wrenches" },
-    { id: 1, src: "/product2.png", alt: "Product 2", title: "Hex Drive" },
-    { id: 2, src: "/product3.png", alt: "Product 3", title: "Hydraulic Equipment" },
-    { id: 3, src: "/product4.png", alt: "Product 4", title: "Pipe Cutting & Beveling Machines" },
+    { id: 0, src: "/SquareDrive.png", alt: "Hydraulic Torque Wrenches", title: "Hydraulic Torque Wrenches" },
+    { id: 1, src: "/product2.png", alt: "Hex Drive Torque Wrench", title: "Hex Drive" },
+    { id: 2, src: "/product3.png", alt: "Hydraulic Equipment", title: "Hydraulic Equipment" },
+    { id: 3, src: "/product4.png", alt: "Pipe Cutting & Beveling Machines", title: "Pipe Cutting & Beveling Machines" },
   ];
 
   // Auto-rotate every 1.5s
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % products.length);
-    }, 1500);
+    }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [products.length]);
 
   // Left, center, right images
   const getVisibleImages = () => {
@@ -28,36 +29,38 @@ const OurProducts = () => {
     return [products[left], products[center], products[right]];
   };
 
-  const visibleImages = getVisibleImages();
-
   return (
-    <div className="min-h-screen bg-black text-white">
-      <section className="py-12 px-4">
-        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-fit mx-auto flex flex-col items-center mb-8">
+    <div>
+      <section className="py-12 px-4 bg-black text-center text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          {/* Heading */}
+          <div className="w-fit mx-auto mb-6">
             <motion.h2
-              className="heading-main font-base mb-0"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              className="text-3xl sm:text-4xl md:text-5xl font-bold font-poppins text-white"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Our Products
+              OUR PRODUCTS
             </motion.h2>
 
-            {/* Red center line */}
+            {/* Red underline */}
             <motion.div
-              className="w-full h-1 bg-red-600 mt-2 rounded-full"
-              initial={{ opacity: 0, scaleX: 0 }}
-              animate={{ opacity: 1, scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              className="h-1 bg-red-600 w-full rounded-full mt-2"
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileInView={{ scaleX: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
             />
           </div>
 
-          {/* Description */}
+          {/* Subheading */}
           <motion.p
             className="text-body mb-12 max-w-2xl mx-auto font-poppins"
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             We are the industry heads and produce the most reliable <br />
@@ -65,7 +68,7 @@ const OurProducts = () => {
           </motion.p>
 
           {/* ======= PRODUCT SLIDER ======= */}
-          <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] py-12 bg-black">
+          <div className="relative w-full py-12 bg-black overflow-hidden">
             {/* Background shape */}
             <div className="absolute inset-0 w-full">
               <div
@@ -80,20 +83,14 @@ const OurProducts = () => {
 
             {/* Images with fixed height container */}
             <div className="relative flex flex-col items-center justify-center mt-10">
-              {/* Fixed height container for images */}
-              <div className="h-64 flex items-center justify-center mb-8">
-                <motion.div
-                  className="flex justify-center items-center gap-8"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1 }}
-                >
-                  <AnimatePresence mode="popLayout">
-                    {visibleImages.map((product, index) => (
+              <div className="h-72 flex items-center justify-center">
+                <motion.div layout className="flex items-center justify-center gap-6">
+                  <AnimatePresence initial={false} mode="popLayout">
+                    {getVisibleImages().map((product, index) => (
                       <motion.div
-                        layout
                         key={product.id}
-                        initial={{ opacity: 0, scale: 0.8, x: 60 }}
+                        layout
+                        initial={{ opacity: 0, scale: 0.8, x: index === 0 ? -60 : 60 }}
                         animate={{ opacity: index === 1 ? 1 : 0.7, scale: index === 1 ? 1.1 : 0.9, x: 0 }}
                         exit={{ opacity: 0, scale: 0.8, x: -60 }}
                         transition={{ layout: { type: "spring", stiffness: 300, damping: 30 }, duration: 0.5 }}
@@ -106,7 +103,7 @@ const OurProducts = () => {
                             layout
                             src={product.src}
                             alt={product.alt}
-                            className={`object-contain rounded-lg ${index === 1 ? "w-92 h-62" : "w-40 h-28"}`}
+                            className={`object-contain rounded-lg ${index === 1 ? "w-72 h-52" : "w-40 h-28"}`}
                           />
                         </motion.div>
                       </motion.div>
@@ -132,17 +129,20 @@ const OurProducts = () => {
           </div>
           {/* ======= END PRODUCT SLIDER ======= */}
 
-          {/* View More button - now will stay fixed */}
+          {/* View More button with Link */}
           <motion.div
-            className="mt-6"
+            className="mt-6 flex justify-center"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 1.5 }}
           >
-            <button className="bg-white font-poppins text-md text-red-700 font-bold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors shadow-md">
+            <Link
+              href="/product"
+              className="inline-block bg-white font-poppins text-md text-red-700 font-bold px-8 py-3 rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-md hover:scale-105"
+            >
               View More Products
-            </button>
+            </Link>
           </motion.div>
         </div>
       </section>

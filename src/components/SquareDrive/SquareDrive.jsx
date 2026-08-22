@@ -224,19 +224,19 @@
 //           </div>
 //         </div>
 //       </div>
-      
+
 //       {/* ------------------------------------------------------------- */}
-      
+
 //       <div className="max-w-[1100px] mx-auto w-full px-4 pt-6">
 //         <h2 className="text-3xl font-bold text-white mb-2 text-center  ">Technical Specifications</h2>
 //            <div className="rounded-2xl  h-1 bg-red-600 mx-auto" style={{ maxWidth: "350px" }}></div>
 //       </div>
-      
+
 //       {/* Table 1: Specifications (from previous request) */}
 //       {renderTable(specTableData)}
-      
+
 //       {/* ------------------------------------------------------------- */}
-      
+
 //              <img
 //                   src="Sqauredriveblueprint.png"
 //                   alt="Square Drive Blueprint"
@@ -248,11 +248,11 @@
 //            <div className="rounded-2xl h-1 bg-red-600 mx-auto" style={{ maxWidth: "300px" }}></div>
 //       </div>
 
-      
+
 
 //       {/* Table 2: Dimensional Data (from new image) */}
 //       {renderTable(dimTableData)}
-      
+
 //       {/* ------------------------------------------------------------- */}
 //     </div>
 //   );
@@ -301,53 +301,51 @@ const SquareDrive = () => {
   };
 
   const renderTable = (data) => (
-    <div className="w-9/10 mx-auto px-4 pb-12 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] mt-4">
-      <div className="inline-block min-w-full">
-        <div className="shadow-lg">
-          <table className="min-w-full border-collapse min-w-max">
-            <thead>
-              <tr className="bg-gray-800 text-sm sm:text-base font-medium">
-                {data.headers.map((header, index) => (
-                  <th
-                    key={index}
-                    className={`py-3 px-2 sm:px-4 text-center border-l border-r border-t border-white/50 
-                            ${index === 0 ? 'bg-gray-700 text-lg font-semibold' : ''}`}
+    <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 pb-6 overflow-x-auto mt-2">
+      <div className="w-full shadow-2xl rounded-xl overflow-hidden border border-white/30">
+        <table className="w-full border-collapse min-w-[850px] text-xs sm:text-sm">
+          <thead>
+            <tr className="bg-gray-800 text-white font-medium">
+              {data.headers.map((header, index) => (
+                <th
+                  key={index}
+                  className={`py-2.5 px-1 text-center border-l border-r border-t border-white/30 break-words leading-tight 
+                          ${index === 0 ? 'bg-gray-700 w-[15%] font-semibold text-left px-2' : index === 1 ? 'bg-gray-700 w-[5%] font-semibold' : 'w-[8%]'}`}
+                >
+                  {header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {data.rows.map((row, rowIndex) => (
+              <tr key={rowIndex} className="leading-normal hover:bg-zinc-900/60 transition-colors">
+                {/* Label Column */}
+                <td className={`py-2 px-2 text-left border-t border-b border-l border-white/30 
+                                bg-gray-700/80 font-semibold break-words 
+                                ${row.unit === 'mm' ? 'border-b-0' : 'border-b'}`} // Styling for alternating units
+                >
+                  {row.label}
+                </td>
+                {/* Unit Column */}
+                <td className="py-2 px-1 text-center border-t border-b border-l border-r border-white/30 
+                                bg-gray-700/80 font-semibold break-words">
+                  {row.unit}
+                </td>
+                {/* Value Columns */}
+                {row.values.map((value, colIndex) => (
+                  <td
+                    key={colIndex}
+                    className="py-2 px-1 text-center border-t border-b border-r border-white/30 
+                                bg-black/80 font-normal text-white break-words"
                   >
-                    {header}
-                  </th>
+                    {value}
+                  </td>
                 ))}
               </tr>
-            </thead>
-            <tbody>
-              {data.rows.map((row, rowIndex) => (
-                <tr key={rowIndex} className="text-sm sm:text-base">
-                  {/* Label Column */}
-                  <td className={`py-2 px-2 sm:px-4 text-justify border-t border-b border-l border-white/50 
-                                  bg-gray-700 font-semibold w-1/5 whitespace-nowrap 
-                                  ${row.unit === 'mm' ? 'border-b-0' : 'border-b'}`} // Styling for alternating units
-                  >
-                    {row.label}
-                  </td>
-                  {/* Unit Column */}
-                  <td className="py-2 px-2 sm:px-4 text-center border-t border-b border-l border-r border-white/50 
-                                  bg-gray-700 font-semibold whitespace-nowrap">
-                    {row.unit}
-                  </td>
-                  {/* Value Columns */}
-                  {row.values.map((value, colIndex) => (
-                    <td
-                      key={colIndex}
-                      className={`py-2 px-2 sm:px-4 text-center border-t border-b border-r border-white/50 
-                                  bg-black/80 font-normal whitespace-nowrap`}
-                    >
-                      {value}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
@@ -364,7 +362,7 @@ const SquareDrive = () => {
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           {/* Left Section */}
           <div className="space-y-6 flex flex-col items-center lg:items-start">
@@ -374,20 +372,14 @@ const SquareDrive = () => {
                 className="bg-white rounded-2xl p-6 border-t-[12px] border-r-[12px] border-red-600 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.6)] transition-shadow duration-300 rounded-3xl h-[250px] sm:h-[300px] md:h-[400px] w-full max-w-[500px] flex items-center justify-center"
               >
                 <img
-                  src="images/BoltingTools/squaredrive.png"
+                  src="/square_drive.png"
                   alt="Hydraulic Nut Splitter"
                   className="w-full h-full object-contain"
                 />
               </div>
             </div>
 
-            {/* Download Catalog Button */}
-            {/* <div className="flex justify-center lg:justify-start lg:ml-30">
-              <button className="bg-white text-red-600 px-6 sm:px-8 py-2 sm:py-3 text-lg sm:text-2xl rounded-2xl font-bold ">
-                Download Catalog
-              </button>
-            </div> */}
-               <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download
@@ -412,7 +404,7 @@ const SquareDrive = () => {
             <div className="text-body text-justify">
               <p>
                 The XTORC XTS Series is precision-engineered to deliver unmatched performance in the most demanding bolting environments. Designed for reliability, accuracy, and ease of use, the XTS Series ensures consistent torque output across every application — whether in wind, oil & gas, power generation, or heavy engineering industries.
-              Crafted from high-strength aerospace-grade alloy, the XTS wrench combines superior durability with lightweight handling. Its advanced hydraulic mechanism and leak-free swivel design ensure smooth, efficient, and safe operation even under extreme conditions.
+                Crafted from high-strength aerospace-grade alloy, the XTS wrench combines superior durability with lightweight handling. Its advanced hydraulic mechanism and leak-free swivel design ensure smooth, efficient, and safe operation even under extreme conditions.
               </p>
 
             </div>
@@ -421,9 +413,9 @@ const SquareDrive = () => {
       </div>
 
       {/* --- ADDED XTORC DESCRIPTION & HIGHLIGHTS --- */}
-      <div className="w-9/10 mx-auto px-4 ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-          
+
           {/* Right column for highlights */}
           <div className="space-y-4">
             <h3 className="text-medium sm:text-3xl font-semibold text-red-600">Key Highlights:</h3>
@@ -448,31 +440,31 @@ const SquareDrive = () => {
       {/* ------------------------------------------- */}
 
       {/* ------------------------------------------------------------- */}
-      
-      <div className="w-9/10 mx-auto px-4 pt-6">
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         <h2 className="text-3xl font-bold text-white mb-2 text-center  ">Technical Specifications</h2>
-          <div className="rounded-2xl  h-1 bg-red-600 mx-auto" style={{ maxWidth: "350px" }}></div>
+        <div className="rounded-2xl  h-1 bg-red-600 mx-auto" style={{ maxWidth: "350px" }}></div>
       </div>
-      
+
       {/* Table 1: Specifications (from previous request) */}
       {renderTable(specTableData)}
-      
-      {/* ------------------------------------------------------------- */}
-      
-        <img
-          src="Sqauredriveblueprint.png"
-          alt="Square Drive Blueprint"
-          className="w-[500px] h-[450px] mx-auto mb-10 object-contain"
-        />
 
-      <div className="w-9/10 mx-auto px-4 pt-6">
+      {/* ------------------------------------------------------------- */}
+
+      <img
+        src="Sqauredriveblueprint.png"
+        alt="Square Drive Blueprint"
+        className="w-[500px] h-[450px] mx-auto mb-10 object-contain"
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         <h2 className="text-3xl font-bold text-white mb-2 text-center">Dimensional Data</h2>
-          <div className="rounded-2xl h-1 bg-red-600 mx-auto" style={{ maxWidth: "300px" }}></div>
+        <div className="rounded-2xl h-1 bg-red-600 mx-auto" style={{ maxWidth: "300px" }}></div>
       </div>
 
       {/* Table 2: Dimensional Data (from new image) */}
       {renderTable(dimTableData)}
-      
+
       {/* ------------------------------------------------------------- */}
     </div>
   );

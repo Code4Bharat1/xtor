@@ -170,7 +170,7 @@ const MultiStageBoltTensioner = () => {
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12 items-start">
           {/* Left Section */}
           <div className="space-y-6">
@@ -204,7 +204,7 @@ const MultiStageBoltTensioner = () => {
                   <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
                   <span>Experience direct pressure-to-load translation and automated piston advancement that tightly regulates bolt elongation, ensuring every cycle yields a reliably uniform clamping force.</span>
                 </li>
-                 <li className="flex items-start gap-2">
+                <li className="flex items-start gap-2">
                   <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
                   <span>Our high-precision machining and tightly controlled manufacturing tolerances delivers flawless tensioner to stud alignment ensuring pressure-stable and leak-free performance.</span>
                 </li>
@@ -212,7 +212,7 @@ const MultiStageBoltTensioner = () => {
                   <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
                   <span>Sealed load cells enclosing enhanced puller bars blocks out dust, moisture, and abrasive conditions ensuring reliable performance in harsh, vibration-prone environments.</span>
                 </li>
-                 <li className="flex items-start gap-2">
+                <li className="flex items-start gap-2">
                   <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
                   <span>Suitable for Bolt sizing from 30 to 48 mm Dia.</span>
                 </li>
@@ -220,11 +220,11 @@ const MultiStageBoltTensioner = () => {
                   <span className="text-red-500 font-bold flex-shrink-0 pt-1">•</span>
                   <span>Max. Tensioning Load up to 1,231 KN.</span>
                 </li>
-                 <div className="space-y-4 text-body text-justify">
-              {/* <p>
+                <div className="space-y-4 text-body text-justify">
+                  {/* <p>
                 To meet electricity generation targets Wind Turbines must be installed rapidly and these structures require a strong foundation, it is a task which requires a tool that can be relied upon repeatedly.
               </p> */}
-            </div>
+                </div>
               </ul>
             </div>
           </div>
@@ -250,7 +250,7 @@ const MultiStageBoltTensioner = () => {
                 Download Catalog
               </button>
             </div> */}
-                  <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download
@@ -296,61 +296,60 @@ const MultiStageBoltTensioner = () => {
           </div>
         </div>
       </div>
-      
-      
-       {/* --- Technical Specifications Section --- */}
-       
-      <div className="w-9/10 mx-auto px-4 py-12">
+
+
+      {/* --- Technical Specifications Section --- */}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         <div className="mb-10 text-center mt-10">
-            <h2 className="text-4xl text-white mb-2" >
-              XMT SERIES SPECIFICATIONS
-            </h2>
-            <div className="w-120 rounded-2xl h-1 bg-red-600 mx-auto mt-2 " style={{ maxWidth: '400px' }}></div>
+          <h2 className="text-4xl text-white mb-2" >
+            XMT SERIES SPECIFICATIONS
+          </h2>
+          <div className="w-120 rounded-2xl h-1 bg-red-600 mx-auto mt-2 " style={{ maxWidth: '400px' }}></div>
         </div>
 
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-          <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="min-w-full min-w-max">
-              <thead className="bg-gray-800 text-lg">
-                <tr>
-                  <th rowSpan="2" className="p-4 text-center border-r border-gray-700">Model</th>
-                  <th colSpan="2" className="p-4 text-center border-r border-gray-700 text-red-500">Bolt Diameter</th>
-                  <th rowSpan="2" className="p-4 text-center border-r border-gray-700">The Min.<br/>Length of<br/>Thread (mm)</th>
-                  <th rowSpan="2" className="p-4 text-center border-r border-gray-700">The Max.<br/>Length of<br/>Thread (mm)</th>
-                  <th rowSpan="2" className="p-4 text-center border-r border-gray-700">Working<br/>Storke<br/>(mm)</th>
-                  <th rowSpan="2" className="p-4 text-center border-r border-gray-700">Bolt<br/>Distance<br/>(mm)</th>
-                  <th rowSpan="2" className="p-4 text-center border-r border-gray-700">Max. Load<br/>(kn)</th>
-                  <th rowSpan="2" className="p-4 text-center border-r border-gray-700">Outline<br/>Diameter<br/>(mm)</th>
-                  <th rowSpan="2" className="p-4 text-center">Min. height<br/>(mm)</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[800px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Model</th>
+                  <th colSpan="2" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[16%]">Bolt Diameter</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[11%]">Min. Thread <br /> (mm)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[11%]">Max. Thread <br /> (mm)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Stroke <br /> (mm)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Bolt Dist. <br /> (mm)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Max. Load <br /> (KN)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[11%]">Outline Dia. <br /> (mm)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center w-[11%]">Min. Height <br /> (mm)</th>
                 </tr>
-                <tr className="font-medium text-gray-300">
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">(mm)</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">(in)</th>
+                <tr className="font-medium text-gray-300 leading-tight text-[11px] sm:text-xs">
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">(mm)</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">(in)</th>
                 </tr>
               </thead>
               <tbody>
                 {tableData.map((row, index) => (
-                  <tr key={index} className="bg-black text-center text-lg border-t border-gray-700">
-                    <td className="p-4 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.boltMM}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.boltIN}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.minThread}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.maxThread}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.stroke}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.distance}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.load}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.diameter}</td>
-                    <td className="p-4 text-white">{row.height}</td>
+                  <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                    <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.boltMM}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.boltIN}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.minThread}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.maxThread}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.stroke}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.distance}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.load}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.diameter}</td>
+                    <td className="py-2.5 px-2 text-white break-words">{row.height}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-           <div className="bg-gray-800 p-3 text-center text-gray-400">
-             Note: Dimensions are subject to change.
-           </div>
-           
+          <div className="bg-gray-800 p-2 text-center text-[10px] sm:text-xs text-gray-400">
+            Note: Dimensions are subject to change.
+          </div>
         </div>
       </div>
     </div>

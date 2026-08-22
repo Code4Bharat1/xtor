@@ -32,7 +32,7 @@ export default function MobileContactPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="w-9/10 mx-auto px-4 py-12"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
       >
         <h2
           className="text-4xl sm:text-5xl md:text-7xl mb-6 text-center md:text-justify"
@@ -133,7 +133,7 @@ export default function MobileContactPage() {
         viewport={{ once: true }}
         className="mt-8 px-4 flex items-center justify-center"
       >
-        <div className="w-9/10 mx-auto h-[220px] sm:h-[300px] md:h-[400px] lg:h-[500px] rounded-xl overflow-hidden">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 h-[220px] sm:h-[300px] md:h-[400px] lg:h-[500px] rounded-xl overflow-hidden">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.7979768111245!2d72.8778437752053!3d19.072617982131263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9d250f21f0d%3A0xdb46fbfa10678856!2sNexcore%20Alliance%20LLP!5e0!3m2!1sen!2sin!4v1756550911980!5m2!1sen!2sin"
             width="100%"

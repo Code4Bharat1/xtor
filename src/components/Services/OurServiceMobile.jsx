@@ -143,11 +143,50 @@ function OurServicess() {
     },
     {
       title: "Re-Tubing of Boilers & Heat Exchangers", 
-      description: "XTORC offers professional Hydraulic Tools Calibration services to ensure the precision and reliability of your torquing and tensioning equipment. Calibration is essential to maintain the accuracy of hydraulic tools, which play a crucial role in tightening and securing bolts in a wide range of industries, including Oil and Gas, Infrastructure, and Manufacturing. Proper calibration of hydraulic tools is vital for ensuring the correct torque and tension is applied during operations. Even minor discrepancies in calibration can lead to over-tightening or under-tightening, resulting in equipment failure, leaks, or safety hazards. XTORC’s calibration services ensure that your hydraulic tools consistently deliver precise performance, preventing costly mistakes and enhancing the safety and efficiency of your projects. Our expert team uses advanced equipment and techniques to calibrate your tools to meet industry standards, ensuring optimal accuracy for every use. Whether you are working on critical bolting operations, machinery maintenance, or structural installations, having properly calibrated tools is crucial to achieving the right fastening strength and minimizing operational risks. With XTORC’s Hydraulic Tools Calibration services, you can trust that your equipment will perform to its highest potential, providing accurate and reliable results every time. Keep your projects on track and ensure the safety and integrity of your operations with our precise calibration solutions.",
-      imageSrc: "callib.avif",
+      description: "XTORC specializes in comprehensive on-site Re-Tubing services for Boilers, Shell & Tube Heat Exchangers, Condensers, Fin Fans, and Coolers. Our certified technicians utilize advanced tube extraction, tube bundle pulling, high-pressure tube expansion, facing, and hydro-testing equipment to restore optimal thermal efficiency and mechanical integrity. In high-demand industries such as Oil & Gas, Power Generation, Petrochemicals, and Manufacturing, tube degradation, fouling, and leaks can severely compromise production efficiency and safety. XTORC's turnkey re-tubing solutions cover partial or complete retubing, tube sheet refurbishment, internal inspection, and precision hydraulic torque and tension rolling, ensuring minimal plant downtime and extended asset lifespan. Trust XTORC for dependable, compliant, and precision-engineered retubing solutions tailored to demanding industrial turnaround and shutdown schedules.",
+      imageSrc: "re_tubing.png",
       imageOnLeft: true
+    },
+    {
+      title: "Hydraulic Tools Calibration",
+      description: "XTORC offers professional Hydraulic Tools Calibration services to ensure the precision, compliance, and reliability of your torquing and tensioning equipment. Calibration is essential to maintain the accuracy of hydraulic tools, which play a crucial role in tightening and securing bolts in a wide range of industries, including Oil and Gas, Infrastructure, Power Generation, and Manufacturing. Proper calibration of hydraulic tools is vital for ensuring the correct torque and tension is applied during operations. Even minor discrepancies in calibration can lead to over-tightening or under-tightening, resulting in equipment failure, leaks, or safety hazards. XTORC's calibration services ensure that your hydraulic tools consistently deliver precise performance, preventing costly mistakes and enhancing the safety and efficiency of your projects. Our expert team uses advanced equipment and techniques to calibrate your tools to meet international standards.",
+      imageSrc: "callib.avif",
+      imageOnLeft: false
     }
   ];
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const lineVariants = {
+    hidden: { opacity: 0, scaleX: 0 },
+    visible: {
+      opacity: 1,
+      scaleX: 1,
+      transition: {
+        duration: 0.7,
+        ease: "easeOut",
+      },
+    },
+  };
 
   return (
     <div
@@ -156,21 +195,28 @@ function OurServicess() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="mb-16">
+        <motion.div
+          className="mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <div className="w-fit mb-6">
-            <h2 className="heading-main mb-2">
+            <motion.h2 variants={itemVariants} className="heading-main mb-2">
               Service Offerings
-            </h2>
+            </motion.h2>
             
-            <div 
-              className="w-full h-1.5 rounded-full bg-red-600"
-            ></div>
+            <motion.div 
+              variants={lineVariants}
+              className="w-full h-1.5 rounded-full bg-red-600 origin-left"
+            ></motion.div>
           </div>
           
-          <p className="text-body max-w-2xl opacity-90">
+          <motion.p variants={itemVariants} className="text-body max-w-2xl opacity-90">
             Are designed to maximize efficiency and ensure safety in operations:
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Services List */}
         {services.map((service, index) => (

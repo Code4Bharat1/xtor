@@ -31,17 +31,18 @@ const Product = () => {
         initial="hidden"
         animate="visible"
       >
-        <div className="flex flex-col md:flex-row gap-10 relative">
+        <div className="flex flex-col md:flex-row gap-10 items-start justify-between">
 
           {/* Left Side Content (Heading + Tagline + Paragraph) */}
           <motion.div variants={fadeInUp} className="flex-1 text-justify">
-            <h2
-              className="heading-main mb-6"
-            >
-              Products
-            </h2>
-
-            <div className="h-1.5 mb-5 bg-red-600 rounded-full md:w-70"></div>
+            <div className="w-fit mb-6">
+              <h2
+                className="heading-main mb-0"
+              >
+                Products
+              </h2>
+              <div className="w-full h-1.5 bg-red-600 rounded-full mt-2"></div>
+            </div>
 
             <h3
               className="heading-sub mb-6"
@@ -49,7 +50,7 @@ const Product = () => {
               Precision Tools for Your <br /> Toughest Challenges
             </h3>
 
-            {/* Paragraph niche aur center aligned */}
+            {/* Paragraph */}
             <p
               className="text-body mt-8"
             >
@@ -66,12 +67,12 @@ const Product = () => {
             </p>
           </motion.div>
 
-          {/* Right Side Card - Absolute Positioned */}
+          {/* Right Side Card */}
           <motion.div
             variants={fadeInUp}
-            className="w-full px-2 mt-6 md:w-[360px] md:absolute md:top-[50] md:-translate-y-1/2 md:right-10 z-10"
+            className="w-full md:w-[360px] flex-shrink-0"
           >
-            <div className="bg-gray-900 py-6 rounded-4xl border-2 border-white shadow-lg hover:shadow-red-600/40 hover:shadow-xl transition-all duration-300 w-full h-auto text-center">
+            <div className="bg-gray-900 py-6 px-4 rounded-4xl border-2 border-white shadow-lg hover:shadow-red-600/40 hover:shadow-xl transition-all duration-300 w-full text-center">
               <h4 className="text-xl sm:text-3xl font-semibold mb-2 text-white">
                 Optimized &
               </h4>
@@ -83,7 +84,6 @@ const Product = () => {
               </h4>
             </div>
           </motion.div>
-
 
         </div>
       </motion.div>

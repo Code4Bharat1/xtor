@@ -90,7 +90,7 @@ const HydraulicJack = () => {
     { capacity: '60 (576)', stroke: 153, model: 'SAHH 600-153', oil: 1278, colH: 323, extH: 476, outD: 159, cylD: 125, pluD: 94.5, weight: 35.5 },
     { capacity: '95 (931)', stroke: 76, model: 'SAHH 1000-76', oil: 1028, colH: 254, extH: 330, outD: 212, cylD: 165, pluD: 125, weight: 63.5 },
   ];
-  
+
   // Data for the SINGLE ACTING HYDRAULIC CYLINDERS table (Second table)
   const singleActingTableData = [
     { capacity: '5 (45)', stroke: 25, model: 'SAH 5-25', oil: 18, colH: 110, extH: 135, outD: 40, cylD: 30, pluD: 25, weight: 1 },
@@ -183,7 +183,7 @@ const HydraulicJack = () => {
     { capacityTon: '520 (5114)', stroke: 50, model: 'SLLH 500-50', oilCapacity: 3287, collapsedHeight: 192, extendedHeight: 237, outsideDia: 400, cylinderBoreDia: 305, plungerDiaThread: 'Tr304x6', baseToAdvancePort: 48, saddleDia: 289, saddleProtrusionFromPiston: 10, saddleMaxTiltAngle: 3, plungerDia: 62, weight: 188 },
   ];
 
-// Data for the NEW Single Acting Low Profile Hydraulic Cylinder table (Fifth table) based on the provided image
+  // Data for the NEW Single Acting Low Profile Hydraulic Cylinder table (Fifth table) based on the provided image
   const lowProfileHydraulicTableData = [
     { ton: '10 (101)', stroke: 38, model: 'SLH 10-38', oilCapacity: 60, collapsedHeight: 88, extendedHeight: 126, outsideDia: 78, cylinderBoreDia: 45, plungerDiaThread: 35, baseToAdvancePort: 23, saddleProtrusionFromPlunger: 2, saddleMaxTiltAngle: null, plungerToMountingHole: null, weight: 4 },
     { ton: '20 (201)', stroke: 45, model: 'SLH 20-45', oilCapacity: 140, collapsedHeight: 97, extendedHeight: 142, outsideDia: 96, cylinderBoreDia: 63, plungerDiaThread: 50, baseToAdvancePort: 23, saddleProtrusionFromPlunger: 2, saddleMaxTiltAngle: null, plungerToMountingHole: null, weight: 6.9 },
@@ -273,7 +273,7 @@ const HydraulicJack = () => {
     highTonnageCapacitySpans[row.ton] = (highTonnageCapacitySpans[row.ton] || 0) + 1;
   });
 
-   const lowProfileCapacitySpans = {};
+  const lowProfileCapacitySpans = {};
   lowProfileTableData.forEach(row => {
     lowProfileCapacitySpans[row.capacityTon] = (lowProfileCapacitySpans[row.capacityTon] || 0) + 1;
   });
@@ -321,7 +321,7 @@ const HydraulicJack = () => {
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Section */}
           <div className="space-y-6">
@@ -334,12 +334,12 @@ const HydraulicJack = () => {
             </div>
 
             {/* Description */}
-           <div className="space-y-4 text-gray-200 text-2xl leading-relaxed text-justify">
+            <div className="space-y-4 text-gray-200 text-2xl leading-relaxed text-justify">
               <p>
                 XTORC's Cylinders operate with a maximum pressure of 700 Bar.
                 With Single and Double Acting ranges, XTORC's Cylinders show versatility in operational requirements and fulfill the need of the user. All Single Acting Cylinders are spring return and Double Acting Cylinders are oil return.
               </p>
-            </div> 
+            </div>
           </div>
 
           {/* Right Section */}
@@ -363,7 +363,7 @@ const HydraulicJack = () => {
                 Download Catalog
               </button>
             </div> */}
-                  <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download
@@ -377,572 +377,569 @@ const HydraulicJack = () => {
       </div>
 
       {/* --- SINGLE-ACTING HOLLOW HYDRAULIC CYLINDER TABLE --- */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              SINGLE-ACTING HOLLOW HYDRAULIC CYLINDER
-            </h2>
-            <div className="w-160 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
+          <h2 className="text-4xl text-white mb-2" >
+            SINGLE-ACTING HOLLOW HYDRAULIC CYLINDER
+          </h2>
+          <div className="w-160 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="min-w-full min-w-max">
-                <thead className="bg-gray-800 text-base">
-                <tr>
-                    <th className="p-3 text-center border-r border-gray-700">Cylinder Capacity <br/> ton (kN)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Stroke (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Model Number</th>
-                    <th className="p-3 text-center border-r border-gray-700">Oil Capacity (cm³)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Collapsed Height <br/> A (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Extend Height <br/> B (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Outside Dia. <br/> C (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Cylinder Bore Dia. <br/> D (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Plunger Dia. (Thread) <br/> E (mm)</th>
-                    <th className="p-3 text-center">Weight (Kg)</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[850px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[11%]">Cylinder Capacity <br /> ton (kN)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Stroke (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Model Number</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Oil Capacity (cm³)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[11%]">Collapsed Height <br /> A (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[11%]">Extend Height <br /> B (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Outside Dia. <br /> C (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Cylinder Bore Dia. <br /> D (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[11%]">Plunger Dia. <br /> E (mm)</th>
+                  <th className="py-3 px-2 text-center w-[7%]">Weight (Kg)</th>
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {hollowTableData.map((row, index) => {
                   const showCapacityCell = row.capacity !== lastHollowCapacity;
                   if (showCapacityCell) {
                     lastHollowCapacity = row.capacity;
                   }
                   return (
-                    <tr key={index} className="bg-black text-center text-base border-t border-gray-700">
-                        {showCapacityCell && (
-                           <td rowSpan={hollowCapacitySpans[row.capacity]} className="p-2 font-medium text-gray-300 border-r border-gray-700 align-middle">
-                            {row.capacity}
-                           </td>
-                        )}
-                        <td className="p-2 text-white border-r border-gray-700">{row.stroke}</td>
-                        <td className="p-2 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.oil}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.colH}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.extH}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.outD}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.cylD}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.pluD}</td>
-                        <td className="p-2 text-white">{row.weight}</td>
+                    <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                      {showCapacityCell && (
+                        <td rowSpan={hollowCapacitySpans[row.capacity]} className="py-2.5 px-2 font-medium text-gray-300 border-r border-gray-700 align-middle break-words">
+                          {row.capacity}
+                        </td>
+                      )}
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.stroke}</td>
+                      <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oil}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.colH}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.extH}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.outD}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.cylD}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.pluD}</td>
+                      <td className="py-2.5 px-1.5 text-white break-words">{row.weight}</td>
                     </tr>
                   );
                 })}
-                </tbody>
+              </tbody>
             </table>
-            </div>
+          </div>
         </div>
       </div>
 
       {/* --- SINGLE ACTING HYDRAULIC CYLINDERS TABLE --- */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              SINGLE ACTING HYDRAULIC CYLINDERS
-            </h2>
-            <div className="w-140 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
+          <h2 className="text-4xl text-white mb-2" >
+            SINGLE ACTING HYDRAULIC CYLINDERS
+          </h2>
+          <div className="w-140 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="min-w-full min-w-max">
-                <thead className="bg-gray-800 text-base">
-                <tr>
-                    <th className="p-3 text-center border-r border-gray-700">Cylinder Capacity <br/> ton (kN)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Stroke (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Model Number</th>
-                    <th className="p-3 text-center border-r border-gray-700">Oil Capacity (cm³)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Collapsed Height <br/> A (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Extend Height <br/> B (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Outside Dia. <br/> C (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Cylinder Bore Dia. <br/> D (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Plunger Dia. (Thread) <br/> E (mm)</th>
-                    <th className="p-3 text-center">Weight (Kg)</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[850px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[11%]">Cylinder Capacity <br /> ton (kN)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Stroke (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Model Number</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Oil Capacity (cm³)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[11%]">Collapsed Height <br /> A (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[11%]">Extend Height <br /> B (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Outside Dia. <br /> C (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Cylinder Bore Dia. <br /> D (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[11%]">Plunger Dia. <br /> E (mm)</th>
+                  <th className="py-3 px-2 text-center w-[7%]">Weight (Kg)</th>
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {singleActingTableData.map((row, index) => {
                   const showCapacityCell = row.capacity !== lastSingleActingCapacity;
                   if (showCapacityCell) {
                     lastSingleActingCapacity = row.capacity;
                   }
                   return (
-                    <tr key={index} className="bg-black text-center text-base border-t border-gray-700">
-                        {showCapacityCell && (
-                           <td rowSpan={singleActingCapacitySpans[row.capacity]} className="p-2 font-medium text-gray-300 border-r border-gray-700 align-middle">
-                            {row.capacity}
-                           </td>
-                        )}
-                        <td className="p-2 text-white border-r border-gray-700">{row.stroke}</td>
-                        <td className="p-3 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.oil}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.colH}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.extH}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.outD}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.cylD}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.pluD}</td>
-                        <td className="p-2 text-white">{row.weight}</td>
+                    <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                      {showCapacityCell && (
+                        <td rowSpan={singleActingCapacitySpans[row.capacity]} className="py-2.5 px-2 font-medium text-gray-300 border-r border-gray-700 align-middle break-words">
+                          {row.capacity}
+                        </td>
+                      )}
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.stroke}</td>
+                      <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oil}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.colH}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.extH}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.outD}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.cylD}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.pluD}</td>
+                      <td className="py-2.5 px-1.5 text-white break-words">{row.weight}</td>
                     </tr>
                   );
                 })}
-                </tbody>
+              </tbody>
             </table>
-            </div>
+          </div>
         </div>
       </div>
 
       {/* --- SINGLE ACTING HIGH TONNAGE HYDRAULIC CYLINDER TABLE --- */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              SINGLE ACTING HIGH TONNAGE HYDRAULIC CYLINDER
-            </h2>
-            <div className="w-180 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
+          <h2 className="text-4xl text-white mb-2" >
+            SINGLE ACTING HIGH TONNAGE HYDRAULIC CYLINDER
+          </h2>
+          <div className="w-180 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="min-w-full min-w-max">
-                <thead className="bg-gray-800 text-base">
-                <tr>
-                    <th className="p-3 text-center border-r border-gray-700">ton</th>
-                    <th className="p-3 text-center border-r border-gray-700">Stroke <br/> (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Model <br/> Number</th>
-                    <th className="p-3 text-center border-r border-gray-700">Cylinder Effective <br/> Area (cm³)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Oil Capacity <br/> (cm³)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Collapsed Height <br/> (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Extend Height <br/> (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Outside Dia. <br/> (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Cylinder Bore Dia. <br/> (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Plunger Dia. <br/> (mm)</th>
-                    <th className="p-3 text-center border-r border-gray-700">Base to Advance <br/> Port (mm)</th>
-                    <th className="p-3 text-center">Weight <br/> (Kg)</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[900px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[7%]">ton</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[8%]">Stroke <br /> (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Model <br /> Number</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Area <br /> (cm²)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Oil Cap. <br /> (cm³)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Collapsed <br /> (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Extend <br /> (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Outside <br /> Dia. (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Bore Dia. <br /> (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Plunger <br /> Dia. (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[5%]">Base <br /> (mm)</th>
+                  <th className="py-3 px-2 text-center w-[6%]">Weight <br /> (Kg)</th>
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {highTonnageTableData.map((row, index) => {
                   const showTonCell = row.ton !== lastHighTonnageCapacity;
                   if (showTonCell) {
                     lastHighTonnageCapacity = row.ton;
                   }
                   return (
-                    <tr key={index} className="bg-black text-center text-base border-t border-gray-700">
-                        {showTonCell && (
-                           <td rowSpan={highTonnageCapacitySpans[row.ton]} className="p-2 font-medium text-gray-300 border-r border-gray-700 align-middle">
-                            {row.ton}
-                           </td>
-                        )}
-                        <td className="p-2 text-white border-r border-gray-700">{row.stroke}</td>
-                        <td className="p-3 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.effectiveArea}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.oilCapacity}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.collapsedHeight}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.extendHeight}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.outsideDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.cylinderBoreDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.plungerDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.baseToAdvancePort}</td>
-                        <td className="p-2 text-white">{row.weight}</td>
+                    <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                      {showTonCell && (
+                        <td rowSpan={highTonnageCapacitySpans[row.ton]} className="py-2.5 px-2 font-medium text-gray-300 border-r border-gray-700 align-middle break-words">
+                          {row.ton}
+                        </td>
+                      )}
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.stroke}</td>
+                      <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.effectiveArea}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oilCapacity}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.collapsedHeight}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.extendHeight}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.outsideDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.cylinderBoreDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.plungerDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.baseToAdvancePort}</td>
+                      <td className="py-2.5 px-1.5 text-white break-words">{row.weight}</td>
                     </tr>
                   );
                 })}
-                </tbody>
+              </tbody>
             </table>
-            </div>
+          </div>
         </div>
       </div>
 
       {/* --- SINGLE ACTING LOW PROFILE LOCK-NUT HYDRAULIC CYLINDER TABLE --- */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              SINGLE ACTING LOW PROFILE LOCK-NUT HYDRAULIC CYLINDER
-            </h2>
-            <div className="w-200 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
+          <h2 className="text-4xl text-white mb-2" >
+            SINGLE ACTING LOW PROFILE LOCK-NUT HYDRAULIC CYLINDER
+          </h2>
+          <div className="w-200 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="min-w-full min-w-max">
-                <thead className="bg-gray-800 text-sm">
-                <tr>
-                    <th className="p-2 text-center border-r border-gray-700">Cylinder Capacity <br/> ton (kN)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Stroke <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Model Number</th>
-                    <th className="p-2 text-center border-r border-gray-700">Oil Capacity <br/> (cm³)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Collapsed Height (mm) <br/> A</th>
-                    <th className="p-2 text-center border-r border-gray-700">Extended Height (mm) <br/> B</th>
-                    <th className="p-2 text-center border-r border-gray-700">Outside Dia. (mm) <br/> C</th>
-                    <th className="p-2 text-center border-r border-gray-700">Cylinder Bore Dia. (mm) <br/> D</th>
-                    <th className="p-2 text-center border-r border-gray-700">Plunger Dia. (Thread) <br/> E</th>
-                    <th className="p-2 text-center border-r border-gray-700">Base to Advance port <br/> F</th>
-                    <th className="p-2 text-center border-r border-gray-700">Saddle Dia. (mm) <br/> H</th>
-                    <th className="p-2 text-center border-r border-gray-700">Saddle Protrusion from piston (mm) <br/> J</th>
-                    <th className="p-2 text-center border-r border-gray-700">Saddle Max. tilt angle <br/> R</th>
-                    <th className="p-2 text-center border-r border-gray-700">Plunger Dia. (mm)</th>
-                    <th className="p-2 text-center">Weight <br/> (Kg)</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[900px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]">Cap. <br /> ton(kN)</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[6%]">Stroke <br /> (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[9%]">Model</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[6%]">Oil <br /> (cm³)</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[6%]">Col. <br /> A</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[6%]">Ext. <br /> B</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Out <br /> C</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Bore <br /> D</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]">Plgr <br /> E</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[6%]">Port <br /> F</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[6%]">Saddle <br /> H</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Saddle <br /> J</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[6%]">Tilt <br /> R</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Plgr <br /> (mm)</th>
+                  <th className="py-3 px-1.5 text-center w-[5%]">Wt <br /> (Kg)</th>
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {lowProfileTableData.map((row, index) => {
                   const showCapacityCell = row.capacityTon !== lastLowProfileCapacity;
                   if (showCapacityCell) {
                     lastLowProfileCapacity = row.capacityTon;
                   }
                   return (
-                    <tr key={index} className="bg-black text-center text-medium border-t border-gray-700">
-                        {showCapacityCell && (
-                           <td rowSpan={lowProfileCapacitySpans[row.capacityTon]} className="p-2 font-medium text-gray-300 border-r border-gray-700 align-middle">
-                            {row.capacityTon}
-                           </td>
-                        )}
-                        <td className="p-2 text-white border-r border-gray-700">{row.stroke}</td>
-                        <td className="p-3 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.oilCapacity}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.collapsedHeight}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.extendedHeight}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.outsideDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.cylinderBoreDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.plungerDiaThread}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.baseToAdvancePort}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.saddleDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.saddleProtrusionFromPiston}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.saddleMaxTiltAngle}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.plungerDia}</td>
-                        <td className="p-2 text-white">{row.weight}</td>
+                    <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                      {showCapacityCell && (
+                        <td rowSpan={lowProfileCapacitySpans[row.capacityTon]} className="py-2.5 px-2 font-medium text-gray-300 border-r border-gray-700 align-middle break-words">
+                          {row.capacityTon}
+                        </td>
+                      )}
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.stroke}</td>
+                      <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oilCapacity}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.collapsedHeight}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.extendedHeight}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.outsideDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.cylinderBoreDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.plungerDiaThread}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.baseToAdvancePort}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.saddleDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.saddleProtrusionFromPiston}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.saddleMaxTiltAngle}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.plungerDia}</td>
+                      <td className="py-2.5 px-1.5 text-white break-words">{row.weight}</td>
                     </tr>
                   );
                 })}
-                </tbody>
+              </tbody>
             </table>
-            </div>
+          </div>
         </div>
       </div>
 
-     {/* --- SINGLE ACTING LOW PROFILE HYDRAULIC CYLINDER TABLE --- */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      {/* --- SINGLE ACTING LOW PROFILE HYDRAULIC CYLINDER TABLE --- */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              SINGLE ACTING LOW PROFILE HYDRAULIC CYLINDER
-            </h2>
-            <div className="w-180 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
+          <h2 className="text-4xl text-white mb-2" >
+            SINGLE ACTING LOW PROFILE HYDRAULIC CYLINDER
+          </h2>
+          <div className="w-180 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="min-w-full min-w-max">
-                <thead className="bg-gray-800 text-sm">
-                <tr>
-                    <th className="p-2 text-center border-r border-gray-700">Cylinder Capacity <br/> ton (kN)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Stroke <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Model Number</th>
-                    <th className="p-2 text-center border-r border-gray-700">Oil Capacity <br/> (cm³)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Collapsed Height (mm) <br/> A</th>
-                    <th className="p-2 text-center border-r border-gray-700">Extended Height (mm) <br/> B</th>
-                    <th className="p-2 text-center border-r border-gray-700">Outside Dia. (mm) <br/> C</th>
-                    <th className="p-2 text-center border-r border-gray-700">Cylinder Bore Dia. (mm) <br/> D</th>
-                    <th className="p-2 text-center border-r border-gray-700">Plunger Dia. (Thread) <br/> E</th>
-                    <th className="p-2 text-center border-r border-gray-700">Base to Advance <br/> port <br/> F</th>
-                    <th className="p-2 text-center border-r border-gray-700">Saddle Protrusion <br/> from plgr <br/> (mm) <br/> J</th>
-                    <th className="p-2 text-center border-r border-gray-700">Saddle Max. tilt <br/> angle <br/> M</th>
-                    <th className="p-2 text-center border-r border-gray-700">Plunger to <br/> mounting hole <br/> (") <br/> N</th>
-                    <th className="p-2 text-center">Weight <br/> (Kg)</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[900px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[9%]">Capacity <br /> ton(kN)</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Stroke <br /> (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Model</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Oil <br /> (cm³)</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Col. <br /> A</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Ext. <br /> B</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]">Out <br /> C</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]">Bore <br /> D</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]">Plgr <br /> E</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Port <br /> F</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Saddle <br /> J</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[5%]">Tilt <br /> M</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[5%]">Hole <br /> N</th>
+                  <th className="py-3 px-1.5 text-center w-[5%]">Weight <br /> (Kg)</th>
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {lowProfileHydraulicTableData.map((row, index) => {
                   const showTonCell = row.ton !== lastLowProfileHydraulicCapacity;
                   if (showTonCell) {
                     lastLowProfileHydraulicCapacity = row.ton;
                   }
                   return (
-                    <tr key={index} className="bg-black text-center text-medium border-t border-gray-700">
-                        {showTonCell && (
-                           <td rowSpan={lowProfileHydraulicCapacitySpans[row.ton]} className="p-2 font-medium text-gray-300 border-r border-gray-700 align-middle">
-                            {row.ton}
-                           </td>
-                        )}
-                        <td className="p-2 text-white border-r border-gray-700">{row.stroke}</td>
-                        <td className="p-3 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.oilCapacity}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.collapsedHeight}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.extendedHeight}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.outsideDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.cylinderBoreDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.plungerDiaThread}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.baseToAdvancePort}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.saddleProtrusionFromPlunger}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.saddleMaxTiltAngle}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.plungerToMountingHole === null ? '-' : row.plungerToMountingHole}</td>
-                        <td className="p-2 text-white">{row.weight}</td>
+                    <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                      {showTonCell && (
+                        <td rowSpan={lowProfileHydraulicCapacitySpans[row.ton]} className="py-2.5 px-2 font-medium text-gray-300 border-r border-gray-700 align-middle break-words">
+                          {row.ton}
+                        </td>
+                      )}
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.stroke}</td>
+                      <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oilCapacity}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.collapsedHeight}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.extendedHeight}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.outsideDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.cylinderBoreDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.plungerDiaThread}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.baseToAdvancePort}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.saddleProtrusionFromPlunger}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.saddleMaxTiltAngle}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.plungerToMountingHole === null ? '-' : row.plungerToMountingHole}</td>
+                      <td className="py-2.5 px-1.5 text-white break-words">{row.weight}</td>
                     </tr>
                   );
                 })}
-                </tbody>
+              </tbody>
             </table>
-            </div>
+          </div>
         </div>
       </div>
 
 
       {/* --- NEWLY ADDED: SINGLE ACTING LOW FLAT HYDRAULIC CYLINDER TABLE --- */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              SINGLE ACTING LOW FLAT HYDRAULIC CYLINDER
-            </h2>
-            <div className="w-160 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
+          <h2 className="text-4xl text-white mb-2" >
+            SINGLE ACTING LOW FLAT HYDRAULIC CYLINDER
+          </h2>
+          <div className="w-160 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="max-w-full min-w-max">
-                <thead className="bg-gray-800 text-sm">
-                <tr>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Cylinder Capacity <br/> ton (kN)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Stroke <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Model Number</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Oil Capacity <br/> (cm³)</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[900px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[9%]">Capacity <br /> ton(kN)</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Stroke <br /> (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]">Model</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Oil <br /> (cm³)</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Col. <br /> A</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Ext. <br /> B</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]">Out <br /> C</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]">Bore <br /> D</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]">Plgr <br /> E</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Port <br /> F</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]">Saddle <br /> J</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[5%]">Tilt <br /> M</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[5%]">Hole <br /> N</th>
+                  <th className="py-3 px-1.5 text-center w-[5%]">Weight <br /> (Kg)</th>
                 </tr>
-                <tr>
-                    <th className="p-2 text-center border-r border-gray-700">Collapsed Height <br/> A <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Extended Height <br/> B <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Outside Dia. <br/> C <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Cylinder Bore Dia. <br/> D <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Plunger Dia. <br/> (Thread) <br/> E <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Base to <br/> Advance <br/> port <br/> F <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Saddle <br/> Protrusion <br/> from plgr <br/> J <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700">Saddle <br/> Max. tilt <br/> angle <br/> M <br/> (")</th>
-                    <th className="p-2 text-center border-r border-gray-700">Plunger to <br/> mounting <br/> hole <br/> N <br/> (mm)</th>
-                    <th className="p-2 text-center">Weight <br/> (Kg)</th>
-                </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {lowFlatHydraulicTableData.map((row, index) => {
                   const showCapacityCell = row.capacity !== lastLowFlatHydraulicCapacity;
                   if (showCapacityCell) {
                     lastLowFlatHydraulicCapacity = row.capacity;
                   }
                   return (
-                    <tr key={index} className="bg-black text-center text-medium border-t border-gray-700">
-                        {showCapacityCell && (
-                           <td rowSpan={lowFlatHydraulicCapacitySpans[row.capacity]} className="p-2 font-medium text-gray-300 border-r border-gray-700 align-middle">
-                            {row.capacity}
-                           </td>
-                        )}
-                        <td className="p-2 text-white border-r border-gray-700">{row.stroke}</td>
-                        <td className="p-3 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.oilCapacity}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.collapsedHeight}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.extendedHeight}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.outsideDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.cylinderBoreDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.plungerDiaThread}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.baseToAdvancePort}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.saddleProtrusionFromPlunger}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.saddleMaxTiltAngle}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.plungerToMountingHole}</td>
-                        <td className="p-2 text-white">{row.weight}</td>
+                    <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                      {showCapacityCell && (
+                        <td rowSpan={lowFlatHydraulicCapacitySpans[row.capacity]} className="py-2.5 px-2 font-medium text-gray-300 border-r border-gray-700 align-middle break-words">
+                          {row.capacity}
+                        </td>
+                      )}
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.stroke}</td>
+                      <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oilCapacity}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.collapsedHeight}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.extendedHeight}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.outsideDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.cylinderBoreDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.plungerDiaThread}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.baseToAdvancePort}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.saddleProtrusionFromPlunger}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.saddleMaxTiltAngle}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.plungerToMountingHole}</td>
+                      <td className="py-2.5 px-1.5 text-white break-words">{row.weight}</td>
                     </tr>
                   );
                 })}
-                </tbody>
+              </tbody>
             </table>
-            </div>
+          </div>
         </div>
       </div>
 
 
       {/* --- NEWLY ADDED: DOUBLE ACTING HOLLOW HYDRAULIC CYLINDER TABLE --- */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              DOUBLE ACTING HOLLOW HYDRAULIC CYLINDER
-            </h2>
-            <div className="w-160 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
+          <h2 className="text-4xl text-white mb-2" >
+            DOUBLE ACTING HOLLOW HYDRAULIC CYLINDER
+          </h2>
+          <div className="w-160 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="min-w-full min-w-max">
-                <thead className="bg-gray-800 text-small">
-                <tr>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Cylinder Capacity <br/> ton (kN)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Stroke <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Model Number</th>
-                    <th className="p-2 text-center border-r border-gray-700" colSpan="2">Max. Cylinder <br/> Capacity (kN)</th>
-                    <th className="p-2 text-center border-r border-gray-700" colSpan="2">Oil Capacity <br/> (cm³)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Collapsed Height <br/> A <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Extended Height <br/> B <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Outside Dia. <br/> C <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Cylinder <br/> Bore Dia. <br/> D <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Plunger <br/> Dia. <br/> (Thread) <br/> E <br/> (mm)</th>
-                    <th className="p-2 text-center" rowSpan="2">Weight <br/> (Kg)</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[900px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[9%]" rowSpan="2">Capacity <br /> ton(kN)</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]" rowSpan="2">Stroke <br /> (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]" rowSpan="2">Model</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]" colSpan="2">Max. Capacity (kN)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]" colSpan="2">Oil Capacity (cm³)</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]" rowSpan="2">Col. <br /> A</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]" rowSpan="2">Ext. <br /> B</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]" rowSpan="2">Out <br /> C</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]" rowSpan="2">Bore <br /> D</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]" rowSpan="2">Plgr <br /> E</th>
+                  <th className="py-3 px-1.5 text-center w-[5%]" rowSpan="2">Weight <br /> (Kg)</th>
                 </tr>
-                <tr>
-                    <th className="p-2 text-center border-r border-gray-700">Advance</th>
-                    <th className="p-2 text-center border-r border-gray-700">Retract</th>
-                    <th className="p-2 text-center border-r border-gray-700">Advance</th>
-                    <th className="p-2 text-center border-r border-gray-700">Retract</th>
+                <tr className="leading-tight font-medium text-gray-300 text-[11px] sm:text-xs">
+                  <th className="py-2 px-1 text-center border-t border-r border-gray-700">Adv</th>
+                  <th className="py-2 px-1 text-center border-t border-r border-gray-700">Ret</th>
+                  <th className="py-2 px-1 text-center border-t border-r border-gray-700">Adv</th>
+                  <th className="py-2 px-1 text-center border-t border-r border-gray-700">Ret</th>
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {doubleActingHollowTableData.map((row, index) => {
                   const showTonCell = row.ton !== lastDoubleActingHollowCapacity;
                   if (showTonCell) {
                     lastDoubleActingHollowCapacity = row.ton;
                   }
                   return (
-                    <tr key={index} className="bg-black text-center text-medium border-t border-gray-700">
-                        {showTonCell && (
-                           <td rowSpan={doubleActingHollowCapacitySpans[row.ton]} className="p-2 font-medium text-gray-300 border-r border-gray-700 align-middle">
-                            {row.ton}
-                           </td>
-                        )}
-                        <td className="p-2 text-white border-r border-gray-700">{row.stroke}</td>
-                        <td className="p-3 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.maxCylAdvance}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.maxCylRetract}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.oilAdvance}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.oilRetract}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.collapsedHeight}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.extendedHeight}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.outsideDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.cylinderBoreDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.plungerDia}</td>
-                        <td className="p-2 text-white">{row.weight}</td>
+                    <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                      {showTonCell && (
+                        <td rowSpan={doubleActingHollowCapacitySpans[row.ton]} className="py-2.5 px-2 font-medium text-gray-300 border-r border-gray-700 align-middle break-words">
+                          {row.ton}
+                        </td>
+                      )}
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.stroke}</td>
+                      <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.maxCylAdvance}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.maxCylRetract}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oilAdvance}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oilRetract}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.collapsedHeight}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.extendedHeight}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.outsideDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.cylinderBoreDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.plungerDia}</td>
+                      <td className="py-2.5 px-1.5 text-white break-words">{row.weight}</td>
                     </tr>
                   );
                 })}
-                </tbody>
+              </tbody>
             </table>
-            </div>
+          </div>
         </div>
       </div>
 
       {/* --- NEWLY ADDED: DOUBLE ACTING HOLLOW HYDRAULIC CYLINDER TABLE --- */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              DOUBLE ACTING HOLLOW HYDRAULIC CYLINDER
-            </h2>
-            <div className="w-160 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
+          <h2 className="text-4xl text-white mb-2" >
+            DOUBLE ACTING HOLLOW HYDRAULIC CYLINDER
+          </h2>
+          <div className="w-160 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="min-w-full min-w-max">
-                <thead className="bg-gray-800 text-medim">
-                <tr>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Cylinder Capacity <br/> ton (kN)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Stroke <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Model Number</th>
-                    <th className="p-2 text-center border-r border-gray-700" colSpan="2">Max. Cylinder <br/> Capacity (kN)</th>
-                    <th className="p-2 text-center border-r border-gray-700" colSpan="2">Oil Capacity <br/> (cm³)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Collapsed Height <br/> A <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Extended Height <br/> B <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Outside Dia. <br/> C <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Cylinder <br/> Bore Dia. <br/> D <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Plunger <br/> Dia. <br/> (Thread) <br/> E <br/> (mm)</th>
-                    <th className="p-2 text-center" rowSpan="2">Weight <br/> (Kg)</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[900px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[9%]" rowSpan="2">Capacity <br /> ton(kN)</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]" rowSpan="2">Stroke <br /> (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]" rowSpan="2">Model</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]" colSpan="2">Max. Capacity (kN)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]" colSpan="2">Oil Capacity (cm³)</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]" rowSpan="2">Col. <br /> A</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]" rowSpan="2">Ext. <br /> B</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]" rowSpan="2">Out <br /> C</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]" rowSpan="2">Bore <br /> D</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]" rowSpan="2">Plgr <br /> E</th>
+                  <th className="py-3 px-1.5 text-center w-[5%]" rowSpan="2">Weight <br /> (Kg)</th>
                 </tr>
-                <tr>
-                    <th className="p-2 text-center border-r border-gray-700">Advance</th>
-                    <th className="p-2 text-center border-r border-gray-700">Retract</th>
-                    <th className="p-2 text-center border-r border-gray-700">Advance</th>
-                    <th className="p-2 text-center border-r border-gray-700">Retract</th>
+                <tr className="leading-tight font-medium text-gray-300 text-[11px] sm:text-xs">
+                  <th className="py-2 px-1 text-center border-t border-r border-gray-700">Adv</th>
+                  <th className="py-2 px-1 text-center border-t border-r border-gray-700">Ret</th>
+                  <th className="py-2 px-1 text-center border-t border-r border-gray-700">Adv</th>
+                  <th className="py-2 px-1 text-center border-t border-gray-700">Ret</th>
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {doubleActingHollowTableData.map((row, index) => {
                   const showTonCell = row.ton !== lastDoubleActingHollowCapacity;
                   if (showTonCell) {
                     lastDoubleActingHollowCapacity = row.ton;
                   }
                   return (
-                    <tr key={index} className="bg-black text-center text-sm border-t border-gray-700">
-                        {showTonCell && (
-                           <td rowSpan={doubleActingHollowCapacitySpans[row.ton]} className="p-2 font-medium text-gray-300 border-r border-gray-700 align-middle">
-                            {row.ton}
-                           </td>
-                        )}
-                        <td className="p-2 text-white border-r border-gray-700">{row.stroke}</td>
-                        <td className="p-3 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.maxCylAdvance}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.maxCylRetract}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.oilAdvance}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.oilRetract}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.collapsedHeight}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.extendedHeight}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.outsideDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.cylinderBoreDia}</td>
-                        <td className="p-2 text-white border-r border-gray-700">{row.plungerDia}</td>
-                        <td className="p-2 text-white">{row.weight}</td>
+                    <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                      {showTonCell && (
+                        <td rowSpan={doubleActingHollowCapacitySpans[row.ton]} className="py-2.5 px-2 font-medium text-gray-300 border-r border-gray-700 align-middle break-words">
+                          {row.ton}
+                        </td>
+                      )}
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.stroke}</td>
+                      <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.maxCylAdvance}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.maxCylRetract}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oilAdvance}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oilRetract}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.collapsedHeight}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.extendedHeight}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.outsideDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.cylinderBoreDia}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.plungerDia}</td>
+                      <td className="py-2.5 px-1.5 text-white break-words">{row.weight}</td>
                     </tr>
                   );
                 })}
-                </tbody>
+              </tbody>
             </table>
-            </div>
+          </div>
         </div>
       </div>
 
 
       {/* --- NEWLY ADDED: DOUBLE ACTING HIGH TONNAGE HYDRAULIC CYLINDER TABLE --- */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              DOUBLE ACTING HIGH TONNAGE HYDRAULIC CYLINDER
-            </h2>
-            <div className="w-190 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
+          <h2 className="text-4xl text-white mb-2" >
+            DOUBLE ACTING HIGH TONNAGE HYDRAULIC CYLINDER
+          </h2>
+          <div className="w-190 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "800px" }}></div>
         </div>
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            {/* Removed overflow-x-auto and min-w-full */}
-            <div>
-            <table className="w-full min-w-max">
-                <thead className="bg-gray-800 text-medium">
-                <tr>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Cylinder Capacity <br/> ton (kN)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Stroke <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Model Number</th>
-                    <th className="p-2 text-center border-r border-gray-700" colSpan="2">Max. Cylinder <br/> Capacity (kN)</th>
-                    <th className="p-2 text-center border-r border-gray-700" colSpan="2">Oil Capacity <br/> (cm³)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Collapsed Height <br/> A <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Extended Height <br/> B <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Outside Dia. <br/> C <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Cylinder <br/> Bore Dia. <br/> D <br/> (mm)</th>
-                    <th className="p-2 text-center border-r border-gray-700" rowSpan="2">Plunger <br/> Dia. <br/> (Thread) <br/> E <br/> (mm)</th>
-                    <th className="p-2 text-center" rowSpan="2">Weight <br/> (Kg)</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[900px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[9%]" rowSpan="2">Capacity <br /> ton(kN)</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]" rowSpan="2">Stroke <br /> (mm)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[10%]" rowSpan="2">Model</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]" colSpan="2">Max. Capacity (kN)</th>
+                  <th className="py-3 px-2 text-center border-r border-gray-700 w-[14%]" colSpan="2">Oil Capacity (cm³)</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]" rowSpan="2">Col. <br /> A</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[7%]" rowSpan="2">Ext. <br /> B</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]" rowSpan="2">Out <br /> C</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]" rowSpan="2">Bore <br /> D</th>
+                  <th className="py-3 px-1.5 text-center border-r border-gray-700 w-[8%]" rowSpan="2">Plgr <br /> E</th>
+                  <th className="py-3 px-1.5 text-center w-[5%]" rowSpan="2">Weight <br /> (Kg)</th>
                 </tr>
-                <tr>
-                    <th className="p-2 text-center border-r border-gray-700">Advance</th>
-                    <th className="p-2 text-center border-r border-gray-700">Retract</th>
-                    <th className="p-2 text-center border-r border-gray-700">Advance</th>
-                    <th className="p-2 text-center border-r border-gray-700">Retract</th>
+                <tr className="leading-tight font-medium text-gray-300 text-[11px] sm:text-xs">
+                  <th className="py-2 px-1 text-center border-t border-r border-gray-700">Adv</th>
+                  <th className="py-2 px-1 text-center border-t border-r border-gray-700">Ret</th>
+                  <th className="py-2 px-1 text-center border-t border-r border-gray-700">Adv</th>
+                  <th className="py-2 px-1 text-center border-t border-gray-700">Ret</th>
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {doubleActingHighTonnageTableData.map((row, index) => {
                   const showTonCell = row.ton !== lastDoubleActingHighTonnageCapacity;
                   if (showTonCell) {
                     lastDoubleActingHighTonnageCapacity = row.ton;
                   }
                   return (
-                    <tr key={index} className="bg-black text-center text-medium border-t border-gray-700"> {/* Smallest text */}
-                        {showTonCell && (
-                           <td rowSpan={doubleActingHighTonnageCapacitySpans[row.ton]} className="p-1 font-medium text-gray-300 border-r border-gray-700 align-middle"> {/* Less padding */}
-                            {row.ton}
-                           </td>
-                        )}
-                        <td className="p-1 text-white border-r border-gray-700">{row.stroke}</td>
-                        <td className="p-3 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                        <td className="p-1 text-white border-r border-gray-700">{row.capAdvance}</td>
-                        <td className="p-1 text-white border-r border-gray-700">{row.capRetract}</td>
-                        <td className="p-1 text-white border-r border-gray-700">{row.oilAdvance}</td>
-                        <td className="p-1 text-white border-r border-gray-700">{row.oilRetract}</td>
-                        <td className="p-1 text-white border-r border-gray-700">{row.colH}</td>
-                        <td className="p-1 text-white border-r border-gray-700">{row.extH}</td>
-                        <td className="p-1 text-white border-r border-gray-700">{row.outD}</td>
-                        <td className="p-1 text-white border-r border-gray-700">{row.boreD}</td>
-                        <td className="p-1 text-white border-r border-gray-700">{row.plungerD}</td>
-                        <td className="p-1 text-white">{row.weight}</td>
+                    <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                      {showTonCell && (
+                        <td rowSpan={doubleActingHighTonnageCapacitySpans[row.ton]} className="py-2.5 px-2 font-medium text-gray-300 border-r border-gray-700 align-middle break-words">
+                          {row.ton}
+                        </td>
+                      )}
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.stroke}</td>
+                      <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.capAdvance}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.capRetract}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oilAdvance}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oilRetract}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.colH}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.extH}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.outD}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.boreD}</td>
+                      <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.plungerD}</td>
+                      <td className="py-2.5 px-1.5 text-white break-words">{row.weight}</td>
                     </tr>
                   );
                 })}
-                </tbody>
+              </tbody>
             </table>
-            </div>
+          </div>
         </div>
       </div>
     </div>

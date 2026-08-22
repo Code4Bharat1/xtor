@@ -32,17 +32,28 @@ const ImageSection = () => {
     },
   ];
 
-  // Card animation with delay groups
+  // Staggered Container Animation
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  // Card Smooth Fade, Scale & Slide Up
   const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (i) => ({
+    hidden: { opacity: 0, y: 40, scale: 0.96 },
+    visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
-        duration: 0.3,
-        delay: i < 2 ? 0 : 0.8, // first 2 together, then next 2 together
+        duration: 0.7,
+        ease: "easeOut",
       },
-    }),
+    },
   };
 
   return (
@@ -52,16 +63,16 @@ const ImageSection = () => {
           {/* Industry Grid */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
+            variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.15 }}
           >
             {industries.map((industry, index) => (
               <motion.div
                 key={index}
                 className="text-center"
                 variants={cardVariants}
-                custom={index} // pass index to variants
               >
                 <div 
                   className={`relative z-10 group overflow-hidden rounded-2xl transition-all duration-300 border border-transparent hover:-translate-y-2 hover:border-red-600/30 ${

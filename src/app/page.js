@@ -1,31 +1,18 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ContactUs from "@/components/Home/ContactUs";
 import Home from "@/components/Home/Home";
 import Industries from "@/components/Home/Industries";
 
 import Footer from "@/layout/footer";
-import Navbar from "@/layout/Navbar";
 import MobileNavbar from "@/layout/mobileNavbar";
-import SplashScreen from "@/components/Home/SplashScreen"; // tumhara splash component
-import { motion, AnimatePresence } from "framer-motion";
-
 import AboutHome from "@/components/Home/AboutHome";
 import OurProducts from "@/components/Home/OurProducts";
 import WhatsappLogo from "@/components/WhatsappLogo/WhatsappLogo";
 import ChatBoat from "@/components/ChatBoat/ChatBoat";
-import Maintaince from "@/components/Maintaince/Maintaince"
+import { motion } from "framer-motion";
 
 const Page = () => {
-  const [showSplash, setShowSplash] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplash(false);
-    }, 1000); // 2 sec
-    return () => clearTimeout(timer);
-  }, []);
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -91,18 +78,12 @@ const Page = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       /> 
-      <Maintaince/>
-      {/* <AnimatePresence>
-        {showSplash && <SplashScreen key="splash" />}
-      </AnimatePresence>
       <motion.div
-        key="content"
         initial={{ opacity: 0 }}
-        animate={{ opacity: showSplash ? 0 : 1 }}
-        transition={{ duration: 0.8, delay: showSplash ? 0 : 0.2 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <div className="hidden md:block">
-         
         </div>
         <div className="md:hidden">
           <MobileNavbar />
@@ -111,11 +92,11 @@ const Page = () => {
         <ChatBoat/>
         <Home />
         <AboutHome/>
-       <OurProducts/>
+        <OurProducts/>
         <Industries />
         <ContactUs />
         <Footer />
-      </motion.div> */}
+      </motion.div> 
     </div>
   );
 };

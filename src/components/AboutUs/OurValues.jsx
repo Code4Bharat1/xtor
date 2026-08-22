@@ -107,8 +107,8 @@ const OurValues = () => {
         >
           <div
             className={`flex-1 transition-all duration-1000 ${missionVisible
-                ? "transform translate-x-0 opacity-100"
-                : "transform -translate-x-full opacity-0"
+              ? "transform translate-x-0 opacity-100"
+              : "transform -translate-x-full opacity-0"
               }`}
             id="mission-section"
           >
@@ -131,8 +131,8 @@ const OurValues = () => {
 
           <div
             className={`flex-1 transition-all duration-1000 ${visionVisible
-                ? "transform translate-x-0 opacity-100"
-                : "transform translate-x-full opacity-0"
+              ? "transform translate-x-0 opacity-100"
+              : "transform translate-x-full opacity-0"
               }`}
             id="vision-section"
           >

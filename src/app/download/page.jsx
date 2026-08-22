@@ -3,7 +3,6 @@ import DownloadSection from '@/components/Download/Download';
 import WhatsappLogo from '@/components/WhatsappLogo/WhatsappLogo';
 import Footer from '@/layout/footer';
 import MobileNavbar from '@/layout/mobileNavbar';
-import Navbar from '@/layout/Navbar';
 
 export const metadata = {
   title: "Xtorc | Download Catalogues & Product Resources",

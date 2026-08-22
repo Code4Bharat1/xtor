@@ -671,7 +671,7 @@ const Navbar = () => {
       { id: "bolt-tensioner", name: "Bolt Tensioners", img: "/product5.png", path: "/hydraulicbolttensioners" },
     ],
     "hydraulic-torque": [
-      { id: "square-drive", name: "Square Drive", img: "/images/BoltingTools/squaredrive.png", path: "/squaredrive", width: 420, height: 380 },
+      { id: "square-drive", name: "Square Drive", img: "/square_drive.png", path: "/squaredrive", width: 420, height: 380 },
       { id: "hex-drive", name: "Hex Drive", img: "/product2.png", path: "/hexdrive", width: 400, height: 400 }
     ],
     "bolt-tensioner": [
@@ -703,8 +703,9 @@ const Navbar = () => {
     { id: "cold-cutting", name: "Cold Cutting & Beveling", img: "/pipeCold.jpeg", path: "/coldcutting", width: 400, height: 390, },
     { id: "flange-facing", name: "Flange Facing", img: "/facing.jpeg", path: "/flangefacingservice", width: 400, height: 390, },
     { id: "hot-tapping", name: "Hot-Tapping & Line Stopple", img: "/tap.jpg", path: "/hottapping", width: 400, height: 391, },
-    { id: "re-tubing", name: "Calibration", img: "/callib.avif", path: "/retubbing", width: 400, height: 300, },
+    { id: "re-tubing", name: "Re-Tubing of Boilers & Heat Exchangers", img: "/re_tubing.png", path: "/retubbing", width: 400, height: 300, },
     { id: "water-jet", name: "Water Jet Cutting", img: "/wjet.jpg", path: "/waterjet", width: 400, height: 400, },
+    { id: "calibration", name: "Calibration", img: "/callib.avif", path: "/calibration", width: 400, height: 300, },
   ];
 
   useEffect(() => {
@@ -722,7 +723,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-black text-white w-full hidden md:flex md:py-3 relative z-[100]">
-      <div className="w-full flex items-center justify-between h-12 px-4 sm:px-6 lg:px-10 xl:px-12 2xl:px-16">
+      <div className="max-w-7xl mx-auto w-full flex items-center justify-between h-12 px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
@@ -741,12 +742,12 @@ const Navbar = () => {
         {/* Products Dropdown */}
         <div className="relative">
           <div className="flex items-center">
-            <a
+            <Link
               href="/product"
               className={`text-white font-medium text-base transition-colors duration-200 hover:border-b-2 hover:border-red-500 ${pathname === "/product" ? "border-b-2 border-red-500" : ""}`}
             >
               Products
-            </a>
+            </Link>
             <button
               type="button"
               onClick={(e) => {
@@ -858,14 +859,14 @@ const Navbar = () => {
         </div>
 
         {/* Services Dropdown */}
-        <div className="relative">
+        <div className="relative" ref={serviceRef}>
           <div className="flex items-center">
-            <a
+            <Link
               href="/services"
               className={`text-white font-medium text-base transition-colors duration-200 hover:border-b-2 hover:border-red-500 ${pathname === "/services" ? "border-b-2 border-red-500" : ""}`}
             >
               Services
-            </a>
+            </Link>
             <button
               type="button"
               onClick={(e) => {
@@ -873,15 +874,15 @@ const Navbar = () => {
                 setIsServicesOpen((prev) => !prev);
                 setSelectedService(null);
               }}
-              className="ml-1 cursor-pointer"
+              className="ml-1 p-1 cursor-pointer"
+              aria-label="Toggle Services dropdown"
             >
-              <ChevronDown className="h-4 w-4 text-white" />
+              <ChevronDown className={`h-4 w-4 text-white transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`} />
             </button>
           </div>
 
           {isServicesOpen && (
             <div
-              ref={serviceRef}
               className={`absolute top-full mt-4 bg-white border border-gray-200 shadow-2xl z-[100] h-auto rounded-2xl flex overflow-hidden transition-all duration-500 ease-in-out origin-top left-1/2 -translate-x-1/2 ${selectedService ? 'w-[750px]' : 'w-[300px]'
                 }`}
             >
@@ -938,7 +939,7 @@ const Navbar = () => {
         <Link href="/distributor" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/distributor" ? "border-b-2 border-red-500" : ""}`}>Distributor</Link>
         <Link href="/industry" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/industry" ? "border-b-2 border-red-500" : ""}`}>Industries</Link>
         <Link href="/contact" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/contact" ? "border-b-2 border-red-500" : ""}`}>Contact us</Link>
-        <Link href="/Joinus" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/joinus" ? "border-b-2 border-red-500" : ""}`}>Join us</Link>
+        <Link href="/Joinus" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname?.toLowerCase() === "/joinus" ? "border-b-2 border-red-500" : ""}`}>Join us</Link>
         <Link href="/testimonials" className={`text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/testimonials" ? "border-b-2 border-red-500" : ""}`}>Testimonials</Link>
         <Link href="/download" className={`hidden lg:block text-white hover:border-b-2 border-red-500 transition-colors duration-200 text-base font-medium ${pathname === "/download" ? "border-b-2 border-red-500" : ""}`}>Downloads</Link>
       </div>

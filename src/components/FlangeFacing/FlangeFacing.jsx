@@ -77,7 +77,27 @@ import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 const FlangeFacingMachine = () => {
-  // Data for the XTFF40 Flange Facer (kept for context)
+  // Data for XTFF24
+  const xtff24TechnicalDetails = [
+    { label: "Facing Diameter Range", value: "50-610mm (2-24\")" },
+    { label: "I.D Clamp Range", value: "50-610mm (2-24\")" },
+    { label: "Min Swing Diameter", value: "515mm" },
+    { label: "Tool Post Stroke", value: "50 (2\")" },
+    { label: "Tool Post Swivel Angle", value: "+ / - 30°" },
+    { label: "R.P.M", value: "0-42" },
+    { label: "Drive Power Unit - Pneumatic", value: "1. 2Hp (0.8 Kw)" },
+    { label: "Air Consumption / Supply Required", value: "1.2m³/min" },
+    { label: "Drive Power Unit - Electric", value: "1HP (0.75kw)" },
+    { label: "Electric Requirements", value: "Single phase, 110V/230V, 50/60HZ" },
+    { label: "Machine Weight", value: "45Kg" },
+  ];
+
+  const xtff24FeedRates = [
+    { label: "Facing Feed (1.75mm Pitch Feed Screw)", value: "0.10/0.41mm" },
+    { label: "Facing Feed (3mm Pitch Feed Screw)", value: "0.18/0.71mm" },
+  ];
+
+  // Data for the XTFF40 Flange Facer
   const xtff40TechnicalDetails = [
     { label: "Facing Diameter Range", value: "150-1000mm (6-40\")" },
     { label: "I.D Clamp Range", value: "145- 860mm (6-34\")" },
@@ -109,7 +129,7 @@ const FlangeFacingMachine = () => {
     ],
   };
 
-  // Data for the XTFF60 Flange Facer (kept for context)
+  // Data for the XTFF60 Flange Facer
   const xtff60TechnicalDetails = [
     { label: "Facing Diameter Range", value: "500-1650mm (20-65\")" },
     { label: "I.D Clamp Range", value: "500-1500 mm(20-59\")" },
@@ -141,7 +161,7 @@ const FlangeFacingMachine = () => {
     ],
   };
 
-  // Data for the NEW XTFF80 Flange Facer (kept for context)
+  // Data for the XTFF80 Flange Facer
   const xtff80TechnicalDetails = [
     { label: "Facing Diameter Range", value: "762-2032mm (30-80\")" },
     { label: "I.D Clamp Range", value: "762-1804mm(30-71\")" },
@@ -173,7 +193,7 @@ const FlangeFacingMachine = () => {
     ],
   };
 
-  // Data for the XTFF120 Flange Facer (Derived from image_ee6f63.jpg)
+  // Data for the XTFF120 Flange Facer
   const xtff120TechnicalDetails = [
     { label: "Facing Diameter Range", value: "1150-3050mm (45-120\")" },
     { label: "I.D Clamp Range", value: "1060-2800mm (42-110\")" },
@@ -208,8 +228,32 @@ const FlangeFacingMachine = () => {
     ],
   };
 
-  // Combined description/features text for XTFF120 (as a single block)
-  // Replaced bullet-point structure with paragraph breaks (<br>) for the requested continuous text style.
+  // Data for XTFF178 Circular Mill
+  const xtff178TechnicalDetails = [
+    { label: "Facing Diameter Range", value: "2000-4500mm (78-178\")" },
+    { label: "I.D Clamp Range", value: "0-4300mm (75-169\")" },
+    { label: "Rotation RPM", value: "0-3" },
+    { label: "Rotation Drive Unit - Hydraulic", value: "(2) × 3.5HP (2.6kW)" },
+    { label: "Spindle Head Slide Stroke Spindle", value: "1000mm (39\")" },
+    { label: "Head Stroke", value: "250mm (10\")" },
+    { label: "Spindle Head Taper", value: "NT50" },
+    { label: "Spindle Drive Power Unit - Hydraulic", value: "25HP (18.5kW)" },
+    { label: "Machine Weight", value: "4450Kg" },
+    { label: "Shipping Weight", value: "6220Kg" },
+  ];
+
+  // Data for XTFM12M Mini Flange Facer
+  const xtfm12mTechnicalDetails = [
+    { label: "Min facing diameter", value: "25.4mm" },
+    { label: "Max facing diameter", value: "350mm" },
+    { label: "Tool post travel", value: "70mm" },
+  ];
+
+  const xtfm12mPortableDetails = [
+    { label: "Machine weight", value: "7 KG" },
+    { label: "Packing total", value: "11 KG" },
+  ];
+
   const xtff120CombinedDescription = `XTORC Flange Facing machine is designed for on-site machining with lightweight capabilities and high accuracy consideration, it Adopts ascendant Processing technology to make sure the best accurateness and high efficiency. It's widely used for petroleum, Chemical industry, electric plant, ship building, wind power, energy, defense etc. 
 
 Large, industrial grade, high precision rotary bearings provide stable, smooth motion output throughout the entire machine facing range, it can easily handle challenging flange repair applications to meet or restore the demanding requirements of the manufacturer.
@@ -218,6 +262,54 @@ Flange facing machine adopt independent design of quick model parts, therefore, 
 
 Tube sheet mounting kit adds a mounted way for heat exchanger repair. Milling head and distributor hoses for rotary milling. Back facing kit available for heat exchanger flange back faces in one setup.`;
 
+  // Reusable compact 2-column details renderer
+  const renderDetails = (title, items) => (
+    <div className="border border-gray-600 rounded-lg overflow-hidden shadow-xl w-full max-w-7xl mx-auto">
+      <div className="bg-gray-800 py-2 sm:py-2.5">
+        <h3 className="text-base sm:text-lg font-bold text-white text-center">{title}</h3>
+      </div>
+      <div className="divide-y divide-gray-700 text-xs sm:text-sm">
+        {items.map((item, index) => (
+          <div key={index} className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors leading-tight">
+            <div className="py-1.5 sm:py-2 px-3 font-medium text-gray-300 border-r border-gray-700">{item.label}</div>
+            <div className="py-1.5 sm:py-2 px-3 text-white text-right break-words">{item.value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  // Reusable compact 3-column feed rate renderer
+  const renderFeedRates = (title, feedRates) => (
+    <div className="border border-gray-600 rounded-lg overflow-hidden shadow-xl w-full max-w-7xl mx-auto mt-6 sm:mt-8">
+      <div className="bg-gray-800 py-2 sm:py-2.5">
+        <h3 className="text-base sm:text-lg font-bold text-white text-center">{title}</h3>
+      </div>
+      <div className="grid grid-cols-3 divide-x divide-gray-700 bg-gray-900 text-xs sm:text-sm font-bold">
+        <div className="py-1.5 px-2 text-center text-red-500">IN (mm/rev)</div>
+        <div className="py-1.5 px-2 text-center text-red-500">OUT (mm/rev)</div>
+        <div className="py-1.5 px-2 text-center text-red-500">UP/DOWN (mm/rev)</div>
+      </div>
+      <div className="divide-y divide-gray-700 text-[11px] sm:text-xs">
+        {Array.from({ length: 3 }).map((_, index) => (
+          <div key={index} className="grid grid-cols-3 divide-x divide-gray-700 bg-black hover:bg-gray-900 transition-colors leading-tight">
+            <div className="grid grid-cols-2 divide-x divide-gray-700">
+              <div className="py-1 sm:py-1.5 px-2 font-medium text-gray-300 text-center">Gear {feedRates.in[index].gear}</div>
+              <div className="py-1 sm:py-1.5 px-2 text-white text-right break-words">{feedRates.in[index].rate}</div>
+            </div>
+            <div className="grid grid-cols-2 divide-x divide-gray-700">
+              <div className="py-1 sm:py-1.5 px-2 font-medium text-gray-300 text-center">Gear {feedRates.out[index].gear}</div>
+              <div className="py-1 sm:py-1.5 px-2 text-white text-right break-words">{feedRates.out[index].rate}</div>
+            </div>
+            <div className="grid grid-cols-2 divide-x divide-gray-700">
+              <div className="py-1 sm:py-1.5 px-2 font-medium text-gray-300 text-center">Gear {feedRates.upDown[index].gear}</div>
+              <div className="py-1 sm:py-1.5 px-2 text-white text-right break-words">{feedRates.upDown[index].rate}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <div className="bg-black text-white" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -231,7 +323,7 @@ Tube sheet mounting kit adds a mounted way for heat exchanger repair. Milling he
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Section (Introductory Text) */}
           <div className="space-y-6">
@@ -265,14 +357,6 @@ Tube sheet mounting kit adds a mounted way for heat exchanger repair. Milling he
               </div>
             </div>
 
-            {/* <div className="flex justify-center">
-              <button
-                className="text-red-600 px-8 py-3 rounded-2xl text-2xl font-bold hover:bg-red-700 hover:text-white transition-colors"
-                style={{ backgroundColor: '#ffffff' }}
-              >
-                Download Catalog
-              </button>
-            </div> */}
             <div className="flex justify-center">
               <a
                 href="XTORC IN-SITU MACHINES BROCHURE.pdf"
@@ -330,49 +414,9 @@ Tube sheet mounting kit adds a mounted way for heat exchanger repair. Milling he
             </div>
           </div>
 
-          <div className="mt-20">
-            <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-              <div className="bg-gray-800 py-4">
-                <h3 className="text-3xl text-white text-center mb-2" >TECHNICAL DETAILS (XTFF24)</h3>
-              </div>
-              <div className="divide-y divide-gray-700">
-                {[
-                  { label: "Facing Diameter Range", value: "50-610mm (2-24\")" },
-                  { label: "I.D Clamp Range", value: "50-610mm (2-24\")" },
-                  { label: "Min Swing Diameter", value: "515mm" },
-                  { label: "Tool Post Stroke", value: "50 (2\")" },
-                  { label: "Tool Post Swivel Angle", value: "+ / - 30°" },
-                  { label: "R.P.M", value: "0-42" },
-                  { label: "Drive Power Unit - Pneumatic", value: "1. 2Hp (0.8 Kw)" },
-                  { label: "Air Consumption / Supply Required", value: "1.2m³/min" },
-                  { label: "Drive Power Unit - Electric", value: "1HP (0.75kw)" },
-                  { label: "Electric Requirements", value: "Single phase, 110V/230V, 50/60HZ" },
-                  { label: "Machine Weight", value: "45Kg" },
-                ].map((item, index) => (
-                  <div key={index} className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors">
-                    <div className="p-4 text-xl font-medium text-gray-300 border-r border-gray-700">{item.label}</div>
-                    <div className="p-4 text-xl text-white text-right">{item.value}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar mt-10">
-              <div className="bg-gray-800 py-4">
-                <h3 className="text-3xl text-white text-center mb-2" >FEED RATES (XTFF24)</h3>
-              </div>
-              <div className="divide-y divide-gray-700">
-                {[
-                  { label: "Facing Feed (1.75mm Pitch Feed Screw)", value: "0.10/0.41mm" },
-                  { label: "Facing Feed (3mm Pitch Feed Screw)", value: "0.18/0.71mm" },
-                ].map((item, index) => (
-                  <div key={index} className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors">
-                    <div className="p-4 text-xl font-medium text-gray-300 border-r border-gray-700">{item.label}</div>
-                    <div className="p-4 text-xl text-white text-right">{item.value}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="mt-12 space-y-6">
+            {renderDetails("TECHNICAL DETAILS (XTFF24)", xtff24TechnicalDetails)}
+            {renderDetails("FEED RATES (XTFF24)", xtff24FeedRates)}
           </div>
         </div>
         
@@ -422,47 +466,9 @@ Tube sheet mounting kit adds a mounted way for heat exchanger repair. Milling he
             </div>
           </div>
 
-          <div className="mt-20">
-            <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-              <div className="bg-gray-800 py-4">
-                <h3 className="text-3xl text-white text-center mb-2" >TECHNICAL DETAILS (XTFF40)</h3>
-              </div>
-              <div className="divide-y divide-gray-700">
-                {xtff40TechnicalDetails.map((item, index) => (
-                  <div key={index} className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors">
-                    <div className="p-4 text-xl font-medium text-gray-300 border-r border-gray-700">{item.label}</div>
-                    <div className="p-4 text-xl text-white text-right">{item.value}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar mt-10">
-              <div className="bg-gray-800 py-4">
-                <h3 className="text-3xl text-white text-center mb-2" >FEED RATES (XTFF40)</h3>
-              </div>
-              <div className="grid grid-cols-3 divide-x divide-gray-700 bg-gray-900 text-lg font-bold">
-                <div className="p-3 text-center text-red-600">IN (mm/rev)</div>
-                <div className="p-3 text-center text-red-600">OUT (mm/rev)</div>
-                <div className="p-3 text-center text-red-600">UP/DOWN (mm/rev)</div>
-              </div>
-              {Array.from({ length: 3 }).map((_, index) => (
-                <div key={index} className="grid grid-cols-3 divide-x divide-gray-700 bg-black hover:bg-gray-900 transition-colors">
-                  <div className="grid grid-cols-2 divide-x divide-gray-700">
-                    <div className="p-4 text-lg font-medium text-gray-300 text-center">Gear {xtff40FeedRates.in[index].gear}</div>
-                    <div className="p-4 text-lg text-white text-right">{xtff40FeedRates.in[index].rate}</div>
-                  </div>
-                  <div className="grid grid-cols-2 divide-x divide-gray-700">
-                    <div className="p-4 text-lg font-medium text-gray-300 text-center">Gear {xtff40FeedRates.out[index].gear}</div>
-                    <div className="p-4 text-lg text-white text-right">{xtff40FeedRates.out[index].rate}</div>
-                  </div>
-                  <div className="grid grid-cols-2 divide-x divide-gray-700">
-                    <div className="p-4 text-lg font-medium text-gray-300 text-center">Gear {xtff40FeedRates.upDown[index].gear}</div>
-                    <div className="p-4 text-lg text-white text-right">{xtff40FeedRates.upDown[index].rate}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="mt-12">
+            {renderDetails("TECHNICAL DETAILS (XTFF40)", xtff40TechnicalDetails)}
+            {renderFeedRates("FEED RATES (XTFF40)", xtff40FeedRates)}
           </div>
         </div>
 
@@ -506,47 +512,9 @@ Tube sheet mounting kit adds a mounted way for heat exchanger repair. Milling he
             </div>
           </div>
 
-          <div className="mt-20">
-            <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-              <div className="bg-gray-800 py-4">
-                <h3 className="text-3xl text-white text-center mb-2" >TECHNICAL DETAILS (XTFF60)</h3>
-              </div>
-              <div className="divide-y divide-gray-700">
-                {xtff60TechnicalDetails.map((item, index) => (
-                  <div key={index} className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors">
-                    <div className="p-4 text-xl font-medium text-gray-300 border-r border-gray-700">{item.label}</div>
-                    <div className="p-4 text-xl text-white text-right">{item.value}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar mt-10">
-              <div className="bg-gray-800 py-4">
-                <h3 className="text-3xl text-white text-center mb-2" >FEED RATES (XTFF60)</h3>
-              </div>
-              <div className="grid grid-cols-3 divide-x divide-gray-700 bg-gray-900 text-lg font-bold">
-                <div className="p-3 text-center text-red-600">IN (mm/rev)</div>
-                <div className="p-3 text-center text-red-600">OUT (mm/rev)</div>
-                <div className="p-3 text-center text-red-600">UP/DOWN (mm/rev)</div>
-              </div>
-              {Array.from({ length: 3 }).map((_, index) => (
-                <div key={index} className="grid grid-cols-3 divide-x divide-gray-700 bg-black hover:bg-gray-900 transition-colors">
-                  <div className="grid grid-cols-2 divide-x divide-gray-700">
-                    <div className="p-4 text-lg font-medium text-gray-300 text-center">Gear {xtff60FeedRates.in[index].gear}</div>
-                    <div className="p-4 text-lg text-white text-right">{xtff60FeedRates.in[index].rate}</div>
-                  </div>
-                  <div className="grid grid-cols-2 divide-x divide-gray-700">
-                    <div className="p-4 text-lg font-medium text-gray-300 text-center">Gear {xtff60FeedRates.out[index].gear}</div>
-                    <div className="p-4 text-lg text-white text-right">{xtff60FeedRates.out[index].rate}</div>
-                  </div>
-                  <div className="grid grid-cols-2 divide-x divide-gray-700">
-                    <div className="p-4 text-lg font-medium text-gray-300 text-center">Gear {xtff60FeedRates.upDown[index].gear}</div>
-                    <div className="p-4 text-lg text-white text-right">{xtff60FeedRates.upDown[index].rate}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="mt-12">
+            {renderDetails("TECHNICAL DETAILS (XTFF60)", xtff60TechnicalDetails)}
+            {renderFeedRates("FEED RATES (XTFF60)", xtff60FeedRates)}
           </div>
         </div>
         
@@ -590,55 +558,14 @@ Tube sheet mounting kit adds a mounted way for heat exchanger repair. Milling he
             </div>
           </div>
 
-          <div className="mt-20">
-            <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-              <div className="bg-gray-800 py-4">
-                <h3 className="text-3xl text-white text-center mb-2" >TECHNICAL DETAILS (XTFF80)</h3>
-              </div>
-              <div className="divide-y divide-gray-700">
-                {xtff80TechnicalDetails.map((item, index) => (
-                  <div key={index} className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors">
-                    <div className="p-4 text-xl font-medium text-gray-300 border-r border-gray-700">{item.label}</div>
-                    <div className="p-4 text-xl text-white text-right">{item.value}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar mt-10">
-              <div className="bg-gray-800 py-4">
-                <h3 className="text-3xl text-white text-center mb-2" >FEED RATES (XTFF80)</h3>
-              </div>
-              <div className="grid grid-cols-3 divide-x divide-gray-700 bg-gray-900 text-lg font-bold">
-                <div className="p-3 text-center text-red-600">IN (mm/rev)</div>
-                <div className="p-3 text-center text-red-600">OUT (mm/rev)</div>
-                <div className="p-3 text-center text-red-600">UP/DOWN (mm/rev)</div>
-              </div>
-              {Array.from({ length: 3 }).map((_, index) => (
-                <div key={index} className="grid grid-cols-3 divide-x divide-gray-700 bg-black hover:bg-gray-900 transition-colors">
-                  <div className="grid grid-cols-2 divide-x divide-gray-700">
-                    <div className="p-4 text-lg font-medium text-gray-300 text-center">Gear {xtff80FeedRates.in[index].gear}</div>
-                    <div className="p-4 text-lg text-white text-right">{xtff80FeedRates.in[index].rate}</div>
-                  </div>
-                  <div className="grid grid-cols-2 divide-x divide-gray-700">
-                    <div className="p-4 text-lg font-medium text-gray-300 text-center">Gear {xtff80FeedRates.out[index].gear}</div>
-                    <div className="p-4 text-lg text-white text-right">{xtff80FeedRates.out[index].rate}</div>
-                  </div>
-                  <div className="grid grid-cols-2 divide-x divide-gray-700">
-                    <div className="p-4 text-lg font-medium text-gray-300 text-center">Gear {xtff80FeedRates.upDown[index].gear}</div>
-                    <div className="p-4 text-lg text-white text-right">{xtff80FeedRates.upDown[index].rate}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="mt-12">
+            {renderDetails("TECHNICAL DETAILS (XTFF80)", xtff80TechnicalDetails)}
+            {renderFeedRates("FEED RATES (XTFF80)", xtff80FeedRates)}
           </div>
         </div>
         
-        {/* ==================================================================================== */}
-        {/* --- XTFF120 FLANGE FACER (MODIFIED TO SINGLE TEXT BLOCK) --- */}
-        {/* ==================================================================================== */}
+        {/* --- XTFF120 FLANGE FACER --- */}
         <div className="mt-20">
-          {/* Section Title */}
           <div>
             <h2 className="text-4xl text-center text-white mb-2" >
               XTFF120 FLANGE FACER
@@ -646,232 +573,89 @@ Tube sheet mounting kit adds a mounted way for heat exchanger repair. Milling he
             <div className="w-120 rounded-2xl h-1 bg-red-600 mx-auto" style={{ maxWidth: '400px' }}></div>
           </div>
 
-          {/* Combined Description/Features Block (NO POINTS, NO IMAGE) */}
-          <div className="mt-8 text-xl text-gray-200 leading-relaxed text-justify text-justify">
+          <div className="mt-8 text-xl text-gray-200 leading-relaxed text-justify">
             <p dangerouslySetInnerHTML={{ __html: xtff120CombinedDescription }} className="whitespace-pre-wrap"></p>
           </div>
 
-          {/* Technical Details and Feed Rates Table (from image_ee6f63.jpg) */}
-          <div className="mt-20">
-            {/* Technical Details Table */}
-            <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-              <div className="bg-gray-800 py-4">
-                <h3 className="text-3xl text-white text-center mb-2" >TECHNICAL DETAILS (XTFF120)</h3>
-              </div>
-              <div className="divide-y divide-gray-700">
-                {xtff120TechnicalDetails.map((item, index) => (
-                  <div key={index} className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors">
-                    <div className="p-4 text-xl font-medium text-gray-300 border-r border-gray-700">{item.label}</div>
-                    <div className="p-4 text-xl text-white text-right">{item.value}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Feed Rates Table */}
-            <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar mt-10">
-              <div className="bg-gray-800 py-4">
-                <h3 className="text-3xl text-white text-center mb-2" >FEED RATES (XTFF120)</h3>
-              </div>
-              <div className="grid grid-cols-3 divide-x divide-gray-700 bg-gray-900 text-lg font-bold">
-                <div className="p-3 text-center text-red-600">IN (mm/rev)</div>
-                <div className="p-3 text-center text-red-600">OUT (mm/rev)</div>
-                <div className="p-3 text-center text-red-600">UP/DOWN (mm/rev)</div>
-              </div>
-              {Array.from({ length: 3 }).map((_, index) => (
-                <div key={index} className="grid grid-cols-3 divide-x divide-gray-700 bg-black hover:bg-gray-900 transition-colors">
-                  <div className="grid grid-cols-2 divide-x divide-gray-700">
-                    <div className="p-4 text-lg font-medium text-gray-300 text-center">Gear {xtff120FeedRates.in[index].gear}</div>
-                    <div className="p-4 text-lg text-white text-right">{xtff120FeedRates.in[index].rate}</div>
-                  </div>
-                  <div className="grid grid-cols-2 divide-x divide-gray-700">
-                    <div className="p-4 text-lg font-medium text-gray-300 text-center">Gear {xtff120FeedRates.out[index].gear}</div>
-                    <div className="p-4 text-lg text-white text-right">{xtff120FeedRates.out[index].rate}</div>
-                  </div>
-                  <div className="grid grid-cols-2 divide-x divide-gray-700">
-                    <div className="p-4 text-lg font-medium text-gray-300 text-center">Gear {xtff120FeedRates.upDown[index].gear}</div>
-                    <div className="p-4 text-lg text-white text-right">{xtff120FeedRates.upDown[index].rate}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="mt-12">
+            {renderDetails("TECHNICAL DETAILS (XTFF120)", xtff120TechnicalDetails)}
+            {renderFeedRates("FEED RATES (XTFF120)", xtff120FeedRates)}
           </div>
         </div>
-        {/* End of XTFF120 section */}
-        {/* ==================================================================================== */}
 
-{/* --- XTFF178 CIRCULAR MILL --- */}
-{/* ==================================================================================== */}
-<div className="mt-20">
-  {/* Section Title */}
-  <div>
-    <h2
-      className="text-4xl text-center text-white mb-2"
-      
-    >
-      XTFF178 CIRCULAR MILL
-    </h2>
-    <div
-      className="w-120 rounded-2xl h-1 bg-red-600 mx-auto"
-      style={{ maxWidth: "400px" }}
-    ></div>
-  </div>
-
-  {/* Description */}
-  <div className="mt-8 text-xl text-gray-200 leading-relaxed text-justify space-y-4 text-justify">
-    <p>
-      XTFF178 Circular Mills is designed for machining of large flanges, wind turbine rotor blades,
-      and wind turbine tower flanges. Crane pedestals and heavy construction and mining.
-    </p>
-
-    <h3 className="text-2xl font-bold text-red-600 mt-6">
-      PRECISE BEARING &amp; STEADY MAIN BODY
-    </h3>
-    <p>
-      Provide the most powerful guarantee for machining using precise bearing &amp; steady main
-      body, equipped with adjustment leg and jacking leg, various sizes of feet. Easy and fast to
-      install on site.
-    </p>
-
-    <h3 className="text-2xl font-bold text-red-600 mt-6">SMOOTH CUTTING</h3>
-    <p>
-      All feed of milling spindle head adopt precision machined dovetail ways and adjustable Turcite-B
-      coated gibes provide smooth accurate travel.
-    </p>
-
-    <h3 className="text-2xl font-bold text-red-600 mt-6">ROTARY UNION</h3>
-    <p>
-      Solve the problem of oil hosing winding using rotary joints when the machine is rotating.
-    </p>
-
-    <h3 className="text-2xl font-bold text-red-600 mt-6">DRIVE UNIT</h3>
-    <p>
-      The machine is driven by (2) 3.5HP hydraulic motors to effectively eliminate the gap of gears
-      and ensure smooth cutting. Hydraulic power provides the greatest possibility for cutting. It
-      can achieve cuts up to a maximum depth of 2mm on flanges.
-    </p>
-  </div>
-
-  {/* Technical Details */}
-  <div className="mt-20">
-    <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-      <div className="bg-gray-800 py-4">
-        <h3
-          className="text-3xl text-white text-center mb-2"
-          
-        >
-          TECHNICAL DETAILS (XTFF178)
-        </h3>
-      </div>
-
-      <div className="divide-y divide-gray-700">
-        {[
-          { label: "Facing Diameter Range", value: "2000-4500mm (78-178\")" },
-          { label: "I.D Clamp Range", value: "0-4300mm (75-169\")" },
-          { label: "Rotation RPM", value: "0-3" },
-          { label: "Rotation Drive Unit - Hydraulic", value: "(2) × 3.5HP (2.6kW)" },
-          { label: "Spindle Head Slide Stroke Spindle", value: "1000mm (39\")" },
-          { label: "Head Stroke", value: "250mm (10\")" },
-          { label: "Spindle Head Taper", value: "NT50" },
-          { label: "Spindle Drive Power Unit - Hydraulic", value: "25HP (18.5kW)" },
-          { label: "Machine Weight", value: "4450Kg" },
-          { label: "Shipping Weight", value: "6220Kg" },
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors"
-          >
-            <div className="p-4 text-xl font-medium text-gray-300 border-r border-gray-700">
-              {item.label}
-            </div>
-            <div className="p-4 text-xl text-white text-right">{item.value}</div>
+        {/* --- XTFF178 CIRCULAR MILL --- */}
+        <div className="mt-20">
+          <div>
+            <h2 className="text-4xl text-center text-white mb-2">
+              XTFF178 CIRCULAR MILL
+            </h2>
+            <div className="w-120 rounded-2xl h-1 bg-red-600 mx-auto" style={{ maxWidth: "400px" }}></div>
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</div>
-{/* End of XTFF178 Section */}
-{/* --- XTFM12M MINI FLANGE FACER --- */}
-<div className="mt-20">
-  <div>
-    <h2 className="text-4xl text-center text-white mb-2" >
-      XTFM12M MINI FLANGE FACER
-    </h2>
-    <div className="w-120 rounded-2xl h-1 bg-red-600 mx-auto" style={{ maxWidth: '400px' }}></div>
-  </div>
 
-  {/* Description */}
-  <div className="mt-8 text-body text-center max-w-4xl mx-auto space-y-4">
-    <p>
-      Our TTFM12M Mini flange facer, easy working flange facing repair, easy to operate.
-    </p>
-    <p>
-      Allows any technician to recondition RF/FF and other gasket settings in situ, the internal diameter that can be clamped is 25.4mm to 254mm.
-      Due to clamping and machining range, the Mini facer is a very efficient tool for service or repair workshop
-      but also for piping construction companies and vessel manufacturers.
-    </p>
-  </div>
+          <div className="mt-8 text-xl text-gray-200 leading-relaxed text-justify space-y-4">
+            <p>
+              XTFF178 Circular Mills is designed for machining of large flanges, wind turbine rotor blades,
+              and wind turbine tower flanges. Crane pedestals and heavy construction and mining.
+            </p>
 
-  {/* Technical Details */}
-  <div className="mt-20">
-    <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-      <div className="bg-gray-800 py-4">
-        <h3 className="text-3xl text-white text-center mb-2" >
-          TECHNICAL DETAILS (XTFM12M)
-        </h3>
-      </div>
+            <h3 className="text-2xl font-bold text-red-600 mt-6">
+              PRECISE BEARING &amp; STEADY MAIN BODY
+            </h3>
+            <p>
+              Provide the most powerful guarantee for machining using precise bearing &amp; steady main
+              body, equipped with adjustment leg and jacking leg, various sizes of feet. Easy and fast to
+              install on site.
+            </p>
 
-      <div className="divide-y divide-gray-700">
-        {[
-          { label: "Min facing diameter", value: "25.4mm" },
-          { label: "Max facing diameter", value: "350mm" },
-          { label: "Tool post travel", value: "70mm" },
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors"
-          >
-            <div className="p-4 text-xl font-medium text-gray-300 border-r border-gray-700">
-              {item.label}
-            </div>
-            <div className="p-4 text-xl text-white text-right">{item.value}</div>
+            <h3 className="text-2xl font-bold text-red-600 mt-6">SMOOTH CUTTING</h3>
+            <p>
+              All feed of milling spindle head adopt precision machined dovetail ways and adjustable Turcite-B
+              coated gibes provide smooth accurate travel.
+            </p>
+
+            <h3 className="text-2xl font-bold text-red-600 mt-6">ROTARY UNION</h3>
+            <p>
+              Solve the problem of oil hosing winding using rotary joints when the machine is rotating.
+            </p>
+
+            <h3 className="text-2xl font-bold text-red-600 mt-6">DRIVE UNIT</h3>
+            <p>
+              The machine is driven by (2) 3.5HP hydraulic motors to effectively eliminate the gap of gears
+              and ensure smooth cutting. Hydraulic power provides the greatest possibility for cutting. It
+              can achieve cuts up to a maximum depth of 2mm on flanges.
+            </p>
           </div>
-        ))}
-      </div>
-    </div>
 
-    {/* Ultra-Portable Section */}
-    <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar mt-10">
-      <div className="bg-gray-800 py-4">
-        <h3 className="text-3xl text-white text-center mb-2" >
-          ULTRA-PORTABLE
-        </h3>
-      </div>
-
-      <div className="divide-y divide-gray-700">
-        {[
-          { label: "Machine weight", value: "7 KG" },
-          { label: "Packing total", value: "11 KG" },
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="grid grid-cols-2 bg-black hover:bg-gray-900 transition-colors"
-          >
-            <div className="p-4 text-xl font-medium text-gray-300 border-r border-gray-700">
-              {item.label}
-            </div>
-            <div className="p-4 text-xl text-white text-right">{item.value}</div>
+          <div className="mt-12">
+            {renderDetails("TECHNICAL DETAILS (XTFF178)", xtff178TechnicalDetails)}
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</div>
-{/* End of XTFM12M Section */}
+        </div>
 
+        {/* --- XTFM12M MINI FLANGE FACER --- */}
+        <div className="mt-20">
+          <div>
+            <h2 className="text-4xl text-center text-white mb-2" >
+              XTFM12M MINI FLANGE FACER
+            </h2>
+            <div className="w-120 rounded-2xl h-1 bg-red-600 mx-auto" style={{ maxWidth: '400px' }}></div>
+          </div>
 
-        
+          <div className="mt-8 text-body text-center max-w-4xl mx-auto space-y-4">
+            <p>
+              Our TTFM12M Mini flange facer, easy working flange facing repair, easy to operate.
+            </p>
+            <p>
+              Allows any technician to recondition RF/FF and other gasket settings in situ, the internal diameter that can be clamped is 25.4mm to 254mm.
+              Due to clamping and machining range, the Mini facer is a very efficient tool for service or repair workshop
+              but also for piping construction companies and vessel manufacturers.
+            </p>
+          </div>
+
+          <div className="mt-12 space-y-6">
+            {renderDetails("TECHNICAL DETAILS (XTFM12M)", xtfm12mTechnicalDetails)}
+            {renderDetails("ULTRA-PORTABLE", xtfm12mPortableDetails)}
+          </div>
+        </div>
       </div>
     </div>
   );

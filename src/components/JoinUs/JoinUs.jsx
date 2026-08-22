@@ -4,32 +4,56 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Upload, Send, AlertCircle, X } from "lucide-react";
 import { api } from "@/services/apiClient";
 
-// Clean & Simple Pop-up Toast Notification
-function ToastNotification({ message, onClose }) {
+// Compact & Ultra-Sleek Glassmorphism Toast Notification
+function ToastNotification({ message, onClose, duration = 5000 }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose();
-    }, 5000);
+    }, duration);
     return () => clearTimeout(timer);
-  }, [onClose]);
+  }, [onClose, duration]);
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: 40, scale: 0.95 }}
-      animate={{ opacity: 1, x: 0, scale: 1 }}
-      exit={{ opacity: 0, x: 40, scale: 0.95 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className="fixed top-20 sm:top-24 right-6 z-[150] px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-white shadow-xl flex items-center gap-3 text-xs max-w-xs sm:max-w-sm text-left"
+      initial={{ opacity: 0, y: -15, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -15, scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 450, damping: 30 }}
+      className="fixed top-20 sm:top-24 right-4 sm:right-6 z-[200] max-w-[340px] w-[calc(100vw-2rem)] rounded-xl bg-zinc-950/95 backdrop-blur-xl border border-red-500/30 text-white shadow-[0_10px_30px_-5px_rgba(220,38,38,0.25),0_6px_15px_rgba(0,0,0,0.5)] overflow-hidden"
     >
-      <div className="w-2 h-2 rounded-full bg-red-600 flex-shrink-0" />
-      <span className="font-medium text-gray-200 flex-1 leading-snug">{message}</span>
-      <button
-        type="button"
-        onClick={onClose}
-        className="text-zinc-400 hover:text-white transition p-1 cursor-pointer flex-shrink-0"
-      >
-        <X className="w-3.5 h-3.5" />
-      </button>
+      <div className="px-3.5 py-2.5 flex items-center gap-2.5">
+        {/* Compact Glowing Icon Badge */}
+        <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center flex-shrink-0 shadow-sm border border-red-400/40">
+          <AlertCircle className="w-4 h-4 text-white" />
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 text-left min-w-0 pr-1">
+          <p className="text-xs text-zinc-200 font-medium leading-snug">
+            {message}
+          </p>
+        </div>
+
+        {/* Close Button */}
+        <button
+          type="button"
+          onClick={onClose}
+          className="text-zinc-400 hover:text-white p-1 rounded-md hover:bg-zinc-800/60 transition-colors cursor-pointer flex-shrink-0"
+          aria-label="Close notification"
+        >
+          <X className="w-3.5 h-3.5" />
+        </button>
+      </div>
+
+      {/* Sleek 2px Progress Bar */}
+      <div className="w-full h-[2px] bg-zinc-900 overflow-hidden">
+        <motion.div
+          initial={{ width: "100%" }}
+          animate={{ width: "0%" }}
+          transition={{ duration: duration / 1000, ease: "linear" }}
+          className="h-full bg-gradient-to-r from-red-600 via-red-500 to-red-600 shadow-[0_0_6px_rgba(239,68,68,0.8)]"
+        />
+      </div>
     </motion.div>
   );
 }
@@ -90,6 +114,7 @@ export default function CareersSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const formContainerRef = useRef(null);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -103,6 +128,25 @@ export default function CareersSection() {
     noticePeriod: "Immediate",
     whyJoinXtorc: "",
   });
+
+  const handleCloseForm = () => {
+    setIsSubmitted(false);
+    setShowForm(false);
+    setSelectedFile(null);
+    setErrorMessage("");
+    setFormData({
+      fullName: "",
+      email: "",
+      mobileNumber: "",
+      currentCity: "",
+      positionInterestedIn: "Sales",
+      totalExperience: "Fresher",
+      currentCompany: "",
+      currentDesignation: "",
+      noticePeriod: "Immediate",
+      whyJoinXtorc: "",
+    });
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -202,25 +246,10 @@ export default function CareersSection() {
       await api.post("/careers/apply", bodyFormData);
 
       setIsSubmitted(true);
-      // Auto-reset form after 4 seconds
+      // Smoothly scroll to the confirmation message so user is not left at footer
       setTimeout(() => {
-        setIsSubmitted(false);
-        setShowForm(false);
-        setSelectedFile(null);
-        setErrorMessage("");
-        setFormData({
-          fullName: "",
-          email: "",
-          mobileNumber: "",
-          currentCity: "",
-          positionInterestedIn: "Sales",
-          totalExperience: "Fresher",
-          currentCompany: "",
-          currentDesignation: "",
-          noticePeriod: "Immediate",
-          whyJoinXtorc: "",
-        });
-      }, 4000);
+        formContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
     } catch (err) {
       const backendMessage = err?.message || "Failed to submit application. Please verify your details.";
       setErrorMessage(backendMessage);
@@ -261,14 +290,14 @@ export default function CareersSection() {
         )}
       </AnimatePresence>
 
-      <div className="w-full max-w-4xl mx-auto">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Heading */}
-        <div className="w-fit mx-auto flex flex-col items-center mb-6">
-          <motion.h2 className="heading-main mb-0" variants={itemVariants}>
+        <motion.div variants={itemVariants} className="w-fit mx-auto flex flex-col items-center mb-6">
+          <h2 className="heading-main mb-0">
             Join Us
-          </motion.h2>
+          </h2>
           <div className="w-full h-1 bg-red-600 rounded-full mt-2"></div>
-        </div>
+        </motion.div>
 
         <motion.h3 className="heading-sub mb-8 text-gray-200" variants={itemVariants}>
           Be Part of Our Growth Story
@@ -293,6 +322,7 @@ export default function CareersSection() {
         <AnimatePresence>
           {showForm && (
             <motion.div
+              ref={formContainerRef}
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -317,10 +347,7 @@ export default function CareersSection() {
                       Thank you for applying. An email notification with your resume has been sent directly to the XTORC HR & Admin team.
                     </p>
                     <button
-                      onClick={() => {
-                        setIsSubmitted(false);
-                        setShowForm(false);
-                      }}
+                      onClick={handleCloseForm}
                       className="bg-red-600 hover:bg-red-700 text-white font-bold text-sm px-6 py-2.5 rounded-xl transition cursor-pointer"
                     >
                       Close Form

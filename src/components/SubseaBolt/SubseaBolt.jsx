@@ -107,7 +107,7 @@ const SubseaBolt = () => {
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Section */}
           <div className="space-y-6">
@@ -143,15 +143,7 @@ nut engagement. </p>
             </div>
 
             {/* Download Catalog Button */}
-            {/* <div className="flex justify-center">
-              <button
-                className="text-red-600 px-8 py-3 rounded-2xl text-2xl font-bold hover:bg-red-700 hover:text-white transition-colors"
-                style={{ backgroundColor: "#ffffff" }}
-              >
-                Download Catalog
-              </button>
-            </div> */}
-                  <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download
@@ -165,14 +157,12 @@ nut engagement. </p>
       </div>
 
       {/* --- Technical Specifications Section --- */}
-      {/* REMOVED max-w-7xl and mx-auto to make it full width */}
-
-             <img
-                  src="SubseaBoltTable1blueprint.png"
-                  alt="Hydraulic Nut Splitter"
-                  className="w-[400px] h-[350px] mx-auto object-contain"
-                />
-      <div className="px-4 sm:px-6 lg:px-12 py-12">
+      <img
+        src="SubseaBoltTable1blueprint.png"
+        alt="Subsea Bolt Blueprint"
+        className="w-[400px] h-[350px] mx-auto object-contain"
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-10 text-center">
             <h2 className="text-4xl text-white mb-2" >
               SUBSEA BOLT TENSIONER SPECIFICATIONS
@@ -180,61 +170,61 @@ nut engagement. </p>
             <div className="w-200 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: '600px' }}></div>
         </div>
 
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-          <div>
-            <table className="w-full min-w-max">
-              <thead className="bg-gray-800 text-lg">
-                <tr>
-                  <th colSpan="2" className="p-4 text-center border-r border-gray-700 text-red-500">Model</th>
-                  <th colSpan="2" className="p-4 text-center border-r border-gray-700 text-red-500">Bolt Dia.</th>
-                  <th colSpan="2" className="p-4 text-center border-r border-gray-700 text-red-500">Max Load</th>
-                  <th colSpan="2" className="p-4 text-center border-r border-gray-700 text-red-500">Hydraulic Area</th>
-                  <th rowSpan="2" className="p-4 text-center border-r border-gray-700">Stroke</th>
-                  <th rowSpan="2" className="p-4 text-center border-r border-gray-700">Tool Weight <br/> kg (lbs)</th>
-                  <th colSpan="6" className="p-4 text-center text-red-500">Tool Dimensions inch</th>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[900px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th colSpan="2" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[14%]">Model</th>
+                  <th colSpan="2" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[12%]">Bolt Dia.</th>
+                  <th colSpan="2" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[13%]">Max Load</th>
+                  <th colSpan="2" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[13%]">Hydraulic Area</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[6%]">Stroke</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 w-[8%]">Weight kg(lbs)</th>
+                  <th colSpan="6" className="py-3 px-2 text-center text-red-500 w-[34%]">Dimensions (inch)</th>
                 </tr>
-                <tr className="font-medium text-gray-300">
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">Imperial</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">Metric</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">in</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">mm</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">TONF</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">KN</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">in²</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">cm²</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">a</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">b</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">c</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">d</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">e</th>
-                  <th className="p-3 font-medium text-center border-t border-r border-gray-700">f</th>
+                <tr className="font-medium text-gray-300 leading-tight text-[11px] sm:text-xs">
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">Imperial</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">Metric</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">in</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">mm</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">TONF</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">KN</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">in²</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">cm²</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">a</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">b</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">c</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">d</th>
+                  <th className="py-2 px-1.5 text-center border-t border-r border-gray-700">e</th>
+                  <th className="py-2 px-1.5 text-center border-t border-gray-700">f</th>
                 </tr>
               </thead>
               <tbody>
                 {tableData.map((row, index) => (
-                  <tr key={index} className="bg-black text-center text-lg border-t border-gray-700">
-                    <td className="p-4 font-medium text-gray-300 border-r border-gray-700">{row.imperial}</td>
-                    <td className="p-4 font-medium text-gray-300 border-r border-gray-700">{row.metric}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.boltIn}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.boltMm}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.maxLoadTonf}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.maxLoadKn}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.hydAreaIn}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.hydAreaCm}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.stroke}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.weight}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.dimA}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.dimB}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.dimC}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.dimD}</td>
-                    <td className="p-4 text-white border-r border-gray-700">{row.dimE}</td>
-                    <td className="p-4 text-white">{row.dimF}</td>
+                  <tr key={index} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                    <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.imperial}</td>
+                    <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.metric}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.boltIn}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.boltMm}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.maxLoadTonf}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.maxLoadKn}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.hydAreaIn}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.hydAreaCm}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.stroke}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.weight}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.dimA}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.dimB}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.dimC}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.dimD}</td>
+                    <td className="py-2.5 px-2 text-white border-r border-gray-700 break-words">{row.dimE}</td>
+                    <td className="py-2.5 px-2 text-white break-words">{row.dimF}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-           <div className="bg-gray-800 p-3 text-center text-gray-400">
+           <div className="bg-gray-800 p-2 text-center text-[10px] sm:text-xs text-gray-400">
              Note: Dimensions are subject to change.
            </div>
         </div>

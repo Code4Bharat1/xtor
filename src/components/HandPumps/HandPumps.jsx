@@ -100,7 +100,7 @@ const HandPumps = () => {
       </div>
 
       {/* Main content */}
-      <div className="w-9/10 mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           {/* Left Section */}
           <div className="space-y-6 flex flex-col items-center lg:items-start">
@@ -123,7 +123,7 @@ const HandPumps = () => {
                 Download Catalog
               </button>
             </div> */}
-                  <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <a
                 href="XTORC BROCHURE.pdf"
                 download
@@ -165,64 +165,63 @@ const HandPumps = () => {
         </div>
       </div>
 
-       {/* --- Technical Specifications Table --- */}
-       
-      <div className="w-9/10 mx-auto px-4 py-12">
-        <div className="mb-10 text-center">
-            <h2 className="text-4xl text-white mb-2" >
-              Technical Specifications
-            </h2>
-            <div className="w-100 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "600px" }}></div>
-        </div>
+      {/* --- Technical Specifications Table --- */}
 
-        <div className="border border-gray-600 rounded-lg overflow-x-auto no-scrollbar">
-            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <table className="min-w-full min-w-max">
-                <thead className="bg-gray-800 text-base">
-                <tr>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">Pump Type</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">Usable Oil <br/> Capacity (cm³)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">Model Number</th>
-                    <th colSpan="2" className="p-3 text-center border-r border-gray-700 text-red-500">Pressure Rating (Bar)</th>
-                    <th colSpan="2" className="p-3 text-center border-r border-gray-700 text-red-500">Output Oil Volume Each Stroke (cm³)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">Handle Force (N)</th>
-                    <th colSpan="3" className="p-3 text-center border-r border-gray-700 text-red-500">Dimensions (mm)</th>
-                    <th rowSpan="2" className="p-3 text-center border-r border-gray-700 align-middle">Output Adapter</th>
-                    <th rowSpan="2" className="p-3 text-center align-middle">Weight (Kg)</th>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="mb-10 text-center">
+          <h2 className="text-4xl text-white mb-2" >
+            Technical Specifications
+          </h2>
+          <div className="w-100 rounded-2xl h-1 bg-red-600 mx-auto mt-2" style={{ maxWidth: "600px" }}></div>
+        </div>
+        <div className="border border-gray-600 rounded-xl overflow-hidden shadow-2xl w-full max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[850px] text-xs sm:text-sm">
+              <thead className="bg-gray-800 text-white">
+                <tr className="leading-tight font-bold text-xs sm:text-sm">
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 align-middle w-[8%]">Pump Type</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 align-middle w-[9%]">Usable Oil <br /> (cm³)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 align-middle w-[10%]">Model</th>
+                  <th colSpan="2" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[14%]">Pressure (Bar)</th>
+                  <th colSpan="2" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[14%]">Volume/Stroke (cm³)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 align-middle w-[8%]">Handle Force (N)</th>
+                  <th colSpan="3" className="py-3 px-2 text-center border-r border-gray-700 text-red-500 w-[18%]">Dimensions (mm)</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center border-r border-gray-700 align-middle w-[11%]">Output Adapter</th>
+                  <th rowSpan="2" className="py-3 px-2 text-center align-middle w-[8%]">Weight (Kg)</th>
                 </tr>
-                <tr className="font-medium text-gray-300">
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700">1st Stage</th>
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700">2nd Stage</th>
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700">1st Stage</th>
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700">2nd Stage</th>
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700"> </th>
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700"> </th>
-                    <th className="p-2 font-medium text-center border-t border-r border-gray-700"> </th>
+                <tr className="font-medium text-gray-300 leading-tight text-[11px] sm:text-xs">
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">1st</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">2nd</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">1st</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">2nd</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">L</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">W</th>
+                  <th className="py-2 px-1.5 font-medium text-center border-t border-r border-gray-700">H</th>
                 </tr>
-                </thead>
-                <tbody>
-                    {tableData.map((row, index) => (
-                        <tr key={row.model} className="bg-black text-center text-base border-t border-gray-700">
-                            {index === 0 && <td rowSpan={tableData.length} className="p-2 font-medium text-gray-300 border-r border-gray-700 align-middle">Double Speed</td>}
-                            <td className="p-4 text-white border-r border-gray-700">{row.oilCapacity}</td>
-                            <td className="p-2 font-medium text-gray-300 border-r border-gray-700">{row.model}</td>
-                            <td className="p-2 text-white border-r border-gray-700">{row.p1}</td>
-                            <td className="p-2 text-white border-r border-gray-700">{row.p2}</td>
-                            <td className="p-2 text-white border-r border-gray-700">{row.o1}</td>
-                            <td className="p-2 text-white border-r border-gray-700">{row.o2}</td>
-                            {index === 0 && <td rowSpan={6} className="p-2 text-white border-r border-gray-700 align-middle">300</td>}
-                            {index === 6 && <td rowSpan={2} className="p-2 text-white border-r border-gray-700 align-middle">375</td>}
-                            <td className="p-2 text-white border-r border-gray-700">{row.d1}</td>
-                            <td className="p-2 text-white border-r border-gray-700">{row.d2}</td>
-                            <td className="p-2 text-white border-r border-gray-700">{row.d3}</td>
-                            {index === 0 && <td rowSpan={6} className="p-2 text-white border-r border-gray-700 align-middle">NPT 3/8"</td>}
-                            {index === 6 && <td rowSpan={2} className="p-2 text-white border-r border-gray-700 align-middle">G1/4"</td>}
-                            <td className="p-2 text-white">{row.weight}</td>
-                        </tr>
-                    ))}
-                </tbody>
+              </thead>
+              <tbody>
+                {tableData.map((row, index) => (
+                  <tr key={row.model} className="bg-black hover:bg-zinc-900/60 transition-colors text-center border-t border-gray-700 leading-normal">
+                    {index === 0 && <td rowSpan={tableData.length} className="py-2.5 px-2 font-medium text-gray-300 border-r border-gray-700 align-middle break-words">Double Speed</td>}
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.oilCapacity}</td>
+                    <td className="py-2.5 px-2 font-medium text-red-400 border-r border-gray-700 break-words">{row.model}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.p1}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.p2}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.o1}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.o2}</td>
+                    {index === 0 && <td rowSpan={6} className="py-2.5 px-1.5 text-white border-r border-gray-700 align-middle break-words">300</td>}
+                    {index === 6 && <td rowSpan={2} className="py-2.5 px-1.5 text-white border-r border-gray-700 align-middle break-words">375</td>}
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.d1}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.d2}</td>
+                    <td className="py-2.5 px-1.5 text-white border-r border-gray-700 break-words">{row.d3}</td>
+                    {index === 0 && <td rowSpan={6} className="py-2.5 px-1.5 text-white border-r border-gray-700 align-middle break-words">NPT 3/8"</td>}
+                    {index === 6 && <td rowSpan={2} className="py-2.5 px-1.5 text-white border-r border-gray-700 align-middle break-words">G1/4"</td>}
+                    <td className="py-2.5 px-1.5 text-white break-words">{row.weight}</td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
-            </div>
+          </div>
         </div>
       </div>
     </div>
