@@ -444,7 +444,7 @@ const categories = {
     {
       id: "pipe-cutting",
       name: "Pipe Cutting Machine XTCB Series",
-      img: "product4.png",
+      img: "product44.jpeg",
       path: "pipeCutting",
     },
     {
@@ -456,7 +456,7 @@ const categories = {
     {
       id: "flange-facing",
       name: "Flange Facing Machine",
-      img: "facing.jpeg",
+      img: "flangefacing.png",
       path: "flangefacing",
     },
   ],
@@ -464,7 +464,7 @@ const categories = {
     {
       id: "hydraulic-torque",
       name: "Hydraulic Torque Wrench",
-      img:  "/hydraulictorque.png", // Parent has no image in mobile view usually
+      img:  "/hydraulictorquee.jpeg", // Parent has no image in mobile view usually
       path: "hydraulictorque",
       subItems: [
         {
@@ -484,7 +484,7 @@ const categories = {
     {
       id: "bolt-tensioner",
       name: "Bolt Tensioner",
-      img: "/product5.png", // Parent has no image in mobile view usually
+      img: "/hydraulicbolttensionerss.jpeg", // Parent has no image in mobile view usually
       path: "hydraulicbolttensioners",
       subItems: [
         {
@@ -528,11 +528,11 @@ const categories = {
       img: "images/Power-Pack/XAP 700.png",
       path: "xap700",
     },
-    { id: "xep1500", name: "XEP1500", img: "images/Power-Pack/xep1500.png", path: "xep1500" }, // Corrected image path based on previous example
+    { id: "xep1500", name: "XEP1500", img: "/XEPP1500.jpeg", path: "xep1500" }, // Corrected image path based on previous example
     {
       id: "xap1500",
       name: "XAP1500",
-      img: "images/Power-Pack/XAP1500.png",
+      img: "/XAPP1500.jpeg",
       path: "xap1500",
     },
   ],
@@ -540,7 +540,7 @@ const categories = {
     {
       id: "jacks",
       name: "Jacks / Cylinders",
-      img: "images/accesories/jackscylinders.png",
+      img: "jackscylinderss.jpeg",
       path: "hydraulicjack",
     },
     {
@@ -558,7 +558,7 @@ const categories = {
     {
       id: "nut-splitters",
       name: "Nut Splitters",
-      img: "nut_spilitter.png",
+      img: "nut_spilitterr.jpeg",
       path: "hydralicnut", // Corrected path based on previous examples
     },
   ],
@@ -567,13 +567,13 @@ const categories = {
     {
       id: "sockets",
       name: "Sockets",
-      img: "images/impact-sockets/Sockets.png",
+      img: "/socketss.jpeg",
       path: "socket",
     },
     {
       id: "reducers",
       name: "Reducers",
-      img: "images/impact-sockets/Reducers.png",
+      img: "images/impact-sockets/Reducerss.jpeg",
       path: "reducer",
     },
   ],

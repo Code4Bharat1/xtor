@@ -89,7 +89,7 @@ const HydraulicTorque = () => {
             <div className="bg-white flex flex-col items-center p-6 shadow-lg flex-1">
               <div className="w-full h-72 flex items-center justify-center">
                 <img
-                  src="/low_profile.png"
+                  src="/product2.png"
                   alt="XTORC Low Profile Hydraulic Torque Wrenches"
                   className="w-full h-full object-contain"
                 />

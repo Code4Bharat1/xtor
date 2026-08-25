@@ -26,65 +26,37 @@ const cardVariant = {
 function DistributorPage() {
   const regions = [
     {
-      name: "Europe",
+      name: "Middle East",
       countries: [
-        { name: "Netherlands" },
-      ],
-    },
-    {
-      name: "Africa",
-      countries: [
-        { name: "Algeria" },
-        { name: "Egypt" },
-        { name: "Angola" },
-        { name: "Nigeria" },
-        { name: "Mozambique" },
+        {
+          name: "UAE",
+          distributor: {
+            company: "Roots Supply Solutions",
+            address: "Abu Dhabi, UAE",
+          },
+        },
       ],
     },
     {
       name: "Central Asia",
       countries: [
-        { name: "Kazakhstan" },
-        { name: "Uzbekistan" },
-      ],
-    },
-    {
-      name: "Southeast Asia",
-      countries: [
         {
-          name: "Thailand",
+          name: "Kazakhstan",
           distributor: {
-            company: "AON SUPPLY COMPANY LIMITED",
-            address: "31/34, RAT NIYOM, NOEN PHRA, MUANG, RAYONG 21000",
+            company: "SC Intertech",
+            address: "Kazakhstan",
           },
         },
-        { name: "Singapore" },
-        { name: "Philippines" },
       ],
     },
     {
-      name: "Oceania",
-      countries: [
-        { name: "Australia" },
-      ],
-    },
-    {
-      name: "South America",
+      name: "Africa",
       countries: [
         {
-          name: "Colombia",
+          name: "Nigeria",
           distributor: {
-            company: "Tool Supply SAS",
-            address: "Carrera 15 #106-32, Office 606, Bogotá DC, Colombia",
-            email: "",
-          },
-        },
-        {
-          name: "Peru",
-          distributor: {
-            company: "Corporación Tresnak del Perú S.A.C",
-            address: "Tambo Real Street No. 133-137, Urb. Ariosto Matellini Avenue, Chorrillos, Peru",
-            email: "",
+            company: "SASFORDE ENERGY COMPANY LTD",
+            address: "Nigeria",
           },
         },
       ],
