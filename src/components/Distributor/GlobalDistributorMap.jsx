@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import { api } from "@/services/apiClient";
-import { Loader2, AlertCircle, RefreshCw } from "lucide-react";
+import { Loader2, AlertCircle, RefreshCw, MapPin, Phone, Mail, Globe, User, X } from "lucide-react";
 
 // Default fallback locations matching initial requirements
 const FALLBACK_LOCATIONS = [
@@ -70,10 +70,12 @@ const GlobalDistributorMap = () => {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const markersRef = useRef([]);
+  const closeTimeoutRef = useRef(null);
 
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [activeLocation, setActiveLocation] = useState(null);
 
   // Fetch distributor locations from backend API
   const fetchLocations = async () => {
@@ -190,155 +192,31 @@ const GlobalDistributorMap = () => {
 
           const marker = L.marker(latLng, { icon: createCustomPin() }).addTo(map);
 
-          // 1. Tooltip on Hover
-          marker.bindTooltip(
-            `<div style="font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; padding: 2px 4px; color: #111827;">${loc.company || loc.name}</div>`,
-            {
-              direction: "top",
-              className: "xtorc-custom-tooltip",
-              opacity: 0.98,
-              offset: [0, -8],
+          // On hover: immediately show full info in center of map
+          marker.on("mouseover", () => {
+            if (closeTimeoutRef.current) {
+              clearTimeout(closeTimeoutRef.current);
+              closeTimeoutRef.current = null;
             }
-          );
+            setActiveLocation(loc);
+          });
 
-          // 2. Popup on Click (Responsive for mobile & desktop)
-          const partnerBadge = loc.partnerType || "Authorized Distributor";
-          const emailList = loc.email
-            ? loc.email
-                .split(",")
-                .map((e) => e.trim())
-                .filter((e) => Boolean(e) && !e.toLowerCase().includes("xtorc"))
-            : [];
-          const phoneList = loc.phone
-            ? loc.phone.split(",").map((p) => p.trim()).filter(Boolean)
-            : [];
-          const websiteList = loc.website
-            ? loc.website
-                .split(",")
-                .map((w) => w.trim())
-                .filter((w) => Boolean(w) && !w.toLowerCase().includes("xtorc"))
-            : [];
+          // On mouse out: slight delay before hiding, allows moving onto the centered card
+          marker.on("mouseout", () => {
+            if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+            closeTimeoutRef.current = setTimeout(() => {
+              setActiveLocation(null);
+            }, 300);
+          });
 
-          const popupContent = `
-            <div style="font-family: 'Poppins', sans-serif; color: #111827; width: 100%; max-width: 310px; padding: 2px;">
-              <div style="display: flex; align-items: flex-start; gap: 6px; margin-bottom: 6px;">
-                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #DC2626; flex-shrink: 0; margin-top: 4px;"></span>
-                <span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #DC2626; line-height: 1.3;">
-                  ${partnerBadge}
-                </span>
-              </div>
-              
-              <h4 style="margin: 0 0 6px 0; font-size: 15px; font-weight: 700; color: #111827; line-height: 1.3;">
-                ${loc.company || loc.name}
-              </h4>
-              
-              <div style="display: flex; align-items: center; gap: 5px; font-size: 12px; color: #4B5563; margin-bottom: 8px;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-                <span><strong>${loc.city ? `${loc.city}, ` : ""}</strong>${loc.country || loc.address}</span>
-              </div>
-
-              ${
-                loc.contactPerson
-                  ? `
-                <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: #1F2937; margin-bottom: 6px;">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
-                  <span style="font-weight: 600;">${loc.contactPerson}</span>
-                </div>
-              `
-                  : ""
-              }
-
-              ${
-                phoneList.length > 0
-                  ? `
-                <div style="display: flex; align-items: flex-start; gap: 6px; font-size: 11.5px; margin-bottom: 6px;">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                  <div style="display: flex; flex-direction: column; gap: 2px;">
-                    ${phoneList
-                      .map(
-                        (p) =>
-                          `<a href="tel:${p.replace(/[\s-()]/g, "")}" style="color: #111827; text-decoration: none; font-weight: 600;">${p}</a>`
-                      )
-                      .join("")}
-                  </div>
-                </div>
-              `
-                  : ""
-              }
-
-              ${
-                emailList.length > 0
-                  ? `
-                <div style="display: flex; align-items: flex-start; gap: 6px; font-size: 11.5px; margin-bottom: 6px;">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
-                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                  </svg>
-                  <div style="display: flex; flex-direction: column; gap: 2px;">
-                    ${emailList
-                      .map(
-                        (em) =>
-                          `<a href="mailto:${em}" style="color: #DC2626; text-decoration: none; font-weight: 600; word-break: break-all;">${em}</a>`
-                      )
-                      .join("")}
-                  </div>
-                </div>
-              `
-                  : ""
-              }
-
-              ${
-                websiteList.length > 0
-                  ? `
-                <div style="display: flex; align-items: flex-start; gap: 6px; font-size: 11.5px; margin-bottom: 6px;">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                  </svg>
-                  <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                    ${websiteList
-                      .map((w) => {
-                        const url = w.startsWith("http") ? w : `https://${w}`;
-                        const label = w.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
-                        return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #4B5563; text-decoration: underline; font-weight: 600;">${label}</a>`;
-                      })
-                      .join("")}
-                  </div>
-                </div>
-              `
-                  : ""
-              }
-
-              ${
-                loc.address
-                  ? `
-                <div style="display: flex; align-items: flex-start; gap: 6px; font-size: 11px; color: #4B5563; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #E5E7EB; line-height: 1.35;">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                  <span>${loc.address}</span>
-                </div>
-              `
-                  : ""
-              }
-
-            </div>
-          `;
-
-          marker.bindPopup(popupContent, {
-            className: "xtorc-white-popup",
-            closeButton: true,
-            maxWidth: isMobile ? 290 : 330,
+          // Click / Touch fallback for mobile screens
+          marker.on("click", (e) => {
+            if (e?.originalEvent) e.originalEvent.stopPropagation();
+            if (closeTimeoutRef.current) {
+              clearTimeout(closeTimeoutRef.current);
+              closeTimeoutRef.current = null;
+            }
+            setActiveLocation(loc);
           });
 
           markersRef.current.push(marker);
@@ -357,6 +235,10 @@ const GlobalDistributorMap = () => {
 
     return () => {
       isMounted = false;
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+        closeTimeoutRef.current = null;
+      }
       if (mapContainerRef.current) {
         if (mapInstanceRef.current) {
           try {
@@ -373,9 +255,28 @@ const GlobalDistributorMap = () => {
     };
   }, [locations]);
 
+  // Clean parsed contact details for active location overlay
+  const parsedEmails = activeLocation?.email
+    ? activeLocation.email
+        .split(",")
+        .map((e) => e.trim())
+        .filter((e) => Boolean(e) && !e.toLowerCase().includes("xtorc"))
+    : [];
+
+  const parsedPhones = activeLocation?.phone
+    ? activeLocation.phone.split(",").map((p) => p.trim()).filter(Boolean)
+    : [];
+
+  const parsedWebsites = activeLocation?.website
+    ? activeLocation.website
+        .split(",")
+        .map((w) => w.trim())
+        .filter((w) => Boolean(w) && !w.toLowerCase().includes("xtorc"))
+    : [];
+
   return (
     <div className="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden border border-zinc-700 bg-white shadow-2xl">
-      {/* Custom Styles for Clean Watermark-Free Light Map, English Labels & Popups */}
+      {/* Custom Styles for Clean Watermark-Free Light Map & Controls */}
       <style jsx global>{`
         /* Soft, elegant contrast filter: softens bright ocean blues into subtle silver/slate tone */
         .leaflet-tile-pane {
@@ -390,37 +291,6 @@ const GlobalDistributorMap = () => {
         /* Hide attribution */
         .leaflet-control-attribution {
           display: none !important;
-        }
-
-        /* Tooltip styling for light theme */
-        .xtorc-custom-tooltip {
-          background-color: #ffffff !important;
-          border: 1px solid #e5e7eb !important;
-          border-radius: 6px !important;
-          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12) !important;
-        }
-        .xtorc-custom-tooltip::before {
-          border-top-color: #ffffff !important;
-        }
-
-        /* White Popup styling */
-        .xtorc-white-popup .leaflet-popup-content-wrapper {
-          background-color: #ffffff !important;
-          border: 1px solid #e5e7eb !important;
-          border-radius: 12px !important;
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2), 0 0 16px rgba(220, 38, 38, 0.15) !important;
-          padding: 6px 4px !important;
-        }
-        .xtorc-white-popup .leaflet-popup-tip {
-          background-color: #ffffff !important;
-          border: 1px solid #e5e7eb !important;
-        }
-        .xtorc-white-popup a.leaflet-popup-close-button {
-          color: #9ca3af !important;
-          padding: 8px !important;
-        }
-        .xtorc-white-popup a.leaflet-popup-close-button:hover {
-          color: #111827 !important;
         }
 
         /* Light Zoom Controls */
@@ -445,14 +315,6 @@ const GlobalDistributorMap = () => {
         .leaflet-container {
           background: #f4f5f7 !important;
         }
-
-        /* Mobile specific popup tweaks */
-        @media (max-width: 640px) {
-          .xtorc-white-popup .leaflet-popup-content {
-            margin: 6px 8px !important;
-            max-width: 280px !important;
-          }
-        }
       `}</style>
 
       {/* Map Header / Stats Badge (Clean White Theme) */}
@@ -464,6 +326,135 @@ const GlobalDistributorMap = () => {
         <span className="font-semibold text-gray-700">Global Hubs:</span>
         <span className="font-bold text-red-600">{locations.length > 0 ? locations.length : FALLBACK_LOCATIONS.length} Active</span>
       </div>
+
+      {/* Centered Distributor Info Card (Hover-Triggered within Map Container) */}
+      {activeLocation && (
+        <div
+          className="absolute inset-0 z-[500] flex items-center justify-center p-3 pointer-events-none"
+          onMouseEnter={() => {
+            if (closeTimeoutRef.current) {
+              clearTimeout(closeTimeoutRef.current);
+              closeTimeoutRef.current = null;
+            }
+          }}
+          onMouseLeave={() => {
+            if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+            closeTimeoutRef.current = setTimeout(() => {
+              setActiveLocation(null);
+            }, 200);
+          }}
+        >
+          <div className="pointer-events-auto bg-white/98 backdrop-blur-md border border-gray-200 rounded-2xl shadow-2xl p-4 sm:p-5 max-w-[340px] sm:max-w-[380px] w-full relative transition-all duration-200">
+            {/* Close Button */}
+            <button
+              type="button"
+              onClick={() => setActiveLocation(null)}
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-800 p-1 rounded-full hover:bg-gray-100 transition-colors"
+              aria-label="Close distributor info"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            {/* Partner Badge */}
+            <div className="flex items-center gap-2 mb-1.5 pr-6">
+              <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse flex-shrink-0" />
+              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-red-600 truncate">
+                {activeLocation.partnerType || "Authorized Distributor"}
+              </span>
+            </div>
+
+            {/* Company Name */}
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 leading-snug mb-1.5">
+              {activeLocation.company || activeLocation.name}
+            </h3>
+
+            {/* Location (City & Country) */}
+            <div className="flex items-center gap-1.5 text-xs text-gray-600 mb-2.5">
+              <MapPin className="w-3.5 h-3.5 text-red-600 flex-shrink-0" />
+              <span>
+                <strong>{activeLocation.city ? `${activeLocation.city}, ` : ""}</strong>
+                {activeLocation.country || activeLocation.address}
+              </span>
+            </div>
+
+            {/* Contact Person */}
+            {activeLocation.contactPerson && (
+              <div className="flex items-center gap-1.5 text-xs text-gray-800 mb-2">
+                <User className="w-3.5 h-3.5 text-red-600 flex-shrink-0" />
+                <span className="font-semibold">{activeLocation.contactPerson}</span>
+              </div>
+            )}
+
+            {/* Phone Numbers */}
+            {parsedPhones.length > 0 && (
+              <div className="flex items-start gap-1.5 text-xs mb-2">
+                <Phone className="w-3.5 h-3.5 text-red-600 flex-shrink-0 mt-0.5" />
+                <div className="flex flex-col gap-0.5">
+                  {parsedPhones.map((phone, idx) => (
+                    <a
+                      key={idx}
+                      href={`tel:${phone.replace(/[\s-()]/g, "")}`}
+                      className="text-gray-800 hover:text-red-600 font-semibold transition-colors"
+                    >
+                      {phone}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Email Addresses */}
+            {parsedEmails.length > 0 && (
+              <div className="flex items-start gap-1.5 text-xs mb-2">
+                <Mail className="w-3.5 h-3.5 text-red-600 flex-shrink-0 mt-0.5" />
+                <div className="flex flex-col gap-0.5">
+                  {parsedEmails.map((email, idx) => (
+                    <a
+                      key={idx}
+                      href={`mailto:${email}`}
+                      className="text-red-600 hover:underline font-semibold break-all transition-colors"
+                    >
+                      {email}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Websites */}
+            {parsedWebsites.length > 0 && (
+              <div className="flex items-start gap-1.5 text-xs mb-2">
+                <Globe className="w-3.5 h-3.5 text-red-600 flex-shrink-0 mt-0.5" />
+                <div className="flex flex-wrap gap-2">
+                  {parsedWebsites.map((website, idx) => {
+                    const url = website.startsWith("http") ? website : `https://${website}`;
+                    const label = website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+                    return (
+                      <a
+                        key={idx}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-600 hover:text-black underline font-semibold transition-colors"
+                      >
+                        {label}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Address */}
+            {activeLocation.address && (
+              <div className="flex items-start gap-1.5 text-[11px] text-gray-500 pt-2 border-t border-dashed border-gray-200 mt-2 leading-tight">
+                <MapPin className="w-3 h-3 text-gray-400 flex-shrink-0 mt-0.5" />
+                <span>{activeLocation.address}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Loading Overlay */}
       {loading && (

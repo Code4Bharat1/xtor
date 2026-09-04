@@ -31,11 +31,10 @@ const Product = () => {
         initial="hidden"
         animate="visible"
       >
-        <div className="flex flex-col md:flex-row gap-10 items-start justify-between">
-
-          {/* Left Side Content (Heading + Tagline + Paragraph) */}
-          <motion.div variants={fadeInUp} className="flex-1 text-justify">
-            <div className="w-fit mb-6">
+        <div className="flex justify-center">
+          {/* Header Content (Heading + Tagline + Paragraph) */}
+          <motion.div variants={fadeInUp} className="w-full max-w-6xl text-center flex flex-col items-center">
+            <div className="w-fit mx-auto mb-6">
               <h2
                 className="heading-main mb-0"
               >
@@ -45,46 +44,27 @@ const Product = () => {
             </div>
 
             <h3
-              className="heading-sub mb-6"
+              className="heading-sub mb-6 text-center"
             >
-              Precision Tools for Your <br /> Toughest Challenges
+              Precision Tools for Your Toughest Challenges
             </h3>
 
-            {/* Paragraph */}
-            <p
-              className="text-body mt-8"
-            >
-              At XTORC, we provide cutting-edge solutions designed to meet the
-              demands of modern industries. From bolting systems to cold cutting
-              tools, our products are engineered for precision, safety, and
-              efficiency.
-              <br />
-              <br />
-              Whether you need hydraulic torque wrenches, bolt tensioning
-              solutions, or in-situ machining tools, we are your trusted partner
-              for delivering innovative, industry-ready tools that perform under
-              the most challenging conditions.
-            </p>
-          </motion.div>
-
-          {/* Right Side Card */}
-          <motion.div
-            variants={fadeInUp}
-            className="w-full md:w-[360px] flex-shrink-0"
-          >
-            <div className="bg-gray-900 py-6 px-4 rounded-4xl border-2 border-white shadow-lg hover:shadow-red-600/40 hover:shadow-xl transition-all duration-300 w-full text-center">
-              <h4 className="text-xl sm:text-3xl font-semibold mb-2 text-white">
-                Optimized &
-              </h4>
-              <h4 className="text-xl sm:text-3xl font-semibold mb-4 text-white">
-                Industry-Ready
-              </h4>
-              <h4 className="text-xl sm:text-3xl font-semibold text-white">
-                Solutions
-              </h4>
+            {/* Paragraphs */}
+            <div className="space-y-4 max-w-5xl mx-auto text-justify">
+              <p className="text-body text-justify leading-relaxed">
+                At XTORC, we provide cutting-edge solutions designed to meet the
+                demands of modern industries. From bolting systems to cold cutting
+                tools, our products are engineered for precision, safety, and
+                efficiency.
+              </p>
+              <p className="text-body text-justify leading-relaxed">
+                Whether you need hydraulic torque wrenches, bolt tensioning
+                solutions, or in-situ machining tools, we are your trusted partner
+                for delivering innovative, industry-ready tools that perform under
+                the most challenging conditions.
+              </p>
             </div>
           </motion.div>
-
         </div>
       </motion.div>
     </div>
