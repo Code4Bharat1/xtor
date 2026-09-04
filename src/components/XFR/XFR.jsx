@@ -218,8 +218,8 @@ const XFR = () => {
         <div className="rounded-full h-1 bg-red-600 mx-auto" style={{ maxWidth: "260px" }}></div>
       </div>
 
-      <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 pb-8 overflow-x-auto mt-4">
-        <div className="w-full shadow-lg rounded-lg overflow-hidden border border-white/20">
+      <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 pb-8 mt-4">
+        <div className="w-full custom-table-scroll shadow-lg rounded-lg border border-white/20">
           <table className="w-full border-collapse min-w-[780px] text-xs">
             <thead>
               <tr className="bg-gray-800 text-white font-medium">
@@ -301,12 +301,12 @@ const XFR = () => {
         </p>
       </div>
 
-      <div className="max-w-6xl mx-auto px-2 sm:px-4 pt-6 pb-6 flex justify-center">
-        <div className="w-full max-w-2xl bg-zinc-950 border border-white/10 rounded-xl p-3 sm:p-5 overflow-hidden flex items-center justify-center shadow-2xl">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4 pt-4 pb-6 flex justify-center">
+        <div className="w-full max-w-2xl bg-zinc-950 border border-white/10 rounded-xl p-3 sm:p-4 overflow-hidden flex items-center justify-center shadow-xl">
           <img
             src="/images/BoltingTools/xfr-dimensions-diagram.jpg"
             alt="XFR Series Engineering Drawing Schematic Dimensions (R, L, H, W)"
-            className="w-full max-h-[260px] sm:max-h-[300px] object-contain rounded"
+            className="w-auto max-w-full max-h-[220px] sm:max-h-[270px] object-contain rounded"
           />
         </div>
       </div>
@@ -319,8 +319,8 @@ const XFR = () => {
         <div className="rounded-full h-1 bg-red-600 mx-auto" style={{ maxWidth: "240px" }}></div>
       </div>
 
-      <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 pb-12 overflow-x-auto mt-4">
-        <div className="w-full shadow-lg rounded-lg overflow-hidden border border-white/20">
+      <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 pb-12 mt-4">
+        <div className="w-full custom-table-scroll shadow-lg rounded-lg border border-white/20">
           <table className="w-full border-collapse min-w-[700px] text-xs">
             <thead>
               <tr className="bg-gray-800 text-white font-medium">

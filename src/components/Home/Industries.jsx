@@ -44,7 +44,7 @@ const Industries = () => {
     },
     {
       image: "/infra.png",
-      title: "Infra",
+      title: "Infrastructure",
       alt: "Infrastructure Industry",
       hoverText: "Heavy-duty bolting tools for infrastructure and construction.",
     },

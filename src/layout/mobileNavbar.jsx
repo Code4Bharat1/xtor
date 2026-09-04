@@ -537,7 +537,7 @@ const categories = {
     {
       id: "xap700",
       name: "XAP 700",
-      img: "images/Power-Pack/XAP 700.png",
+      img: "/images/Power-Pack/XAP 700.png",
       path: "xap700",
     },
     { id: "xep1500", name: "XEP1500", img: "/images/Power-Pack/xep1500.png", path: "xep1500" },

@@ -151,7 +151,7 @@ const Xap700 = () => {
                 className="bg-white rounded-2xl p-6 border-t-12 border-r-12 border-red-600 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.6)] transition-shadow duration-300 rounded-3xl sm:h-[400px] h-[200px] flex items-center justify-center text-black"
               >
                 <img
-                  src="images/Power-Pack/XAP 700.png"
+                  src="/images/Power-Pack/XAP 700.png"
                   alt="XAP 700 Air Operated Powerpack"
                   className="w-full h-full object-contain"
                 />

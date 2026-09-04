@@ -8,14 +8,46 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.3 });
   const textScrollRef = useRef(null);
-  const [expanded, setExpanded] = useState(false);
+  const imgRef = useRef(null);
+  const [photoHeight, setPhotoHeight] = useState(null);
+  const [isAtBottom, setIsAtBottom] = useState(false);
+  const [hasOverflow, setHasOverflow] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
-  const toggleExpand = () => {
-    if (expanded && textScrollRef.current) {
-      textScrollRef.current.scrollTop = 0;
+  const normalizedSrc = imageSrc?.startsWith('/') ? imageSrc : `/${imageSrc}`;
+
+  const checkScrollPosition = () => {
+    if (textScrollRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = textScrollRef.current;
+      setHasOverflow(scrollHeight > clientHeight + 10);
+      setIsAtBottom(scrollTop + clientHeight >= scrollHeight - 20);
     }
-    setExpanded(!expanded);
+  };
+
+  const handleScrollToggle = () => {
+    if (!textScrollRef.current) return;
+    const { scrollTop, scrollHeight, clientHeight } = textScrollRef.current;
+
+    if (isAtBottom) {
+      textScrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      setIsAtBottom(false);
+    } else {
+      const scrollStep = Math.max(clientHeight * 0.75, 120);
+      const nextScrollTop = scrollTop + scrollStep;
+      textScrollRef.current.scrollTo({ top: nextScrollTop, behavior: 'smooth' });
+      if (nextScrollTop + clientHeight >= scrollHeight - 20) {
+        setIsAtBottom(true);
+      }
+    }
+  };
+
+  const updateHeight = () => {
+    if (imgRef.current) {
+      const h = imgRef.current.offsetHeight;
+      if (h > 50) {
+        setPhotoHeight(h);
+      }
+    }
   };
 
   const textVariants = {
@@ -68,81 +100,107 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
   };
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      updateHeight();
+    };
     handleResize(); // initial check
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    if (!imgRef.current) return;
+    const observer = new ResizeObserver(() => {
+      updateHeight();
+    });
+    observer.observe(imgRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    checkScrollPosition();
+  }, [photoHeight, description]);
+
   return (
     <div ref={ref} className="mb-12 md:mb-16">
       <div className={`flex ${isMobile
-          ? 'flex-col'
-          : imageOnLeft
-            ? 'flex-row'
-            : 'flex-row-reverse'
-        } items-center gap-6 md:gap-12 w-10/11 mx-auto px-4`}>
+        ? 'flex-col'
+        : imageOnLeft
+          ? 'flex-row'
+          : 'flex-row-reverse'
+        } items-center justify-center gap-6 md:gap-8 max-w-5xl mx-auto px-4`}>
 
         {/* Image Section */}
         <motion.div
-          className="w-full md:flex-1"
+          className={`w-full md:flex-1 flex ${imageOnLeft ? 'md:justify-end' : 'md:justify-start'
+            } justify-center`}
           variants={imageVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <div className="relative group overflow-hidden rounded-2xl bg-white p-2 border-t-[12px] border-r-[12px] border-red-600 shadow-[0_10px_30px_rgba(255,255,255,0.15)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.5)] transition-shadow duration-300">
+          <div className="w-fit relative group overflow-hidden rounded-2xl border-2 md:border-[3px] border-red-600 shadow-[0_10px_30px_rgba(220,38,38,0.25)] hover:shadow-[0_12px_40px_rgba(208,26,26,0.5)] transition-all duration-300 flex">
             <img
-              src={imageSrc}
+              ref={imgRef}
+              src={normalizedSrc}
               alt={title}
-              className="w-full h-56 sm:h-64 md:h-[280px] lg:h-[320px] object-cover rounded-xl group-hover:scale-105 transition-transform duration-500 ease-out"
+              onLoad={updateHeight}
+              className="w-auto h-auto max-h-[460px] max-w-full block group-hover:scale-[1.02] transition-transform duration-500 ease-out"
               onError={(e) => {
                 e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'flex';
+                if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
               }}
             />
             {/* Fallback placeholder */}
-            <div className="hidden w-full h-56 sm:h-64 md:h-[280px] lg:h-[320px] bg-gray-200 rounded-xl items-center justify-center">
-              <span className="text-gray-500 text-sm font-medium">{title} Image</span>
+            <div className="hidden w-64 h-60 bg-zinc-900 rounded-xl items-center justify-center">
+              <span className="text-gray-400 text-sm font-medium">{title} Image</span>
             </div>
           </div>
         </motion.div>
 
         {/* Text Section */}
         <motion.div
-          className="w-full md:flex-1"
+          className="w-full md:flex-1 flex flex-col justify-center"
+          style={{
+            minHeight: !isMobile && photoHeight ? `${photoHeight}px` : 'auto',
+          }}
           variants={textVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <h3 className="heading-sub mb-3">
-            {title}
-          </h3>
+          <div>
+            <h3 className="heading-sub mb-3">
+              {title}
+            </h3>
 
-          <motion.div
-            className="h-1 bg-red-600 mb-4 rounded-full"
-            variants={borderVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          ></motion.div>
+            <motion.div
+              className="h-1 bg-red-600 mb-4 rounded-full"
+              variants={borderVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            ></motion.div>
+          </div>
 
           <div
             ref={textScrollRef}
-            className="text-body text-justify opacity-90 pr-3 transition-all duration-300 scrollable-para"
+            onScroll={checkScrollPosition}
+            className="text-body text-justify opacity-90 pr-2 leading-relaxed flex-1 overflow-y-auto no-scrollbar relative"
             style={{
-              maxHeight: '12.5rem',
-              overflowY: expanded ? 'auto' : 'hidden',
+              maxHeight: !isMobile && photoHeight ? `${Math.max(photoHeight - 110, 160)}px` : '15rem',
             }}
           >
-            {description}
+            <p>{description}</p>
           </div>
 
           {/* Read More / Read Less Toggle Button */}
-          <button
-            onClick={toggleExpand}
-            className="mt-3 text-red-500 hover:text-red-400 hover:underline focus:outline-none transition-colors duration-200 text-sm md:text-base font-semibold flex items-center gap-1 cursor-pointer"
-          >
-            {expanded ? 'Read Less ▲' : 'Read More ▼'}
-          </button>
+          {hasOverflow && (
+            <button
+              onClick={handleScrollToggle}
+              className="mt-3 text-red-500 hover:text-red-400 hover:underline focus:outline-none transition-colors duration-200 text-sm md:text-base font-semibold flex items-center gap-1 cursor-pointer w-fit"
+            >
+              {isAtBottom ? 'Read Less ▲' : 'Read More ▼'}
+            </button>
+          )}
         </motion.div>
       </div>
     </div>

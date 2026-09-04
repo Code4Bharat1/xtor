@@ -39,6 +39,13 @@ const OurValues = () => {
   const statsRef = useRef(null);
   const statsInView = useInView(statsRef, { once: true, amount: 0.3 });
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact-us") || document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const missionElement = document.getElementById("mission-section");
@@ -132,8 +139,10 @@ const OurValues = () => {
             id="mission-section"
           >
             <h3
-              className="heading-sub mb-4"
+              onClick={scrollToContact}
+              className="heading-sub mb-4 cursor-pointer hover:opacity-90 transition-opacity w-fit"
               style={{ color: "#D01A1A" }}
+              title="Click to go to Contact form"
             >
               Our Mission
             </h3>
@@ -180,7 +189,11 @@ const OurValues = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="flex justify-center mb-16"
         >
-          <button className="bg-white text-black px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-200 transition-colors">
+          <button
+            type="button"
+            onClick={scrollToContact}
+            className="bg-white text-black px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-200 transition-colors cursor-pointer"
+          >
             Join Our Mission
           </button>
         </motion.div>

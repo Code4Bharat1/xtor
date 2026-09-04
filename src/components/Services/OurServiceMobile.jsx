@@ -2,11 +2,45 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.3 });
+  const textScrollRef = useRef(null);
+  const [isAtBottom, setIsAtBottom] = useState(false);
+  const [hasOverflow, setHasOverflow] = useState(true);
+
+  const normalizedSrc = imageSrc?.startsWith('/') ? imageSrc : `/${imageSrc}`;
+
+  const checkScrollPosition = () => {
+    if (textScrollRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = textScrollRef.current;
+      setHasOverflow(scrollHeight > clientHeight + 10);
+      setIsAtBottom(scrollTop + clientHeight >= scrollHeight - 20);
+    }
+  };
+
+  const handleScrollToggle = () => {
+    if (!textScrollRef.current) return;
+    const { scrollTop, scrollHeight, clientHeight } = textScrollRef.current;
+
+    if (isAtBottom) {
+      textScrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      setIsAtBottom(false);
+    } else {
+      const scrollStep = Math.max(clientHeight * 0.75, 120);
+      const nextScrollTop = scrollTop + scrollStep;
+      textScrollRef.current.scrollTo({ top: nextScrollTop, behavior: 'smooth' });
+      if (nextScrollTop + clientHeight >= scrollHeight - 20) {
+        setIsAtBottom(true);
+      }
+    }
+  };
+
+  useEffect(() => {
+    checkScrollPosition();
+  }, [description]);
 
   const textVariants = {
     hidden: { opacity: 0, x: imageOnLeft ? 100 : -100 },
@@ -50,19 +84,19 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <div className="shadow-lg">
+          <div className="w-fit mx-auto relative group overflow-hidden rounded-2xl border-2 border-red-600 shadow-[0_6px_20px_rgba(220,38,38,0.25)] flex">
             <img
-              src={imageSrc}
+              src={normalizedSrc}
               alt={title}
-              className="w-full max-w-[300px] h-auto object-cover rounded mx-auto"
+              className="w-auto h-auto max-h-[360px] max-w-full block"
               onError={(e) => {
                 e.target.style.display = "none";
-                e.target.nextSibling.style.display = "flex";
+                if (e.target.nextSibling) e.target.nextSibling.style.display = "flex";
               }}
             />
             {/* Fallback placeholder */}
-            <div className="hidden w-full h-48 bg-gray-200 rounded items-center justify-center">
-              <span className="text-gray-500 text-sm">{title} Image</span>
+            <div className="hidden w-64 h-48 bg-zinc-900 rounded-xl items-center justify-center">
+              <span className="text-gray-400 text-sm font-medium">{title} Image</span>
             </div>
           </div>
         </motion.div>
@@ -85,9 +119,25 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
             animate={isInView ? "visible" : "hidden"}
           ></motion.div>
 
-          <p className="text-body text-justify opacity-90">
-            {description}
-          </p>
+          <div
+            ref={textScrollRef}
+            onScroll={checkScrollPosition}
+            className="text-body text-justify opacity-90 relative transition-all duration-300 overflow-y-auto no-scrollbar"
+            style={{
+              maxHeight: '14rem',
+            }}
+          >
+            <p>{description}</p>
+          </div>
+
+          {hasOverflow && (
+            <button
+              onClick={handleScrollToggle}
+              className="mt-3 text-red-500 hover:text-red-400 hover:underline focus:outline-none transition-colors duration-200 text-sm font-semibold flex items-center gap-1 cursor-pointer mx-auto md:mx-0"
+            >
+              {isAtBottom ? 'Read Less ▲' : 'Read More ▼'}
+            </button>
+          )}
         </motion.div>
       </div>
     </div>
