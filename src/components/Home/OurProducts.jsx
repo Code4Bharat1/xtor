@@ -35,8 +35,8 @@ const OurProducts = () => {
     {
       id: 3,
       src: "/images/Power-Pack/XEP7000.png",
-      alt: "Hydraulic Torquing Power Pack",
-      title: "Hydraulic Torquing Power Pack",
+      alt: "Hydraulic Power Pack",
+      title: "Hydraulic Power Pack",
       categoryKey: "power-pack",
     },
   ];

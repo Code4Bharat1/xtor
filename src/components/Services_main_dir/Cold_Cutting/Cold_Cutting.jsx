@@ -59,9 +59,9 @@ const ColdCutting = () => {
       className="bg-white rounded-2xl p-2 border-t-12 border-r-12 border-red-600 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.6)] transition-shadow duration-300 rounded-3xl w-full md:w-[550px] max-w-[500px] h-[400px] sm:h-[500px] md:h-[500px] flex items-center justify-center"
     >
       <img
-        src="pipeCold.jpeg"
-        alt="Hydraulic Bolt Tensioner"
-        className="w-[500px] h-full"
+        src="/pipeCold.jpeg"
+        alt="Cold Cutting & Beveling Machine"
+        className="w-full h-full object-contain rounded-xl"
       />
     </div>
   </div>

@@ -1,9 +1,12 @@
 "use client";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaFilePdf } from "react-icons/fa";
-import { Download } from "lucide-react";
+import { Download, Loader2 } from "lucide-react";
 
 export default function DownloadSection() {
+  const [downloading, setDownloading] = useState({});
+
   const containerVariants = {
     hidden: {},
     show: {
@@ -22,19 +25,54 @@ export default function DownloadSection() {
     {
       title: "XTORC BROCHURE",
       description: "Comprehensive product specifications, features, and capabilities across our full industrial tool range.",
-      file: "/XTORC BROCHURE.pdf",
+      file: "/XTORC_BROCHURE.pdf",
+      fileName: "XTORC_BROCHURE.pdf",
     },
     {
       title: "XTORC IN-SITU MACHINES BROCHURE",
       description: "Detailed brochure for our in-situ pipe cutting, beveling, and flange facing machines.",
-      file: "/XTORC IN-SITU MACHINES BROCHURE.pdf",
+      file: "/XTORC_IN-SITU_MACHINES_BROCHURE.pdf",
+      fileName: "XTORC_IN-SITU_MACHINES_BROCHURE.pdf",
     },
     {
       title: "XTORC WIND CATALOG",
       description: "Specialized wind energy bolting tools, tensioners, and turbine application solutions.",
-      file: "/XTORC WIND CATALOG.pdf",
+      file: "/XTORC_WIND_CATALOG.pdf",
+      fileName: "XTORC_WIND_CATALOG.pdf",
     },
   ];
+
+  // Direct forced download function to bypass browser PDF preview & caching
+  const handleDownload = async (e, fileUrl, fileName) => {
+    e.preventDefault();
+    try {
+      setDownloading((prev) => ({ ...prev, [fileName]: true }));
+      // Append cache-buster to guarantee browser fetches the freshest file
+      const fetchUrl = `${fileUrl}?t=${Date.now()}`;
+      const response = await fetch(fetchUrl, { cache: "no-store" });
+      if (!response.ok) throw new Error("Failed to fetch file");
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.warn("Direct blob download fallback:", error);
+      // Fallback: standard link download
+      const link = document.createElement("a");
+      link.href = fileUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } finally {
+      setDownloading((prev) => ({ ...prev, [fileName]: false }));
+    }
+  };
 
   return (
     <motion.section
@@ -85,11 +123,18 @@ export default function DownloadSection() {
               </div>
               <a
                 href={pdf.file}
-                download
-                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold text-sm sm:text-base py-3 px-6 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-red-600/20 transition-all duration-300 mt-2"
+                download={pdf.fileName}
+                onClick={(e) => handleDownload(e, pdf.file, pdf.fileName)}
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold text-sm sm:text-base py-3 px-6 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-red-600/20 transition-all duration-300 mt-2 cursor-pointer select-none"
               >
-                <Download className="w-4 h-4" />
-                <span>Download PDF</span>
+                {downloading[pdf.fileName] ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  <Download className="w-4 h-4" />
+                )}
+                <span>
+                  {downloading[pdf.fileName] ? "Downloading..." : "Download PDF"}
+                </span>
               </a>
             </motion.div>
           ))}

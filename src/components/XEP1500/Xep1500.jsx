@@ -147,8 +147,8 @@ const Xep1500 = () => {
 
             <div className="flex justify-center w-full">
               <a
-                href="/XTORC BROCHURE.pdf"
-                download
+                href="/XTORC_BROCHURE.pdf"
+                download="XTORC_BROCHURE.pdf"
                 className="bg-white text-red-600 px-8 py-3 rounded-2xl text-xl sm:text-2xl font-bold border-2 border-red-600 hover:bg-red-700 hover:text-white transition-all duration-300"
               >
                 Download Catalog

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import { api } from "@/services/apiClient";
@@ -8,38 +8,60 @@ import { Loader2, AlertCircle, RefreshCw } from "lucide-react";
 const FALLBACK_LOCATIONS = [
   {
     company: "Roots Supply Solutions",
+    phone: "+971 558 505 297",
     email: "sales@rootssupply.com",
     city: "Abu Dhabi",
-    country: "UAE",
-    address: "Abu Dhabi, UAE",
-    latitude: 24.4539,
-    longitude: 54.3773,
+    country: "United Arab Emirates",
+    address: "Roots General Trading Ltd WS 208 ,Building no. 280, Kezad HQ Building , Taweelah Abu Dhabi , United Arab Emirates",
+    latitude: 24.8118,
+    longitude: 54.7208,
+    partnerType: "Authorized Distributor - Middle East",
     description: "Official authorized distributor for XTORC in the Middle East, supplying hydraulic torque wrenches, bolt tensioners, and onsite calibration.",
-    website: "https://rootssupply.com",
+    website: "",
     region: "Middle East"
   },
   {
     company: "SC Intertech",
-    email: "contact@scintertech.kz",
+    phone: "+7 (771) 060-05-00, +91 9619561695",
+    email: "office@intertechsc.kz",
     city: "Astana",
     country: "Kazakhstan",
-    address: "Astana, Kazakhstan",
+    address: "Kazakhstan",
     latitude: 51.1694,
     longitude: 71.4491,
+    partnerType: "Authorized Distributor - Central Asia",
     description: "Trusted partner in Central Asia delivering high-performance bolting solutions for power, oil & gas, and mining applications.",
-    website: "https://scintertech.kz",
+    website: "https://intertechsc.kz",
     region: "Central Asia"
   },
   {
-    company: "SASFORDE ENERGY COMPANY LTD",
-    email: "info@sasfordeenergy.com",
+    company: "SASFORDE ENERGY",
+    partnerType: "Exclusive Partner for African Region (Except South Africa)",
+    contactPerson: "Mr. Joe - Director",
+    phone: "+234 907 329 5778",
+    email: "jedu@sasfordeenergy.com, edujoe7@gmail.com",
     city: "Port Harcourt",
     country: "Nigeria",
-    address: "Port Harcourt, Nigeria",
-    latitude: 4.8156,
-    longitude: 7.0498,
-    description: "Premier distributor across West Africa providing heavy-duty bolting, cold cutting machines, and technical field services.",
+    address: "No: 227, Eneka Igwuruta Airport Road . Rumuewhara. Port Harcourt . Rivers State",
+    latitude: 4.8720,
+    longitude: 7.0330,
+    description: "Exclusive partner for African region (except South Africa) providing heavy-duty bolting, cold cutting machines, and technical field services.",
     website: "https://sasfordeenergy.com",
+    region: "Africa"
+  },
+  {
+    company: "AETOS LIMITED",
+    partnerType: "Non-Exclusive Partner Nigeria",
+    contactPerson: "Mr. Solomon Ough - General Manager",
+    phone: "+234 805 614 5561",
+    email: "solomon_ough@aetosng.com",
+    city: "Ejigbo, Lagos",
+    country: "Nigeria",
+    address: "90 Ailegun Rd, Off Isolo-Egbe Road, Ejigbo, Lagos State",
+    latitude: 6.5445,
+    longitude: 3.3082,
+    description: "Non-exclusive partner in Nigeria delivering industrial tooling, hydraulic equipment, and technical solutions.",
+    website: "",
     region: "Africa"
   }
 ];
@@ -180,17 +202,37 @@ const GlobalDistributorMap = () => {
           );
 
           // 2. Popup on Click (Responsive for mobile & desktop)
+          const partnerBadge = loc.partnerType || "Authorized Distributor";
+          const emailList = loc.email
+            ? loc.email
+                .split(",")
+                .map((e) => e.trim())
+                .filter((e) => Boolean(e) && !e.toLowerCase().includes("xtorc"))
+            : [];
+          const phoneList = loc.phone
+            ? loc.phone.split(",").map((p) => p.trim()).filter(Boolean)
+            : [];
+          const websiteList = loc.website
+            ? loc.website
+                .split(",")
+                .map((w) => w.trim())
+                .filter((w) => Boolean(w) && !w.toLowerCase().includes("xtorc"))
+            : [];
+
           const popupContent = `
-            <div style="font-family: 'Poppins', sans-serif; color: #111827; width: 100%; max-width: 290px; padding: 2px;">
-              <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
-                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #DC2626; flex-shrink: 0;"></span>
-                <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #DC2626;">Authorized Distributor</span>
+            <div style="font-family: 'Poppins', sans-serif; color: #111827; width: 100%; max-width: 310px; padding: 2px;">
+              <div style="display: flex; align-items: flex-start; gap: 6px; margin-bottom: 6px;">
+                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #DC2626; flex-shrink: 0; margin-top: 4px;"></span>
+                <span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #DC2626; line-height: 1.3;">
+                  ${partnerBadge}
+                </span>
               </div>
+              
               <h4 style="margin: 0 0 6px 0; font-size: 15px; font-weight: 700; color: #111827; line-height: 1.3;">
                 ${loc.company || loc.name}
               </h4>
               
-              <div style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: #4B5563; margin-bottom: 8px;">
+              <div style="display: flex; align-items: center; gap: 5px; font-size: 12px; color: #4B5563; margin-bottom: 8px;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
@@ -199,19 +241,96 @@ const GlobalDistributorMap = () => {
               </div>
 
               ${
-                loc.email
+                loc.contactPerson
                   ? `
-                <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; margin-bottom: 10px;">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
-                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: #1F2937; margin-bottom: 6px;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
                   </svg>
-                  <a href="mailto:${loc.email}" style="color: #DC2626; text-decoration: none; font-weight: 600; word-break: break-all;">${loc.email}</a>
+                  <span style="font-weight: 600;">${loc.contactPerson}</span>
                 </div>
               `
                   : ""
               }
 
+              ${
+                phoneList.length > 0
+                  ? `
+                <div style="display: flex; align-items: flex-start; gap: 6px; font-size: 11.5px; margin-bottom: 6px;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  <div style="display: flex; flex-direction: column; gap: 2px;">
+                    ${phoneList
+                      .map(
+                        (p) =>
+                          `<a href="tel:${p.replace(/[\s-()]/g, "")}" style="color: #111827; text-decoration: none; font-weight: 600;">${p}</a>`
+                      )
+                      .join("")}
+                  </div>
+                </div>
+              `
+                  : ""
+              }
+
+              ${
+                emailList.length > 0
+                  ? `
+                <div style="display: flex; align-items: flex-start; gap: 6px; font-size: 11.5px; margin-bottom: 6px;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                  <div style="display: flex; flex-direction: column; gap: 2px;">
+                    ${emailList
+                      .map(
+                        (em) =>
+                          `<a href="mailto:${em}" style="color: #DC2626; text-decoration: none; font-weight: 600; word-break: break-all;">${em}</a>`
+                      )
+                      .join("")}
+                  </div>
+                </div>
+              `
+                  : ""
+              }
+
+              ${
+                websiteList.length > 0
+                  ? `
+                <div style="display: flex; align-items: flex-start; gap: 6px; font-size: 11.5px; margin-bottom: 6px;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                  <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                    ${websiteList
+                      .map((w) => {
+                        const url = w.startsWith("http") ? w : `https://${w}`;
+                        const label = w.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+                        return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #4B5563; text-decoration: underline; font-weight: 600;">${label}</a>`;
+                      })
+                      .join("")}
+                  </div>
+                </div>
+              `
+                  : ""
+              }
+
+              ${
+                loc.address
+                  ? `
+                <div style="display: flex; align-items: flex-start; gap: 6px; font-size: 11px; color: #4B5563; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #E5E7EB; line-height: 1.35;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>${loc.address}</span>
+                </div>
+              `
+                  : ""
+              }
 
             </div>
           `;
@@ -219,7 +338,7 @@ const GlobalDistributorMap = () => {
           marker.bindPopup(popupContent, {
             className: "xtorc-white-popup",
             closeButton: true,
-            maxWidth: isMobile ? 280 : 320,
+            maxWidth: isMobile ? 290 : 330,
           });
 
           markersRef.current.push(marker);
@@ -331,7 +450,7 @@ const GlobalDistributorMap = () => {
         @media (max-width: 640px) {
           .xtorc-white-popup .leaflet-popup-content {
             margin: 6px 8px !important;
-            max-width: 250px !important;
+            max-width: 280px !important;
           }
         }
       `}</style>
@@ -343,7 +462,7 @@ const GlobalDistributorMap = () => {
           <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
         </span>
         <span className="font-semibold text-gray-700">Global Hubs:</span>
-        <span className="font-bold text-red-600">{locations.length || 3} Active</span>
+        <span className="font-bold text-red-600">{locations.length > 0 ? locations.length : FALLBACK_LOCATIONS.length} Active</span>
       </div>
 
       {/* Loading Overlay */}

@@ -1,4 +1,4 @@
-﻿// "use client";
+// "use client";
 // import React, { useState, useRef, useEffect } from "react";
 // import { useRouter } from "next/navigation";
 // import Link from "next/link";
@@ -110,7 +110,7 @@
 //         id: "xep700",
 //         name: "XEP700",
 //         img: "images/Power-Pack/XEP700.png",
-//         path: "xep700",
+//         path: "",
 //       },
 //       {
 //         id: "xap700",
@@ -672,9 +672,9 @@ const Navbar = () => {
     ],
     "hydraulic-torque": [
       { id: "square-drive", name: "Square Drive", img: "/square_drive.png", path: "/squaredrive", width: 420, height: 380 },
-      { id: "xfr", name: "XFR", img: "/square_drive.png", path: "/xfr", width: 420, height: 380 },
+      { id: "xfr", name: "XFR", img: "/images/xfr.png", path: "/xfr", width: 420, height: 380 },
       { id: "hex-drive", name: "Hex Drive", img: "/product2.png", path: "/hexdrive", width: 400, height: 400 },
-      { id: "xsl", name: "XSL", img: "/product2.png", path: "/xsl", width: 400, height: 400 }
+      { id: "xsl", name: "XSL", img: "/images/xsl.png", path: "/xsl", width: 400, height: 400 }
     ],
     "bolt-tensioner": [
       { id: "topside-tensioner", name: "Top Side Bolt Tensioner", img: "/product5.png", path: "/topsidebolt", width: 350, height: 400 },
@@ -683,7 +683,7 @@ const Navbar = () => {
       { id: "subsea-tensioner", name: "Subsea Bolt Tensioner", img: "/subsea.png", path: "/subseabolt", width: 380, height: 400 },
     ],
     "hydraulic-powerpack": [
-      { id: "xep700", name: "XEP700", img: "/images/Power-Pack/XEP700.png", path: "/xep700" },
+      { id: "xep700", name: "XEP 700", img: "/images/Power-Pack/XEP700.png", path: "/xep700" },
       { id: "xap700", name: "XAP 700", img: "/images/Power-Pack/XAP 700.png", path: "/xap700" },
       { id: "xep1500", name: "XEP1500", img: "/images/Power-Pack/xep1500.png", path: "/xep1500" },
       { id: "xap1500", name: "XAP1500", img: "/images/Power-Pack/XAP1500.png", path: "/xap1500" },

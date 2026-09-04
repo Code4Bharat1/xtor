@@ -1,4 +1,4 @@
-﻿// "use client";
+// "use client";
 // import React, { useState } from "react";
 // import Link from "next/link";
 // import { usePathname } from "next/navigation";
@@ -476,7 +476,7 @@ const categories = {
         {
           id: "xfr",
           name: "XFR",
-          img: "images/BoltingTools/square_driveee.jpeg",
+          img: "/images/xfr.png",
           path: "xfr",
         },
         {
@@ -488,7 +488,7 @@ const categories = {
         {
           id: "xsl",
           name: "XSL",
-          img: "images/BoltingTools/hexdrive.png",
+          img: "/images/xsl.png",
           path: "xsl",
         },
       ]
@@ -540,7 +540,7 @@ const categories = {
       img: "images/Power-Pack/XAP 700.png",
       path: "xap700",
     },
-    { id: "xep1500", name: "XEP1500", img: "/XEPP1500.jpeg", path: "xep1500" }, // Corrected image path based on previous example
+    { id: "xep1500", name: "XEP1500", img: "/images/Power-Pack/xep1500.png", path: "xep1500" },
     {
       id: "xap1500",
       name: "XAP1500",
