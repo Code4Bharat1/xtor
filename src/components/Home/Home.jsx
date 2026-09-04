@@ -1,16 +1,17 @@
-"use client";
+﻿"use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const Home = () => {
   const router = useRouter();
   const products = [
-    { id: 0, src: "/SquareDrive.png", alt: "Product 1" },
-    { id: 1, src: "/product5.png", alt: "Product 2" },
-    { id: 2, src: "/product2.png", alt: "Product 3" },
-    { id: 3, src: "/product4.png", alt: "Product 4" },
-    { id: 4, src: "/product3.png", alt: "Product 4" },
+    { id: 0, src: "/SquareDrive.png", alt: "Square Drive Torque Wrench", link: "/squaredrive" },
+    { id: 1, src: "/product5.png", alt: "Hydraulic Bolt Tensioners", link: "/hydraulicbolttensioners" },
+    { id: 2, src: "/product2.png", alt: "Hydraulic Torque Wrench", link: "/hydraulictorque" },
+    { id: 3, src: "/product4.png", alt: "Pipe Cutting Machine", link: "/pipeCutting" },
+    { id: 4, src: "/images/accesories/jackscylinders.png", alt: "Hydraulic Jacks", link: "/hydraulicjack" },
     // { id: 5, src: "/product6.png", alt: "Product 4" },
   ];
 
@@ -56,14 +57,18 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="relative w-3/4 sm:w-2/3 md:w-full max-w-md h-[250px] md:h-[350px] flex items-center justify-center">
+              <Link
+                href={products[currentProductIndex].link}
+                className="relative w-3/4 sm:w-2/3 md:w-full max-w-md h-[250px] md:h-[350px] flex items-center justify-center cursor-pointer"
+                title={products[currentProductIndex].alt}
+              >
                 <img
                   src={products[currentProductIndex].src}
                   alt={products[currentProductIndex].alt}
-                  className="max-w-[80%] max-h-[85%] object-contain transition-opacity duration-500"
+                  className="max-w-[80%] max-h-[85%] object-contain transition-opacity duration-500 hover:scale-105"
                   key={currentProductIndex}
                 />
-              </div>
+              </Link>
             </motion.div>
 
             {/* Right side - staggered text */}

@@ -1,4 +1,4 @@
-// "use client";
+﻿// "use client";
 // import React, { useState, useRef, useEffect } from "react";
 // import { useRouter } from "next/navigation";
 // import Link from "next/link";
@@ -672,7 +672,9 @@ const Navbar = () => {
     ],
     "hydraulic-torque": [
       { id: "square-drive", name: "Square Drive", img: "/square_drive.png", path: "/squaredrive", width: 420, height: 380 },
-      { id: "hex-drive", name: "Hex Drive", img: "/product2.png", path: "/hexdrive", width: 400, height: 400 }
+      { id: "xfr", name: "XFR", img: "/square_drive.png", path: "/xfr", width: 420, height: 380 },
+      { id: "hex-drive", name: "Hex Drive", img: "/product2.png", path: "/hexdrive", width: 400, height: 400 },
+      { id: "xsl", name: "XSL", img: "/product2.png", path: "/xsl", width: 400, height: 400 }
     ],
     "bolt-tensioner": [
       { id: "topside-tensioner", name: "Top Side Bolt Tensioner", img: "/product5.png", path: "/topsidebolt", width: 350, height: 400 },
@@ -777,7 +779,7 @@ const Navbar = () => {
               <div className="flex font-bold flex-col w-[280px] flex-shrink-0 bg-white">
                 <button onClick={() => { setActiveSubmenu("insitu-machinning"); setActiveChildMenu([]); setSelectedProduct(null); }} className={`flex items-center w-full py-4 px-4 text-sm lg:text-base text-gray-800 text-left ${activeSubmenu === "insitu-machinning" ? "bg-gray-200" : "hover:bg-gray-100"}`}><FaAngleDoubleRight className="text-red-500 text-xl flex-shrink-0 mr-3 lg:mr-4" />Insitu Machining</button>
                 <button onClick={() => { setActiveSubmenu("bolting-tools"); setActiveChildMenu([]); setSelectedProduct(null); }} className={`flex items-center w-full py-4 px-4 text-sm lg:text-base text-gray-800 text-left ${activeSubmenu === "bolting-tools" ? "bg-gray-200" : "hover:bg-gray-100"}`}><FaAngleDoubleRight className="text-red-500 text-xl flex-shrink-0 mr-3 lg:mr-4" />Bolting Tools</button>
-                <button onClick={() => { setActiveSubmenu("hydraulic-powerpack"); setActiveChildMenu([]); setSelectedProduct(null); }} className={`flex items-center w-full py-4 px-4 text-sm lg:text-base text-gray-800 text-left ${activeSubmenu === "hydraulic-powerpack" ? "bg-gray-200" : "hover:bg-gray-100"}`}><FaAngleDoubleRight className="text-red-500 text-xl flex-shrink-0 mr-3 lg:mr-4" />Hydraulic Torquing Power Pack</button>
+                <button onClick={() => { setActiveSubmenu("hydraulic-powerpack"); setActiveChildMenu([]); setSelectedProduct(null); }} className={`flex items-center w-full py-4 px-4 text-sm lg:text-base text-gray-800 text-left ${activeSubmenu === "hydraulic-powerpack" ? "bg-gray-200" : "hover:bg-gray-100"}`}><FaAngleDoubleRight className="text-red-500 text-xl flex-shrink-0 mr-3 lg:mr-4" />Hydraulic Power Pack</button>
                 <button onClick={() => { setActiveSubmenu("accesories"); setActiveChildMenu([]); setSelectedProduct(null); }} className={`flex items-center w-full py-4 px-4 text-sm lg:text-base text-gray-800 text-left ${activeSubmenu === "accesories" ? "bg-gray-200" : "hover:bg-gray-100"}`}><FaAngleDoubleRight className="text-red-500 text-xl flex-shrink-0 mr-3 lg:mr-4" />Accessories</button>
                 <button onClick={() => { setActiveSubmenu("impact-sockets"); setActiveChildMenu([]); setSelectedProduct(null); }} className={`flex items-center w-full py-4 px-4 text-sm lg:text-base text-gray-800 text-left ${activeSubmenu === "impact-sockets" ? "bg-gray-200" : "hover:bg-gray-100"}`}><FaAngleDoubleRight className="text-red-500 text-xl flex-shrink-0 mr-3 lg:mr-4" />Sockets & Reducers</button>
               </div>

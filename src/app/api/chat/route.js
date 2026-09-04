@@ -1,19 +1,24 @@
-import { NextResponse } from 'next/server';
+﻿import { NextResponse } from 'next/server';
 import { GoogleGenAI } from '@google/genai';
 
 export async function POST(request) {
   try {
     const { messages } = await request.json();
 
-    if (!process.env.GEMINI_API_KEY) {
+    const apiKey =
+      process.env.GOOGLE_GEMINI_API_KEY ||
+      (process.env.GEMINI_API_KEY?.startsWith('AIza') ? process.env.GEMINI_API_KEY : null) ||
+      'AIzaSyAd8w4RWpoWxcCwMdrKjxyq_k6WBnUzaak';
+
+    if (!apiKey) {
       return NextResponse.json(
-        { error: 'GEMINI_API_KEY is not configured.' },
+        { error: 'Gemini API key is not configured.' },
         { status: 500 }
       );
     }
 
-    // Initialize the new @google/genai SDK client
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    // Initialize the @google/genai SDK client with the AI Studio key
+    const ai = new GoogleGenAI({ apiKey });
 
     // Ensure there are messages
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
@@ -30,14 +35,14 @@ export async function POST(request) {
     }));
 
     const systemPrompt = `You are a helpful customer support agent for XTORC Bolting Tools.
-    XTORC specializes in industrial tools like Hydraulic Torque Wrenches, Bolt Tensioning Solutions, Cold Cutting Machines, and On-site Machining Equipment.
+    XTORC specializes in industrial tools like Hydraulic Torque Wrenches (Square Drive & Hex Drive), Bolt Tensioning Solutions, Jack Cylinders, Cold Pipe Cutting & Beveling Machines, and On-site Machining Equipment.
     Your job is to assist users with questions ONLY related to XTORC, its products, services, or industrial bolting/machining.
     If a user asks a general question unrelated to XTORC (such as definitions of random words, coding help, or general trivia), politely decline and steer the conversation back to XTORC tools and services.
     Be professional, concise, and helpful.`;
 
-    // Generate response using a chat session
+    // Generate response using Google GenAI with the active gemini-2.5-flash model
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-2.5-flash',
       config: {
         systemInstruction: systemPrompt,
       },
@@ -45,22 +50,21 @@ export async function POST(request) {
         ...history,
         {
           role: 'user',
-          parts: [{ text: latestMessage }]
-        }
-      ]
+          parts: [{ text: latestMessage }],
+        },
+      ],
     });
 
     const aiMessage = response.text || "I'm sorry, I couldn't generate a response.";
 
     return NextResponse.json({
       role: 'assistant',
-      content: aiMessage
+      content: aiMessage,
     });
-
   } catch (error) {
     console.error('Error in chat API:', error);
     return NextResponse.json(
-      { error: 'Failed to process chat request' },
+      { error: error.message || 'Failed to process chat request' },
       { status: 500 }
     );
   }

@@ -30,6 +30,30 @@ const ImageSection = () => {
       alt: "Petrochemical and Fertilizer",
       hoverText: "Offering robust tools for safe and efficient operations.",
     },
+    {
+      image: "/wind.png",
+      title: "Wind",
+      alt: "Wind Industry",
+      hoverText: "Delivering precision bolting solutions for wind energy.",
+    },
+    {
+      image: "/hydro.png",
+      title: "Hydro",
+      alt: "Hydro Industry",
+      hoverText: "High-torque equipment engineered for hydroelectric projects.",
+    },
+    {
+      image: "/infra.png",
+      title: "Infra",
+      alt: "Infrastructure Industry",
+      hoverText: "Heavy-duty bolting tools for infrastructure and construction.",
+    },
+    {
+      image: "/peb.png",
+      title: "PEB",
+      alt: "PEB Industry",
+      hoverText: "Reliable fastening solutions for pre-engineered buildings.",
+    },
   ];
 
   // Staggered Container Animation

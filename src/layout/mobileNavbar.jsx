@@ -1,4 +1,4 @@
-// "use client";
+﻿// "use client";
 // import React, { useState } from "react";
 // import Link from "next/link";
 // import { usePathname } from "next/navigation";
@@ -469,15 +469,27 @@ const categories = {
       subItems: [
         {
           id: "square-drive",
-          name: "Square Drive - XTS Series",
-          img: "/square_drive.png",
+          name: "Square Drive",
+          img: "images/BoltingTools/square_driveee.jpeg",
           path: "squaredrive",
         },
         {
+          id: "xfr",
+          name: "XFR",
+          img: "images/BoltingTools/square_driveee.jpeg",
+          path: "xfr",
+        },
+        {
           id: "hex-drive",
-          name: "Hex Drive - XTH Series",
+          name: "Hex Drive",
           img: "images/BoltingTools/hexdrive.png",
           path: "hexdrive",
+        },
+        {
+          id: "xsl",
+          name: "XSL",
+          img: "images/BoltingTools/hexdrive.png",
+          path: "xsl",
         },
       ]
     },
@@ -490,20 +502,20 @@ const categories = {
         {
           id: "topside-tensioner",
           name: "Top Side Bolt Tensioner",
-          img: "product5.png", // Use appropriate image if available
+          img: "/hydraulicbolttensionerss.jpeg", // Use appropriate image if available
           path: "topsidebolt",
         },
         // 👇 NEW ITEM ADDED HERE for Mobile Navbar
         {
           id: "spring-return-tensioner",
           name: "Spring Return Bolt Tensioner",
-          img: "Springreturnbolt.png", // Use appropriate image if available (same as topside for now)
+          img: "Springreturnbolt.jpeg", // Use appropriate image if available (same as topside for now)
           path: "springreturnbolt",
         },
         {
           id: "multi-stage-tensioner",
           name: "Multi Stage Bolt Tensioner",
-          img: "multistagebolt.png",
+          img: "multistagebolt.jpeg",
           path: "multistagebolt",
         },
         {

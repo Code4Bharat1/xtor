@@ -81,7 +81,7 @@ const OurValues = () => {
             {/* 25 Products Card */}
             <div className="bg-[#1B1B1B] p-8 md:p-10 rounded-2xl flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left shadow-lg">
               <div className="text-5xl md:text-7xl font-bold text-[#D01A1A]">
-                <CountingNumber target={25} start={statsInView} />
+                <CountingNumber target={25} start={statsInView} /> +
               </div>
               <div className="text-white text-2xl md:text-4xl font-semibold">
                 Products
@@ -95,6 +95,25 @@ const OurValues = () => {
               </div>
               <div className="text-5xl md:text-7xl font-bold text-[#D01A1A] flex-shrink-0">
                 <CountingNumber target={15} start={statsInView} />
+              </div>
+            </div>
+            {/* 500000+ Man Hours Card */}
+            <div className="bg-[#1B1B1B] p-8 md:p-10 rounded-2xl flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left shadow-lg">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#D01A1A]">
+                <CountingNumber target={500000} start={statsInView} /> +
+              </div>
+              <div className="text-white text-base sm:text-lg md:text-xl font-medium">
+                Total Number of Man Hours <br /> Worked (5 Lakh+)
+              </div>
+            </div>
+
+            {/* 200+ WTGs Card */}
+            <div className="bg-[#1B1B1B] p-8 md:p-10 rounded-2xl flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-right shadow-lg">
+              <div className="text-white text-base sm:text-lg md:text-xl font-medium">
+                Total Number of WTGs <br /> Worked Upon
+              </div>
+              <div className="text-5xl md:text-7xl font-bold text-[#D01A1A] flex-shrink-0">
+                <CountingNumber target={200} start={statsInView} /> +
               </div>
             </div>
           </div>
