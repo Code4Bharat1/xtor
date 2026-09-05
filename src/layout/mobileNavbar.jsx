@@ -530,8 +530,8 @@ const categories = {
   "Hydraulic-Powerpack": [
     {
       id: "xep700",
-      name: "XEP700",
-      img: "images/Power-Pack/XEP700.png",
+      name: "XEP 700",
+      img: "images/Power-Pack/XEP700.jpg",
       path: "xep700",
     },
     {

@@ -74,6 +74,10 @@ body {
   .scrollable-para::-webkit-scrollbar-thumb:hover {
     background: #ff1a1a;
   }
+  .scrollable-para {
+    scrollbar-width: thin;
+    scrollbar-color: #d01a1a #111111;
+  }
   .custom-table-scroll {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;

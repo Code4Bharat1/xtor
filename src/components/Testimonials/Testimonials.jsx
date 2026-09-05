@@ -22,6 +22,7 @@ export default function TestimonialsSection() {
   const [showForm, setShowForm] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
   const formContainerRef = useRef(null);
 
   const [formData, setFormData] = useState({
@@ -74,6 +75,9 @@ export default function TestimonialsSection() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => ({ ...prev, [name]: "" }));
+    }
     if (errorMessage) setErrorMessage("");
   };
 
@@ -83,47 +87,61 @@ export default function TestimonialsSection() {
       const validExtensions = ["jpg", "jpeg", "png", "webp"];
       const fileExt = file.name.split(".").pop().toLowerCase();
       if (!validExtensions.includes(fileExt)) {
-        setErrorMessage("Please upload a valid photo (JPG, JPEG, PNG, or WEBP).");
+        setFieldErrors((prev) => ({ ...prev, profileImage: "Please upload a valid photo (JPG, JPEG, PNG, or WEBP)." }));
         setSelectedFile(null);
         return;
       }
 
       if (file.size > 2 * 1024 * 1024) {
-        setErrorMessage("Photo size is too large. Please upload an image under 2 MB.");
+        setFieldErrors((prev) => ({ ...prev, profileImage: "Photo size is too large. Please upload an image under 2 MB." }));
         setSelectedFile(null);
         return;
       }
 
       setSelectedFile(file);
+      if (fieldErrors.profileImage) {
+        setFieldErrors((prev) => ({ ...prev, profileImage: "" }));
+      }
       if (errorMessage) setErrorMessage("");
     }
   };
 
   const handleRatingClick = (stars) => {
     setFormData((prev) => ({ ...prev, rating: stars }));
+    if (fieldErrors.rating) {
+      setFieldErrors((prev) => ({ ...prev, rating: "" }));
+    }
     if (errorMessage) setErrorMessage("");
   };
 
-
   const validateForm = () => {
-    let err = null;
+    const errors = {};
+
     if (!formData.name.trim()) {
-      err = "Please enter your Full Name.";
-    } else if (formData.rating === 0) {
-      err = "Please select a Star Rating (1-5 stars).";
-    } else if (!formData.message.trim()) {
-      err = "Please enter your Feedback / Review message.";
-    } else if (formData.message.trim().length < 5) {
-      err = "Feedback message must be at least 5 characters long.";
-    } else if (!selectedFile) {
-      err = "Photo upload is required. Please attach your photo.";
+      errors.name = "Full Name is required.";
+    } else if (formData.name.trim().length < 2) {
+      errors.name = "Full Name must be at least 2 characters.";
+    } else if (formData.name.trim().length > 100) {
+      errors.name = "Full Name cannot exceed 100 characters.";
     }
 
-    if (err) {
-      setErrorMessage(err);
-      return err;
+    if (!formData.rating || formData.rating < 1 || formData.rating > 5) {
+      errors.rating = "Please select a Star Rating (1-5 stars).";
     }
-    return null;
+
+    if (!formData.message.trim()) {
+      errors.message = "Review Message is required.";
+    } else if (formData.message.trim().length < 5) {
+      errors.message = "Review Message must be at least 5 characters long.";
+    }
+
+    if (!selectedFile) {
+      errors.profileImage = "Client photo upload is required (JPG, PNG, or WEBP, max 2MB).";
+    }
+
+    setFieldErrors(errors);
+    const errorList = Object.values(errors);
+    return errorList.length > 0 ? errorList[0] : null;
   };
 
   const handleSubmit = async (e) => {
@@ -149,6 +167,7 @@ export default function TestimonialsSection() {
       await api.post("/testimonials", bodyFormData);
 
       setIsSubmitted(true);
+      setFieldErrors({});
       toast.success("Success", "Form submitted successfully");
       // Smoothly scroll to the confirmation message
       setTimeout(() => {
@@ -168,6 +187,7 @@ export default function TestimonialsSection() {
     setShowForm(false);
     setSelectedFile(null);
     setErrorMessage("");
+    setFieldErrors({});
     setFormData({
       name: "",
       company: "",
@@ -254,7 +274,7 @@ export default function TestimonialsSection() {
                     </div>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                     <div>
                       <label className="block text-xs font-semibold text-zinc-400 mb-1.5 uppercase tracking-wider">
                         Full Name *
@@ -265,8 +285,15 @@ export default function TestimonialsSection() {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="e.g. John Doe"
-                        className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 focus:border-red-500 text-white placeholder-zinc-500 text-sm outline-none transition"
+                        className={`w-full px-4 py-3 rounded-xl bg-zinc-900 border text-white placeholder-zinc-500 text-sm outline-none transition-all ${
+                          fieldErrors.name
+                            ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                            : "border-zinc-800 focus:border-red-500"
+                        }`}
                       />
+                      {fieldErrors.name && (
+                        <p className="text-xs text-red-400 mt-1">{fieldErrors.name}</p>
+                      )}
                     </div>
 
                     <div>
@@ -287,7 +314,9 @@ export default function TestimonialsSection() {
                       <label className="block text-xs font-semibold text-zinc-400 mb-1.5 uppercase tracking-wider">
                         Star Rating *
                       </label>
-                      <div className="flex items-center gap-2">
+                      <div className={`flex items-center gap-2 p-2 rounded-xl transition-all ${
+                        fieldErrors.rating ? "border border-red-500/80 bg-red-950/20" : ""
+                      }`}>
                         {[1, 2, 3, 4, 5].map((star) => (
                           <button
                             key={star}
@@ -310,6 +339,9 @@ export default function TestimonialsSection() {
                           </span>
                         )}
                       </div>
+                      {fieldErrors.rating && (
+                        <p className="text-xs text-red-400 mt-1">{fieldErrors.rating}</p>
+                      )}
                     </div>
 
                     <div>
@@ -322,17 +354,28 @@ export default function TestimonialsSection() {
                         value={formData.message}
                         onChange={handleInputChange}
                         placeholder="Describe your experience with XTORC tools, performance, and services..."
-                        className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 focus:border-red-500 text-white placeholder-zinc-500 text-sm outline-none transition resize-none"
+                        className={`w-full px-4 py-3 rounded-xl bg-zinc-900 border text-white placeholder-zinc-500 text-sm outline-none transition-all resize-none ${
+                          fieldErrors.message
+                            ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                            : "border-zinc-800 focus:border-red-500"
+                        }`}
                       />
+                      {fieldErrors.message && (
+                        <p className="text-xs text-red-400 mt-1">{fieldErrors.message}</p>
+                      )}
                     </div>
 
                     <div>
                       <label className="block text-xs font-semibold text-zinc-400 mb-1.5 uppercase tracking-wider">
                         Profile Photo *
                       </label>
-                      <label className="flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer transition">
-                        <Upload className="w-4 h-4 text-zinc-400" />
-                        <span className="text-xs text-zinc-400 truncate">
+                      <label className={`flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-900 border cursor-pointer transition-all ${
+                        fieldErrors.profileImage
+                          ? "border-red-500 bg-red-950/20"
+                          : "border-zinc-800 hover:border-zinc-700"
+                      }`}>
+                        <Upload className={`w-4 h-4 ${fieldErrors.profileImage ? "text-red-400" : "text-zinc-400"}`} />
+                        <span className={`text-xs truncate ${fieldErrors.profileImage ? "text-red-300" : "text-zinc-400"}`}>
                           {selectedFile ? selectedFile.name : "Choose photo (max 2MB)"}
                         </span>
                         <input
@@ -342,6 +385,9 @@ export default function TestimonialsSection() {
                           className="hidden"
                         />
                       </label>
+                      {fieldErrors.profileImage && (
+                        <p className="text-xs text-red-400 mt-1">{fieldErrors.profileImage}</p>
+                      )}
                     </div>
 
                     <div className="pt-2">

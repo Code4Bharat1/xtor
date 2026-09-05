@@ -1,9 +1,9 @@
 'use client'
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 const ReTubbing = () => {
-  const [isExpanded, setIsExpanded]= useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   return (
     <div
       className="bg-black text-white"
@@ -35,16 +35,16 @@ const ReTubbing = () => {
             <div className="space-y-4 text-body text-justify">
               <p>
                 {isExpanded ?
-                `XTORC specializes in comprehensive on-site Re-Tubing services for Boilers, Shell & Tube Heat Exchangers, Condensers, Fin Fans, and Coolers. Our certified technicians utilize advanced tube extraction, tube bundle pulling, high-pressure tube expansion, facing, and hydro-testing equipment to restore optimal thermal efficiency and mechanical integrity. In high-demand industries such as Oil & Gas, Power Generation, Petrochemicals, and Manufacturing, tube degradation, fouling, and leaks can severely compromise production efficiency and safety. XTORC's turnkey re-tubing solutions cover partial or complete retubing, tube sheet refurbishment, internal inspection, and precision hydraulic torque and tension rolling, ensuring minimal plant downtime and extended asset lifespan. Trust XTORC for dependable, compliant, and precision-engineered retubing solutions tailored to demanding industrial turnaround and shutdown schedules.`
-              :
-                `XTORC specializes in comprehensive on-site Re-Tubing services for Boilers, Shell & Tube Heat Exchangers, Condensers, Fin Fans, and Coolers. Our certified technicians utilize advanced tube extraction, tube bundle pulling, high-pressure tube expansion, facing, and hydro-testing equipment to restore optimal thermal efficiency and mechanical integrity. In high-demand industries such as Oil & Gas, Power Generation, Petrochemicals, and Manufacturing, tube degradation, fouling, and leaks can severely compromise production efficiency and safety.`}
-                
-              <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="text-red-500 font-semibold pl-1 hover:underline cursor-pointer"
-              >
-                {isExpanded ? 'Read Less' : 'Read More'}
-              </button>
+                  `XTORC specializes in comprehensive on-site Re-Tubing services for Boilers, Shell & Tube Heat Exchangers, Condensers, Fin Fans, and Coolers. Our certified technicians utilize advanced tube extraction, tube bundle pulling, high-pressure tube expansion, facing, and hydro-testing equipment to restore optimal thermal efficiency and mechanical integrity. In high-demand industries such as Oil & Gas, Power Generation, Petrochemicals, and Manufacturing, tube degradation, fouling, and leaks can severely compromise production efficiency and safety. XTORC's turnkey re-tubing solutions cover partial or complete retubing, tube sheet refurbishment, internal inspection, and precision hydraulic torque and tension rolling, ensuring minimal plant downtime and extended asset lifespan. Trust XTORC for dependable, compliant, and precision-engineered retubing solutions tailored to demanding industrial turnaround and shutdown schedules.`
+                  :
+                  `XTORC specializes in comprehensive on-site Re-Tubing services for Boilers, Shell & Tube Heat Exchangers, Condensers, Fin Fans, and Coolers. Our certified technicians utilize advanced tube extraction, tube bundle pulling, high-pressure tube expansion, facing, and hydro-testing equipment to restore optimal thermal efficiency and mechanical integrity. In high-demand industries such as Oil & Gas, Power Generation, Petrochemicals, and Manufacturing, tube degradation, fouling, and leaks can severely compromise production efficiency and safety.`}
+
+                <button
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="text-red-500 font-semibold pl-1 hover:underline cursor-pointer"
+                >
+                  {isExpanded ? 'Read Less' : 'Read More'}
+                </button>
               </p>
             </div>
           </div>

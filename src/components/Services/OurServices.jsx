@@ -13,9 +13,20 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
   const [isAtBottom, setIsAtBottom] = useState(false);
   const [hasOverflow, setHasOverflow] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimeoutRef = useRef(null);
 
   const normalizedSrc = imageSrc?.startsWith('/') ? imageSrc : `/${imageSrc}`;
   const isEnlargeNeeded = imageSrc?.includes('re_tubing') || imageSrc?.includes('callib');
+
+  useEffect(() => {
+    return () => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const checkScrollPosition = () => {
     if (textScrollRef.current) {
@@ -25,20 +36,40 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
     }
   };
 
+  const handleScroll = () => {
+    checkScrollPosition();
+    setIsScrolling(true);
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    scrollTimeoutRef.current = setTimeout(() => {
+      setIsScrolling(false);
+    }, 1000);
+  };
+
   const handleScrollToggle = () => {
     if (!textScrollRef.current) return;
-    const { scrollTop, scrollHeight, clientHeight } = textScrollRef.current;
 
     if (isAtBottom) {
       textScrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
       setIsAtBottom(false);
+      setTimeout(() => {
+        setIsUnlocked(false);
+      }, 350);
     } else {
-      const scrollStep = Math.max(clientHeight * 0.75, 120);
-      const nextScrollTop = scrollTop + scrollStep;
-      textScrollRef.current.scrollTo({ top: nextScrollTop, behavior: 'smooth' });
-      if (nextScrollTop + clientHeight >= scrollHeight - 20) {
-        setIsAtBottom(true);
+      if (!isUnlocked) {
+        setIsUnlocked(true);
       }
+      setTimeout(() => {
+        if (!textScrollRef.current) return;
+        const { scrollTop, scrollHeight, clientHeight } = textScrollRef.current;
+        const scrollStep = Math.max(clientHeight * 0.75, 120);
+        const nextScrollTop = scrollTop + scrollStep;
+        textScrollRef.current.scrollTo({ top: nextScrollTop, behavior: 'smooth' });
+        if (nextScrollTop + clientHeight >= scrollHeight - 20) {
+          setIsAtBottom(true);
+        }
+      }, isUnlocked ? 0 : 50);
     }
   };
 
@@ -187,8 +218,10 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
 
           <div
             ref={textScrollRef}
-            onScroll={checkScrollPosition}
-            className="text-body text-justify opacity-90 pr-2 leading-relaxed flex-1 overflow-y-auto no-scrollbar relative"
+            onScroll={handleScroll}
+            className={`text-body text-justify opacity-90 pr-2 leading-relaxed flex-1 relative ${
+              isUnlocked ? 'overflow-y-auto' : 'overflow-hidden'
+            } ${isScrolling ? 'scrollable-para' : 'no-scrollbar'}`}
             style={{
               maxHeight: !isMobile && photoHeight ? `${Math.max(photoHeight - 110, 160)}px` : '15rem',
             }}

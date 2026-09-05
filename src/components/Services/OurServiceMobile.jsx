@@ -2,46 +2,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 
 const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.3 });
-  const textScrollRef = useRef(null);
-  const [isAtBottom, setIsAtBottom] = useState(false);
-  const [hasOverflow, setHasOverflow] = useState(true);
-
   const normalizedSrc = imageSrc?.startsWith('/') ? imageSrc : `/${imageSrc}`;
   const isEnlargeNeeded = imageSrc?.includes('re_tubing') || imageSrc?.includes('callib');
-
-  const checkScrollPosition = () => {
-    if (textScrollRef.current) {
-      const { scrollTop, scrollHeight, clientHeight } = textScrollRef.current;
-      setHasOverflow(scrollHeight > clientHeight + 10);
-      setIsAtBottom(scrollTop + clientHeight >= scrollHeight - 20);
-    }
-  };
-
-  const handleScrollToggle = () => {
-    if (!textScrollRef.current) return;
-    const { scrollTop, scrollHeight, clientHeight } = textScrollRef.current;
-
-    if (isAtBottom) {
-      textScrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
-      setIsAtBottom(false);
-    } else {
-      const scrollStep = Math.max(clientHeight * 0.75, 120);
-      const nextScrollTop = scrollTop + scrollStep;
-      textScrollRef.current.scrollTo({ top: nextScrollTop, behavior: 'smooth' });
-      if (nextScrollTop + clientHeight >= scrollHeight - 20) {
-        setIsAtBottom(true);
-      }
-    }
-  };
-
-  useEffect(() => {
-    checkScrollPosition();
-  }, [description]);
 
   const textVariants = {
     hidden: { opacity: 0, x: imageOnLeft ? 100 : -100 },
@@ -73,11 +40,10 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
   return (
     <div ref={ref} className="mb-16">
       <div
-        className={`flex flex-col md:${
-          imageOnLeft ? "flex-row" : "flex-row-reverse"
-        } items-center gap-8 md:gap-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}
+        className={`flex flex-col md:${imageOnLeft ? "flex-row" : "flex-row-reverse"
+          } items-center gap-8 md:gap-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}
       >
-       
+
         {/* Image Section */}
         <motion.div
           className="flex-1 w-full"
@@ -89,11 +55,10 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
             <img
               src={normalizedSrc}
               alt={title}
-              className={`${
-                isEnlargeNeeded
+              className={`${isEnlargeNeeded
                   ? 'w-[300px] max-w-full'
                   : 'w-auto'
-              } h-auto max-h-[360px] max-w-full block object-contain`}
+                } h-auto max-h-[360px] max-w-full block object-contain`}
               onError={(e) => {
                 e.target.style.display = "none";
                 if (e.target.nextSibling) e.target.nextSibling.style.display = "flex";
@@ -124,25 +89,9 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
             animate={isInView ? "visible" : "hidden"}
           ></motion.div>
 
-          <div
-            ref={textScrollRef}
-            onScroll={checkScrollPosition}
-            className="text-body text-justify opacity-90 relative transition-all duration-300 overflow-y-auto no-scrollbar"
-            style={{
-              maxHeight: '14rem',
-            }}
-          >
-            <p>{description}</p>
-          </div>
-
-          {hasOverflow && (
-            <button
-              onClick={handleScrollToggle}
-              className="mt-3 text-red-500 hover:text-red-400 hover:underline focus:outline-none transition-colors duration-200 text-sm font-semibold flex items-center gap-1 cursor-pointer mx-auto md:mx-0"
-            >
-              {isAtBottom ? 'Read Less ▲' : 'Read More ▼'}
-            </button>
-          )}
+          <p className="text-body text-justify opacity-90 leading-relaxed">
+            {description}
+          </p>
         </motion.div>
       </div>
     </div>
@@ -155,10 +104,10 @@ function OurServicess() {
 
   const headerVariants = {
     hidden: { opacity: 0, y: -50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         duration: 0.8,
         ease: "easeOut"
       }
@@ -173,21 +122,21 @@ function OurServicess() {
       imageOnLeft: false
     },
     {
-      title: "Cold Cutting & Beveling", 
+      title: "Cold Cutting & Beveling",
       description: "XTORC offers high-precision Pipe Cold Cutting services on-site, providing tailored solutions for a wide range of pipe material grades and thicknesses. Our state-of-the-art cold cutting technology allows us to safely and accurately cut pipes without generating heat, minimizing the risk of damaging sensitive materials or creating hazardous conditions. In Oil and Gas projects, especially during shutdowns, precision is paramount. Pipe Cold Cutting is an essential service for maintenance, repairs, and modifications, where traditional cutting methods may pose safety risks or lead to unwanted thermal effects. Our cold cutting services ensure that pipe integrity is maintained, avoiding warping, thermal expansion, or the potential for compromising the strength and structure of critical piping systems. Whether working with carbon steel, stainless steel, or exotic alloys, XTORC’s team is equipped to handle diverse materials and pipe thicknesses. Our on-site cold cutting solutions are fast, efficient, and highly accurate, ensuring minimal disruption to operations while keeping projects on track. Trust XTORC for reliable, safe, and efficient Pipe Cold Cutting services that meet the demanding requirements of Oil and Gas projects, shutdowns, and maintenance operations. Our expertise ensures your pipes are cut to perfection, ensuring project success and long-term operational efficiency.",
       imageSrc: "pipeCold.jpeg",
       imageOnLeft: true
     },
     {
       title: "Flange Facing",
-      description: "XTORC specializes in high-precision on-site Flange Facing and Serration services, catering to a wide range of flange material grades and sizes. Our advanced equipment and experienced technicians ensure that each flange is accurately faced and serrated to meet the specific requirements of your project, ensuring optimal performance and safety in critical applications. Flange facing is a crucial process that involves machining the surface of the flange to create a smooth, flat, and even surface for a secure gasket seal. This is essential for preventing leaks, ensuring a tight seal, and maintaining pressure integrity in systems such as pipelines, pressure vessels, and reactors. Additionally, serration on the flange face creates grooves that enhance the gasket's sealing performance, especially in high-pressure or high-temperature environments, making it an essential step for industries such as Oil & Gas, Petrochemical, Power Generation, and more. No matter the material – be it carbon steel, stainless steel, or other alloys – XTORC’s flange facing and serration services are designed to meet the stringent requirements of various industrial applications. Our on-site capabilities ensure minimal downtime and provide a fast, reliable, and cost-effective solution for flange preparation. The importance of proper flange facing and serration cannot be overstated. Inadequate preparation can lead to leaks, equipment failure, or safety hazards. XTORC’s services guarantee that your flanges are properly machined for a perfect seal, ensuring the reliability and efficiency of your systems and extending the lifespan of your equipment. Choose XTORC for accurate and professional flange facing and serration services that enhance the performance, safety, and longevity of your industrial systems.", 
+      description: "XTORC specializes in high-precision on-site Flange Facing and Serration services, catering to a wide range of flange material grades and sizes. Our advanced equipment and experienced technicians ensure that each flange is accurately faced and serrated to meet the specific requirements of your project, ensuring optimal performance and safety in critical applications. Flange facing is a crucial process that involves machining the surface of the flange to create a smooth, flat, and even surface for a secure gasket seal. This is essential for preventing leaks, ensuring a tight seal, and maintaining pressure integrity in systems such as pipelines, pressure vessels, and reactors. Additionally, serration on the flange face creates grooves that enhance the gasket's sealing performance, especially in high-pressure or high-temperature environments, making it an essential step for industries such as Oil & Gas, Petrochemical, Power Generation, and more. No matter the material – be it carbon steel, stainless steel, or other alloys – XTORC’s flange facing and serration services are designed to meet the stringent requirements of various industrial applications. Our on-site capabilities ensure minimal downtime and provide a fast, reliable, and cost-effective solution for flange preparation. The importance of proper flange facing and serration cannot be overstated. Inadequate preparation can lead to leaks, equipment failure, or safety hazards. XTORC’s services guarantee that your flanges are properly machined for a perfect seal, ensuring the reliability and efficiency of your systems and extending the lifespan of your equipment. Choose XTORC for accurate and professional flange facing and serration services that enhance the performance, safety, and longevity of your industrial systems.",
       imageSrc: "facing.jpeg",
       imageOnLeft: false
     },
     {
       title: "Water Jet Cutting",
       description: "XTORC provides high-precision on-site Waterjet cutting services for a wide variety of applications, including manhole creation in vessels, vessel demolition, and more. Our advanced Waterjet technology uses ultra-high-pressure water to cut through materials with unparalleled accuracy, making it the ideal solution for tasks that require clean, precise cuts without heat or distortion. In critical industries such as Oil and Gas, petrochemical, and heavy industry, Waterjet cutting plays a crucial role in maintaining safety and efficiency during operations. For tasks like manhole creation in vessels, our Waterjet services provide an exact cut that minimizes material damage and structural compromise. When it comes to vessel demolition, Waterjet cutting ensures controlled, efficient removal of material, reducing the risk of sparks, heat damage, or harmful emissions that might occur with traditional cutting methods. Our on-site Waterjet services are highly versatile, capable of cutting through a wide range of materials such as steel, stainless steel, concrete, and more, all while ensuring minimal disruption to the surrounding structure. This makes Waterjet cutting a preferred method for maintenance, modification, and demolition projects, especially in sensitive environments where precision is vital. With XTORC’s Waterjet services, you can expect safe, efficient, and environmentally friendly cutting solutions that are critical for maintaining the integrity and longevity of your assets. Our expertise in Waterjet cutting ensures that your projects, whether vessel modifications, manhole installations, or demolition, are executed with the highest level of precision and care.",
-      imageSrc: "jet.PNG", 
+      imageSrc: "jet.PNG",
       imageOnLeft: true
     },
     {
@@ -197,7 +146,7 @@ function OurServicess() {
       imageOnLeft: false
     },
     {
-      title: "Re-Tubing of Boilers & Heat Exchangers", 
+      title: "Re-Tubing of Boilers & Heat Exchangers",
       description: "XTORC specializes in comprehensive on-site Re-Tubing services for Boilers, Shell & Tube Heat Exchangers, Condensers, Fin Fans, and Coolers. Our certified technicians utilize advanced tube extraction, tube bundle pulling, high-pressure tube expansion, facing, and hydro-testing equipment to restore optimal thermal efficiency and mechanical integrity. In high-demand industries such as Oil & Gas, Power Generation, Petrochemicals, and Manufacturing, tube degradation, fouling, and leaks can severely compromise production efficiency and safety. XTORC's turnkey re-tubing solutions cover partial or complete retubing, tube sheet refurbishment, internal inspection, and precision hydraulic torque and tension rolling, ensuring minimal plant downtime and extended asset lifespan. Trust XTORC for dependable, compliant, and precision-engineered retubing solutions tailored to demanding industrial turnaround and shutdown schedules.",
       imageSrc: "re_tubing.png",
       imageOnLeft: true
@@ -261,13 +210,13 @@ function OurServicess() {
             <motion.h2 variants={itemVariants} className="heading-main mb-2">
               Service Offerings
             </motion.h2>
-            
-            <motion.div 
+
+            <motion.div
               variants={lineVariants}
               className="w-full h-1.5 rounded-full bg-red-600 origin-left"
             ></motion.div>
           </div>
-          
+
           <motion.p variants={itemVariants} className="text-body max-w-2xl opacity-90">
             Are designed to maximize efficiency and ensure safety in operations:
           </motion.p>
@@ -278,7 +227,7 @@ function OurServicess() {
           <ServiceItem
             key={index}
             title={service.title}
-            description={service.description} 
+            description={service.description}
             imageSrc={service.imageSrc}
             imageOnLeft={service.imageOnLeft}
             index={index}

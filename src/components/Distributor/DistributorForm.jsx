@@ -412,28 +412,34 @@ const DistributorForm = () => {
       errors.name = "Contact person name is required.";
     } else if (formData.name.trim().length < 2) {
       errors.name = "Name must be at least 2 characters.";
+    } else if (formData.name.trim().length > 100) {
+      errors.name = "Name cannot exceed 100 characters.";
     }
 
     if (!formData.company.trim()) {
       errors.company = "Company name is required.";
+    } else if (formData.company.trim().length > 100) {
+      errors.company = "Company name cannot exceed 100 characters.";
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
       errors.email = "Email address is required.";
     } else if (!emailRegex.test(formData.email.trim())) {
-      errors.email = "Please enter a valid email address.";
+      errors.email = "Please enter a valid email address (e.g. partner@company.com).";
     }
 
     const phoneRegex = /^[+]*[(]?[0-9]{1,4}[)]?[-\s./0-9]{6,15}$/;
     if (!formData.phone.trim()) {
       errors.phone = "Phone number is required.";
     } else if (!phoneRegex.test(formData.phone.trim().replace(/\s/g, ""))) {
-      errors.phone = "Please enter a valid phone number.";
+      errors.phone = "Please enter a valid phone number (7-15 digits).";
     }
 
     if (!formData.country.trim()) {
       errors.country = "Country / Region of interest is required.";
+    } else if (formData.country.trim().length > 100) {
+      errors.country = "Country/Region cannot exceed 100 characters.";
     }
 
     if (selectedProducts.length === 0) {
@@ -444,6 +450,8 @@ const DistributorForm = () => {
       errors.message = "Please provide brief details about your company and capabilities.";
     } else if (formData.message.trim().length < 10) {
       errors.message = "Message must be at least 10 characters long.";
+    } else if (formData.message.trim().length > 1000) {
+      errors.message = "Message cannot exceed 1000 characters.";
     }
 
     setFieldErrors(errors);

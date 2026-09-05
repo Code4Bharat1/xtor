@@ -135,10 +135,10 @@ const ContactUs = () => {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Your Name *"
-                      className={`w-full px-4 py-3 bg-transparent border rounded-lg text-white placeholder-gray-400 focus:outline-none transition-colors text-sm sm:text-base ${
+                      className={`w-full px-4 py-3 bg-white border rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none transition-colors text-sm sm:text-base ${
                         fieldErrors.name
                           ? "border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-gray-600 focus:border-red-600"
+                          : "border-gray-300 focus:border-red-600 focus:ring-1 focus:ring-red-600"
                       }`}
                     />
                     {fieldErrors.name && (
@@ -154,10 +154,10 @@ const ContactUs = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="Email Address *"
-                      className={`w-full px-4 py-3 bg-transparent border rounded-lg text-white placeholder-gray-400 focus:outline-none transition-colors text-sm sm:text-base ${
+                      className={`w-full px-4 py-3 bg-white border rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none transition-colors text-sm sm:text-base ${
                         fieldErrors.email
                           ? "border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-gray-600 focus:border-red-600"
+                          : "border-gray-300 focus:border-red-600 focus:ring-1 focus:ring-red-600"
                       }`}
                     />
                     {fieldErrors.email && (
@@ -173,10 +173,10 @@ const ContactUs = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="Phone Number *"
-                      className={`w-full px-4 py-3 bg-transparent border rounded-lg text-white placeholder-gray-400 focus:outline-none transition-colors text-sm sm:text-base ${
+                      className={`w-full px-4 py-3 bg-white border rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none transition-colors text-sm sm:text-base ${
                         fieldErrors.phone
                           ? "border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-gray-600 focus:border-red-600"
+                          : "border-gray-300 focus:border-red-600 focus:ring-1 focus:ring-red-600"
                       }`}
                     />
                     {fieldErrors.phone && (
@@ -192,10 +192,10 @@ const ContactUs = () => {
                       onChange={handleChange}
                       placeholder="Message - Provide detailed information about your requirements to help you *"
                       rows="4"
-                      className={`w-full px-4 py-3 bg-transparent border rounded-lg text-white placeholder-gray-400 focus:outline-none resize-none transition-colors text-sm sm:text-base ${
+                      className={`w-full px-4 py-3 bg-white border rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none resize-none transition-colors text-sm sm:text-base ${
                         fieldErrors.message
                           ? "border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-gray-600 focus:border-red-600"
+                          : "border-gray-300 focus:border-red-600 focus:ring-1 focus:ring-red-600"
                       }`}
                     ></textarea>
                     {fieldErrors.message && (

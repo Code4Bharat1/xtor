@@ -38,7 +38,7 @@ const Calibration = () => {
                 {isExpanded
                   ? `XTORC offers professional Hydraulic Tools Calibration services to ensure the precision, compliance, and reliability of your torquing and tensioning equipment. Calibration is essential to maintain the accuracy of hydraulic tools, which play a crucial role in tightening and securing bolts in a wide range of industries, including Oil and Gas, Infrastructure, Power Generation, and Manufacturing. Proper calibration of hydraulic tools is vital for ensuring the correct torque and tension is applied during operations. Even minor discrepancies in calibration can lead to over-tightening or under-tightening, resulting in equipment failure, leaks, or safety hazards. XTORC's calibration services ensure that your hydraulic tools consistently deliver precise performance, preventing costly mistakes and enhancing the safety and efficiency of your projects. Our expert team uses advanced equipment and techniques to calibrate your tools to meet international industry standards, ensuring optimal accuracy for every use. Whether you are working on critical bolting operations, machinery maintenance, or structural installations, having properly calibrated tools is crucial to achieving the right fastening strength and minimizing operational risks. With XTORC's Hydraulic Tools Calibration services, you can trust that your equipment will perform to its highest potential, providing accurate, traceable, and reliable results every time.`
                   : `XTORC offers professional Hydraulic Tools Calibration services to ensure the precision and reliability of your torquing and tensioning equipment. Calibration is essential to maintain the accuracy of hydraulic tools, which play a crucial role in tightening and securing bolts in a wide range of industries, including Oil and Gas, Infrastructure, and Manufacturing. Proper calibration of hydraulic tools is vital for ensuring the correct torque and tension is applied during operations. Even minor discrepancies in calibration can lead to over-tightening or under-tightening, resulting in equipment failure, leaks, or safety hazards. XTORC's calibration services ensure that your hydraulic tools consistently deliver precise performance, preventing costly mistakes and enhancing the safety and efficiency of your projects.`}
-                
+
                 <button
                   onClick={() => setIsExpanded(!isExpanded)}
                   className="text-red-500 font-semibold pl-1 hover:underline cursor-pointer"
@@ -54,12 +54,12 @@ const Calibration = () => {
             {/* Product Image */}
             <div className="relative flex justify-center">
               <div
-                className="bg-white rounded-2xl p-2 border-t-12 border-r-12 border-red-600 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.6)] transition-shadow duration-300 rounded-3xl w-full md:w-[550px] max-w-[500px] h-[350px] sm:h-[420px] flex items-center justify-center overflow-hidden"
+                className="bg-white rounded-2xl p-2 border-t-12 border-r-12 border-red-600 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.6)] transition-shadow duration-300 rounded-3xl w-full md:w-[550px] max-w-[500px] h-[400px] sm:h-[500px] md:h-[500px] flex items-center justify-center overflow-hidden"
               >
                 <img
-                  src="callib.avif"
+                  src="/callib.avif"
                   alt="Hydraulic Tools Calibration"
-                  className="w-full h-full object-contain rounded-xl"
+                  className="w-full h-full object-cover rounded-xl"
                 />
               </div>
             </div>

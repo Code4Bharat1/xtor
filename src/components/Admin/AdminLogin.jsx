@@ -4,13 +4,16 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Lock, Mail, Eye, EyeOff, ShieldCheck, ArrowRight, X, CheckCircle, AlertCircle } from "lucide-react";
 import { api } from "@/services/apiClient";
+import { useToast } from "@/components/common/ToastContext";
 
 export default function AdminLogin() {
   const router = useRouter();
+  const toast = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -26,29 +29,37 @@ export default function AdminLogin() {
 
   // Validate inputs before submitting
   const validateForm = () => {
+    const errors = {};
     const cleanEmail = email.trim();
     if (!cleanEmail) {
-      setErrorMessage("Please enter your admin email address.");
-      return false;
+      errors.email = "Please enter your admin email address.";
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(cleanEmail)) {
+        errors.email = "Please enter a valid email address (e.g. admin@xtorc.com).";
+      }
     }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(cleanEmail)) {
-      setErrorMessage("Please enter a valid email address (e.g. admin@xtorc.com).");
-      return false;
-    }
+
     if (!password) {
-      setErrorMessage("Please enter your password.");
-      return false;
+      errors.password = "Please enter your password.";
+    } else if (password.length < 6) {
+      errors.password = "Password must be at least 6 characters.";
     }
-    return true;
+
+    setFieldErrors(errors);
+    const errorList = Object.values(errors);
+    return errorList.length > 0 ? errorList[0] : null;
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setErrorMessage("");
 
-    // Perform client-side string validation
-    if (!validateForm()) return;
+    const validationError = validateForm();
+    if (validationError) {
+      toast.error("Error", validationError);
+      return;
+    }
 
     setIsLoading(true);
 
@@ -64,6 +75,7 @@ export default function AdminLogin() {
 
       if (!token) {
         setErrorMessage("Authentication failed: Server did not return a security token.");
+        toast.error("Error", "Authentication failed: No security token returned.");
         setIsLoading(false);
         return;
       }
@@ -74,11 +86,13 @@ export default function AdminLogin() {
         localStorage.setItem("xtorc_admin_user", JSON.stringify(admin || { email }));
       }
 
+      setFieldErrors({});
+      toast.success("Success", "Admin login successful");
       router.push("/admin/testimonials");
     } catch (err) {
-      // Gracefully handle backend error strings without throwing or logging to console
       const backendMessage = err?.message || "Incorrect email or password. Please try again.";
       setErrorMessage(backendMessage);
+      toast.error("Error", backendMessage);
       setIsLoading(false);
     }
   };
@@ -169,12 +183,20 @@ export default function AdminLogin() {
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
+                    if (fieldErrors.email) setFieldErrors((prev) => ({ ...prev, email: "" }));
                     if (errorMessage) setErrorMessage("");
                   }}
                   placeholder="Enter email"
-                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 text-white placeholder-zinc-500 text-sm outline-none transition"
+                  className={`w-full pl-11 pr-4 py-3 rounded-xl bg-zinc-900 border text-white placeholder-zinc-500 text-sm outline-none transition-all ${
+                    fieldErrors.email
+                      ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                      : "border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                  }`}
                 />
               </div>
+              {fieldErrors.email && (
+                <p className="text-xs text-red-400 mt-1.5 pl-1">{fieldErrors.email}</p>
+              )}
             </div>
 
             <div>
@@ -188,10 +210,15 @@ export default function AdminLogin() {
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
+                    if (fieldErrors.password) setFieldErrors((prev) => ({ ...prev, password: "" }));
                     if (errorMessage) setErrorMessage("");
                   }}
                   placeholder="••••••••"
-                  className="w-full pl-11 pr-11 py-3 rounded-xl bg-zinc-900 border border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 text-white placeholder-zinc-500 text-sm outline-none transition"
+                  className={`w-full pl-11 pr-11 py-3 rounded-xl bg-zinc-900 border text-white placeholder-zinc-500 text-sm outline-none transition-all ${
+                    fieldErrors.password
+                      ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                      : "border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                  }`}
                 />
                 <button
                   type="button"
@@ -201,6 +228,9 @@ export default function AdminLogin() {
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
+              {fieldErrors.password && (
+                <p className="text-xs text-red-400 mt-1.5 pl-1">{fieldErrors.password}</p>
+              )}
             </div>
 
             <button

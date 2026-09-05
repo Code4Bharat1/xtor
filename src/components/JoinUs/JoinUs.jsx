@@ -62,6 +62,7 @@ export default function CareersSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
   const formContainerRef = useRef(null);
 
   const [formData, setFormData] = useState({
@@ -82,6 +83,7 @@ export default function CareersSection() {
     setShowForm(false);
     setSelectedFile(null);
     setErrorMessage("");
+    setFieldErrors({});
     setFormData({
       fullName: "",
       email: "",
@@ -99,6 +101,9 @@ export default function CareersSection() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => ({ ...prev, [name]: "" }));
+    }
     if (errorMessage) setErrorMessage("");
   };
 
@@ -108,53 +113,69 @@ export default function CareersSection() {
       const validExtensions = ["pdf", "doc", "docx"];
       const fileExt = file.name.split(".").pop().toLowerCase();
       if (!validExtensions.includes(fileExt)) {
-        setErrorMessage("Invalid file type. Please upload a PDF, DOC, or DOCX file.");
+        setFieldErrors((prev) => ({ ...prev, resume: "Invalid file type. Please upload a PDF, DOC, or DOCX file." }));
         setSelectedFile(null);
         return;
       }
 
       if (file.size > 5 * 1024 * 1024) {
-        setErrorMessage("File size is too large. Please upload a resume under 5 MB.");
+        setFieldErrors((prev) => ({ ...prev, resume: "File size is too large. Please upload a resume under 5 MB." }));
         setSelectedFile(null);
         return;
       }
 
       setSelectedFile(file);
+      if (fieldErrors.resume) {
+        setFieldErrors((prev) => ({ ...prev, resume: "" }));
+      }
       if (errorMessage) setErrorMessage("");
     }
   };
 
   const validateForm = () => {
-    let err = null;
+    const errors = {};
+
     if (!formData.fullName.trim()) {
-      err = "Please enter your Full Name.";
+      errors.fullName = "Full Name is required.";
+    } else if (formData.fullName.trim().length < 2) {
+      errors.fullName = "Full Name must be at least 2 characters.";
     } else if (formData.fullName.trim().length > 100) {
-      err = "Full Name cannot exceed 100 characters.";
-    } else {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
-        err = "Please enter a valid Email Address (e.g. rahul@example.com).";
-      } else {
-        const phoneRegex = /^[+]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/;
-        if (!formData.mobileNumber.trim() || !phoneRegex.test(formData.mobileNumber.trim())) {
-          err = "Please enter a valid Mobile Number.";
-        } else if (!formData.currentCity.trim()) {
-          err = "Please enter your Current City.";
-        } else if (!selectedFile) {
-          err = "Resume upload is required. Please attach a valid PDF, DOC, or DOCX file.";
-        } else if (!formData.whyJoinXtorc.trim()) {
-          err = "Please describe why you want to join XTORC.";
-        } else if (formData.whyJoinXtorc.trim().length > 500) {
-          err = "Reason for joining XTORC must not exceed 500 characters.";
-        }
-      }
+      errors.fullName = "Full Name cannot exceed 100 characters.";
     }
 
-    if (err) {
-      setErrorMessage(err);
-      return err;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      errors.email = "Email Address is required.";
+    } else if (!emailRegex.test(formData.email.trim())) {
+      errors.email = "Please enter a valid email address (e.g. name@domain.com).";
     }
-    return null;
+
+    const phoneRegex = /^[+]*[(]?[0-9]{1,4}[)]?[-\s./0-9]{6,15}$/;
+    if (!formData.mobileNumber.trim()) {
+      errors.mobileNumber = "Mobile Number is required.";
+    } else if (!phoneRegex.test(formData.mobileNumber.trim().replace(/\s/g, ""))) {
+      errors.mobileNumber = "Please enter a valid mobile number (7-15 digits).";
+    }
+
+    if (!formData.currentCity.trim()) {
+      errors.currentCity = "Current City is required.";
+    }
+
+    if (!selectedFile) {
+      errors.resume = "Resume upload is required (PDF, DOC, or DOCX, max 5MB).";
+    }
+
+    if (!formData.whyJoinXtorc.trim()) {
+      errors.whyJoinXtorc = "Please describe why you want to join XTORC.";
+    } else if (formData.whyJoinXtorc.trim().length < 10) {
+      errors.whyJoinXtorc = "Please provide at least 10 characters.";
+    } else if (formData.whyJoinXtorc.trim().length > 500) {
+      errors.whyJoinXtorc = "Reason for joining XTORC must not exceed 500 characters.";
+    }
+
+    setFieldErrors(errors);
+    const errorList = Object.values(errors);
+    return errorList.length > 0 ? errorList[0] : null;
   };
 
   const handleSubmit = async (e) => {
@@ -186,6 +207,7 @@ export default function CareersSection() {
       await api.post("/careers/apply", bodyFormData);
 
       setIsSubmitted(true);
+      setFieldErrors({});
       toast.success("Success", "Form submitted successfully");
       // Smoothly scroll to the confirmation message so user is not left at footer
       setTimeout(() => {
@@ -299,8 +321,15 @@ export default function CareersSection() {
                           value={formData.fullName}
                           onChange={handleInputChange}
                           placeholder="Enter your name"
-                          className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 outline-none text-white text-sm"
+                          className={`w-full px-4 py-3 rounded-xl bg-zinc-900 border text-white text-sm outline-none transition-all ${
+                            fieldErrors.fullName
+                              ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                              : "border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                          }`}
                         />
+                        {fieldErrors.fullName && (
+                          <p className="text-xs text-red-400 mt-1 pl-1">{fieldErrors.fullName}</p>
+                        )}
                       </div>
 
                       <div>
@@ -314,8 +343,15 @@ export default function CareersSection() {
                           value={formData.email}
                           onChange={handleInputChange}
                           placeholder="Enter your email address"
-                          className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 outline-none text-white text-sm"
+                          className={`w-full px-4 py-3 rounded-xl bg-zinc-900 border text-white text-sm outline-none transition-all ${
+                            fieldErrors.email
+                              ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                              : "border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                          }`}
                         />
+                        {fieldErrors.email && (
+                          <p className="text-xs text-red-400 mt-1 pl-1">{fieldErrors.email}</p>
+                        )}
                       </div>
                     </div>
 
@@ -331,8 +367,15 @@ export default function CareersSection() {
                           value={formData.mobileNumber}
                           onChange={handleInputChange}
                           placeholder="Enter your mobile number"
-                          className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 outline-none text-white text-sm"
+                          className={`w-full px-4 py-3 rounded-xl bg-zinc-900 border text-white text-sm outline-none transition-all ${
+                            fieldErrors.mobileNumber
+                              ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                              : "border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                          }`}
                         />
+                        {fieldErrors.mobileNumber && (
+                          <p className="text-xs text-red-400 mt-1 pl-1">{fieldErrors.mobileNumber}</p>
+                        )}
                       </div>
 
                       <div>
@@ -346,8 +389,15 @@ export default function CareersSection() {
                           value={formData.currentCity}
                           onChange={handleInputChange}
                           placeholder="e.g. Mumbai"
-                          className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 outline-none text-white text-sm"
+                          className={`w-full px-4 py-3 rounded-xl bg-zinc-900 border text-white text-sm outline-none transition-all ${
+                            fieldErrors.currentCity
+                              ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                              : "border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                          }`}
                         />
+                        {fieldErrors.currentCity && (
+                          <p className="text-xs text-red-400 mt-1 pl-1">{fieldErrors.currentCity}</p>
+                        )}
                       </div>
                     </div>
 
@@ -427,8 +477,12 @@ export default function CareersSection() {
                       <label className="block text-sm font-semibold text-gray-300 mb-2">
                         Upload Resume / CV (PDF, DOC, DOCX) <span className="text-red-500">*</span>
                       </label>
-                      <label className="flex flex-col items-center justify-center border-2 border-dashed border-zinc-800 hover:border-red-500/50 bg-zinc-900/60 p-6 rounded-2xl cursor-pointer transition">
-                        <Upload className="w-8 h-8 text-zinc-500 mb-2" />
+                      <label className={`flex flex-col items-center justify-center border-2 border-dashed p-6 rounded-2xl cursor-pointer transition ${
+                        fieldErrors.resume
+                          ? "border-red-500 bg-red-950/20"
+                          : "border-zinc-800 hover:border-red-500/50 bg-zinc-900/60"
+                      }`}>
+                        <Upload className={`w-8 h-8 mb-2 ${fieldErrors.resume ? "text-red-400" : "text-zinc-500"}`} />
                         <span className="text-xs text-gray-300 font-semibold">
                           {selectedFile ? selectedFile.name : "Click to select resume file"}
                         </span>
@@ -439,6 +493,9 @@ export default function CareersSection() {
                           className="hidden"
                         />
                       </label>
+                      {fieldErrors.resume && (
+                        <p className="text-xs text-red-400 mt-1.5 pl-1">{fieldErrors.resume}</p>
+                      )}
                     </div>
 
                     <div>
@@ -451,8 +508,15 @@ export default function CareersSection() {
                         value={formData.whyJoinXtorc}
                         onChange={handleInputChange}
                         placeholder="Briefly describe your motivation and relevant skills (max 500 chars)..."
-                        className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 outline-none text-white text-sm resize-none"
+                        className={`w-full px-4 py-3 rounded-xl bg-zinc-900 border text-white text-sm outline-none resize-none transition-all ${
+                          fieldErrors.whyJoinXtorc
+                            ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                            : "border-zinc-800 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                        }`}
                       />
+                      {fieldErrors.whyJoinXtorc && (
+                        <p className="text-xs text-red-400 mt-1 pl-1">{fieldErrors.whyJoinXtorc}</p>
+                      )}
                     </div>
 
                     <div className="pt-4 flex justify-end gap-4">
