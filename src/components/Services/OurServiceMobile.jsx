@@ -12,6 +12,7 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
   const [hasOverflow, setHasOverflow] = useState(true);
 
   const normalizedSrc = imageSrc?.startsWith('/') ? imageSrc : `/${imageSrc}`;
+  const isEnlargeNeeded = imageSrc?.includes('re_tubing') || imageSrc?.includes('callib');
 
   const checkScrollPosition = () => {
     if (textScrollRef.current) {
@@ -88,7 +89,11 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
             <img
               src={normalizedSrc}
               alt={title}
-              className="w-auto h-auto max-h-[360px] max-w-full block"
+              className={`${
+                isEnlargeNeeded
+                  ? 'w-[300px] max-w-full'
+                  : 'w-auto'
+              } h-auto max-h-[360px] max-w-full block object-contain`}
               onError={(e) => {
                 e.target.style.display = "none";
                 if (e.target.nextSibling) e.target.nextSibling.style.display = "flex";

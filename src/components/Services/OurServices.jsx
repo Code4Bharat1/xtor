@@ -15,6 +15,7 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
   const [isMobile, setIsMobile] = useState(false);
 
   const normalizedSrc = imageSrc?.startsWith('/') ? imageSrc : `/${imageSrc}`;
+  const isEnlargeNeeded = imageSrc?.includes('re_tubing') || imageSrc?.includes('callib');
 
   const checkScrollPosition = () => {
     if (textScrollRef.current) {
@@ -123,18 +124,17 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
   }, [photoHeight, description]);
 
   return (
-    <div ref={ref} className="mb-12 md:mb-16">
-      <div className={`flex ${isMobile
+    <div ref={ref} className="mb-12 md:mb-16 w-full">
+      <div className={`w-full flex ${isMobile
         ? 'flex-col'
         : imageOnLeft
           ? 'flex-row'
           : 'flex-row-reverse'
-        } items-center justify-center gap-6 md:gap-8 max-w-5xl mx-auto px-4`}>
+        } items-center justify-between gap-8 md:gap-12`}>
 
         {/* Image Section */}
         <motion.div
-          className={`w-full md:flex-1 flex ${imageOnLeft ? 'md:justify-end' : 'md:justify-start'
-            } justify-center`}
+          className="w-full md:w-auto flex-shrink-0 flex items-center justify-center"
           variants={imageVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -145,7 +145,11 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
               src={normalizedSrc}
               alt={title}
               onLoad={updateHeight}
-              className="w-auto h-auto max-h-[460px] max-w-full block group-hover:scale-[1.02] transition-transform duration-500 ease-out"
+              className={`${
+                isEnlargeNeeded
+                  ? 'w-[340px] sm:w-[400px] md:w-[450px]'
+                  : 'w-auto'
+              } h-auto max-h-[460px] max-w-full block object-contain group-hover:scale-[1.02] transition-transform duration-500 ease-out`}
               onError={(e) => {
                 e.target.style.display = 'none';
                 if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
@@ -160,7 +164,7 @@ const ServiceItem = ({ title, description, imageSrc, imageOnLeft = true, index }
 
         {/* Text Section */}
         <motion.div
-          className="w-full md:flex-1 flex flex-col justify-center"
+          className="w-full md:flex-1 min-w-0 flex flex-col justify-center"
           style={{
             minHeight: !isMobile && photoHeight ? `${photoHeight}px` : 'auto',
           }}
