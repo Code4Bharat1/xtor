@@ -11,7 +11,6 @@ import {
   MessageSquare, 
   Send, 
   Loader2, 
-  CheckCircle2, 
   AlertCircle,
   Package,
   Layers,
@@ -22,6 +21,7 @@ import {
   Search
 } from "lucide-react";
 import { api } from "@/services/apiClient";
+import { useToast } from "@/components/common/ToastContext";
 
 // 3-Level Product Hierarchy (Main Types > Subtypes > Subtypes of Subtypes)
 const PRODUCT_TREE = [
@@ -171,6 +171,7 @@ export function getCleanProductName(path) {
 }
 
 const DistributorForm = () => {
+  const toast = useToast();
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -196,7 +197,6 @@ const DistributorForm = () => {
 
   const [fieldErrors, setFieldErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   // Close dropdown on outside click
@@ -447,7 +447,8 @@ const DistributorForm = () => {
     }
 
     setFieldErrors(errors);
-    return Object.keys(errors).length === 0;
+    const errorList = Object.values(errors);
+    return errorList.length > 0 ? errorList[0] : null;
   };
 
   const handleChange = (e) => {
@@ -462,10 +463,13 @@ const DistributorForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    const validationError = validateForm();
+    if (validationError) {
+      toast.error("Error", validationError);
+      return;
+    }
 
     setLoading(true);
-    setSuccessMessage("");
     setErrorMessage("");
 
     try {
@@ -473,7 +477,7 @@ const DistributorForm = () => {
         ? selectedProducts.join(" | ")
         : "All Products / Full Portfolio";
 
-      const response = await api.post("/distributor", {
+      await api.post("/distributor", {
         name: formData.name.trim(),
         company: formData.company.trim(),
         email: formData.email.trim(),
@@ -484,9 +488,8 @@ const DistributorForm = () => {
         message: formData.message.trim()
       });
 
-      setSuccessMessage(
-        response?.message || "Thank you! Your distributor application has been submitted successfully. Our team will review your details and contact you shortly."
-      );
+      toast.success("Success", "Form submitted successfully");
+
       setFormData({
         name: "",
         company: "",
@@ -500,9 +503,9 @@ const DistributorForm = () => {
       setIsDropdownOpen(false);
       setFieldErrors({});
     } catch (err) {
-      setErrorMessage(
-        err?.message || "Failed to submit your distributor application. Please check your connection and try again."
-      );
+      const errorTxt = err?.message || "Failed to submit form. Please check your connection and try again.";
+      setErrorMessage(errorTxt);
+      toast.error("Error", "Form submission failed");
     } finally {
       setLoading(false);
     }
@@ -530,7 +533,7 @@ const DistributorForm = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="bg-gradient-to-b from-zinc-900/90 to-zinc-950/90 border border-zinc-800 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-sm"
+        className="bg-gradient-to-b from-zinc-900 to-zinc-900/95 border border-zinc-700/80 border-t-4 border-t-red-600 rounded-3xl p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(220,38,38,0.06)]"
       >
         {/* Form Heading */}
         <div className="text-center mb-8">
@@ -546,20 +549,6 @@ const DistributorForm = () => {
           </p>
         </div>
 
-        {/* Success Alert */}
-        {successMessage && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-6 p-4 rounded-xl bg-emerald-950/60 border border-emerald-700/60 text-emerald-300 flex items-start gap-3 shadow-lg"
-          >
-            <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0 text-emerald-400" />
-            <div>
-              <h4 className="font-semibold text-emerald-200">Application Received</h4>
-              <p className="text-sm text-emerald-300/90 mt-0.5">{successMessage}</p>
-            </div>
-          </motion.div>
-        )}
 
         {/* Error Alert */}
         {errorMessage && (
@@ -585,15 +574,15 @@ const DistributorForm = () => {
                 Contact Person Name <span className="text-red-500">*</span>
               </label>
               <div className="relative">
-                <User className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-500 pointer-events-none" />
+                <User className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="e.g. John Doe"
-                  className={`w-full pl-11 pr-4 py-3 bg-zinc-950/80 border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 transition-all ${
-                    fieldErrors.name ? "border-red-500 focus:border-red-500" : "border-zinc-800 focus:border-red-600"
+                  className={`w-full pl-11 pr-4 py-3 bg-[#0f0f12] border rounded-xl text-white font-medium placeholder-gray-400 shadow-inner focus:outline-none focus:ring-2 focus:ring-red-600/30 focus:bg-black transition-all ${
+                    fieldErrors.name ? "border-red-500 focus:border-red-500" : "border-zinc-700/70 focus:border-red-600"
                   }`}
                 />
               </div>
@@ -610,15 +599,15 @@ const DistributorForm = () => {
                 Company / Organization Name <span className="text-red-500">*</span>
               </label>
               <div className="relative">
-                <Building2 className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-500 pointer-events-none" />
+                <Building2 className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
                 <input
                   type="text"
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
                   placeholder="e.g. Industrial Supplies Ltd."
-                  className={`w-full pl-11 pr-4 py-3 bg-zinc-950/80 border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 transition-all ${
-                    fieldErrors.company ? "border-red-500 focus:border-red-500" : "border-zinc-800 focus:border-red-600"
+                  className={`w-full pl-11 pr-4 py-3 bg-[#0f0f12] border rounded-xl text-white font-medium placeholder-gray-400 shadow-inner focus:outline-none focus:ring-2 focus:ring-red-600/30 focus:bg-black transition-all ${
+                    fieldErrors.company ? "border-red-500 focus:border-red-500" : "border-zinc-700/70 focus:border-red-600"
                   }`}
                 />
               </div>
@@ -635,15 +624,15 @@ const DistributorForm = () => {
                 Official Email Address <span className="text-red-500">*</span>
               </label>
               <div className="relative">
-                <Mail className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-500 pointer-events-none" />
+                <Mail className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="e.g. partner@company.com"
-                  className={`w-full pl-11 pr-4 py-3 bg-zinc-950/80 border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 transition-all ${
-                    fieldErrors.email ? "border-red-500 focus:border-red-500" : "border-zinc-800 focus:border-red-600"
+                  className={`w-full pl-11 pr-4 py-3 bg-[#0f0f12] border rounded-xl text-white font-medium placeholder-gray-400 shadow-inner focus:outline-none focus:ring-2 focus:ring-red-600/30 focus:bg-black transition-all ${
+                    fieldErrors.email ? "border-red-500 focus:border-red-500" : "border-zinc-700/70 focus:border-red-600"
                   }`}
                 />
               </div>
@@ -660,15 +649,15 @@ const DistributorForm = () => {
                 Phone Number / WhatsApp <span className="text-red-500">*</span>
               </label>
               <div className="relative">
-                <Phone className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-500 pointer-events-none" />
+                <Phone className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="e.g. +91 98765 43210"
-                  className={`w-full pl-11 pr-4 py-3 bg-zinc-950/80 border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 transition-all ${
-                    fieldErrors.phone ? "border-red-500 focus:border-red-500" : "border-zinc-800 focus:border-red-600"
+                  className={`w-full pl-11 pr-4 py-3 bg-[#0f0f12] border rounded-xl text-white font-medium placeholder-gray-400 shadow-inner focus:outline-none focus:ring-2 focus:ring-red-600/30 focus:bg-black transition-all ${
+                    fieldErrors.phone ? "border-red-500 focus:border-red-500" : "border-zinc-700/70 focus:border-red-600"
                   }`}
                 />
               </div>
@@ -685,15 +674,15 @@ const DistributorForm = () => {
                 Target Country / Territory of Interest <span className="text-red-500">*</span>
               </label>
               <div className="relative">
-                <Globe2 className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-500 pointer-events-none" />
+                <Globe2 className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
                 <input
                   type="text"
                   name="country"
                   value={formData.country}
                   onChange={handleChange}
                   placeholder="e.g. Saudi Arabia, Germany, Vietnam..."
-                  className={`w-full pl-11 pr-4 py-3 bg-zinc-950/80 border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 transition-all ${
-                    fieldErrors.country ? "border-red-500 focus:border-red-500" : "border-zinc-800 focus:border-red-600"
+                  className={`w-full pl-11 pr-4 py-3 bg-[#0f0f12] border rounded-xl text-white font-medium placeholder-gray-400 shadow-inner focus:outline-none focus:ring-2 focus:ring-red-600/30 focus:bg-black transition-all ${
+                    fieldErrors.country ? "border-red-500 focus:border-red-500" : "border-zinc-700/70 focus:border-red-600"
                   }`}
                 />
               </div>
@@ -710,14 +699,14 @@ const DistributorForm = () => {
                 Years in Industrial / Bolting Equipment Business
               </label>
               <div className="relative">
-                <Briefcase className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-500 pointer-events-none" />
+                <Briefcase className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
                 <input
                   type="text"
                   name="experience"
                   value={formData.experience}
                   onChange={handleChange}
                   placeholder="e.g. 5+ Years / Distributing hydraulic tools"
-                  className="w-full pl-11 pr-4 py-3 bg-zinc-950/80 border border-zinc-800 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 transition-all"
+                  className="w-full pl-11 pr-4 py-3 bg-[#0f0f12] border border-zinc-700/70 rounded-xl text-white font-medium placeholder-gray-400 shadow-inner focus:outline-none focus:ring-2 focus:ring-red-600/30 focus:border-red-600 focus:bg-black transition-all"
                 />
               </div>
             </div>
@@ -739,17 +728,17 @@ const DistributorForm = () => {
               <button
                 type="button"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className={`w-full pl-4 pr-10 py-3 bg-zinc-950/80 border rounded-xl text-left flex items-center justify-between transition-all cursor-pointer ${
+                className={`w-full pl-4 pr-10 py-3 bg-[#0f0f12] border rounded-xl text-left flex items-center justify-between shadow-inner transition-all cursor-pointer ${
                   fieldErrors.productInterest
                     ? "border-red-500 focus:ring-2 focus:ring-red-500"
                     : isDropdownOpen
-                      ? "border-red-600 ring-2 ring-red-600/30"
-                      : "border-zinc-800 hover:border-zinc-700"
+                      ? "border-red-600 ring-2 ring-red-600/30 bg-black"
+                      : "border-zinc-700/70 hover:border-zinc-500"
                 }`}
               >
                 <div className="flex items-center gap-2.5 overflow-hidden">
                   <Package className="w-4 h-4 text-red-500 flex-shrink-0" />
-                  <span className={selectedProducts.length > 0 ? "text-white font-medium text-sm truncate" : "text-gray-500 text-sm truncate"}>
+                  <span className={selectedProducts.length > 0 ? "text-white font-medium text-sm truncate" : "text-gray-400 text-sm truncate"}>
                     {selectedProducts.length === 0
                       ? "Select products of interest (Click to choose)..."
                       : selectedProducts.length === 1
@@ -778,13 +767,13 @@ const DistributorForm = () => {
                 >
                   {/* Search Box */}
                   <div className="relative mb-2.5">
-                    <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-500 pointer-events-none" />
+                    <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
                     <input
                       type="text"
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       placeholder="Search tools or categories (e.g. Torque, Flange, 700 Bar)..."
-                      className="w-full pl-9 pr-8 py-2 bg-zinc-950 border border-zinc-700 rounded-lg text-xs sm:text-sm text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition"
+                      className="w-full pl-9 pr-8 py-2 bg-[#0f0f12] border border-zinc-700/80 rounded-lg text-xs sm:text-sm text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition shadow-inner"
                     />
                     {searchTerm && (
                       <button
@@ -1082,15 +1071,15 @@ const DistributorForm = () => {
               Business Overview & Capabilities <span className="text-red-500">*</span>
             </label>
             <div className="relative">
-              <MessageSquare className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-500 pointer-events-none" />
+              <MessageSquare className="absolute left-3.5 top-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
               <textarea
                 name="message"
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Briefly describe your existing distribution network, client base (e.g. Oil & Gas, Wind, Construction), and why you want to partner with XTORC..."
-                className={`w-full pl-11 pr-4 py-3 bg-zinc-950/80 border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 transition-all resize-none ${
-                  fieldErrors.message ? "border-red-500 focus:border-red-500" : "border-zinc-800 focus:border-red-600"
+                className={`w-full pl-11 pr-4 py-3 bg-[#0f0f12] border rounded-xl text-white font-medium placeholder-gray-400 shadow-inner focus:outline-none focus:ring-2 focus:ring-red-600/30 focus:bg-black transition-all resize-none ${
+                  fieldErrors.message ? "border-red-500 focus:border-red-500" : "border-zinc-700/70 focus:border-red-600"
                 }`}
               />
             </div>

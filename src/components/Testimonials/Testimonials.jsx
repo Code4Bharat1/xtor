@@ -13,62 +13,10 @@ import {
   AlertCircle
 } from "lucide-react";
 import { api } from "@/services/apiClient";
-
-// Compact & Ultra-Sleek Glassmorphism Toast Notification
-function ToastNotification({ message, onClose, duration = 5000 }) {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onClose();
-    }, duration);
-    return () => clearTimeout(timer);
-  }, [onClose, duration]);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: -15, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -15, scale: 0.95 }}
-      transition={{ type: "spring", stiffness: 450, damping: 30 }}
-      className="fixed top-20 sm:top-24 right-4 sm:right-6 z-[200] max-w-[340px] w-[calc(100vw-2rem)] rounded-xl bg-zinc-950/95 backdrop-blur-xl border border-red-500/30 text-white shadow-[0_10px_30px_-5px_rgba(220,38,38,0.25),0_6px_15px_rgba(0,0,0,0.5)] overflow-hidden"
-    >
-      <div className="px-3.5 py-2.5 flex items-center gap-2.5">
-        {/* Compact Glowing Icon Badge */}
-        <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center flex-shrink-0 shadow-sm border border-red-400/40">
-          <AlertCircle className="w-4 h-4 text-white" />
-        </div>
-
-        {/* Content */}
-        <div className="flex-1 text-left min-w-0 pr-1">
-          <p className="text-xs text-zinc-200 font-medium leading-snug">
-            {message}
-          </p>
-        </div>
-
-        {/* Close Button */}
-        <button
-          type="button"
-          onClick={onClose}
-          className="text-zinc-400 hover:text-white p-1 rounded-md hover:bg-zinc-800/60 transition-colors cursor-pointer flex-shrink-0"
-          aria-label="Close notification"
-        >
-          <X className="w-3.5 h-3.5" />
-        </button>
-      </div>
-
-      {/* Sleek 2px Progress Bar */}
-      <div className="w-full h-[2px] bg-zinc-900 overflow-hidden">
-        <motion.div
-          initial={{ width: "100%" }}
-          animate={{ width: "0%" }}
-          transition={{ duration: duration / 1000, ease: "linear" }}
-          className="h-full bg-gradient-to-r from-red-600 via-red-500 to-red-600 shadow-[0_0_6px_rgba(239,68,68,0.8)]"
-        />
-      </div>
-    </motion.div>
-  );
-}
+import { useToast } from "@/components/common/ToastContext";
 
 export default function TestimonialsSection() {
+  const toast = useToast();
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -158,34 +106,35 @@ export default function TestimonialsSection() {
 
 
   const validateForm = () => {
+    let err = null;
     if (!formData.name.trim()) {
-      setErrorMessage("Please enter your Full Name.");
-      return false;
+      err = "Please enter your Full Name.";
+    } else if (formData.rating === 0) {
+      err = "Please select a Star Rating (1-5 stars).";
+    } else if (!formData.message.trim()) {
+      err = "Please enter your Feedback / Review message.";
+    } else if (formData.message.trim().length < 5) {
+      err = "Feedback message must be at least 5 characters long.";
+    } else if (!selectedFile) {
+      err = "Photo upload is required. Please attach your photo.";
     }
-    if (formData.rating === 0) {
-      setErrorMessage("Please select a Star Rating (1-5 stars).");
-      return false;
+
+    if (err) {
+      setErrorMessage(err);
+      return err;
     }
-    if (!formData.message.trim()) {
-      setErrorMessage("Please enter your Feedback / Review message.");
-      return false;
-    }
-    if (formData.message.trim().length < 5) {
-      setErrorMessage("Feedback message must be at least 5 characters long.");
-      return false;
-    }
-    if (!selectedFile) {
-      setErrorMessage("Photo upload is required. Please attach your photo.");
-      return false;
-    }
-    return true;
+    return null;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
 
-    if (!validateForm()) return;
+    const validationError = validateForm();
+    if (validationError) {
+      toast.error("Error", validationError);
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -200,6 +149,7 @@ export default function TestimonialsSection() {
       await api.post("/testimonials", bodyFormData);
 
       setIsSubmitted(true);
+      toast.success("Success", "Form submitted successfully");
       // Smoothly scroll to the confirmation message
       setTimeout(() => {
         formContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -207,6 +157,7 @@ export default function TestimonialsSection() {
     } catch (err) {
       const msg = err?.message || "Failed to submit review. Please try again.";
       setErrorMessage(msg);
+      toast.error("Error", "Form submission failed");
     } finally {
       setIsSubmitting(false);
     }
@@ -232,15 +183,6 @@ export default function TestimonialsSection() {
       transition={{ duration: 0.6 }}
       className="bg-black text-white py-12 px-4 sm:px-6 md:px-8 relative overflow-hidden"
     >
-      {/* Top-Right Auto-Dismissing Error Pop-up Toast */}
-      <AnimatePresence>
-        {errorMessage && (
-          <ToastNotification
-            message={errorMessage}
-            onClose={() => setErrorMessage("")}
-          />
-        )}
-      </AnimatePresence>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Section Header */}

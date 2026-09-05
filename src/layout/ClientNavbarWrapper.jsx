@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
 import { motion } from "framer-motion";
+import { ToastProvider } from "@/components/common/ToastContext";
 
 export default function ClientNavbarWrapper({ children }) {
   const pathname = usePathname();
@@ -35,11 +36,11 @@ export default function ClientNavbarWrapper({ children }) {
   }, []);
 
   if (isAdmin) {
-    return <>{children}</>;
+    return <ToastProvider>{children}</ToastProvider>;
   }
 
   return (
-    <>
+    <ToastProvider>
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -50,7 +51,7 @@ export default function ClientNavbarWrapper({ children }) {
       <div className="w-full overflow-x-hidden">
         {children}
       </div>
-    </>
+    </ToastProvider>
   );
 }
 

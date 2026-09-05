@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaFilePdf } from "react-icons/fa";
 import { Download, Loader2 } from "lucide-react";
+import { useToast } from "@/components/common/ToastContext";
 
 export default function DownloadSection() {
+  const toast = useToast();
   const [downloading, setDownloading] = useState({});
 
   const containerVariants = {
@@ -60,15 +62,21 @@ export default function DownloadSection() {
       link.click();
       link.remove();
       window.URL.revokeObjectURL(blobUrl);
+      toast.success("Success", `"${fileName}" download started successfully.`);
     } catch (error) {
       console.warn("Direct blob download fallback:", error);
       // Fallback: standard link download
-      const link = document.createElement("a");
-      link.href = fileUrl;
-      link.download = fileName;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
+      try {
+        const link = document.createElement("a");
+        link.href = fileUrl;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        toast.success("Success", `"${fileName}" download initiated.`);
+      } catch (fallbackErr) {
+        toast.error("Error", `Failed to download "${fileName}". Please try again.`);
+      }
     } finally {
       setDownloading((prev) => ({ ...prev, [fileName]: false }));
     }

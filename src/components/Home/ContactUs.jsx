@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { MapPin, Mail, Phone, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { MapPin, Mail, Phone, Loader2, AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { api } from "@/services/apiClient";
+import { useToast } from "@/components/common/ToastContext";
 
 const ContactUs = () => {
+  const toast = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,7 +15,6 @@ const ContactUs = () => {
   });
   const [fieldErrors, setFieldErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const validateForm = () => {
@@ -52,7 +53,8 @@ const ContactUs = () => {
     }
 
     setFieldErrors(errors);
-    return Object.keys(errors).length === 0;
+    const errorList = Object.values(errors);
+    return errorList.length > 0 ? errorList[0] : null;
   };
 
   const handleChange = (e) => {
@@ -67,16 +69,17 @@ const ContactUs = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) {
+    const validationError = validateForm();
+    if (validationError) {
+      toast.error("Error", validationError);
       return;
     }
 
     setLoading(true);
-    setSuccessMessage("");
     setErrorMessage("");
 
     try {
-      const response = await api.post("/contact", {
+      await api.post("/contact", {
         name: formData.name.trim(),
         email: formData.email.trim(),
         phone: formData.phone.trim(),
@@ -84,9 +87,8 @@ const ContactUs = () => {
         subject: "Homepage Contact Enquiry"
       });
 
-      setSuccessMessage(
-        response.message || "Thank you! Your message has been sent successfully. We will get back to you shortly."
-      );
+      toast.success("Success", "Form submitted successfully");
+
       setFormData({
         name: "",
         email: "",
@@ -95,9 +97,9 @@ const ContactUs = () => {
       });
       setFieldErrors({});
     } catch (err) {
-      setErrorMessage(
-        err.message || "Failed to send your message. Please try again or reach out to us directly."
-      );
+      const errTxt = err.message || "Failed to submit form. Please try again.";
+      setErrorMessage(errTxt);
+      toast.error("Error", "Form submission failed");
     } finally {
       setLoading(false);
     }
@@ -117,12 +119,6 @@ const ContactUs = () => {
             >
               <div className="border border-red-600 rounded-lg p-6 sm:p-8 bg-zinc-950/40">
                 <form onSubmit={handleSubmit} noValidate className="space-y-4">
-                  {successMessage && (
-                    <div className="flex items-start gap-3 p-4 rounded-lg bg-green-950/70 border border-green-500/80 text-green-200 text-sm">
-                      <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>{successMessage}</span>
-                    </div>
-                  )}
 
                   {errorMessage && (
                     <div className="flex items-start gap-3 p-4 rounded-lg bg-red-950/70 border border-red-500/80 text-red-200 text-sm">

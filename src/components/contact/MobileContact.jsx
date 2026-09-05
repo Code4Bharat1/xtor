@@ -4,8 +4,10 @@ import { useState } from "react";
 import { Mail, MapPinned, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import ContactSection from "./form";
+import { useToast } from "@/components/common/ToastContext";
 
 export default function MobileContactPage() {
+  const toast = useToast();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -21,7 +23,7 @@ export default function MobileContactPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", form);
-    alert("Your query has been submitted!");
+    toast.success("Success", "Form submitted successfully");
   };
 
   return (

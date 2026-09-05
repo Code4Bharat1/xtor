@@ -1,10 +1,12 @@
 "use client"
 import React, { useState } from "react"
 import { motion } from "framer-motion"
-import { Loader2, CheckCircle2, AlertCircle } from "lucide-react"
+import { Loader2, AlertCircle } from "lucide-react"
 import { api } from "@/services/apiClient"
+import { useToast } from "@/components/common/ToastContext"
 
 function ContactSection() {
+  const toast = useToast()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,7 +18,6 @@ function ContactSection() {
 
   const [fieldErrors, setFieldErrors] = useState({})
   const [loading, setLoading] = useState(false)
-  const [successMessage, setSuccessMessage] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
 
   const validateForm = () => {
@@ -62,7 +63,8 @@ function ContactSection() {
     }
 
     setFieldErrors(errors)
-    return Object.keys(errors).length === 0
+    const errorList = Object.values(errors)
+    return errorList.length > 0 ? errorList[0] : null
   }
 
   const handleChange = (e) => {
@@ -77,16 +79,17 @@ function ContactSection() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!validateForm()) {
+    const validationError = validateForm()
+    if (validationError) {
+      toast.error("Error", validationError)
       return
     }
 
     setLoading(true)
-    setSuccessMessage("")
     setErrorMessage("")
 
     try {
-      const response = await api.post("/contact", {
+      await api.post("/contact", {
         name: formData.name.trim(),
         email: formData.email.trim(),
         phone: formData.phone.trim(),
@@ -95,9 +98,8 @@ function ContactSection() {
         message: formData.message.trim()
       })
 
-      setSuccessMessage(
-        response.message || "Thank you! Your query has been submitted successfully. We will get in touch with you shortly."
-      )
+      toast.success("Success", "Form submitted successfully")
+
       setFormData({
         name: "",
         email: "",
@@ -108,9 +110,9 @@ function ContactSection() {
       })
       setFieldErrors({})
     } catch (err) {
-      setErrorMessage(
-        err.message || "Failed to submit your query. Please try again or reach out to us directly."
-      )
+      const errTxt = err.message || "Failed to submit form. Please try again."
+      setErrorMessage(errTxt)
+      toast.error("Error", "Form submission failed")
     } finally {
       setLoading(false)
     }
@@ -127,12 +129,6 @@ function ContactSection() {
         className="w-full max-w-3xl rounded-3xl border border-gray-200 shadow-xl hover:shadow-red-600/30 transition-all duration-300 bg-white p-6 sm:p-8 md:p-10"
       >
         <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-          {successMessage && (
-            <div className="flex items-start gap-3 p-4 rounded-lg bg-green-50 border border-green-300 text-green-800 text-sm">
-              <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-              <span>{successMessage}</span>
-            </div>
-          )}
 
           {errorMessage && (
             <div className="flex items-start gap-3 p-4 rounded-lg bg-red-50 border border-red-300 text-red-800 text-sm">
