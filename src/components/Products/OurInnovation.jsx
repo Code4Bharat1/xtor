@@ -20,7 +20,7 @@ const products = [
   {
     id: 1,
     title: "Hydraulic Torque Wrenches",
-    img: "images/BoltingTools/squaredrive.png",
+    img: "/images/BoltingTools/squaredrive.png",
     desc: "Designed for precision and durability, our hydraulic torque wrenches are ideal for heavy-duty applications across multiple industries, ensuring accurate and efficient tightening or loosening of bolts.",
     imgHeight: "h-[500px]",
     imgWidth: "w-[500px]",
@@ -29,16 +29,16 @@ const products = [
   {
     id: 2,
     title: "Pipe Cutting & Beveling Machines",
-    img: "product4.png",
+    img: "/product4.png",
     desc: "Engineered for precision and safety, providing cold cutting and weld preparation for pipelines of diverse diameters and wall thicknesses.",
     imgHeight: "h-[500px]",
     imgWidth: "w-[500px]",
-    imgRotation: "rotate-[-360deg]",
+    imgRotation: "",
   },
   {
     id: 3,
     title: "Bolt Tensioning Solutions",
-    img: "product5.png",
+    img: "/product5.png",
     desc: "Experience unmatched reliability with our advanced multi-stud and hydraulic bolt tensioners, paired with electric and pneumatic powerpacks for superior performance under demanding conditions.",
     imgHeight: "h-[500px]",
     imgWidth: "w-[500px]",
@@ -214,26 +214,27 @@ const Innovations = () => {
               {/* Product Image - Clicking opens the modal popup */}
               <div
                 onClick={() => setActiveCategory(product)}
-                className="relative group block rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.6)] transition-all duration-300 cursor-pointer"
+                className="relative group w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden bg-white shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.6)] transition-all duration-300 cursor-pointer flex items-center justify-center"
               >
-                <img
-                  src={product.img}
-                  alt={product.title}
-                  className={`object-cover bg-gray-200 rounded group-hover:scale-105 transition-transform duration-500
-                    ${product.imgHeight} ${product.imgWidth}
-                    ${product.imgRotation}`}
-                  onError={(e) => (e.target.src = "/placeholder.png")}
-                />
+                {/* Showcase area with clearance padding so image is not cropped or covered by red sidebar */}
+                <div className="w-full h-full p-6 pr-16 sm:pr-20 flex items-center justify-center">
+                  <img
+                    src={product.img}
+                    alt={product.title}
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => (e.target.src = "/placeholder.png")}
+                  />
+                </div>
 
                 {/* Subtle Hover Overlay Hint */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10 pointer-events-none">
                   <span className="bg-red-600/90 text-white font-semibold text-sm sm:text-base px-5 py-2.5 rounded-full shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                     View Subtypes &rarr;
                   </span>
                 </div>
 
-                {/* Side Bar Text (Not Rotated) */}
-                <div className="absolute top-0 right-0 w-11 h-full bg-red-600 flex items-center justify-center transition-all duration-300 group-hover:bg-red-700">
+                {/* Side Bar Text */}
+                <div className="absolute top-0 right-0 w-11 sm:w-12 h-full bg-red-600 flex items-center justify-center transition-all duration-300 group-hover:bg-red-700 z-20">
                   <span className="text-white text-xs font-bold transform -rotate-90 whitespace-nowrap md:text-xl">
                     {product.title}
                   </span>
