@@ -8,7 +8,7 @@ import Footer from '@/layout/footer';
 import MobileNavbar from '@/layout/mobileNavbar';
 import Navbar from '@/layout/Navbar';
 import React from 'react'
-
+// xtorc
 
 export const metadata = {
   title: "About XTORC | Leading Industrial Bolting & In-Situ Tools Manufacturer",
