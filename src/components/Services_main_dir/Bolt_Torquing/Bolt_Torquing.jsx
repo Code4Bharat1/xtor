@@ -21,9 +21,9 @@ const BoltTorquing = () => {
 
       {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-10">
           {/* Left Section */}
-          <div className="space-y-6">
+          <div className="space-y-6 flex-1">
             {/* Title with Impact font */}
             <div className="w-fit">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">
@@ -40,7 +40,7 @@ const BoltTorquing = () => {
                   : `At XTORC, we specialize in providing high-precision controlled bolting services across a wide range of industries, including Oil & Gas, Infrastructure, Wind Energy, and more. Our expert team utilizes advanced tools and technology to ensure that every bolt is tightened to the exact specifications required, maintaining the integrity and safety of your operations. In sectors like Oil and Gas, Infrastructure, and Wind Energy, controlled bolting is crucial for preventing mechanical failures and ensuring the longevity of critical assets. Our services help avoid issues such as leaks, joint misalignments, and equipment malfunctions that can lead to costly downtime, safety hazards, and operational inefficiencies. With XTORC's controlled bolting services, you can rely on accurate torque, tension, and fastening for a variety of applications, including pressure vessels, pipelines, turbines, and structural installations`}
                 <button
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="text-red-500 fontsemibold text-lg pl-1"
+                  className="text-red-500 font-semibold text-lg pl-1"
                 >
                   {isExpanded ? "See Less " : "See More"}
                 </button>
@@ -50,16 +50,16 @@ const BoltTorquing = () => {
           </div>
 
           {/* Right Section */}
-          <div className="space-y-6">
+          <div className="space-y-6 w-full lg:w-auto flex-shrink-0 flex flex-col items-center">
             {/* Product Image */}
-            <div className="relative flex justify-center">
+            <div className="relative flex justify-center w-full">
               <div
-                className="bg-white rounded-2xl p-2 border-t-12 border-r-12 border-red-600 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.6)] transition-shadow duration-300 rounded-3xl w-full md:w-[550px] max-w-[500px] h-[400px] sm:h-[500px] md:h-[500px] flex items-center justify-center"
+                className="w-fit bg-white p-2 border-t-[10px] border-r-[10px] sm:border-t-[12px] sm:border-r-[12px] border-red-600 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:shadow-[0_10px_30px_rgba(208,26,26,0.6)] transition-shadow duration-300 rounded-3xl overflow-hidden"
               >
                 <img
-                  src="boltt.jpeg"
+                  src="/boltt.jpeg"
                   alt="Hydraulic Bolt Tensioner"
-                  className="w-[500px] h-full"
+                  className="block h-[420px] sm:h-[480px] lg:h-[500px] w-auto object-contain rounded-2xl"
                 />
               </div>
             </div>
@@ -75,7 +75,6 @@ const BoltTorquing = () => {
               </a>
             </div>
           </div>
-
         </div>
       </div>
     </div>
