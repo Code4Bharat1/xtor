@@ -104,7 +104,7 @@ export default function AdminTestimonials() {
     try {
       await api.delete(`/testimonials/admin/${deleteId}`);
       setReviews((prev) => prev.filter((r) => r.id !== deleteId));
-      setToast({ message: "Testimonial deleted successfully", type: "error" });
+      setToast({ message: "Testimonial deleted successfully", type: "success" });
     } catch (err) {
       setToast({ message: "Failed to delete testimonial: " + err.message, type: "error" });
     } finally {
@@ -116,6 +116,7 @@ export default function AdminTestimonials() {
   const handleLogout = () => {
     localStorage.removeItem("xtorc_admin_auth");
     localStorage.removeItem("xtorc_admin_token");
+    localStorage.removeItem("xtorc_admin_user");
     router.push("/admin/login");
   };
 

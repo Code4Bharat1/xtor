@@ -15,7 +15,6 @@ export default function AdminLogin() {
   const [errorMessage, setErrorMessage] = useState("");
   const [fieldErrors, setFieldErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
 
   // Auto-disappear error popup after 5 seconds
   useEffect(() => {
@@ -87,6 +86,7 @@ export default function AdminLogin() {
       }
 
       setFieldErrors({});
+      setIsLoading(false);
       toast.success("Success", "Admin login successful");
       router.push("/admin/testimonials");
     } catch (err) {

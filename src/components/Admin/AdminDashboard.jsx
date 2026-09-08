@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -10,44 +10,41 @@ import {
   ArrowRight,
   TrendingUp,
   Building2,
-  PlusCircle
 } from "lucide-react";
+import { api } from "@/services/apiClient";
 
 export default function AdminDashboard() {
-  const stats = [
-    {
-      label: "Total Testimonials",
-      value: "0",
-      change: "0 this month",
-      icon: MessageSquareQuote,
-      color: "text-amber-400",
-      bg: "bg-amber-950/40 border-amber-800/40",
-    },
-    {
-      label: "Approved & Live",
-      value: "0",
-      change: "Ready for live data",
-      icon: CheckCircle2,
-      color: "text-green-400",
-      bg: "bg-green-950/40 border-green-800/40",
-    },
-    {
-      label: "Pending Moderation",
-      value: "0",
-      change: "No pending reviews",
-      icon: Clock,
-      color: "text-red-400",
-      bg: "bg-red-950/40 border-red-800/40",
-    },
-    {
-      label: "Average Rating",
-      value: "0.0 ★",
-      change: "No ratings yet",
-      icon: Star,
-      color: "text-amber-400",
-      bg: "bg-amber-950/40 border-amber-800/40",
-    },
-  ];
+  const [stats, setStats] = useState([
+    { label: "Total Testimonials", value: "—", change: "Loading...", icon: MessageSquareQuote, color: "text-amber-400", bg: "bg-amber-950/40 border-amber-800/40" },
+    { label: "Approved & Live", value: "—", change: "Loading...", icon: CheckCircle2, color: "text-green-400", bg: "bg-green-950/40 border-green-800/40" },
+    { label: "Pending Moderation", value: "—", change: "Loading...", icon: Clock, color: "text-red-400", bg: "bg-red-950/40 border-red-800/40" },
+    { label: "Average Rating", value: "—", change: "Loading...", icon: Star, color: "text-amber-400", bg: "bg-amber-950/40 border-amber-800/40" },
+  ]);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const res = await api.get("/testimonials/admin");
+        const list = res?.data?.testimonials || res?.testimonials || res?.data || [];
+        const total = list.length;
+        const approved = list.filter((r) => r.status === "approved").length;
+        const pending = list.filter((r) => r.status === "pending").length;
+        const avgRating =
+          total > 0
+            ? (list.reduce((sum, r) => sum + (r.rating || 0), 0) / total).toFixed(1)
+            : "0.0";
+        setStats([
+          { label: "Total Testimonials", value: String(total), change: `${total} total submissions`, icon: MessageSquareQuote, color: "text-amber-400", bg: "bg-amber-950/40 border-amber-800/40" },
+          { label: "Approved & Live", value: String(approved), change: `${approved} visible on site`, icon: CheckCircle2, color: "text-green-400", bg: "bg-green-950/40 border-green-800/40" },
+          { label: "Pending Moderation", value: String(pending), change: pending > 0 ? `${pending} awaiting review` : "No pending reviews", icon: Clock, color: "text-red-400", bg: "bg-red-950/40 border-red-800/40" },
+          { label: "Average Rating", value: `${avgRating} ★`, change: total > 0 ? `Based on ${total} reviews` : "No ratings yet", icon: Star, color: "text-amber-400", bg: "bg-amber-950/40 border-amber-800/40" },
+        ]);
+      } catch {
+        // silently keep placeholder state on error
+      }
+    };
+    fetchStats();
+  }, []);
 
   const sectorDistribution = [
     { name: "Oil & Gas Refineries", count: 0, percentage: 0 },

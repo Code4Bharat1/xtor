@@ -48,11 +48,9 @@ function ContactSection() {
       errors.phone = "Please enter a valid phone number (7-15 digits)."
     }
 
-    // Subject validation
-    if (!formData.subject.trim()) {
-      errors.subject = "Subject is required."
-    } else if (formData.subject.trim().length < 3) {
-      errors.subject = "Subject must be at least 3 characters."
+    // Subject validation (optional — matches backend)
+    if (formData.subject.trim() && formData.subject.trim().length < 3) {
+      errors.subject = "Subject must be at least 3 characters if provided."
     }
 
     // Message validation
@@ -214,7 +212,7 @@ function ContactSection() {
             {/* Subject */}
             <div className="flex flex-col gap-1.5">
               <label htmlFor="subject" className="text-sm font-medium text-gray-900">
-                Subject <span className="text-red-600">*</span>
+                Subject <span className="text-xs text-gray-500">(Optional)</span>
               </label>
               <input
                 id="subject"
