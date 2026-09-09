@@ -5,11 +5,8 @@ export async function POST(request) {
   try {
     const { messages } = await request.json();
 
-    const apiKey =
-      process.env.GOOGLE_GEMINI_API_KEY ||
-      (process.env.GEMINI_API_KEY?.startsWith('AIza') ? process.env.GEMINI_API_KEY : null) ||
-      'AIzaSyAd8w4RWpoWxcCwMdrKjxyq_k6WBnUzaak';
-
+    const apiKey =process.env.GOOGLE_GEMINI_API_KEY 
+    
     if (!apiKey) {
       return NextResponse.json(
         { error: 'Gemini API key is not configured.' },
